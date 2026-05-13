@@ -1,24 +1,65 @@
+# ============================================================
 # Python
-code/.venv/
+# ============================================================
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.venv/
+*.egg-info/
 .ipynb_checkpoints/
-.python-version
 
-# LaTeX build artifacts
+# uv
+# (uv.lock is committed; .venv is not)
+
+# ============================================================
+# LaTeX (pdflatex / bibtex / synctex output)
+# ============================================================
 *.aux
 *.log
 *.out
 *.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
 *.bbl
 *.blg
-*.fdb_latexmk
-*.fls
-*.synctex.gz
+*.bcf
+*.run.xml
+*.nav
+*.snm
+*.vrb
+*Notes.bib
 
+# Keep main.pdf? Your call. Many repos commit it for convenience;
+# others let CI/Overleaf regenerate. Uncomment to ignore:
+# main.pdf
+
+# ============================================================
+# OmniGraffle
+# ============================================================
+# .graffle files are bundles on macOS — these are working files
+# you probably DO want to commit. Comment in only if you want to
+# exclude autosave or temp files:
+# *.graffle/QuickLook/
+
+# ============================================================
 # macOS
+# ============================================================
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
 
+# ============================================================
 # Editors
+# ============================================================
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
