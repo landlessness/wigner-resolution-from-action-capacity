@@ -1,0 +1,24 @@
+# Python
+code/.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.python-version
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
