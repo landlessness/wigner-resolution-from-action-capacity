@@ -1,4 +1,4 @@
-"""Render the four-row cats figure to tex/figures/cats.pdf."""
+"""Render the four-row cat states figure to tex/figures/cat.pdf."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from wigner_resolution.plotstyle import use_prl_style
 from wigner_resolution.systems.cats import cat_state
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE.parent.parent / "tex" / "figures" / "cats.pdf"
+OUT = HERE.parent.parent / "tex" / "figures" / "cat.pdf"
 
 use_prl_style(use_tex=True)
 
