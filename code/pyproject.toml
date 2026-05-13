@@ -1,15 +1,15 @@
 [project]
-name = "code"
+name = "wigner-resolution"
 version = "0.1.0"
-description = "Add your description here"
-requires-python = ">=3.10"
+description = "Code for the figures in 'Wigner Resolution as the Reciprocal of Action Capacity'"
+requires-python = ">=3.12"
 dependencies = [
-    "ipykernel>=7.2.0",
-    "jupyterlab>=4.5.7",
-    "matplotlib>=3.10.9",
-    "numpy>=2.2.6",
-    "qutip>=5.2.3",
-    "scipy>=1.15.3",
+    "qutip>=5",
+    "numpy>=2",
+    "scipy>=1.13",
+    "matplotlib>=3.8",
+    "jupyterlab>=4",
+    "ipykernel>=6",
 ]
 
 [tool.hatch.build.targets.wheel]
