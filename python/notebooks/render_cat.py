@@ -6,7 +6,7 @@ from pathlib import Path
 
 from wigner_resolution.figures.grid import assemble_grid, save_grid
 from wigner_resolution.plotstyle import use_prl_style
-from wigner_resolution.systems.cats import cat_state
+from wigner_resolution.systems.cat import cat_state
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE.parent.parent / "tex" / "figures" / "cat.pdf"
