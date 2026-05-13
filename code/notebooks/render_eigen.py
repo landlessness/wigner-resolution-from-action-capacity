@@ -1,6 +1,8 @@
-"""Render rows 1–4 of Fig. 3."""
+"""Render the four-row eigen figure to tex/figures/eigen.pdf."""
 
 from __future__ import annotations
+
+from pathlib import Path
 
 from wigner_resolution.figures.grid import assemble_grid, save_grid
 from wigner_resolution.plotstyle import use_prl_style
@@ -8,6 +10,9 @@ from wigner_resolution.systems.double_well import double_well_state
 from wigner_resolution.systems.harmonic import harmonic_state
 from wigner_resolution.systems.morse import morse_state
 from wigner_resolution.systems.squeezed_vacuum import squeezed_vacuum_state
+
+HERE = Path(__file__).resolve().parent
+OUT = HERE.parent.parent / "tex" / "figures" / "eigen.pdf"
 
 use_prl_style(use_tex=True)
 
@@ -24,4 +29,4 @@ for s in states:
           f"A/(h/2)={s.rs.A_over_h_half:.2f}")
 
 fig = assemble_grid(states)
-save_grid(fig, "../tex/figures/eigen.pdf")
+save_grid(fig, OUT)
