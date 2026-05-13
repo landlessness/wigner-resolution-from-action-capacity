@@ -14,6 +14,13 @@ COLUMN_WIDTH = 3.375  # single column
 DOUBLE_WIDTH = 7.0    # full page width
 GOLDEN = (1 + 5 ** 0.5) / 2
 
+# Panel background. Matches the center color of the RdBu_r diverging
+# colormap used in the heatmap (so the area outside the data extent in
+# column 1, and the entire backdrop of the cross-section panels in
+# columns 2 and 3, share one consistent gray). Avoids the visual jump
+# where the heatmap's natural "off-white" abuts a pure-white plot area.
+PANEL_BG = (0.969, 0.966, 0.965)
+
 
 def use_prl_style(use_tex: bool = True) -> None:
     """Apply PRL-style matplotlib rcParams.
@@ -28,6 +35,7 @@ def use_prl_style(use_tex: bool = True) -> None:
         "font.size": 9,
         "axes.labelsize": 9,
         "axes.titlesize": 9,
+        "axes.facecolor": PANEL_BG,
         "legend.fontsize": 8,
         "xtick.labelsize": 8,
         "ytick.labelsize": 8,
