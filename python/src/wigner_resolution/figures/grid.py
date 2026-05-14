@@ -227,9 +227,9 @@ def assemble_grid_4col(
 _DEFAULT_5COL_TITLES = (
     "Wigner Portrait",
     "Wigner Cross-Section",
-    r"Action-Capacity Kernel ($\theta = \pi/2$)",
-    "Convolved Cross-Section",
-    r"Action-Capacity Portrait ($\textstyle\int_0^\pi \! d\theta$)",
+    r"Action-Capacity Kernel, $\theta = \pi/2$",
+    r"Convolved Cross-Section, $\theta = \pi/2$",
+    r"Convolved Portrait, $\textstyle\int_0^\pi \! d\theta$",
 )
 
 
