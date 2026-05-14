@@ -1,0 +1,217 @@
+\documentclass[%
+  aps, amsmath, amssymb, onecolumn, 11pt
+]{revtex4-2}
+
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{orcidlink}
+\usepackage{mathtools}
+\usepackage{booktabs}
+
+% -------------- arXiv-Style Margin Stamp ----------------
+\usepackage[style=iso]{datetime2}
+\usepackage{FiraMono}
+\usepackage{tikz}
+
+\AddToHook{shipout/background}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node [rotate=-90, color=gray!80, font=\fontfamily{FiraMono-TLF}\selectfont\footnotesize] at ([xshift=-1.2cm]current page.east) {WORKING DRAFT \quad $\bullet$ \quad SUPPLEMENTAL MATERIAL \quad $\bullet$ \quad \DTMnow \quad $\bullet$ \quad doi.org/10.17605/OSF.IO/EV8H6 \quad $\bullet$ \quad Brian S. Mulloy \quad $\bullet$ \quad bmulloy@umich.edu};
+  \end{tikzpicture}
+}
+% --------------------------------------------------------
+
+% --- SM-specific counter renumbering ---
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thesubsection}{S\arabic{section}.\arabic{subsection}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+
+\begin{document}
+
+\title{Supplemental Material for\\``Wigner Resolution as the Reciprocal of Phase-Space Extent''}
+
+\author{Brian S. Mulloy\orcidlink{0000-0002-1803-3172}}
+\email{bmulloy@umich.edu}
+
+\date{\today}
+
+\maketitle
+
+% ======================================================================
+% S1 --- Notation and conventions
+% ======================================================================
+
+% ======================================================================
+% S1 --- Notation and conventions
+% ======================================================================
+
+\section{Notation and conventions}
+\label{sec:notation}
+
+\subsection{Symbol system}
+\label{sec:symbols}
+
+This Letter uses a single notation system internally. Phase space carries the metric
+\begin{equation}
+ds^2 = \frac{dq^2}{q_0^2} + \frac{dp^2}{p_0^2}, \qquad q_0 \cdot p_0 = \hbar,
+\label{eq:metric}
+\end{equation}
+in which lengths, angles, and orientations are computed. The reference scales $q_0$ and $p_0$ are convention; their product is fixed by $\hbar$ \cite{degosson2013qblobs, degossoncharlyne2022}. All phase-space figures in this Letter and its supplement use the dimensionless coordinates $q/q_0$ and $p/p_0$.
+
+The state's covariance defines its \emph{extended cell}\footnote{Heisenberg cells are conventionally drawn as rectangles for visual simplicity; the correct symplectic-geometric object is an ellipsoid \cite{degosson2013qblobs, degossoncharlyne2022}. Throughout this Letter, ``cell'' denotes the ellipsoid.}, the phase-space ellipsoid with semi-axes $\Delta q$ and $\Delta p$ and area
+\begin{equation}
+A = \pi \, \Delta q \, \Delta p \geq h/2.
+\label{eq:extended_cell}
+\end{equation}
+Inscribed in the extended cell is a one-parameter family of \emph{squeezed cells}, parameterized by the orientation angle $\theta$ of the cell's long axis relative to the $q$-axis. Each squeezed cell has area exactly $h/2$:
+\begin{equation}
+a = \pi \, \delta q \, \delta p = h/2,
+\label{eq:squeezed_cell}
+\end{equation}
+with $\delta q$ and $\delta p$ the lengths of the cell's short and long semi-axes respectively. The semi-axes satisfy the polar-dual identity
+\begin{equation}
+\delta q \cdot \delta p = \hbar.
+\label{eq:polar_dual}
+\end{equation}
+The inscription condition --- the squeezed cell is tangent to the extended cell at the endpoints of its long axis --- determines the semi-axes from the extended cell's:
+\begin{equation}
+\delta q(\theta) = \hbar \sqrt{ \frac{\cos^2\theta}{\Delta q^2} + \frac{\sin^2\theta}{\Delta p^2} }, \qquad \delta p(\theta) = \frac{\hbar}{\delta q(\theta)}.
+\label{eq:semi_axes_theta}
+\end{equation}
+The squeezed cells at $\theta = 0$ and $\theta = \pi/2$ are denoted $a_p$ and $a_q$ respectively.
+
+\subsection{Notation in the literature}
+\label{sec:translation}
+
+\subsection{Notation in the literature}
+\label{sec:translation}
+
+The notation used here is internal to this Letter and the program it initiates. The same geometric quantities appear in the source literature under different symbols and conventions. The translation is provided below for the reader who wishes to engage with the original sources.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+This work & Zurek \cite{zurek2001} & De Gosson \cite{degossoncharlyne2022, degosson2013qblobs, degosson2013fermiblobs} \\
+\midrule
+$\Delta q$ & $L$ & semi-axis of Fermi blob along $q$ \\
+$\Delta p$ & $P$ & semi-axis of Fermi blob along $p$ \\
+$\delta q$ & $\delta_x = \hbar/P$ & semi-axis of polar-dual blob along $q$ \\
+$\delta p$ & $\delta_p = \hbar/L$ & semi-axis of polar-dual blob along $p$ \\
+Extended cell, area $A$ & classical action $A \approx L \times P$ & Fermi blob, symplectic capacity $c(\Omega) \geq h/2$ \\
+Squeezed cell, area $a_\theta$ & sub-Planck scale $a \approx \hbar^2/A$ & Quantum blob, symplectic capacity $c(\mathcal{B}) = h/2$ \\
+$a_q, a_p$ & not present & two principal-axis quantum blobs of \cite{degossoncharlyne2022}, Theorem 13 \\
+Polar-dual identity & $\delta_x \, P = \hbar$ & polar-duality condition of \cite{degossoncharlyne2022}, Theorem 13 \\
+``Cell'' (this work) & not used & ``Blob'' (de Gosson) \\
+\bottomrule
+\end{tabular}
+\caption{Translation between the notation used in this Letter and the notation of the principal source works. Zurek's $L, P$ are covariance length scales; his $\delta_x, \delta_p$ are interference scales of the Wigner function. De Gosson's symplectic capacity $c(\cdot)$ of an ellipsoid equals $\pi$ times the product of its semi-axes; the quantum-blob condition $c(\mathcal{B}) = h/2$ is equivalent to area $h/2$.}
+\label{tab:notation}
+\end{table}
+
+De Gosson's symplectic-geometric framework expresses these quantities through the symplectic capacity of phase-space ellipsoids. The extended cell $\Omega$ is the centered ellipsoid
+\begin{equation}
+\Omega = \{(q,p) : (q,p) \, M^{-1} \, (q,p)^T \leq 1\}
+\label{eq:extended_ellipsoid}
+\end{equation}
+for the state's $2 \times 2$ covariance matrix $M$. Its symplectic capacity equals $\pi$ times the semi-axis product: $c(\Omega) = \pi \, \Delta q \, \Delta p = A$. Theorem 13 of \cite{degossoncharlyne2022} states that an ellipsoid $\mathcal{B}$ inscribed in $\Omega$ is a squeezed cell ($c(\mathcal{B}) = h/2$) if and only if its position projection and momentum intersection are polar duals of each other. In the notation here, this is the family $a_\theta$ for $\theta \in [0, \pi/2]$, with the two principal-axis cases $a_q$ and $a_p$ saturating the inscription condition along the $q$ and $p$ axes respectively. Zurek's interference scales emerge as the squeezed-cell semi-axes at these principal-axis orientations.
+
+% [To be drafted.]
+% Topics:
+% - Fermi blob: $A = \pi \Delta q \Delta p \geq h/2$
+% - Quantum blob at angle $\theta$: $a_\theta = \pi \delta q_\theta \delta p_\theta = h/2$
+% - Principal-axis cases: $a_q \equiv a_{\theta=0}$, $a_p \equiv a_{\theta=\pi/2}$
+% - Polar-dual identity: $\delta q_\theta \, \delta p_\theta = \hbar$
+% - Inscription bounds: $\delta q \leq \Delta q$, $\delta p \leq \Delta p$
+% - Convention: $\hbar$ for dispersions and Wigner kernel; $h$ for phase-space areas.
+%   Mention only if needed; otherwise allow the reader to absorb from context.
+
+% ======================================================================
+% S2 --- Full action-units table
+% ======================================================================
+
+\section{Action-units table for phase-space methods}
+\label{sec:fulltable}
+
+% [To be drafted.]
+% The full 16-row table from the body's truncated version.
+% Columns: Model | Native subfield | Kernel action structure | Map to $\delta q = \hbar/\Delta p$ | Star ranking
+% Brief paragraph framing before the table.
+
+% ======================================================================
+% S3 --- Effective resolution derivations
+% ======================================================================
+
+\section{Effective resolution: derivations}
+\label{sec:derivations}
+
+\subsection{Generalized Husimi $Q_{\lambda\theta}$}
+\label{sec:genhusimi}
+
+% [To be drafted.]
+% Show: kernel $\lambda \cdot 1/\lambda = \hbar$; setting $\lambda = \hbar/\Delta p$ recovers $P_{\delta q}$.
+% Cite Wódkiewicz, Appleby, Wünsche-Bužek.
+
+\subsection{Truncated Wigner Approximation}
+\label{sec:twa}
+
+% [To be drafted.]
+% Show: TWA samples at $\Delta q$. At saturation $\Delta q \cdot \Delta p \approx \hbar$,
+% the sampling width equals the polar-dual scale $\delta q = \hbar/\Delta p$.
+% The silhouette argument.
+
+\subsection{Cahill--Glauber $W^{(s)}$}
+\label{sec:cahillglauber}
+
+% [To be drafted.]
+% Show: $a_s = \pi(1-s)\hbar/2$. State-matched $s$ value.
+
+\subsection{Husimi $Q$}
+\label{sec:husimi}
+
+% [To be drafted.]
+% Show: fixed kernel area $h/2$; matches $\delta q$ only at vacuum.
+
+\subsection{Maximum-likelihood reconstruction with Fock-state truncation}
+\label{sec:maxlik}
+
+% [To be drafted.]
+% Show: Fock truncation $N_{\max}$; resolution per cell $\sim \hbar/\Delta p$ for state with
+% covariance $\Delta p^2 \sim N_{\max}\hbar$. Polar-dual scale emerges from action-counting.
+
+% ======================================================================
+% S4 --- Notes on remaining methods
+% ======================================================================
+
+\section{Notes on remaining methods}
+\label{sec:remaining}
+
+% [To be drafted.]
+% One paragraph each:
+% - Herman--Kluk frozen Gaussian
+% - Heller frozen/thawed Gaussian
+% - Pattern-function tomography
+% - Positive-P representation
+% - Cohen-class Born--Jordan
+% - Semidefinite programming tomography
+% - Bayesian / MCMC tomography
+% - Compressed sensing tomography
+% - Husimi-based open quantum systems
+
+% ======================================================================
+% S5 --- Computational details
+% ======================================================================
+
+\section{Computational details}
+\label{sec:computational}
+
+% [To be drafted.]
+% - R pipeline overview
+% - Eight-state list with covariance parameters
+% - Numerical grid choices for Wigner-function evaluation
+% - OSF deposit pointer
+
+\bibliography{main}
+
+\end{document}

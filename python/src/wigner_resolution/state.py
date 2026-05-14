@@ -247,22 +247,29 @@ def _finalize_state(
     """Common downstream pipeline: cell anchor + window + ticks + State."""
     from .ticks import nice_ticks_around
 
-    # Cell-overlay anchor at the location of max |W(x, 0)|, where the
-    # cell's resolution argument is visually most legible. For symmetric
-    # states multiple locations can share the same |W| max (e.g. 3-cat,
-    # double-well): we anchor at the midpoint of all such candidates,
-    # weighted by distance from ⟨x⟩, so the cell sits at the natural
-    # symmetry point of the state.
+# Cell-overlay anchor at the geometric midpoint of |W(x, 0)|'s
+    # significant support. This is the same midpoint the display
+    # window centers on a few lines below, so the cells sit at the
+    # center of every panel regardless of state asymmetry. For
+    # symmetric states the midpoint is at the origin. For Morse it
+    # shifts to the middle of the visible orbit.
     ip0 = int(np.argmin(np.abs(p_int)))
     W_at_p0 = W[:, ip0]
     if cell_center_x is None:
         abs_W = np.abs(W_at_p0)
-        tol = 1e-6 * abs_W.max()
-        candidates = np.where(abs_W >= abs_W.max() - tol)[0]
-        cell_center_x_resolved = float(np.mean(x_int[candidates]))
+        threshold = 0.05 * abs_W.max()
+        significant = abs_W > threshold
+        if significant.any():
+            ix_lo = int(np.argmax(significant))
+            ix_hi = int(len(significant) - 1 - np.argmax(significant[::-1]))
+            cell_center_x_resolved = 0.5 * (
+                float(x_int[ix_lo]) + float(x_int[ix_hi])
+            )
+        else:
+            cell_center_x_resolved = 0.0
     else:
         cell_center_x_resolved = cell_center_x
-
+        
     # --- Display window: three constraints ---
     #   1. Cell A must not be clipped.
     #   2. Panel is square in data units (x_lim = p_lim).
