@@ -31,7 +31,7 @@ import qutip as qt
 
 from ..state import DisplayWindow, State, build_state_from_qobj
 
-CAT_P_MAX_DEFAULT = 5.0
+CAT_P_MAX_DEFAULT = 3.0
 CAT_N_DEFAULT = 80
 
 

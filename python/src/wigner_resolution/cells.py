@@ -27,6 +27,14 @@ At θ = 0 and θ = π/2 (Fig. 2) the squeezed cell aligns with the principal
 axes and δ⊥ reduces to Zurek's reciprocal scales
 
     δx = ℏ/Δp,  δp = ℏ/Δx.
+
+The Zurek cell is the axis-aligned ellipse with semi-axes (δx, δp) ---
+the polar dual of the extended cell. It is *not* a member of the
+inscribed family; it is its own object, marking the inner envelope of
+sub-Planck structure that the rotation-averaged kernel can no longer
+resolve. Its area is
+
+    π δx δp = π ℏ² / (Δx Δp) = (h/2)² / A.
 """
 
 from __future__ import annotations
@@ -86,6 +94,33 @@ class SqueezedCell:
             )
 
 
+@dataclass(frozen=True)
+class ZurekCell:
+    """The sub-Planck cell with semi-axes (δx, δp) = (ℏ/Δp, ℏ/Δx).
+
+    Polar dual of the extended cell: the outer ellipse is Δx-wide and
+    Δp-tall, the Zurek cell is δx-wide (= ℏ/Δp, narrow when Δp is large)
+    and δp-tall (= ℏ/Δx). Axis-aligned with no rotation parameter; not
+    a member of the inscribed squeezed family.
+
+    Reference: Zurek, Nature 412, 712 (2001).
+    """
+
+    delta_x: float
+    delta_p: float
+    center: tuple[float, float] = (0.0, 0.0)
+    hbar: float = 1.0
+
+    @property
+    def area(self) -> float:
+        """π δx δp = π ℏ² / (Δx Δp) = (h/2)² / A."""
+        return np.pi * self.delta_x * self.delta_p
+
+    def __post_init__(self) -> None:
+        if self.delta_x <= 0 or self.delta_p <= 0:
+            raise ValueError("Zurek-cell semi-axes must be positive.")
+
+
 def squeezed_cell_at(
     theta: float,
     extended: ExtendedCell,
@@ -111,7 +146,8 @@ def squeezed_cell_at(
 
 
 def cell_a_delta_x(extended: ExtendedCell, hbar: float = 1.0) -> SqueezedCell:
-    """Zurek's δx cell: principal-axis squeezed cell at θ = π/2.
+    """Zurek's δx cell as a member of the squeezed family: squeezed cell
+    at θ = π/2.
 
     δ‖ = Δp along p, δ⊥ = δx = ℏ/Δp along x.
     """
@@ -119,8 +155,24 @@ def cell_a_delta_x(extended: ExtendedCell, hbar: float = 1.0) -> SqueezedCell:
 
 
 def cell_a_delta_p(extended: ExtendedCell, hbar: float = 1.0) -> SqueezedCell:
-    """Zurek's δp cell: principal-axis squeezed cell at θ = 0.
+    """Zurek's δp cell as a member of the squeezed family: squeezed cell
+    at θ = 0.
 
     δ‖ = Δx along x, δ⊥ = δp = ℏ/Δx along p.
     """
     return squeezed_cell_at(0.0, extended, hbar)
+
+
+def zurek_cell(extended: ExtendedCell, hbar: float = 1.0) -> ZurekCell:
+    """The Zurek sub-Planck cell with semi-axes (ℏ/Δp, ℏ/Δx).
+
+    Axis-aligned ellipse with semi-axes (δx, δp) = (ℏ/Δp, ℏ/Δx). The
+    polar dual of `extended` in the symplectic-area sense: their areas
+    multiply to (h/2)² · ... — see ZurekCell.area for details.
+    """
+    return ZurekCell(
+        delta_x=hbar / extended.Delta_p,
+        delta_p=hbar / extended.Delta_x,
+        center=extended.center,
+        hbar=hbar,
+    )
