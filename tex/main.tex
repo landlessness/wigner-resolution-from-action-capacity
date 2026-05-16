@@ -13,7 +13,7 @@
 \date{\today}
 
 \begin{abstract}
-The Wigner function of a quantum state takes negative values, useful in some contexts and not in others. We convolve the Wigner function with the Gaussian of the de Gosson quantum blob $a_\theta = h/2$ inscribed and squeezed in the state's extended cell of action capacity $A = \pi\Delta x\Delta p \ge h/2$ and integrate over $\theta$. The result is a non-negative phase-space portrait that preserves all structure down to the quorum cell $a = \pi \delta x \delta p \le h/2$, an ellipse with semi-axes equal to the sub-Planck scales of Zurek.
+The Wigner function of a quantum state takes negative values, useful in some contexts, not in others. We convolve the Wigner function with the Gaussian of the de Gosson quantum blob with action $h/2$ inscribed and squeezed in the state's Heisenberg cell of action capacity $\pi\Delta x\Delta p \ge h/2$ over every quadrature of the state. The result is a non-negative portrait that preserves all structure down to the quorum cell $\hbar^2 / (\Delta x \Delta p)$, an ellipse with semi-axes equal to the interference scales of Zurek.
 \end{abstract}
 
 \maketitle
@@ -25,29 +25,28 @@ The Wigner function of a quantum state takes negative values, useful in some con
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/de_gosson_cells.pdf}
-\caption{\textbf{The extended cell and the squeezed cells.} The extended cell is the state's covariance ellipsoid, of action $A = \pi\Delta x\Delta p \ge h/2$. The squeezed cells $a_\theta$ are the inscribed quantum blobs tangent to the extended cell, each of action $h/2$ and semi-axes reciprocal in $\hbar$, $\delta_\parallel(\theta)\,\delta_\perp(\theta) = \hbar$. The family is parameterized by orientation $\theta$; the action is the same for every member.}
+\caption{\textbf{The Heisenberg cell and the squeezed cells.} The Heisenberg cell is the state's covariance ellipsoid, of action $A = \pi\Delta x\Delta p \ge h/2$. The squeezed cells $a_\theta$ are the inscribed quantum blobs tangent to the Heisenberg cell. As $\theta$ varies the squeezed cells rotate and change aspect ratio with the shape of the Heisenberg cell. Each has action $h/2$ and semi-axes reciprocal in $\hbar$, $\delta_\parallel(\theta)\,\delta_\perp(\theta) = \hbar$.}
 \label{fig:de_gosson_cells}
 \end{figure}
-
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/zurek_cells.pdf}
-\caption{\textbf{The principal axes and the quorum cell.} At $\theta = 0$ and $\theta = \pi/2$ the squeezed cells $a_{\delta x}$ and $a_{\delta p}$ have semi-axes $(\Delta x, \delta p)$ and $(\delta x, \Delta p)$, with $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ the sub-Planck scales of Zurek~\cite{zurek2001}. The quorum cell $a$ is the common interior of the squeezed family, an ellipse with semi-axes $\delta x, \delta p$ and action $a \le h/2$.}
+\caption{\textbf{The principal axes and the quorum cell.} At $\theta = 0$ and $\theta = \pi/2$ the squeezed cells are $a_{\delta x} = \pi \delta x \Delta p = h/2$ and $a_{\delta p} = \pi \Delta x \delta p = h/2$. The squeezed axes $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ are the interference scales of Zurek. The quorum cell $a$ is the common interior of the squeezed family across every quadrature, an ellipse with semi-axes $\delta x, \delta p$ and action $a = \pi \delta x \delta p \le h/2$.}
 \label{fig:zurek_cells}
 \end{figure}
 
 \begin{figure*}[!tp]
 \centering
 \includegraphics[width=\textwidth]{figures/eigen.pdf}
-\caption{\textbf{Wigner negativity and its resolution at the action capacity, for eigenstates.} The four states are the squeezed vacuum at $r = 0.5$, the harmonic Fock state at $n = 1$, the Morse eigenstate at $n = 8$, and the double-well eigenstate at $n = 5$. Column 1: the Wigner function $W(x, p)$. Column 2: the cross-section $W(x, 0)$, with its negative dips between positive peaks. Column 3: the squeezed cell $K_{\theta = \pi/2}$ inside the extended cell $A$. Column 4: the cross-section $P_{\pi/2}(x, 0)$, non-negative. Column 5: the portrait $\widetilde W(x, p)$ at the resolution of the quorum cell $a$ inside the extended cell $A$.}
+\caption{\textbf{Wigner negativity and its resolution at the action capacity, for eigenstates.} The four states are the squeezed vacuum at $r = 0.5$, the harmonic Fock state at $n = 1$, the Morse eigenstate at $n = 8$, and the double-well eigenstate at $n = 5$. Column 1: the Wigner function $W(x, p)$. Column 2: the cross-section $W(x, 0)$, with its negative dips between positive peaks. Column 3: the squeezed cell $K_{\theta = \pi/2}$ inside the Heisenberg cell $A$. Column 4: the cross-section $P_{\pi/2}(x, 0)$, non-negative. Column 5: the portrait $\widetilde W(x, p)$ at the resolution of the quorum cell $a$ inside the Heisenberg cell $A$.}
 \label{fig:eigen}
 \end{figure*}
 
 \begin{figure*}[!tp]
 \centering
 \includegraphics[width=\textwidth]{figures/cat.pdf}
-\caption{\textbf{Wigner negativity and its resolution at the action capacity, for cat states.} The four states are the 2-cat, the 3-cat, the 4-cat, and the Zurek compass. The columns are as in Fig.~\ref{fig:eigen}. The 4-cat and Zurek-compass states differ by a $\pi/4$ rotation in phase space; this rotation appears in columns 1 and 3 but not in column 5, where $\widetilde W$ is rotation-invariant under the family integral.}
+\caption{\textbf{Wigner negativity and its resolution at the action capacity, for cat states.} The four states are the 2-cat, the 3-cat, the 4-cat, and the Zurek compass. The columns are as in Fig.~\ref{fig:eigen}. The 4-cat and Zurek-compass states differ by a $\pi/4$ rotation in phase space. This rotation appears in columns 1 and 3 but not in column 5, where $\widetilde W$ is rotation-invariant under the family integral.}
 \label{fig:cat}
 \end{figure*}
 
@@ -61,37 +60,38 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 %  THE PHASE-SPACE CELLS
 % ===============================================================================
 
-The state is constrained by the uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$ in its Robertson--Schr\"odinger form~\cite{robertson1929,schrodinger1930}, where $\sigma_x, \sigma_p$ are the standard deviations of position and momentum. Following de Gosson, we work with the covariance-ellipsoid spreads $\Delta x = \sqrt{2}\,\sigma_x$, $\Delta p = \sqrt{2}\,\sigma_p$, which absorb a factor of 2 into the definition. The covariance ellipsoid of the state has symplectic capacity with units of action~\cite{degosson2009camel,degosson2013qblobs,degossoncharlyne2022}; we call this the action capacity of the state, and the ellipsoid itself the extended cell (Fig.~\ref{fig:de_gosson_cells}):
+The state is constrained by the uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$ in its Robertson--Schr\"odinger form~\cite{robertson1929,schrodinger1930}, where $\sigma_x, \sigma_p$ are the standard deviations of position and momentum. Following de Gosson, we work with the covariance-ellipsoid spreads $\Delta x = \sqrt{2}\,\sigma_x$, $\Delta p = \sqrt{2}\,\sigma_p$, which absorb a factor of 2 into the definition. The phase-space area of the covariance ellipsoid has units of action~\cite{degosson2009camel,degosson2013qblobs,degossoncharlyne2022}. We call it the action capacity of the state, and the ellipsoid itself the Heisenberg cell (Fig.~\ref{fig:de_gosson_cells}),
 \begin{equation}
 A = \pi\,\Delta x\,\Delta p \ge h/2.
 \label{eq:extended_cell}
 \end{equation}
 
-De Gosson proved that the extended cell $A$ contains a quantum blob if and only if the state is physically realizable~\cite{degosson2005bullsci,degosson2013qblobs,degossoncharlyne2022}. A quantum blob is a symplectic image of the phase-space ball of radius $\sqrt{\hbar}$, of capacity $\pi\hbar = h/2$, the minimum allowed by Gromov's non-squeezing theorem~\cite{gromov1985,degosson2009camel}. For an extended cell larger than $A > h/2$ the contained blobs form a family, the orbit of the unit blob under the symplectic group.
+De Gosson proved that the Heisenberg cell contains a quantum blob if and only if the state is physically realizable~\cite{degosson2005bullsci,degosson2013qblobs,degossoncharlyne2022}. A quantum blob is a symplectic image of the phase-space ball of radius $\sqrt{\hbar}$, of capacity $\pi\hbar = h/2$, the minimum allowed by Gromov's non-squeezing theorem~\cite{gromov1985,degosson2009camel}. For a Heisenberg cell larger than $h/2$ the contained blobs form a family, the orbit of the unit blob under the symplectic group.
 
-Among the contained blobs, the one whose semi-axis along direction $\theta$ equals the radius of the extended cell along $\theta$ is the squeezed cell $a_\theta$ (Fig.~\ref{fig:de_gosson_cells}). Its semi-axis along $\theta$ is
+Among the contained blobs we identify a one-parameter subfamily, the squeezed cells $a_\theta$ tangent to the Heisenberg cell along direction $\theta$ (Fig.~\ref{fig:de_gosson_cells}). The semi-axis along $\theta$ is
 \begin{equation}
 \delta_\parallel(\theta) = \sqrt{\Delta x^2\cos^2\theta + \Delta p^2\sin^2\theta}.
 \label{eq:delta_parallel}
 \end{equation}
-The squeezed cell cannot reach the boundary of the extended cell along $\theta$ without paying for the stretch with a reciprocal squeeze orthogonal to it. The perpendicular semi-axis is forced by the locked capacity $h/2$ to
+The squeezed cell cannot stretch to reach the Heisenberg cell's boundary without a reciprocal squeeze orthogonal to it. The perpendicular semi-axis is forced by the locked capacity $h/2$ to
 \begin{equation}
 \delta_\perp(\theta) = \hbar/\delta_\parallel(\theta).
 \label{eq:delta_perp}
 \end{equation}
-This is the symplectic-camel principle of de Gosson~\cite{degosson2009camel,gromov1985}: the camel passes through the eye of the needle only by changing its shape, and the shape change is exactly reciprocal because the capacity is locked at $h/2$. The squeezed cell has fixed action
+
+This is the symplectic-camel principle of de Gosson~\cite{degosson2009camel,gromov1985}. The camel passes through the eye of the needle only by changing its shape, and the shape change is exactly reciprocal because the capacity is locked at $h/2$. The squeezed cell has fixed action
 \begin{equation}
 a_\theta = \pi\,\delta_\parallel(\theta)\,\delta_\perp(\theta) = h/2.
 \label{eq:squeezed_cell}
 \end{equation}
-The shorter of the two semi-axes is the squeezed axis of $a_\theta$, $\min(\delta_\parallel(\theta), \delta_\perp(\theta))$, and the longer is the anti-squeezed axis, $\max(\delta_\parallel(\theta), \delta_\perp(\theta))$. The semi-axis $\delta_\parallel(\theta)$ is the spread of the state's rotated quadrature $x_\theta = x\cos\theta + p\sin\theta$, the marginal measured by homodyne detection at phase $\theta$~\cite{vogelrisken1989,lvovsky2009}; $\delta_\perp(\theta) = \hbar/\delta_\parallel(\theta)$ is the uncertainty-saturated spread of the conjugate quadrature. The family $\{a_\theta\}_{\theta \in [0,\pi)}$ is the one-parameter orbit of squeezed cells inscribed in the extended cell, parameterized by the quadrature angle of optical tomography.
+The shorter of the two semi-axes is the squeezed axis of $a_\theta$, $\min(\delta_\parallel(\theta), \delta_\perp(\theta))$, and the longer is the anti-squeezed axis, $\max(\delta_\parallel(\theta), \delta_\perp(\theta))$. The semi-axis $\delta_\parallel(\theta)$ is the spread of the state's rotated quadrature $x_\theta = x\cos\theta + p\sin\theta$, the marginal measured by homodyne detection at phase $\theta$~\cite{vogelrisken1989,lvovsky2009}. The perpendicular semi-axis $\delta_\perp(\theta) = \hbar/\delta_\parallel(\theta)$ is the uncertainty-saturated spread of the conjugate quadrature. The family $\{a_\theta\}_{\theta \in [0,\pi)}$ is the one-parameter orbit of squeezed cells inscribed in the Heisenberg cell, parameterized by the quadrature angle of optical tomography.
 
 Along the principal axes (Fig.~\ref{fig:zurek_cells}), where $\theta = 0$ and $\theta = \pi/2$, the squeezed cells are
 \begin{equation}
 a_{\delta x} = \pi\,\Delta p\,\delta x = h/2, \qquad a_{\delta p} = \pi\,\Delta x\,\delta p = h/2,
 \label{eq:principal_axis_cells}
 \end{equation}
-with squeezed axes $\delta x, \delta p$ and anti-squeezed axes $\Delta p, \Delta x$. The reciprocal relationships $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ are the sub-Planck scales identified by Zurek~\cite{zurek2001}. The de Gosson squeezed cells and the Zurek scales are two readings of the same action cells. The scales traditionally labeled sub-Planck are the squeezed axes of exactly Planckian cells of action $\pi\hbar$.
+with squeezed axes $\delta x, \delta p$ and anti-squeezed axes $\Delta p, \Delta x$. The reciprocal relationships $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ are the interference scales of Zurek~\cite{zurek2001}. The de Gosson squeezed cells and the Zurek scales are two readings of the same action cells. The scales traditionally labeled sub-Planck are the squeezed axes of exactly Planckian cells of action $\pi\hbar$.
 
 % ===============================================================================
 %  THE BOUNDARY AND THE KERNEL
@@ -112,7 +112,7 @@ with $x_\theta = x\cos\theta + p\sin\theta$ and $p_\theta = -x\sin\theta + p\cos
 P_\theta(x,p) = (W * K_\theta)(x,p).
 \label{eq:Ptheta}
 \end{equation}
-$P_\theta$ is non-negative everywhere; convolving a Wigner function with a Gaussian of capacity $\ge h/2$ yields a non-negative function~\cite{cartwright1976}.
+$P_\theta$ is non-negative everywhere. Convolving a Wigner function with a Gaussian of capacity $\ge h/2$ yields a non-negative function~\cite{cartwright1976}. The kernel $K_\theta$ is the unique blob in the squeezed family at orientation $\theta$, and its action is $h/2$.
 
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
@@ -130,19 +130,31 @@ $\widetilde W$ varies on scales no smaller than the cell with semi-axes $\delta 
 a = \pi\,\delta x\,\delta p = \pi\hbar^2/(\Delta x\,\Delta p).
 \label{eq:a_inner}
 \end{equation}
-The scale Zurek identified is $a_Z = a/\pi = \hbar^2/(\Delta x\,\Delta p)$. The quorum cell is the geometric common interior of the squeezed family, the region accessible to every member. Its area is below $h/2$ but resolves the quorum of $a_\theta = \pi\hbar$ cells across orientations.
+The scale Zurek identified is $a_Z = a/\pi = \hbar^2/(\Delta x\,\Delta p)$. The quorum cell is the common interior of the squeezed family, the region accessible to every member. Every member of the family has action $h/2$, the uncertainty floor. The common interior is finer than any single member, an ellipse with action $a \le h/2$.
 
-The phase-space cells, the squeezed family, and the convolved portrait extend without modification to higher dimensions and to states with $x$-$p$ correlations, where the extended cell is the full Robertson--Schr\"odinger covariance ellipsoid~\cite{robertson1929,schrodinger1930,degosson2013qblobs,degossoncharlyne2022}.
+The phase-space cells, the squeezed family, and the convolved portrait extend without modification to higher dimensions and to states with $x$-$p$ correlations, where the Heisenberg cell is the full Robertson--Schr\"odinger covariance ellipsoid~\cite{robertson1929,schrodinger1930,degosson2013qblobs,degossoncharlyne2022}.
 
 % ===============================================================================
 %  DEMONSTRATION
 % ===============================================================================
 
-Figures~\ref{fig:eigen} and~\ref{fig:cat} show the portrait across eight states. With the kernel built from each state's action capacity, the positive peaks of $W$ along the chosen cross-section appear in $P_{\pi/2}$ with the same count and location, without negativity. The integral across the squeezed family gives $\widetilde W$, the non-negative phase-space portrait at the state's action-capacity resolution.
+Figures~\ref{fig:eigen} and~\ref{fig:cat} show the portrait across eight states. With the kernel built from each state's action capacity, the positive peaks of $W$ along the chosen cross-section appear in $P_{\pi/2}$ with the same count and location, without negativity. The integral across the squeezed family gives $\widetilde W$, the non-negative phase-space portrait that preserves all structure of the state down to the resolution of the quorum cell.
 
-Other paths to a non-negative Wigner function --- covariance-matched generalized Husimi smoothing~\cite{husimi1940,cartwright1976}, the truncated Wigner approximation~\cite{polkovnikov2010}, the Cahill--Glauber $s$-ordered family~\cite{cahillglauber1969}, maximum-likelihood reconstruction with Fock-state truncation~\cite{lvovsky2009} --- succeed in their regimes of validity and fail outside them. The supplement shows that in their regimes of success, the Wigner resolution also follows from action capacity.
+% ===============================================================================
+%  DISCUSSION
+% ===============================================================================
 
-The action capacity is the Wigner function's non-negative resolution floor, and the de Gosson squeezed cell is its physical signature.
+Other paths to a non-negative Wigner function include covariance-matched generalized Husimi smoothing~\cite{husimi1940,cartwright1976}, the truncated Wigner approximation~\cite{polkovnikov2010}, the Cahill--Glauber $s$-ordered family~\cite{cahillglauber1969}, and maximum-likelihood reconstruction with Fock-state truncation~\cite{lvovsky2009}. Each succeeds in its regime of validity. Future work will examine whether the Wigner resolution in those regimes also follows from action capacity.
+
+The de Gosson squeezed cell $a_\theta = h/2$ is the Wigner function's non-negative resolution floor, inscribed in the state's action capacity $A = \pi\Delta x\Delta p$. The textbook see-saw $\sigma_x \sigma_p \ge \hbar/2$ loosens as $A$ grows, the transition from micro to macro-mechanics that Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The squeezed cell does not, and its squeezing compresses reciprocally with $A$ down to the quorum cell $a = \hbar^2/(\Delta x \Delta p)$, the floor of the non-negative portrait, built from the same quadrature quorum as homodyne tomography.
+
+% ===============================================================================
+%  DATA AVAILABILITY
+% ===============================================================================
+
+\begin{acknowledgments}
+The code that generated the figures of this article is openly available~\cite{osfdeposit}.
+\end{acknowledgments}
 
 \bibliography{main}
 
