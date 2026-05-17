@@ -1,13 +1,31 @@
-\documentclass[aps,pra,reprint,amsmath,amssymb,floatfix,nofootinbib]{revtex4-2}
+\documentclass[aps,pra,reprint,amsmath,amssymb,floatfix,nofootinbib,showkeys]{revtex4-2}
 
 \usepackage{graphicx}
+\usepackage{orcidlink}
 \usepackage{bm}
+
+% -------------- Margin Stamp ----------------
+\usepackage[style=iso]{datetime2}
+\usepackage{FiraMono}
+\usepackage{tikz}
+
+\AddToHook{shipout/background}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node [rotate=-90, color=gray!80, font=\fontfamily{FiraMono-TLF}\selectfont\footnotesize] at ([xshift=-1.2cm]current page.east) {WORKING DRAFT \quad 
+    $\bullet$ \quad \DTMnow \quad 
+    % $\bullet$ \quad doi.org/ \quad 
+    $\bullet$ \quad Brian S. Mulloy \quad 
+    $\bullet$ \quad bmulloy@umich.edu};
+  \end{tikzpicture}
+}
+% --------------------------------------------------------
 
 \begin{document}
 
 \title{Wigner Resolution from Action Capacity}
 
-\author{Brian S. Mulloy}
+\author{Brian S. Mulloy\orcidlink{0000-0002-1803-3172}}
+\affiliation{Independent Researcher, Corktown, Detroit, USA}
 \email{bmulloy@umich.edu}
 
 \date{\today}
@@ -15,6 +33,8 @@
 \begin{abstract}
 The Wigner function of a quantum state takes negative values, useful in some contexts, not in others. We convolve the Wigner function with the Gaussian of the de Gosson quantum blob with action $h/2$ inscribed and squeezed in the state's Heisenberg cell of action capacity $\pi\Delta x\Delta p \ge h/2$ over every quadrature of the state. The result is a non-negative portrait that preserves all structure down to the quorum cell $\hbar^2 / (\Delta x \Delta p)$, an ellipse with semi-axes equal to the interference scales of Zurek.
 \end{abstract}
+
+\keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty relations, Symplectic geometry, Squeezed states, Quantum state tomography}
 
 \maketitle
 
@@ -68,7 +88,8 @@ A = \pi\,\Delta x\,\Delta p \ge h/2.
 
 De Gosson proved that the Heisenberg cell contains a quantum blob if and only if the state is physically realizable~\cite{degosson2005bullsci,degosson2013qblobs,degossoncharlyne2022}. A quantum blob is a symplectic image of the phase-space ball of radius $\sqrt{\hbar}$, of capacity $\pi\hbar = h/2$, the minimum allowed by the symplectic-camel principle~\cite{degosson2009camel}. For a Heisenberg cell larger than $h/2$ the contained blobs form a family, the orbit of the unit blob under the symplectic group.
 
-Zurek identified an interference scale set by the state's spread orthogonal to a given direction in phase space~\cite{zurek2001,toscano2006}. That scale is the minor axis of exactly one blob in de Gosson's orbit, the squeezed cell $a_\theta$ tangent to the Heisenberg cell along each direction $\theta$ (Fig.~\ref{fig:de_gosson_cells}). The semi-axis along $\theta$ is
+Zurek identified an interference scale set by the state's spread orthogonal to a given direction in phase space~\cite{zurek2001,toscano2006}. For each direction $\theta$, that scale is the minor axis of exactly one blob in de Gosson's orbit, the squeezed cell $a_\theta$ tangent to the Heisenberg cell (Fig.~\ref{fig:de_gosson_cells}).
+The semi-axis along $\theta$ is
 \begin{equation}
 \delta_\parallel(\theta) = \sqrt{\Delta x^2\cos^2\theta + \Delta p^2\sin^2\theta}.
 \label{eq:delta_parallel}
@@ -153,7 +174,7 @@ The de Gosson squeezed cell $a_\theta = h/2$ is the Wigner function's non-negati
 % ===============================================================================
 
 \begin{acknowledgments}
-The code that generated the figures of this article is openly available~\cite{osfdeposit}.
+This research received no external funding. The code that generated the figures of this article is openly available~\cite{zenododeposit}.
 \end{acknowledgments}
 
 \bibliography{main}
