@@ -53,7 +53,7 @@ def assemble_grid(
         "Wigner Cross-Section",
         r"Convolved Cross-Section",
     ),
-    show_extended: bool = True,
+    show_heisenberg: bool = True,
     show_squeezed: bool = True,
 ) -> Figure:
     """Build a 3-column figure as a clean grid with aspect-equal heatmaps."""
@@ -83,7 +83,7 @@ def assemble_grid(
         ax_p = fig.add_subplot(gs[i, 2])
 
         wigner_heatmap(ax_h, state,
-                       show_extended=show_extended, show_squeezed=show_squeezed)
+                       show_heisenberg=show_heisenberg, show_squeezed=show_squeezed)
         ax_h.set_aspect("equal", adjustable="box")
 
         wigner_cross_section(ax_w, state)
@@ -131,7 +131,7 @@ def assemble_grid_4col(
     margin_right: float = 0.15,
     column_titles: tuple[str, str, str, str] = _DEFAULT_4COL_TITLES,
     row_labels: list[str] | None = None,
-    show_extended: bool = True,
+    show_heisenberg: bool = True,
     show_squeezed: bool = True,
     theta: float | None = None,
 ) -> Figure:
@@ -173,13 +173,13 @@ def assemble_grid_4col(
         ax_p = fig.add_subplot(gs[i, 3])
 
         wigner_heatmap(ax_h, state,
-                       show_extended=show_extended, show_squeezed=show_squeezed)
+                       show_heisenberg=show_heisenberg, show_squeezed=show_squeezed)
         ax_h.set_aspect("equal", adjustable="box")
 
         wigner_cross_section(ax_w, state)
 
         matched_kernel_heatmap(ax_k, state, theta=theta,
-                               show_extended=show_extended,
+                               show_heisenberg=show_heisenberg,
                                show_squeezed=show_squeezed)
         ax_k.set_aspect("equal", adjustable="box")
 
@@ -246,7 +246,7 @@ def assemble_grid_5col(
     margin_right: float = 0.15,
     column_titles: tuple[str, str, str, str, str] = _DEFAULT_5COL_TITLES,
     row_labels: list[str] | None = None,
-    show_extended: bool = True,
+    show_heisenberg: bool = True,
     show_squeezed: bool = True,
     theta: float | None = None,
     tilde_W_n_theta: int = 360,
@@ -254,11 +254,11 @@ def assemble_grid_5col(
     """Build the 5-column numerical-results figure.
 
     Layout per row, left to right:
-      Col 1: W(x, p) with extended + inscribed cell overlays.
+      Col 1: W(x, p) with Heisenberg and inscribed-family cell overlays.
       Col 2: W(x, 0).
-      Col 3: K_{π/2}(x, p) with extended + inscribed cell overlays.
+      Col 3: K_{π/2}(x, p) with Heisenberg and inscribed-family cell overlays.
       Col 4: P_{π/2}(x, 0).
-      Col 5: tilde_W(x, p) with extended + Zurek cell overlays.
+      Col 5: tilde_W(x, p) with Heisenberg and quorum cell overlays.
 
     Cols 1, 3, 5 are aspect-equal phase-space heatmaps anchored at
     state.cell_center_x. Cols 2 and 4 are cross-sections.
@@ -308,11 +308,11 @@ def assemble_grid_5col(
         ax_p = fig.add_subplot(gs[i, 3])
         ax_t = fig.add_subplot(gs[i, 4])
 
-        # Cols 1 and 3: extended + squeezed cells (no Zurek).
+        # Cols 1 and 3: Heisenberg + squeezed cells (no quorum).
         wigner_heatmap(
             ax_h, state,
-            show_extended=False, show_squeezed=False,
-            show_zurek=False,
+            show_heisenberg=False, show_squeezed=False,
+            show_quorum=False,
         )
         ax_h.set_aspect("equal", adjustable="box")
 
@@ -320,19 +320,19 @@ def assemble_grid_5col(
 
         matched_kernel_heatmap(
             ax_k, state, theta=theta,
-            show_extended=show_extended, show_squeezed=show_squeezed,
-            show_zurek=False,
+            show_heisenberg=show_heisenberg, show_squeezed=show_squeezed,
+            show_quorum=False,
         )
         ax_k.set_aspect("equal", adjustable="box")
 
         P_theta_cross_section(ax_p, state, theta=theta)
 
-        # Col 5: extended + Zurek cells (no squeezed).
+        # Col 5: Heisenberg + quorum cells (no squeezed).
         tilde_W_heatmap(
             ax_t, state,
             n_theta=tilde_W_n_theta,
-            show_extended=show_extended, show_squeezed=False,
-            show_zurek=True,
+            show_heisenberg=show_heisenberg, show_squeezed=False,
+            show_quorum=True,
         )
         ax_t.set_aspect("equal", adjustable="box")
 

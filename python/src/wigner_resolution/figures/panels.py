@@ -1,17 +1,17 @@
 """The panels of each row of the data figures.
 
-Column 1: W(x, p) heatmap with extended + squeezed cell overlay
+Column 1: W(x, p) heatmap with Heisenberg and squeezed cell overlays
           (diverging colormap).
 Column 2: W(x, 0) cross-section — black line, red/blue fill.
-Column 3: K_{π/2}(x, p) heatmap with extended + squeezed cell overlay
-          (sequential — upper half of the diverging palette). Action-
-          capacity kernel: Wigner function of the inscribed quantum
-          blob at θ = π/2.
+Column 3: K_{π/2}(x, p) heatmap with Heisenberg and squeezed cell
+          overlays (sequential — upper half of the diverging palette).
+          Action-capacity kernel: Wigner function of the inscribed
+          quantum blob at θ = π/2.
 Column 4: P_{π/2}(x, 0) — non-negative, red fill.
 Column 5: tilde_W(x, p) = (1/N_θ) Σ P_θ — rotation-averaged portrait,
-          with extended + Zurek cell overlay (sequential). The inner
-          ellipse is the Zurek sub-Planck cell with semi-axes (δx, δp);
-          the polar dual of the extended cell, marking the inner
+          with Heisenberg and quorum cell overlays (sequential). The
+          inner ellipse is the quorum cell a with semi-axes (δx, δp);
+          the polar dual of the Heisenberg cell, marking the inner
           resolution envelope of the rotation average.
 
 Every drawn line in this figure — cell-overlay ellipses, cross-section
@@ -26,15 +26,15 @@ import numpy as np
 from matplotlib.axes import Axes
 from matplotlib.colors import Normalize, TwoSlopeNorm
 
-from ..cells import ExtendedCell, cell_a_delta_x, squeezed_cell_at, zurek_cell
+from ..cells import HeisenbergCell, cell_a_delta_x, squeezed_cell_at, quorum_cell
 from ..convolve import convolve_W_with_K, cross_section_at_p0
 from ..kernels import K_theta_mesh
 from ..state import State
 from .overlays import (
     LINEWIDTH,
-    extended_cell_patch,
+    heisenberg_cell_patch,
     squeezed_cell_patch,
-    zurek_cell_patch,
+    quorum_cell_patch,
 )
 
 # Colors drawn from the diverging colormap so the row reads as one palette.
@@ -65,38 +65,38 @@ def _draw_cells(
     ax: Axes,
     state: State,
     *,
-    show_extended: bool,
+    show_heisenberg: bool,
     show_squeezed: bool,
-    show_zurek: bool,
+    show_quorum: bool,
     overlay_color: str,
     overlay_linewidth: float,
 ) -> None:
     """Overlay cells on a heatmap panel.
 
-    `show_extended` draws the outer cell (semi-axes Δx, Δp).
-    `show_squeezed` draws the inscribed cell at θ = π/2 (cols 1 & 3).
-    `show_zurek` draws the Zurek sub-Planck cell (col 5).
+    `show_heisenberg` draws the Heisenberg cell A (semi-axes Δx, Δp).
+    `show_squeezed` draws the inscribed cell a_{π/2} (cols 1 & 3).
+    `show_quorum` draws the quorum cell a (col 5).
 
     All cells are anchored at `state.cell_center_x`.
     """
-    extended = ExtendedCell(
+    heisenberg = HeisenbergCell(
         Delta_x=state.rs.Delta_x,
         Delta_p=state.rs.Delta_p,
         center=(state.cell_center_x, 0.0),
     )
-    if show_extended:
-        ax.add_patch(extended_cell_patch(
-            extended, edgecolor=overlay_color, linewidth=overlay_linewidth,
+    if show_heisenberg:
+        ax.add_patch(heisenberg_cell_patch(
+            heisenberg, edgecolor=overlay_color, linewidth=overlay_linewidth,
         ))
     if show_squeezed:
-        sq = cell_a_delta_x(extended, hbar=state.hbar)
+        sq = cell_a_delta_x(heisenberg, hbar=state.hbar)
         ax.add_patch(squeezed_cell_patch(
             sq, edgecolor=overlay_color, linewidth=overlay_linewidth,
         ))
-    if show_zurek:
-        zk = zurek_cell(extended, hbar=state.hbar)
-        ax.add_patch(zurek_cell_patch(
-            zk, edgecolor=overlay_color, linewidth=overlay_linewidth,
+    if show_quorum:
+        qc = quorum_cell(heisenberg, hbar=state.hbar)
+        ax.add_patch(quorum_cell_patch(
+            qc, edgecolor=overlay_color, linewidth=overlay_linewidth,
         ))
 
 
@@ -120,9 +120,9 @@ def wigner_heatmap(
     ax: Axes,
     state: State,
     *,
-    show_extended: bool = False,
+    show_heisenberg: bool = False,
     show_squeezed: bool = False,
-    show_zurek: bool = False,
+    show_quorum: bool = False,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
 ) -> None:
@@ -146,9 +146,9 @@ def wigner_heatmap(
 
     _draw_cells(
         ax, state,
-        show_extended=show_extended,
+        show_heisenberg=show_heisenberg,
         show_squeezed=show_squeezed,
-        show_zurek=show_zurek,
+        show_quorum=show_quorum,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,
     )
@@ -204,9 +204,9 @@ def matched_kernel_heatmap(
     state: State,
     *,
     theta: float = np.pi / 2,
-    show_extended: bool = True,
+    show_heisenberg: bool = True,
     show_squeezed: bool = True,
-    show_zurek: bool = False,
+    show_quorum: bool = False,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
 ) -> None:
@@ -223,12 +223,12 @@ def matched_kernel_heatmap(
     everywhere by construction.
     """
     assert state.x_int is not None and state.p_int is not None
-    extended = ExtendedCell(
+    heisenberg = HeisenbergCell(
         Delta_x=state.rs.Delta_x,
         Delta_p=state.rs.Delta_p,
         center=(state.cell_center_x, 0.0),
     )
-    cell = squeezed_cell_at(theta, extended, hbar=state.hbar)
+    cell = squeezed_cell_at(theta, heisenberg, hbar=state.hbar)
     xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
     K = K_theta_mesh(cell, xx, pp, hbar=state.hbar)
 
@@ -250,9 +250,9 @@ def matched_kernel_heatmap(
 
     _draw_cells(
         ax, state,
-        show_extended=show_extended,
+        show_heisenberg=show_heisenberg,
         show_squeezed=show_squeezed,
-        show_zurek=show_zurek,
+        show_quorum=show_quorum,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,
     )
@@ -280,12 +280,12 @@ def P_theta_cross_section(
     x_mid = 0.5 * (state.x_int[0] + state.x_int[-1])
     p_mid = 0.5 * (state.p_int[0] + state.p_int[-1])
 
-    extended = ExtendedCell(
+    heisenberg = HeisenbergCell(
         Delta_x=state.rs.Delta_x,
         Delta_p=state.rs.Delta_p,
         center=(x_mid, p_mid),
     )
-    cell = squeezed_cell_at(theta, extended, hbar=state.hbar)
+    cell = squeezed_cell_at(theta, heisenberg, hbar=state.hbar)
     xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
     K = K_theta_mesh(cell, xx, pp, hbar=state.hbar)
 
@@ -328,9 +328,9 @@ def tilde_W_heatmap(
     state: State,
     *,
     n_theta: int = 360,
-    show_extended: bool = True,
+    show_heisenberg: bool = True,
     show_squeezed: bool = False,
-    show_zurek: bool = True,
+    show_quorum: bool = True,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
 ) -> np.ndarray:
@@ -348,9 +348,10 @@ def tilde_W_heatmap(
     library, so no angular striping is visible in the published figure.
 
     Colormap: upper half of the RdBu_r palette, matching column 3.
-    Cell overlay: extended cell (outer) plus Zurek cell (inner). The
-    Zurek cell marks the inner resolution envelope of the rotation
-    average — the smallest scale on which tilde_W carries structure.
+    Cell overlay: the Heisenberg cell A (outer) plus the quorum cell a
+    (inner). The quorum cell marks the inner resolution envelope of
+    the rotation average — the smallest scale on which tilde_W carries
+    structure.
 
     Returns the full 2D tilde_W array (on state.x_int × state.p_int)
     for downstream use.
@@ -360,7 +361,7 @@ def tilde_W_heatmap(
     # Kernel center at integration grid midpoint for fftconvolve alignment.
     x_mid = 0.5 * (state.x_int[0] + state.x_int[-1])
     p_mid = 0.5 * (state.p_int[0] + state.p_int[-1])
-    extended_for_kernel = ExtendedCell(
+    heisenberg_for_kernel = HeisenbergCell(
         Delta_x=state.rs.Delta_x,
         Delta_p=state.rs.Delta_p,
         center=(x_mid, p_mid),
@@ -376,7 +377,7 @@ def tilde_W_heatmap(
     thetas = np.linspace(0.0, np.pi, n_theta, endpoint=False)
     tilde_W = np.zeros_like(state.W)
     for theta in thetas:
-        cell = squeezed_cell_at(theta, extended_for_kernel, hbar=state.hbar)
+        cell = squeezed_cell_at(theta, heisenberg_for_kernel, hbar=state.hbar)
         K = K_theta_mesh(cell, xx, pp, hbar=state.hbar)
         P_theta = convolve_W_with_K(state.W, K, dx, dp)
         tilde_W += P_theta
@@ -410,9 +411,9 @@ def tilde_W_heatmap(
 
     _draw_cells(
         ax, state,
-        show_extended=show_extended,
+        show_heisenberg=show_heisenberg,
         show_squeezed=show_squeezed,
-        show_zurek=show_zurek,
+        show_quorum=show_quorum,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,
     )

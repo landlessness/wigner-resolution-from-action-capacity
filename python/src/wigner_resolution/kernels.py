@@ -8,7 +8,7 @@ with rotated coordinates
     p_θ = -x sinθ + p cosθ.
 
 This is the Wigner function of the squeezed coherent state matched to the
-extended cell's covariance and rotated to angle θ. Its action is h/2 by
+Heisenberg cell's covariance and rotated to angle θ. Its action is h/2 by
 construction; its non-negativity follows from being the Wigner function of
 a pure state.
 
@@ -28,7 +28,7 @@ from typing import Callable
 import numpy as np
 from scipy.stats import multivariate_normal
 
-from .cells import SqueezedCell, squeezed_cell_at, ExtendedCell
+from .cells import SqueezedCell, squeezed_cell_at, HeisenbergCell
 
 # Tolerance for the polar-duality check. The cell-building routines compute
 # δ⊥ = ℏ/δ‖ from the cell's δ‖, so the product should be exact to floating-
@@ -76,14 +76,14 @@ def K_theta_mesh(
     return rv.pdf(pos)
 
 
-def K_theta_from_extended(
+def K_theta_from_heisenberg(
     theta: float,
-    extended: ExtendedCell,
+    heisenberg: HeisenbergCell,
     xx: np.ndarray,
     pp: np.ndarray,
     hbar: float = 1.0,
 ) -> np.ndarray:
-    """Convenience: build the squeezed cell at angle θ inscribed in `extended`,
+    """Convenience: build the squeezed cell a_θ inscribed in `heisenberg`,
     then evaluate K_θ on (xx, pp)."""
-    cell = squeezed_cell_at(theta, extended, hbar=hbar)
+    cell = squeezed_cell_at(theta, heisenberg, hbar=hbar)
     return K_theta_mesh(cell, xx, pp, hbar=hbar)

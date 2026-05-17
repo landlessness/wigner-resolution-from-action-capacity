@@ -73,9 +73,10 @@ class State:
     hbar: float
     window: DisplayWindow
 
-    # Cell-overlay anchor. ``build_state_*`` sets this to the location of
-    # max |W(x, 0)|, where the cell's resolution argument is visually most
-    # legible. Systems can override.
+    # Cell-overlay anchor. ``build_state_*`` sets this to the geometric
+    # midpoint of |W(x, 0)|'s significant support, so the Heisenberg,
+    # squeezed-family, and quorum overlays all sit at the center of
+    # every panel regardless of state asymmetry. Systems can override.
     cell_center_x: float = 0.0
 
     # Populated by the build pipeline:
@@ -247,10 +248,10 @@ def _finalize_state(
     """Common downstream pipeline: cell anchor + window + ticks + State."""
     from .ticks import nice_ticks_around
 
-# Cell-overlay anchor at the geometric midpoint of |W(x, 0)|'s
+    # Cell-overlay anchor at the geometric midpoint of |W(x, 0)|'s
     # significant support. This is the same midpoint the display
-    # window centers on a few lines below, so the cells sit at the
-    # center of every panel regardless of state asymmetry. For
+    # window centers on a few lines below, so the overlays sit at
+    # the center of every panel regardless of state asymmetry. For
     # symmetric states the midpoint is at the origin. For Morse it
     # shifts to the middle of the visible orbit.
     ip0 = int(np.argmin(np.abs(p_int)))
@@ -269,15 +270,15 @@ def _finalize_state(
             cell_center_x_resolved = 0.0
     else:
         cell_center_x_resolved = cell_center_x
-        
+
     # --- Display window: three constraints ---
-    #   1. Cell A must not be clipped.
+    #   1. The Heisenberg cell A must not be clipped.
     #   2. Panel is square in data units (x_lim = p_lim).
     #   3. Window centers on the state's "interesting extent": midpoint of
     #      |W(x, 0)| support above 5% of peak. For symmetric states this
     #      is x=0; for asymmetric ones (Morse) it lands at the orbit
     #      center, filling the panel evenly.
-    # Constraints 1 and 3 can conflict; clamp center so cell stays inside.
+    # Constraints 1 and 3 can conflict; clamp center so A stays inside.
     half_width = (1.0 + window_margin) * max(rs.Delta_x, rs.Delta_p)
 
     abs_W = np.abs(W_at_p0)
@@ -295,10 +296,10 @@ def _finalize_state(
         x_center_resolved = window.x_center
     else:
         x_lim_resolved = half_width
-        cell_left  = cell_center_x_resolved - rs.Delta_x
-        cell_right = cell_center_x_resolved + rs.Delta_x
-        min_center = cell_right - half_width
-        max_center = cell_left  + half_width
+        heisenberg_left  = cell_center_x_resolved - rs.Delta_x
+        heisenberg_right = cell_center_x_resolved + rs.Delta_x
+        min_center = heisenberg_right - half_width
+        max_center = heisenberg_left  + half_width
         x_center_resolved = max(min_center, min(state_extent_center, max_center))
 
     if window.p_lim > 0:

@@ -4,8 +4,8 @@ The currency of the paper is *action*. We work in natural units where ℏ = 1,
 m = 1, ω = 1 throughout. In these units:
 
   * the quantum of action h/2 reduces to π
-  * the action capacity of a state is A = π Δx Δp, expressed as a multiple
-    of h/2 by the ratio A/(h/2) = Δx Δp / ℏ
+  * the action of a state's Heisenberg cell is A = π Δx Δp, expressed as
+    a multiple of h/2 by the ratio A/(h/2) = Δx Δp / ℏ
   * a Heisenberg-saturated state has A/(h/2) = 1
   * the harmonic oscillator state |n⟩ has Δx = Δp = √(2n+1) and
     A/(h/2) = 2n+1
@@ -45,7 +45,7 @@ class RSGeometry:
 
     @property
     def A_over_h_half(self) -> float:
-        """Extended-cell action in units of h/2. Equals Δx Δp / ℏ."""
+        """Heisenberg-cell action A in units of h/2. Equals Δx Δp / ℏ."""
         return (self.Delta_x * self.Delta_p) / self.hbar
 
 

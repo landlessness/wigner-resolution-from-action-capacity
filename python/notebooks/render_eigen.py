@@ -1,11 +1,11 @@
 """Render the four-row eigenstates figure: 5 columns × 4 rows.
 
 Layout per row (same as the cat figure):
-  Col 1: W(x, p) — Wigner Portrait, with extended + inscribed cells.
+  Col 1: W(x, p) — Wigner Portrait, with Heisenberg and inscribed-family cells.
   Col 2: W(x, 0) — Wigner cross-section.
   Col 3: K_{π/2}(x, p) — Action-Capacity Kernel, same cells.
   Col 4: P_{π/2}(x, 0) — convolved cross-section.
-  Col 5: tilde_W(x, p) — Action-Capacity Portrait, extended + Zurek cells.
+  Col 5: tilde_W(x, p) — Action-Capacity Portrait, Heisenberg and quorum cells.
 
 Output: tex/figures/eigen.pdf.
 """

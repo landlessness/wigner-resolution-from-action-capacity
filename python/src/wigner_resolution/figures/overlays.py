@@ -15,7 +15,7 @@ from __future__ import annotations
 import numpy as np
 from matplotlib.patches import Ellipse
 
-from ..cells import ExtendedCell, SqueezedCell, ZurekCell
+from ..cells import HeisenbergCell, SqueezedCell, QuorumCell
 
 
 # Single line-width constant governing every drawn line in the data
@@ -26,15 +26,15 @@ from ..cells import ExtendedCell, SqueezedCell, ZurekCell
 LINEWIDTH: float = 0.4
 
 
-def extended_cell_patch(
-    cell: ExtendedCell,
+def heisenberg_cell_patch(
+    cell: HeisenbergCell,
     *,
     facecolor: str = "none",
     edgecolor: str = "black",
     linewidth: float = LINEWIDTH,
     **kwargs,
 ) -> Ellipse:
-    """Matplotlib ellipse patch for an extended cell (axis-aligned)."""
+    """Matplotlib ellipse patch for a Heisenberg cell A (axis-aligned)."""
     return Ellipse(
         xy=cell.center,
         width=2 * cell.Delta_x,
@@ -55,7 +55,7 @@ def squeezed_cell_patch(
     linewidth: float = LINEWIDTH,
     **kwargs,
 ) -> Ellipse:
-    """Matplotlib ellipse patch for a squeezed cell rotated by θ."""
+    """Matplotlib ellipse patch for a squeezed cell a_θ rotated by θ."""
     return Ellipse(
         xy=cell.center,
         width=2 * cell.delta_parallel,
@@ -68,18 +68,18 @@ def squeezed_cell_patch(
     )
 
 
-def zurek_cell_patch(
-    cell: ZurekCell,
+def quorum_cell_patch(
+    cell: QuorumCell,
     *,
     facecolor: str = "none",
     edgecolor: str = "black",
     linewidth: float = LINEWIDTH,
     **kwargs,
 ) -> Ellipse:
-    """Matplotlib ellipse patch for the Zurek sub-Planck cell.
+    """Matplotlib ellipse patch for the quorum cell a.
 
     Axis-aligned ellipse with semi-axes (δx, δp). The polar dual of the
-    extended cell in the symplectic-area sense.
+    Heisenberg cell in the symplectic-area sense.
     """
     return Ellipse(
         xy=cell.center,
