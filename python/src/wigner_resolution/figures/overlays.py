@@ -15,7 +15,7 @@ from __future__ import annotations
 import numpy as np
 from matplotlib.patches import Ellipse
 
-from ..cells import HeisenbergCell, SqueezedCell, QuorumCell
+from ..cells import HeisenbergCell, BitangentBlob, QuorumCell
 
 
 # Single line-width constant governing every drawn line in the data
@@ -47,20 +47,20 @@ def heisenberg_cell_patch(
     )
 
 
-def squeezed_cell_patch(
-    cell: SqueezedCell,
+def bitangent_blob_patch(
+    blob: BitangentBlob,
     *,
     facecolor: str = "none",
     edgecolor: str = "black",
     linewidth: float = LINEWIDTH,
     **kwargs,
 ) -> Ellipse:
-    """Matplotlib ellipse patch for a squeezed cell a_θ rotated by θ."""
+    """Matplotlib ellipse patch for a bitangent blob a_θ rotated by θ."""
     return Ellipse(
-        xy=cell.center,
-        width=2 * cell.delta_parallel,
-        height=2 * cell.delta_perp,
-        angle=np.degrees(cell.theta),
+        xy=blob.center,
+        width=2 * blob.r_parallel,
+        height=2 * blob.r_perp,
+        angle=np.degrees(blob.theta),
         facecolor=facecolor,
         edgecolor=edgecolor,
         linewidth=linewidth,
@@ -76,10 +76,10 @@ def quorum_cell_patch(
     linewidth: float = LINEWIDTH,
     **kwargs,
 ) -> Ellipse:
-    """Matplotlib ellipse patch for the quorum cell a.
+    """Matplotlib ellipse patch for the quorum cell ã.
 
-    Axis-aligned ellipse with semi-axes (δx, δp). The polar dual of the
-    Heisenberg cell in the symplectic-area sense.
+    Axis-aligned ellipse with semi-axes (δx, δp). The common interior
+    of the bitangent family inscribed in the Heisenberg cell.
     """
     return Ellipse(
         xy=cell.center,

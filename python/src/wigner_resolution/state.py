@@ -75,7 +75,7 @@ class State:
 
     # Cell-overlay anchor. ``build_state_*`` sets this to the geometric
     # midpoint of |W(x, 0)|'s significant support, so the Heisenberg,
-    # squeezed-family, and quorum overlays all sit at the center of
+    # bitangent-blob, and quorum-cell overlays all sit at the center of
     # every panel regardless of state asymmetry. Systems can override.
     cell_center_x: float = 0.0
 

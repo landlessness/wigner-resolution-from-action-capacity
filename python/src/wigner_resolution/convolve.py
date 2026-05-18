@@ -1,8 +1,9 @@
 """P_θ(x, p) = (W * K_θ)(x, p) — the convolved phase-space density.
 
-By Hudson's theorem applied to the trace inner product of two Wigner
-functions, P_θ is non-negative everywhere when both W and K_θ are Wigner
-functions of pure states.
+Convolving a Wigner function with a Gaussian of action ≥ h/2 yields a
+non-negative function (Cartwright, Physica A 83, 210 (1976); see also
+de Gosson 2005, Cordero et al. 2018). The bitangent kernel K_θ has
+action h/2 exactly, so P_θ ≥ 0 everywhere.
 """
 
 from __future__ import annotations

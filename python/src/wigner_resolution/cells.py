@@ -1,41 +1,47 @@
-"""Phase-space cells: the Heisenberg cell A, the squeezed family a_θ,
-and the quorum cell a.
+"""Phase-space cells: the Heisenberg cell A, the bitangent blobs a_θ,
+and the quorum cell ã.
 
 A state's covariance defines its Heisenberg cell
 
     A = π Δx Δp  ≥  h/2,
 
-the outer ellipse with anti-squeezed semi-axes (Δx, Δp), floored at the
+the outer ellipse with capacity semi-axes (Δx, Δp), floored at the
 quantum of action by the uncertainty principle.
 
-Inscribed within A is a one-parameter family of squeezed cells a_θ of
-fixed action h/2, each parameterized by orientation θ. The semi-axes
-obey the polar-dual identity δ‖ δ⊥ = ℏ, with
+Inscribed within A and bitangent to it is a one-parameter family of
+de Gosson quantum blobs a_θ of fixed action h/2, each parameterized by
+the quadrature angle θ. The semi-axes are reciprocal in ℏ,
+r_∥ r_⊥ = ℏ, with
 
-    δ‖(θ) = sqrt(Δx² cos²θ + Δp² sin²θ),
-    δ⊥(θ) = ℏ / δ‖(θ).
+    r_∥(θ) = sqrt(Δx² cos²θ + Δp² sin²θ),
+    r_⊥(θ) = ℏ / r_∥(θ).
 
-δ‖ is along direction θ from the x-axis. δ⊥ is perpendicular to δ‖.
-Neither is the "major" axis in general; which is larger depends on the
-aspect ratio of the Heisenberg cell.
+r_∥ runs along the quadrature direction at angle θ from the x-axis.
+r_⊥ runs perpendicular. Neither is the "major" axis in general; which
+is larger depends on the aspect ratio of the Heisenberg cell.
 
-Two members of the family align with the principal axes: a_{δp} at
-θ = 0 and a_{δx} at θ = π/2. At those orientations δ⊥ reduces to the
-reciprocal scales
+Two members of the family align with the principal axes:
+a_{θ=0} at θ = 0 (capacity Δx along x, resolution δp along p) and
+a_{π/2} at θ = π/2 (resolution δx along x, capacity Δp along p).
+At those principal angles r_⊥ reduces to the Zurek scales
 
     δx = ℏ/Δp,  δp = ℏ/Δx.
 
-The quorum cell a is the axis-aligned ellipse with squeezed semi-axes
+The quorum cell ã is the common interior of the bitangent family,
+an axis-aligned ellipse with semi-axes
 
     (δx, δp) = (ℏ/Δp, ℏ/Δx),
 
-the polar dual of A. It is *not* a member of the inscribed family; it
-is its own object, marking the inner envelope of sub-Planck structure
-that the rotation-averaged kernel can no longer resolve. Its area is
+with area
 
-    π δx δp = π ℏ² / (Δx Δp) = (h/2)² / A.
+    π δx δp = π ℏ² / (Δx Δp),
 
-The quorum cell was identified by Zurek, Nature 412, 712 (2001).
+the resolution of the convolved portrait W̃. The quorum cell is not a
+member of the bitangent family; it is its own object, marking the inner
+envelope of the family integral. Zurek's interference scales
+δx = ℏ/Δp and δp = ℏ/Δx, derived in W. H. Zurek, Nature 412, 712 (2001),
+are recovered here as the resolutions along the principal axes of the
+quorum cell.
 """
 
 from __future__ import annotations
@@ -49,7 +55,7 @@ import numpy as np
 class HeisenbergCell:
     """The state's outer extent A in phase space.
 
-    Anti-squeezed semi-axes Δx, Δp along the principal axes
+    Capacity semi-axes Δx, Δp along the principal axes
     (Robertson-Schrödinger cross-term assumed zero, which holds for
     the symmetric states in the manuscript).
     """
@@ -69,42 +75,43 @@ class HeisenbergCell:
 
 
 @dataclass(frozen=True)
-class SqueezedCell:
-    """One member a_θ of the polar-dual family inscribed in a Heisenberg cell.
+class BitangentBlob:
+    """One member a_θ of the bitangent family inscribed in a Heisenberg cell.
 
-    Of fixed action h/2. Oriented at angle θ from the x-axis. δ‖ is along
-    θ; δ⊥ is perpendicular. δ‖ δ⊥ = ℏ.
+    A de Gosson quantum blob of fixed action h/2, bitangent to the
+    Heisenberg cell. Oriented at quadrature angle θ from the x-axis.
+    r_∥ is along θ; r_⊥ is perpendicular. The semi-axes are reciprocal
+    in ℏ: r_∥ r_⊥ = ℏ.
     """
 
     theta: float
-    delta_parallel: float
-    delta_perp: float
+    r_parallel: float
+    r_perp: float
     center: tuple[float, float] = (0.0, 0.0)
     hbar: float = 1.0
 
     @property
     def area(self) -> float:
-        """a_θ = π δ‖ δ⊥ = h/2 (always)."""
-        return np.pi * self.delta_parallel * self.delta_perp
+        """a_θ = π r_∥ r_⊥ = h/2 (always)."""
+        return np.pi * self.r_parallel * self.r_perp
 
     def __post_init__(self) -> None:
-        product = self.delta_parallel * self.delta_perp
+        product = self.r_parallel * self.r_perp
         if not np.isclose(product, self.hbar, rtol=1e-10):
             raise ValueError(
-                f"Polar-dual identity violated: δ‖·δ⊥ = {product:.6g} ≠ ℏ = {self.hbar}"
+                f"Reciprocal-axes identity violated: r_∥·r_⊥ = {product:.6g} ≠ ℏ = {self.hbar}"
             )
 
 
 @dataclass(frozen=True)
 class QuorumCell:
-    """The quorum cell a with squeezed semi-axes (δx, δp) = (ℏ/Δp, ℏ/Δx).
+    """The quorum cell ã with semi-axes (δx, δp) = (ℏ/Δp, ℏ/Δx).
 
-    Polar dual of the Heisenberg cell: A is Δx-wide and Δp-tall, a is
-    δx-wide (= ℏ/Δp, narrow when Δp is large) and δp-tall (= ℏ/Δx).
-    Axis-aligned with no rotation parameter; not a member of the
-    inscribed squeezed family.
+    Common interior of the bitangent family, an axis-aligned ellipse
+    with no rotation parameter. Not itself a member of the bitangent
+    family. Its semi-axes are Zurek's interference scales.
 
-    Reference: Zurek, Nature 412, 712 (2001).
+    Reference for Zurek's scales: W. H. Zurek, Nature 412, 712 (2001).
     """
 
     delta_x: float
@@ -114,7 +121,7 @@ class QuorumCell:
 
     @property
     def area(self) -> float:
-        """π δx δp = π ℏ² / (Δx Δp) = (h/2)² / A."""
+        """ã = π δx δp = π ℏ² / (Δx Δp)."""
         return np.pi * self.delta_x * self.delta_p
 
     def __post_init__(self) -> None:
@@ -122,53 +129,52 @@ class QuorumCell:
             raise ValueError("Quorum-cell semi-axes must be positive.")
 
 
-def squeezed_cell_at(
+def bitangent_blob_at(
     theta: float,
     heisenberg: HeisenbergCell,
     hbar: float = 1.0,
-) -> SqueezedCell:
-    """The unique squeezed cell a_θ of action h/2 inscribed in `heisenberg`
-    at angle θ.
+) -> BitangentBlob:
+    """The unique bitangent blob a_θ of action h/2 inscribed in `heisenberg`
+    at quadrature angle θ.
 
-    δ‖(θ) = sqrt(Δx² cos²θ + Δp² sin²θ).
-    δ⊥(θ) = ℏ / δ‖(θ).
+    r_∥(θ) = sqrt(Δx² cos²θ + Δp² sin²θ).
+    r_⊥(θ) = ℏ / r_∥(θ).
     """
-    d_par = np.sqrt(
+    r_par = np.sqrt(
         (heisenberg.Delta_x * np.cos(theta)) ** 2
         + (heisenberg.Delta_p * np.sin(theta)) ** 2
     )
-    d_perp = hbar / d_par
-    return SqueezedCell(
+    r_perp = hbar / r_par
+    return BitangentBlob(
         theta=theta,
-        delta_parallel=d_par,
-        delta_perp=d_perp,
+        r_parallel=r_par,
+        r_perp=r_perp,
         center=heisenberg.center,
         hbar=hbar,
     )
 
 
-def cell_a_delta_x(heisenberg: HeisenbergCell, hbar: float = 1.0) -> SqueezedCell:
-    """The squeezed-family member a_{δx}: the cell at θ = π/2.
+def blob_a_pi_half(heisenberg: HeisenbergCell, hbar: float = 1.0) -> BitangentBlob:
+    """The bitangent blob a_{π/2}: the family member at θ = π/2.
 
-    δ‖ = Δp along p, δ⊥ = δx = ℏ/Δp along x.
+    r_∥ = Δp along p, r_⊥ = δx = ℏ/Δp along x. Semi-axes (δx, Δp).
     """
-    return squeezed_cell_at(np.pi / 2, heisenberg, hbar)
+    return bitangent_blob_at(np.pi / 2, heisenberg, hbar)
 
 
-def cell_a_delta_p(heisenberg: HeisenbergCell, hbar: float = 1.0) -> SqueezedCell:
-    """The squeezed-family member a_{δp}: the cell at θ = 0.
+def blob_a_zero(heisenberg: HeisenbergCell, hbar: float = 1.0) -> BitangentBlob:
+    """The bitangent blob a_{θ=0}: the family member at θ = 0.
 
-    δ‖ = Δx along x, δ⊥ = δp = ℏ/Δx along p.
+    r_∥ = Δx along x, r_⊥ = δp = ℏ/Δx along p. Semi-axes (Δx, δp).
     """
-    return squeezed_cell_at(0.0, heisenberg, hbar)
+    return bitangent_blob_at(0.0, heisenberg, hbar)
 
 
 def quorum_cell(heisenberg: HeisenbergCell, hbar: float = 1.0) -> QuorumCell:
-    """The quorum cell a with semi-axes (ℏ/Δp, ℏ/Δx).
+    """The quorum cell ã with semi-axes (ℏ/Δp, ℏ/Δx).
 
-    Axis-aligned ellipse with semi-axes (δx, δp) = (ℏ/Δp, ℏ/Δx). The
-    polar dual of `heisenberg` in the symplectic-area sense:
-    a · A = (h/2)² · (π² / π²) — see QuorumCell.area for details.
+    The common interior of the bitangent family inscribed in `heisenberg`.
+    Area ã = π ℏ²/(Δx Δp), the resolution of the convolved portrait W̃.
     """
     return QuorumCell(
         delta_x=hbar / heisenberg.Delta_p,

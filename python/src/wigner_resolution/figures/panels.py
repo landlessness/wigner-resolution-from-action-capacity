@@ -1,18 +1,17 @@
 """The panels of each row of the data figures.
 
-Column 1: W(x, p) heatmap with Heisenberg and squeezed cell overlays
-          (diverging colormap).
+Column 1: W(x, p) heatmap (diverging colormap), no overlays.
 Column 2: W(x, 0) cross-section — black line, red/blue fill.
-Column 3: K_{π/2}(x, p) heatmap with Heisenberg and squeezed cell
-          overlays (sequential — upper half of the diverging palette).
-          Action-capacity kernel: Wigner function of the inscribed
-          quantum blob at θ = π/2.
+Column 3: K_{π/2}(x, p) heatmap with Heisenberg cell A and bitangent
+          blob a_{π/2} overlays (sequential — upper half of the
+          diverging palette). The bitangent kernel: Wigner function of
+          the bitangent blob at θ = π/2.
 Column 4: P_{π/2}(x, 0) — non-negative, red fill.
-Column 5: tilde_W(x, p) = (1/N_θ) Σ P_θ — rotation-averaged portrait,
-          with Heisenberg and quorum cell overlays (sequential). The
-          inner ellipse is the quorum cell a with semi-axes (δx, δp);
-          the polar dual of the Heisenberg cell, marking the inner
-          resolution envelope of the rotation average.
+Column 5: W̃(x, p) = (1/N_θ) Σ P_θ — the convolved portrait, integral
+          over the bitangent family across all angles, with the
+          Heisenberg cell A and quorum cell ã overlays (sequential).
+          The inner ellipse is the quorum cell, the common interior
+          of the bitangent family, marking the resolution of W̃.
 
 Every drawn line in this figure — cell-overlay ellipses, cross-section
 traces, zero baselines — uses ``overlays.LINEWIDTH``. One constant
@@ -26,14 +25,14 @@ import numpy as np
 from matplotlib.axes import Axes
 from matplotlib.colors import Normalize, TwoSlopeNorm
 
-from ..cells import HeisenbergCell, cell_a_delta_x, squeezed_cell_at, quorum_cell
+from ..cells import HeisenbergCell, blob_a_pi_half, bitangent_blob_at, quorum_cell
 from ..convolve import convolve_W_with_K, cross_section_at_p0
 from ..kernels import K_theta_mesh
 from ..state import State
 from .overlays import (
     LINEWIDTH,
     heisenberg_cell_patch,
-    squeezed_cell_patch,
+    bitangent_blob_patch,
     quorum_cell_patch,
 )
 
@@ -66,7 +65,7 @@ def _draw_cells(
     state: State,
     *,
     show_heisenberg: bool,
-    show_squeezed: bool,
+    show_bitangent: bool,
     show_quorum: bool,
     overlay_color: str,
     overlay_linewidth: float,
@@ -74,8 +73,8 @@ def _draw_cells(
     """Overlay cells on a heatmap panel.
 
     `show_heisenberg` draws the Heisenberg cell A (semi-axes Δx, Δp).
-    `show_squeezed` draws the inscribed cell a_{π/2} (cols 1 & 3).
-    `show_quorum` draws the quorum cell a (col 5).
+    `show_bitangent` draws the bitangent blob a_{π/2} (col 3).
+    `show_quorum` draws the quorum cell ã (col 5).
 
     All cells are anchored at `state.cell_center_x`.
     """
@@ -88,10 +87,10 @@ def _draw_cells(
         ax.add_patch(heisenberg_cell_patch(
             heisenberg, edgecolor=overlay_color, linewidth=overlay_linewidth,
         ))
-    if show_squeezed:
-        sq = cell_a_delta_x(heisenberg, hbar=state.hbar)
-        ax.add_patch(squeezed_cell_patch(
-            sq, edgecolor=overlay_color, linewidth=overlay_linewidth,
+    if show_bitangent:
+        blob = blob_a_pi_half(heisenberg, hbar=state.hbar)
+        ax.add_patch(bitangent_blob_patch(
+            blob, edgecolor=overlay_color, linewidth=overlay_linewidth,
         ))
     if show_quorum:
         qc = quorum_cell(heisenberg, hbar=state.hbar)
@@ -121,7 +120,7 @@ def wigner_heatmap(
     state: State,
     *,
     show_heisenberg: bool = False,
-    show_squeezed: bool = False,
+    show_bitangent: bool = False,
     show_quorum: bool = False,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
@@ -147,7 +146,7 @@ def wigner_heatmap(
     _draw_cells(
         ax, state,
         show_heisenberg=show_heisenberg,
-        show_squeezed=show_squeezed,
+        show_bitangent=show_bitangent,
         show_quorum=show_quorum,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,
@@ -196,26 +195,26 @@ def wigner_cross_section(
 
 
 # ---------------------------------------------------------------------------
-# Column 3: action-capacity kernel K_{π/2}(x, p)
+# Column 3: bitangent kernel K_{π/2}(x, p)
 # ---------------------------------------------------------------------------
 
-def matched_kernel_heatmap(
+def bitangent_kernel_heatmap(
     ax: Axes,
     state: State,
     *,
     theta: float = np.pi / 2,
     show_heisenberg: bool = True,
-    show_squeezed: bool = True,
+    show_bitangent: bool = True,
     show_quorum: bool = False,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
 ) -> None:
-    """Render the action-capacity kernel K_θ(x, p) as a single-hue heatmap
+    """Render the bitangent kernel K_θ(x, p) as a single-hue heatmap
     with cell overlays.
 
     The kernel is built at the same center as the cell overlays
-    (``state.cell_center_x``), so the K-blob sits inside the inscribed
-    squeezed cell drawn on top of it.
+    (``state.cell_center_x``), so the K blob sits inside the bitangent
+    blob a_{π/2} drawn on top of it.
 
     Colormap: the upper half of the RdBu_r palette used in column 1, so
     the two heatmaps read as one color scheme — column 1 uses both
@@ -228,9 +227,9 @@ def matched_kernel_heatmap(
         Delta_p=state.rs.Delta_p,
         center=(state.cell_center_x, 0.0),
     )
-    cell = squeezed_cell_at(theta, heisenberg, hbar=state.hbar)
+    blob = bitangent_blob_at(theta, heisenberg, hbar=state.hbar)
     xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
-    K = K_theta_mesh(cell, xx, pp, hbar=state.hbar)
+    K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
 
     ix_mask, ip_mask, extent = _display_extent(state)
     K_clip = K[np.ix_(ix_mask, ip_mask)]
@@ -251,12 +250,16 @@ def matched_kernel_heatmap(
     _draw_cells(
         ax, state,
         show_heisenberg=show_heisenberg,
-        show_squeezed=show_squeezed,
+        show_bitangent=show_bitangent,
         show_quorum=show_quorum,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,
     )
     _apply_window(ax, state)
+
+
+# Backwards-compatible alias for any external code that imported the old name.
+matched_kernel_heatmap = bitangent_kernel_heatmap
 
 
 # ---------------------------------------------------------------------------
@@ -285,21 +288,21 @@ def P_theta_cross_section(
         Delta_p=state.rs.Delta_p,
         center=(x_mid, p_mid),
     )
-    cell = squeezed_cell_at(theta, heisenberg, hbar=state.hbar)
+    blob = bitangent_blob_at(theta, heisenberg, hbar=state.hbar)
     xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
-    K = K_theta_mesh(cell, xx, pp, hbar=state.hbar)
+    K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
 
     dx = float(state.x_int[1] - state.x_int[0])
     dp = float(state.p_int[1] - state.p_int[0])
     P = convolve_W_with_K(state.W, K, dx, dp)
 
-    # Hudson sanity check.
+    # Sanity check: P_θ should be non-negative (Cartwright 1976).
     P_min = float(P.min())
     if P_min < -1e-6:
         import warnings
         warnings.warn(
             f"State {state.name!r}: P_θ has minimum {P_min:.2e}; "
-            "Hudson's theorem should give P ≥ 0. Likely numerical."
+            "should be ≥ 0 (Cartwright 1976). Likely numerical."
         )
 
     w = state.window
@@ -320,7 +323,7 @@ def P_theta_cross_section(
 
 
 # ---------------------------------------------------------------------------
-# Column 5: tilde_W(x, p) rotation-averaged portrait
+# Column 5: W̃(x, p) convolved portrait
 # ---------------------------------------------------------------------------
 
 def tilde_W_heatmap(
@@ -329,31 +332,30 @@ def tilde_W_heatmap(
     *,
     n_theta: int = 360,
     show_heisenberg: bool = True,
-    show_squeezed: bool = False,
+    show_bitangent: bool = False,
     show_quorum: bool = True,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
 ) -> np.ndarray:
-    """Render the rotation-averaged portrait tilde_W(x, p) = (1/N_θ) Σ P_θ.
+    """Render the convolved portrait W̃(x, p) = (1/N_θ) Σ P_θ.
 
-    The inscribed-family parameter θ is integrated out by directly
+    The bitangent-family parameter θ is integrated out by directly
     averaging the 2D convolutions P_θ = W * K_θ at evenly spaced θ in
-    [0, π). Non-negative by construction: each P_θ ≥ 0 by Hudson, and
-    a sum of non-negative functions is non-negative.
+    [0, π). Non-negative by construction: each P_θ ≥ 0 (Cartwright 1976),
+    and a sum of non-negative functions is non-negative.
 
     The kernel at each θ is centered at the integration-grid midpoint
     so fftconvolve(mode='same') aligns it with W. ``n_theta`` controls
     the angular sampling; 360 is comfortably above the rule-of-thumb
-    threshold (π r_max / δ_perp) for every state in the manuscript's
+    threshold (π r_max / r_⊥) for every state in the manuscript's
     library, so no angular striping is visible in the published figure.
 
     Colormap: upper half of the RdBu_r palette, matching column 3.
-    Cell overlay: the Heisenberg cell A (outer) plus the quorum cell a
-    (inner). The quorum cell marks the inner resolution envelope of
-    the rotation average — the smallest scale on which tilde_W carries
-    structure.
+    Cell overlay: the Heisenberg cell A (outer) plus the quorum cell ã
+    (inner). The quorum cell is the common interior of the bitangent
+    family — the resolution of W̃.
 
-    Returns the full 2D tilde_W array (on state.x_int × state.p_int)
+    Returns the full 2D W̃ array (on state.x_int × state.p_int)
     for downstream use.
     """
     assert state.W is not None and state.x_int is not None and state.p_int is not None
@@ -377,18 +379,18 @@ def tilde_W_heatmap(
     thetas = np.linspace(0.0, np.pi, n_theta, endpoint=False)
     tilde_W = np.zeros_like(state.W)
     for theta in thetas:
-        cell = squeezed_cell_at(theta, heisenberg_for_kernel, hbar=state.hbar)
-        K = K_theta_mesh(cell, xx, pp, hbar=state.hbar)
+        blob = bitangent_blob_at(theta, heisenberg_for_kernel, hbar=state.hbar)
+        K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
         P_theta = convolve_W_with_K(state.W, K, dx, dp)
         tilde_W += P_theta
     tilde_W /= n_theta
 
-    # Hudson sanity check: tilde_W is a non-negative sum of non-negatives.
+    # Sanity check: W̃ is a non-negative sum of non-negatives.
     tW_min = float(tilde_W.min())
     if tW_min < -1e-6:
         import warnings
         warnings.warn(
-            f"State {state.name!r}: tilde_W has minimum {tW_min:.2e}; "
+            f"State {state.name!r}: W̃ has minimum {tW_min:.2e}; "
             "should be ≥ 0 to floating-point precision. Likely numerical."
         )
 
@@ -412,7 +414,7 @@ def tilde_W_heatmap(
     _draw_cells(
         ax, state,
         show_heisenberg=show_heisenberg,
-        show_squeezed=show_squeezed,
+        show_bitangent=show_bitangent,
         show_quorum=show_quorum,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,

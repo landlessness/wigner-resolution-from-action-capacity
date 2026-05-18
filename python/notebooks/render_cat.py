@@ -1,15 +1,18 @@
 """Render the four-row cat-states figure: 5 columns × 4 rows.
 
 Layout per row (same as the eigen figure):
-  Col 1: W(x, p) — Wigner Portrait, with Heisenberg and inscribed-family cells.
+  Col 1: W(x, p) — Wigner function, no overlays.
   Col 2: W(x, 0) — Wigner cross-section.
-  Col 3: K_{π/2}(x, p) — Action-Capacity Kernel, same cells.
+  Col 3: K_{π/2}(x, p) — bitangent kernel, with Heisenberg cell A and
+         bitangent blob a_{π/2} overlays.
   Col 4: P_{π/2}(x, 0) — convolved cross-section.
-  Col 5: tilde_W(x, p) — Action-Capacity Portrait, Heisenberg and quorum cells.
+  Col 5: W̃(x, p) — convolved portrait, with Heisenberg cell A and
+         quorum cell ã overlays.
 
-The 4-cat-square and Zurek-compass rows differ by a π/4 rotation in
+The 4-cat and Zurek-compass rows differ by a π/4 rotation in
 phase space; cols 1 and 3 distinguish them via the cell overlay
-orientations, col 5 does not because tilde_W is rotation-averaged.
+orientations, col 5 does not because W̃ is rotation-invariant under
+the family integral.
 
 Output: tex/figures/cat.pdf.
 """
