@@ -25,13 +25,13 @@
 \title{Wigner Resolution from Action Capacity}
 
 \author{Brian S. Mulloy\orcidlink{0000-0002-1803-3172}}
-\affiliation{Independent Researcher, Corktown, Detroit, USA}
+\affiliation{Independent Researcher, Corktown, Detroit, Michigan, USA}
 \email{bmulloy@umich.edu}
 
 \date{\today}
 
 \begin{abstract}
-Phase-space formulations of quantum mechanics usually ignore that resolution in the $(x,p)$ plane is bounded below by the Planck scale. In the Wigner formulation, the justification is that even though the quasi-probability distribution is defined pointwise, its negative values carry physically meaningful information. We identify that the interference scales of Zurek are exactly the axes of a family of de Gosson quantum blobs. Inscribed within the state's Heisenberg cell of action capacity $\pi \Delta x \Delta p \ge h/2$, these blobs are bitangent to the cell, deforming continuously across the quadrature angle to maintain constant action $h/2$. Integrating convolutions of the Wigner function across the quadrature quorum yields a non-negative portrait with resolution $\pi \hbar^2/(\Delta x \Delta p)$, sub-Planck scale from Planckian construction.
+Phase-space formulations of quantum mechanics usually ignore that resolution in the $(x,p)$ plane is bounded below by the Planck scale. In the Wigner formulation, the justification is that even though the quasi-probability distribution is defined pointwise, its negative values carry physically meaningful information. We identify that the interference scales of Zurek are exactly the axes of a family of de Gosson quantum blobs. Inscribed within the state's Heisenberg cell of action capacity $\pi \Delta x \Delta p \ge h/2$, these blobs are bitangent to the cell, deforming continuously across the quadrature angle to maintain constant action $h/2$. Integrating convolutions of the Wigner function across the quadrature quorum yields a non-negative portrait with resolution $\pi \hbar^2/(\Delta x \Delta p)$, sub-Planck scale from a Planckian blob.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -60,14 +60,14 @@ Phase-space formulations of quantum mechanics usually ignore that resolution in 
 \begin{figure*}[!tp]
 \centering
 \includegraphics[width=\textwidth]{figures/eigen.pdf}
-\caption{\textbf{Wigner negativity and its resolution at the action capacity, for eigenstates.} The four states are the squeezed vacuum at $r = 0.5$, the harmonic Fock state at $n = 1$, the Morse eigenstate at $n = 8$, and the double-well eigenstate at $n = 5$. Column 1: the Wigner function $W(x, p)$. Column 2: the cross-section $W(x, 0)$, with its negative dips between positive peaks. Column 3: the squeezed cell $K_{\theta = \pi/2}$ inside the Heisenberg cell $A$. Column 4: the cross-section $P_{\pi/2}(x, 0)$, non-negative. Column 5: the portrait $\widetilde W(x, p)$ at the resolution of the quorum cell $a$ inside the Heisenberg cell $A$.}
+\caption{\textbf{Squeezed vacuum and eigenstates.} The four states are the squeezed vacuum at $r = 0.5$, the harmonic Fock state at $n = 1$, the Morse eigenstate at $n = 8$, and the double-well eigenstate at $n = 5$. Column 1: the Wigner function $W(x, p)$, with the negativity visible as blue regions between the positive lobes. Column 2: the cross-section $W(x, 0)$, with its negative dips. Column 3: the bitangent kernel $K_{\pi/2}$, with the Heisenberg cell $A$ and bitangent blob $a_{\pi/2}$ overlaid, both set by the state's action capacity. Column 4: the convolved cross-section $P_{\pi/2}(x, 0)$ at quadrature angle $\theta = \pi/2$, non-negative, one member of the family. Column 5: the portrait $\widetilde W(x, p)$, the integral over the bitangent family across all angles, with the quorum cell $\tilde a$ and the Heisenberg cell $A$ overlaid.}
 \label{fig:eigen}
 \end{figure*}
 
 \begin{figure*}[!tp]
 \centering
 \includegraphics[width=\textwidth]{figures/cat.pdf}
-\caption{\textbf{Wigner negativity and its resolution at the action capacity, for cat states.} The four states are the 2-cat, the 3-cat, the 4-cat, and the Zurek compass~\cite{zurek2001,cordero2018}. The columns are as in Fig.~\ref{fig:eigen}. The 4-cat and Zurek-compass states differ by a $\pi/4$ rotation in phase space. This rotation appears in columns 1 and 3 but not in column 5, where $\widetilde W$ is rotation-invariant under the family integral.}
+\caption{\textbf{Cat states.} The four states are the 2-cat, the 3-cat, the 4-cat, and the Zurek compass~\cite{zurek2001,cordero2018}. The columns are as in Fig.~\ref{fig:eigen}. The 4-cat and Zurek-compass states differ by a $\pi/4$ rotation in phase space. $\widetilde W$ in column 5 is rotation-invariant under the family integral.}
 \label{fig:cat}
 \end{figure*}
 
@@ -75,41 +75,39 @@ Phase-space formulations of quantum mechanics usually ignore that resolution in 
 %  OPENING
 % ===============================================================================
 
-The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. Its negativity is an indicator of non-classicality~\cite{kenfack2004,hudson1974} and a resource for quantum advantage~\cite{veitch2012,marieisert2012}. A non-negative reading admits a literal probability interpretation in phase space, supports classical sampling of quantum dynamics~\cite{polkovnikov2010}, and serves as the boundary between the classical and quantum regimes~\cite{marieisert2012,veitch2012}. This letter develops the non-negative context at the resolution permitted by the state's action capacity.
+The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and has been characterized by several quasi-probability measures~\cite{kenfack2004}. A non-negative portrait admits a literal probability interpretation in phase space~\cite{husimi1940,cartwright1976,degosson2005bullsci} and supports classical sampling of quantum dynamics~\cite{polkovnikov2010}. This letter develops the non-negative portrait at the resolution permitted by the state's action capacity.
 
 % ===============================================================================
 %  THE PHASE-SPACE CELLS
 % ===============================================================================
-
-The state is constrained by the uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$ in its Robertson--Schr\"odinger form~\cite{robertson1929,schrodinger1930}, where $\sigma_x, \sigma_p$ are the standard deviations of position and momentum. Following de Gosson, who measures phase-space regions by their symplectic capacity~\cite{degosson2009camel,degossoncharlyne2022}, we work with the covariance-ellipsoid spreads $\Delta x = \sqrt{2}\,\sigma_x$, $\Delta p = \sqrt{2}\,\sigma_p$, which absorb a factor of 2 into the definition. The phase-space area of the covariance ellipsoid has units of action~\cite{degosson2013qblobs}. We call it the action capacity of the state, and the ellipsoid itself the Heisenberg cell (Fig.~\ref{fig:zurek_blobs}),
+The state is constrained by the uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$ in its Robertson--Schr\"odinger form~\cite{robertson1929,schrodinger1930}, where $\sigma_x, \sigma_p$ are the standard deviations of position and momentum. De Gosson measures phase-space regions by their symplectic capacity~\cite{degosson2009camel,degossoncharlyne2022}. The covariance ellipsoid, with semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$, has symplectic capacity $\pi \Delta x \Delta p$, the action capacity of the state. The ellipsoid is its Heisenberg cell (Fig.~\ref{fig:zurek_blobs}),
 \begin{equation}
 A = \pi\,\Delta x\,\Delta p \ge h/2.
 \label{eq:extended_cell}
 \end{equation}
 
-Zurek identified two interference scales set by the state's spreads, $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$~\cite{zurek2001,toscano2006}. Each is the squeezed axis of a quantum blob of action $h/2$, tangent to the Heisenberg cell at a principal axis (Fig.~\ref{fig:zurek_blobs}),
+% ===============================================================================
+%  ZUREK SCALES AS A FAMILY OF DE GOSSON BLOBS
+% ===============================================================================
+
+Zurek derived two interference scales from the Heisenberg cell, $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$~\cite{zurek2001,toscano2006}. We identify these as the principal axes of a family of de Gosson quantum blobs~\cite{degosson2005bullsci,degosson2013qblobs,degossoncharlyne2022}. The bitangent blobs are a family of de Gosson quantum blobs inscribed within the Heisenberg cell and bitangent to it (Fig.~\ref{fig:zurek_blobs}),
 \begin{equation}
-a_{\delta x} = \pi\,\delta x\,\Delta p = h/2, \qquad a_{\delta p} = \pi\,\Delta x\,\delta p = h/2.
+a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,\Delta p = h/2.
 \label{eq:principal_axis_cells}
 \end{equation}
-The squeezed cell $a_{\delta x}$ is squeezed along $x$ to the Zurek scale $\delta x$ and stretched along $p$ to the state's spread $\Delta p$; $a_{\delta p}$ is its polar dual, squeezed along $p$ and stretched along $x$~\cite{degosson2005bullsci,degosson2013qblobs,degossoncharlyne2022}. The shape change is exactly reciprocal because the action is locked at $h/2$, the symplectic-camel principle of de Gosson~\cite{degosson2009camel}: the camel passes through the eye of the needle only by changing its shape. The scales traditionally labeled sub-Planck are the squeezed axes of exactly Planckian cells of action $\pi\hbar$.
+Zurek's relations give all four semi-axes exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor. Capacity and resolution lock reciprocally at action $h/2$, the symplectic-camel principle of de Gosson~\cite{degosson2009camel}. The camel passes through the eye of the needle only by changing its shape.
 
-These are two members of a one-parameter family $\{a_\theta\}_{\theta \in [0,\pi)}$ of squeezed cells tangent to the Heisenberg cell, each of fixed action
+The family extends across the quadrature angle. At each $\theta \in [0,\pi)$, a blob $a_\theta$ bitangent to the Heisenberg cell has semi-axes
 \begin{equation}
-a_\theta = \pi\,\delta_\parallel(\theta)\,\delta_\perp(\theta) = h/2.
-\label{eq:squeezed_cell}
+r_\parallel(\theta) = \sqrt{\Delta x^2\cos^2\theta + \Delta p^2\sin^2\theta}, \qquad r_\perp(\theta) = \hbar/r_\parallel(\theta).
+\label{eq:bitangent_axes}
 \end{equation}
-The semi-axis along $\theta$ matches the spread of the state's rotated quadrature $x_\theta = x\cos\theta + p\sin\theta$, the marginal measured by homodyne detection at phase $\theta$~\cite{vogelrisken1989,lvovsky2009},
+The parallel semi-axis $r_\parallel(\theta)$ runs along the quadrature direction $x_\theta = x\cos\theta + p\sin\theta$, the same quadrature parameterized by homodyne detection~\cite{vogelrisken1989,lvovsky2009}. The action is locked at $h/2$ across the family,
 \begin{equation}
-\delta_\parallel(\theta) = \sqrt{\Delta x^2\cos^2\theta + \Delta p^2\sin^2\theta}.
-\label{eq:delta_parallel}
+a_\theta = \pi\,r_\parallel(\theta)\,r_\perp(\theta) = h/2.
+\label{eq:bitangent_blob}
 \end{equation}
-The fixed action of Eq.~(\ref{eq:squeezed_cell}) forces the perpendicular semi-axis to its reciprocal,
-\begin{equation}
-\delta_\perp(\theta) = \hbar/\delta_\parallel(\theta).
-\label{eq:delta_perp}
-\end{equation}
-At $\theta = 0$ the family recovers $a_{\delta p}$; at $\theta = \pi/2$, $a_{\delta x}$. The family is the orbit of these two blobs under the symplectic group, parameterized by the homodyne quadrature angle (Fig.~\ref{fig:bitangent_blobs}).
+At $\theta = 0$ the family recovers $a_{\theta=0}$; at $\theta = \pi/2$, $a_{\pi/2}$. The family is the orbit of these two blobs under the symplectic group, parameterized by the homodyne quadrature angle (Fig.~\ref{fig:bitangent_blobs}).
 
 % ===============================================================================
 %  THE BOUNDARY AND THE KERNEL
@@ -120,51 +118,48 @@ The Wigner function of the state is
 W(x,p) = \frac{1}{\pi\hbar}\int \psi^*(x+s)\,\psi(x-s)\,e^{2ips/\hbar}\,ds.
 \label{eq:wigner}
 \end{equation}
-The Wigner function of the squeezed cell at orientation $\theta$ is the Gaussian
+The Wigner function of the bitangent blob at quadrature angle $\theta$ is the Gaussian
 \begin{equation}
-K_\theta(x,p) = \frac{1}{\pi\hbar}\exp\!\left(-\frac{x_\theta^2}{\delta_\parallel(\theta)^2} - \frac{p_\theta^2}{\delta_\perp(\theta)^2}\right),
-\label{eq:Gtheta}
+K_\theta(x,p) = \frac{1}{\pi\hbar}\exp\!\left(-\frac{x_\theta^2}{r_\parallel(\theta)^2} - \frac{p_\theta^2}{r_\perp(\theta)^2}\right),
+\label{eq:Ktheta}
 \end{equation}
 with $x_\theta = x\cos\theta + p\sin\theta$ and $p_\theta = -x\sin\theta + p\cos\theta$. The convolution of the Wigner function of the state with $K_\theta$ is
 \begin{equation}
 P_\theta(x,p) = (W * K_\theta)(x,p).
 \label{eq:Ptheta}
 \end{equation}
-$P_\theta$ is non-negative everywhere. Convolving a Wigner function with a Gaussian of capacity $\ge h/2$ yields a non-negative function~\cite{cartwright1976,dragoman2005phasespace,cordero2018}. The kernel $K_\theta$ is the unique blob in the squeezed family at orientation $\theta$, and its action is $h/2$.
+The kernel $K_\theta$, the bitangent blob at quadrature angle $\theta$, has action $h/2$. Convolving a Wigner function with a Gaussian of action $\ge h/2$ yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,dragoman2005phasespace,cordero2018}, so $P_\theta$ is non-negative everywhere.
 
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
 % ===============================================================================
-
-The phase-space portrait of the state at the resolution of its own action capacity is the integral of $P_\theta$ over the squeezed family,
+The phase-space portrait of the state at the resolution of its own action capacity is the integral of $P_\theta$ over the bitangent family,
 \begin{equation}
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi P_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
 \end{equation}
-Non-negativity is pointwise. $P_\theta(x,p) \ge 0$ for every $\theta$, and a non-negative integrand integrates to a non-negative function.
+$P_\theta(x,p) \ge 0$ for every $\theta$, and a non-negative integrand integrates to a non-negative function. The portrait $\widetilde W$ is non-negative pointwise.
 
-$\widetilde W$ varies on scales no smaller than the cell with semi-axes $\delta x$ and $\delta p$. We call it the quorum cell, after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}, of action
+$\widetilde W$ varies on scales no smaller than the ellipse with semi-axes $\delta x$ and $\delta p$, the quorum cell, named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}, of action
 \begin{equation}
-a = \pi\,\delta x\,\delta p = \pi\hbar^2/(\Delta x\,\Delta p).
-\label{eq:a_inner}
+\tilde a = \pi\,\delta x\,\delta p = \pi\hbar^2/(\Delta x\,\Delta p).
+\label{eq:tildea}
 \end{equation}
-The scale Zurek identified is $a_Z = a/\pi = \hbar^2/(\Delta x\,\Delta p)$, the same scale recovered here from the symplectic geometry of the state. The quorum cell is the common interior of the squeezed family, sharper than any member, but every member has action $h/2$, the uncertainty floor.
+The quorum cell is the common interior of the bitangent family, sharper than any member, but every member has action $h/2$, the uncertainty floor. Zurek's scale $a_Z = \tilde a/\pi = \hbar^2/(\Delta x\,\Delta p)$ is the same scale recovered here from the symplectic geometry of the state.
 
-The construction extends to higher dimensions through the symplectic capacity of the full Robertson--Schr\"odinger covariance ellipsoid~\cite{robertson1929,schrodinger1930,degosson2013qblobs,degossoncharlyne2022}.
+The construction extends to states whose covariance ellipsoid is rotated in $(x,p)$ through the symplectic covariance of the bitangent family~\cite{cordero2018}. It extends to higher dimensions through the symplectic capacity of the full Robertson--Schr\"odinger covariance ellipsoid~\cite{robertson1929,schrodinger1930,degosson2013qblobs,degossoncharlyne2022}.
 
 % ===============================================================================
-%  DEMONSTRATION
+%  NUMERICAL RESULTS
 % ===============================================================================
-
-Figures~\ref{fig:eigen} and~\ref{fig:cat} show the portrait across eight states. With the kernel built from each state's action capacity, the positive peaks of $W$ along the chosen cross-section appear in $P_{\pi/2}$ with the same count and location, without negativity. The integral across the squeezed family gives $\widetilde W$, the non-negative phase-space portrait that preserves all structure of the state down to the resolution of the quorum cell.
+Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight states. Column 1 is the Wigner function $W(x,p)$, with the negativity visible as blue regions between the positive lobes. Column 2 is the cross-section $W(x,0)$, with its negative dips. Column 3 is the bitangent kernel $K_{\pi/2}$, with the Heisenberg cell $A$ and bitangent blob $a_{\pi/2}$ overlaid, both set by the state's action capacity. Column 4 is the convolved cross-section $P_{\pi/2}(x,0)$ at quadrature angle $\theta = \pi/2$, non-negative, one member of the family. Column 5 is the portrait $\widetilde W(x,p)$, the integral over the bitangent family across all angles, with the quorum cell $\tilde a$ and the Heisenberg cell $A$ overlaid. No marginal of $W$ enters at any step. Across all eight states, the positive lobes of $W$ appear in $\widetilde W$ with the same count and location.
 
 % ===============================================================================
 %  DISCUSSION
 % ===============================================================================
+Other paths to a non-negative Wigner function include covariance-matched generalized Husimi smoothing~\cite{husimi1940,hudson1974,cartwright1976}, the truncated Wigner approximation~\cite{polkovnikov2010}, the Cahill--Glauber $s$-ordered family~\cite{cahillglauber1969}, Born--Jordan and other Cohen-class distributions with interference damping by symplectic rotation~\cite{cordero2018}, and maximum-likelihood reconstruction with Fock-state truncation~\cite{lvovsky2009}. Each is non-negative on its own terms. Whether the resolution each reaches also follows from action capacity is an open question.
 
-Other paths to a non-negative Wigner function include covariance-matched generalized Husimi smoothing~\cite{husimi1940,cartwright1976}, the truncated Wigner approximation~\cite{polkovnikov2010}, the Cahill--Glauber $s$-ordered family~\cite{cahillglauber1969}, Born--Jordan and other Cohen-class distributions with interference damping by symplectic rotation~\cite{cordero2018}, and maximum-likelihood reconstruction with Fock-state truncation~\cite{lvovsky2009}. Each succeeds in its regime of validity. Whether the Wigner resolution in those regimes also follows from action capacity remains an open question.
-
-The uncertainty principle $\sigma_x \sigma_p \ge \hbar/2$ loosens as the action capacity $A$ grows, the transition from micro to macro-mechanics that Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The de Gosson squeezed cell does not. While $a_\theta = h/2$ across every $A \ge h/2$, its axes tighten reciprocally, $\delta_\parallel \delta_\perp = \hbar$, the squeezed axis $\delta = \hbar/\Delta$ contracting as the conjugate spread $\Delta$ grows. Built from the same quadrature quorum as homodyne tomography, the squeeze reaches the quorum cell $a = \pi\hbar^2/A = \hbar^2/(\Delta x \Delta p)$, the Wigner resolution sharpening as action capacity grows.
+The uncertainty principle $\sigma_x \sigma_p \ge \hbar/2$ loosens as the action capacity $A$ grows, the transition from micro- to macro-mechanics that Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The bitangent blob does not loosen. Its action holds at $h/2$ across every $A \ge h/2$, and its resolution $\delta = \hbar/\Delta$ sharpens as the capacity $\Delta$ grows. The resolution $\tilde a = \pi\hbar^2/(\Delta x\,\Delta p)$ is sub-Planck scale from a quorum of Planckian blobs.
 
 % ===============================================================================
 %  DATA AVAILABILITY
