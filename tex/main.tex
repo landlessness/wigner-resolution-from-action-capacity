@@ -1,4 +1,4 @@
-\documentclass[aps,pra,reprint,amsmath,amssymb,floatfix,nofootinbib,showkeys]{revtex4-2}
+\documentclass[aps,pra,reprint,amsmath,amssymb,floatfix,nofootinbib]{revtex4-2}
 
 \usepackage{graphicx}
 \usepackage{orcidlink}
@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-Phase-space formulations of quantum mechanics usually ignore that resolution in the $(x,p)$ plane is bounded below by the Planck scale. In the Wigner formulation, the justification is that even though the quasi-probability distribution is defined pointwise, its negative values carry physically meaningful information. We identify that the interference scales of Zurek are exactly the axes of a family of de Gosson quantum blobs. Inscribed within the state's Heisenberg cell of action capacity $\pi \Delta x \Delta p \ge h/2$, these blobs are bitangent to the cell, deforming continuously across the quadrature angle to maintain constant action $h/2$. Integrating convolutions of the Wigner function across the quadrature quorum yields a non-negative portrait with resolution $\pi \hbar^2/(\Delta x \Delta p)$, sub-Planck scale from a Planckian blob.
+Phase-space formulations of quantum mechanics usually ignore that resolution in the $(x,p)$ plane is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though the quasi-probability distribution is defined pointwise, its negative values carry physical structure. We identify the characteristic scales of Zurek as exactly the axes of a family of de Gosson quantum blobs. Inscribed within the state's Heisenberg cell of action capacity $\pi \Delta x \Delta p \ge h/2$, these blobs are bitangent to the cell, deforming continuously under rotation to maintain constant action $h/2$. Integrating Planck-scale convolutions of the Wigner function across all angles yields a non-negative portrait with sub-Planck resolution $\pi\hbar^2/(\Delta x\,\Delta p)$.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -75,12 +75,12 @@ Phase-space formulations of quantum mechanics usually ignore that resolution in 
 %  OPENING
 % ===============================================================================
 
-The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and has been characterized by several quasi-probability measures~\cite{kenfack2004}. A non-negative portrait admits a literal probability interpretation in phase space~\cite{husimi1940,cartwright1976,degosson2005bullsci} and supports classical sampling of quantum dynamics~\cite{polkovnikov2010}. This letter develops the non-negative portrait at the resolution permitted by the state's action capacity.
+The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012}. A non-negative portrait admits a literal probability interpretation in phase space~\cite{husimi1940,cartwright1976,degosson2005bullsci} and supports classical sampling of quantum dynamics~\cite{polkovnikov2010}. This letter develops the non-negative portrait at the resolution permitted by the state's action capacity.
 
 % ===============================================================================
 %  THE PHASE-SPACE CELLS
 % ===============================================================================
-The state is constrained by the uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$ in its Robertson--Schr\"odinger form~\cite{robertson1929,schrodinger1930}, where $\sigma_x, \sigma_p$ are the standard deviations of position and momentum. De Gosson measures phase-space regions by their symplectic capacity~\cite{degosson2009camel,degossoncharlyne2022}. The covariance ellipsoid, with semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$, has symplectic capacity $\pi \Delta x \Delta p$, the action capacity of the state. The ellipsoid is its Heisenberg cell (Fig.~\ref{fig:zurek_blobs}),
+The state is constrained by the uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$ in its Robertson--Schr\"odinger form~\cite{robertson1929,schrodinger1930}, where $\sigma_x, \sigma_p$ are the standard deviations of position and momentum. De Gosson measures phase-space regions by their symplectic capacity~\cite{degosson2009camel}. The covariance ellipsoid, with semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$, has symplectic capacity $\pi \Delta x \Delta p$, the action capacity of the state. The ellipsoid is its Heisenberg cell (Fig.~\ref{fig:zurek_blobs}),
 \begin{equation}
 A = \pi\,\Delta x\,\Delta p \ge h/2.
 \label{eq:extended_cell}
@@ -90,24 +90,24 @@ A = \pi\,\Delta x\,\Delta p \ge h/2.
 %  ZUREK SCALES AS A FAMILY OF DE GOSSON BLOBS
 % ===============================================================================
 
-Zurek derived two interference scales from the Heisenberg cell, $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$~\cite{zurek2001,toscano2006}. We identify these as the principal axes of a family of de Gosson quantum blobs~\cite{degosson2005bullsci,degosson2013qblobs,degossoncharlyne2022}. The bitangent blobs are a family of de Gosson quantum blobs inscribed within the Heisenberg cell and bitangent to it (Fig.~\ref{fig:zurek_blobs}),
+Zurek derived two characteristic scales from the Heisenberg cell, $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$~\cite{zurek2001}. We identify these as the principal axes of a novel family of de Gosson quantum blobs. These blobs are inscribed within the Heisenberg cell and bitangent to it (Fig.~\ref{fig:zurek_blobs}),
 \begin{equation}
 a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,\Delta p = h/2.
 \label{eq:principal_axis_cells}
 \end{equation}
-Zurek's relations give all four semi-axes exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor. Capacity and resolution lock reciprocally at action $h/2$, the symplectic-camel principle of de Gosson~\cite{degosson2009camel}. The camel passes through the eye of the needle only by changing its shape.
+Zurek's relations give all four semi-axes exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor. Capacity and resolution are reciprocal at action $h/2$, the symplectic-camel principle of de Gosson~\cite{degosson2009camel,degosson2013qblobs}. The camel passes through the eye of the needle only by changing its shape.
 
-The family extends across the quadrature angle. At each $\theta \in [0,\pi)$, a blob $a_\theta$ bitangent to the Heisenberg cell has semi-axes
+The family extends across the quadrature angle, the rotation of the state's covariance ellipsoid about its centroid. At each $\theta \in [0,\pi)$, a blob $a_\theta$ bitangent to the Heisenberg cell has semi-axes
 \begin{equation}
 r_\parallel(\theta) = \sqrt{\Delta x^2\cos^2\theta + \Delta p^2\sin^2\theta}, \qquad r_\perp(\theta) = \hbar/r_\parallel(\theta).
 \label{eq:bitangent_axes}
 \end{equation}
-The parallel semi-axis $r_\parallel(\theta)$ runs along the quadrature direction $x_\theta = x\cos\theta + p\sin\theta$, the same quadrature parameterized by homodyne detection~\cite{vogelrisken1989,lvovsky2009}. The action is locked at $h/2$ across the family,
+The parallel semi-axis $r_\parallel(\theta)$ runs along the quadrature direction $x_\theta = x\cos\theta + p\sin\theta$, the same quadrature parameterized by homodyne detection~\cite{vogelrisken1989,lvovsky2009}. The action is $h/2$ across the family,
 \begin{equation}
 a_\theta = \pi\,r_\parallel(\theta)\,r_\perp(\theta) = h/2.
 \label{eq:bitangent_blob}
 \end{equation}
-At $\theta = 0$ the family recovers $a_{\theta=0}$; at $\theta = \pi/2$, $a_{\pi/2}$. The family is the orbit of these two blobs under the symplectic group, parameterized by the homodyne quadrature angle (Fig.~\ref{fig:bitangent_blobs}).
+At $\theta = 0$ and $\theta = \pi/2$, the family recovers the principal bitangent blobs of Fig.~\ref{fig:zurek_blobs}. The family is the orbit of these two blobs under the symplectic group, parameterized by the homodyne quadrature angle (Fig.~\ref{fig:bitangent_blobs}).
 
 % ===============================================================================
 %  THE BOUNDARY AND THE KERNEL
@@ -128,7 +128,7 @@ with $x_\theta = x\cos\theta + p\sin\theta$ and $p_\theta = -x\sin\theta + p\cos
 P_\theta(x,p) = (W * K_\theta)(x,p).
 \label{eq:Ptheta}
 \end{equation}
-The kernel $K_\theta$, the bitangent blob at quadrature angle $\theta$, has action $h/2$. Convolving a Wigner function with a Gaussian of action $\ge h/2$ yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,dragoman2005phasespace,cordero2018}, so $P_\theta$ is non-negative everywhere.
+The bitangent kernel $K_\theta$ at quadrature angle $\theta$ has action $h/2$. Convolving a Wigner function with a Gaussian of action $\ge h/2$ yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,dragoman2005phasespace,cordero2018}, so $P_\theta$ is non-negative everywhere.
 
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
@@ -142,12 +142,12 @@ $P_\theta(x,p) \ge 0$ for every $\theta$, and a non-negative integrand integrate
 
 $\widetilde W$ varies on scales no smaller than the ellipse with semi-axes $\delta x$ and $\delta p$, the quorum cell, named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}, of action
 \begin{equation}
-\tilde a = \pi\,\delta x\,\delta p = \pi\hbar^2/(\Delta x\,\Delta p).
+\tilde a = \pi\,\delta x\,\delta p.
 \label{eq:tildea}
 \end{equation}
-The quorum cell is the common interior of the bitangent family, sharper than any member, but every member has action $h/2$, the uncertainty floor. Zurek's scale $a_Z = \tilde a/\pi = \hbar^2/(\Delta x\,\Delta p)$ is the same scale recovered here from the symplectic geometry of the state.
+The quorum cell is the common interior of the bitangent family, with $\tilde a = \pi\hbar^2/(\Delta x\,\Delta p)$. Zurek's scale $a_Z = \tilde a/\pi = \hbar^2/(\Delta x\,\Delta p)$ is the same scale recovered here from the symplectic geometry of the state.
 
-The construction extends to states whose covariance ellipsoid is rotated in $(x,p)$ through the symplectic covariance of the bitangent family~\cite{cordero2018}. It extends to higher dimensions through the symplectic capacity of the full Robertson--Schr\"odinger covariance ellipsoid~\cite{robertson1929,schrodinger1930,degosson2013qblobs,degossoncharlyne2022}.
+This generalizes to states whose covariance ellipsoid is rotated in $(x,p)$ through the symplectic covariance of the bitangent family~\cite{cordero2018}, and to higher dimensions through the symplectic capacity of the full Robertson--Schr\"odinger covariance ellipsoid~\cite{robertson1929,schrodinger1930,degosson2013qblobs}.
 
 % ===============================================================================
 %  NUMERICAL RESULTS
@@ -159,7 +159,7 @@ Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight st
 % ===============================================================================
 Other paths to a non-negative Wigner function include covariance-matched generalized Husimi smoothing~\cite{husimi1940,hudson1974,cartwright1976}, the truncated Wigner approximation~\cite{polkovnikov2010}, the Cahill--Glauber $s$-ordered family~\cite{cahillglauber1969}, Born--Jordan and other Cohen-class distributions with interference damping by symplectic rotation~\cite{cordero2018}, and maximum-likelihood reconstruction with Fock-state truncation~\cite{lvovsky2009}. Each is non-negative on its own terms. Whether the resolution each reaches also follows from action capacity is an open question.
 
-The uncertainty principle $\sigma_x \sigma_p \ge \hbar/2$ loosens as the action capacity $A$ grows, the transition from micro- to macro-mechanics that Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The bitangent blob does not loosen. Its action holds at $h/2$ across every $A \ge h/2$, and its resolution $\delta = \hbar/\Delta$ sharpens as the capacity $\Delta$ grows. The resolution $\tilde a = \pi\hbar^2/(\Delta x\,\Delta p)$ is sub-Planck scale from a quorum of Planckian blobs.
+The action capacity $A = \pi \Delta x \Delta p$ grows unbounded, the transition from micro- to macro-mechanics that Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The bitangent blob does not grow. Its action is $h/2$ across every $A \ge h/2$, and its resolution $\delta = \hbar/\Delta$ sharpens as the capacity $\Delta$ grows. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, twenty-four orders of magnitude below the size of the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. Action capacity $\Delta x \Delta p$ sets sub-Planck resolutions $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$, from de Gosson blobs at Planck scale $h/2$.
 
 % ===============================================================================
 %  DATA AVAILABILITY

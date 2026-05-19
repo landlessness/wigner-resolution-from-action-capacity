@@ -3,15 +3,6 @@
 %  "Wigner Resolution from Action Capacity"
 %  Brian S. Mulloy
 % ===============================================================================
-%
-%  This bib is sized to the body of the Letter. References cited only in the
-%  Supplemental Material (e.g., Appleby 1998 for generalized-Husimi derivation,
-%  Hradil 2004 for MaxLik tomography) are added to the SM as needed.
-%
-%  Both main.tex and supplement.tex call \bibliography{main}; each compiles its
-%  own bibliography from the entries it actually cites. No duplication needed.
-%
-% ===============================================================================
 
 % ---------------------------------------------------------------------
 % Foundations: Wigner function and quasi-probability distributions
@@ -80,22 +71,22 @@
 
 @article{schrodinger1930,
   author  = {Schr\"{o}dinger, E.},
-  title   = {Zum {H}eisenbergschen {U}nsch\"{a}rfeprinzip},
-  journal = {Sitzungsber. Preuss. Akad. Wiss., Phys.-Math. Klasse},
-  volume  = {14},
-  pages   = {296--303},
-  year    = {1930}
+  title   = {About {H}eisenberg Uncertainty Relation},
+  journal = {Bulg. J. Phys.},
+  volume  = {26},
+  pages   = {193--203},
+  year    = {1999},
+  note    = {arXiv:quant-ph/9903100},
 }
 
-@article{heisenberg1927,
-  author  = {Heisenberg, W.},
-  title   = {\"{U}ber den anschaulichen {I}nhalt der quantentheoretischen {K}inematik und {M}echanik},
-  journal = {Zeitschrift f\"{u}r Physik},
-  volume  = {43},
-  number  = {3-4},
-  pages   = {172--198},
-  year    = {1927},
-  doi     = {10.1007/BF01397280}
+@incollection{heisenberg1927,
+  author    = {Heisenberg, W.},
+  title     = {The Physical Content of Quantum Kinematics and Mechanics},
+  booktitle = {Quantum Theory and Measurement},
+  editor    = {Wheeler, J. A. and Zurek, W. H.},
+  publisher = {Princeton University Press},
+  year      = {1983},
+  pages     = {62--84},
 }
 
 @article{bohr1928,
@@ -119,18 +110,6 @@
   year={1974},
   publisher={Elsevier},
   doi={10.1016/0034-4877(74)90007-X}
-}
-
-@article{kenfack2004,
-  title={Negativity of the {W}igner function as an indicator of non-classicality},
-  author={Kenfack, Anatole and {\.Z}yczkowski, Karol},
-  journal={Journal of Optics B: Quantum and Semiclassical Optics},
-  volume={6},
-  number={10},
-  pages={396--404},
-  year={2004},
-  publisher={IOP Publishing},
-  doi={10.1088/1464-4266/6/10/003}
 }
 
 @article{marieisert2012,
@@ -197,16 +176,6 @@
   doi={10.1007/s10701-012-9636-x}
 }
 
-@article{degossoncharlyne2022,
-  author        = {de Gosson, Maurice and de Gosson, Charlyne},
-  title         = {Symplectic Polar Duality, Quantum Blobs, and Generalized {G}aussians},
-  journal       = {arXiv preprint},
-  year          = {2022},
-  eprint        = {2206.06334},
-  archivePrefix = {arXiv},
-  primaryClass  = {quant-ph}
-}
-
 @article{cordero2018,
   title={On the symplectic covariance and interferences of time-frequency distributions},
   author={Cordero, Elena and de Gosson, Maurice and D{\"o}rfler, Monika and Nicola, Fabio},
@@ -232,7 +201,7 @@
 }
 
 % ---------------------------------------------------------------------
-% Sub-Planck structure: Zurek and follow-up
+% Sub-Planck structure: Zurek
 % ---------------------------------------------------------------------
 
 @article{zurek2001,
@@ -245,18 +214,6 @@
   year={2001},
   publisher={Nature Publishing Group},
   doi={10.1038/35089017}
-}
-
-@article{toscano2006,
-  title={Sub-{P}lanck phase-space structures and {H}eisenberg-limited measurements},
-  author={Toscano, F. and Dalvit, D. A. R. and Davidovich, L. and Zurek, W. H.},
-  journal={Physical Review A},
-  volume={73},
-  number={2},
-  pages={023803},
-  year={2006},
-  publisher={APS},
-  doi={10.1103/PhysRevA.73.023803}
 }
 
 % ---------------------------------------------------------------------
@@ -311,17 +268,6 @@
   doi={10.1088/0305-4470/34/1/307}
 }
 
-% ---------------------------------------------------------------------
-% Open data
-% ---------------------------------------------------------------------
-
-@misc{zenododeposit,
-  author    = {Mulloy, Brian S.},
-  title     = {Code and figures for ``{W}igner {R}esolution from {A}ction {C}apacity''},
-  year      = {2026},
-  publisher = {Zenodo},
-  doi       = {10.5281} 
-}
 @article{dragoman2005phasespace,
   title   = {Phase Space Formulation of Quantum Mechanics. {I}nsight into the Measurement Problem},
   author  = {Dragoman, D.},
@@ -332,6 +278,24 @@
   year    = {2005},
   doi     = {10.1238/Physica.Regular.072a00290}
 }
+
+% ---------------------------------------------------------------------
+% Cat paradox
+% ---------------------------------------------------------------------
+
+@article{schrodinger1935trimmer,
+  author  = {Schr\"odinger, Erwin},
+  title   = {The Present Situation in Quantum Mechanics},
+  journal = {Proceedings of the American Philosophical Society},
+  volume  = {124},
+  pages   = {323--338},
+  year    = {1980},
+  note    = {Translated by J. D. Trimmer from \emph{Naturwissenschaften} \textbf{23} (1935) 807--812, 823--828, 844--849},
+}
+
+% ---------------------------------------------------------------------
+% Numerical tooling and open data
+% ---------------------------------------------------------------------
 
 @article{qutip5,
   title   = {{QuTiP} 5: The Quantum Toolbox in {Python}},
@@ -351,4 +315,12 @@
   pages   = {261},
   year    = {2020},
   doi     = {10.1038/s41592-019-0686-2}
+}
+
+@misc{zenododeposit,
+  author    = {Mulloy, Brian S.},
+  title     = {Code and figures for ``{W}igner {R}esolution from {A}ction {C}apacity''},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281}
 }
