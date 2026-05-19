@@ -3,6 +3,7 @@
 \usepackage{graphicx}
 \usepackage{orcidlink}
 \usepackage{bm}
+\usepackage{hyperref}
 
 % -------------- Margin Stamp ----------------
 \usepackage[style=iso]{datetime2}
@@ -13,7 +14,7 @@
   \begin{tikzpicture}[remember picture, overlay]
     \node [rotate=-90, color=gray!80, font=\fontfamily{FiraMono-TLF}\selectfont\footnotesize] at ([xshift=-1.2cm]current page.east) {WORKING DRAFT \quad 
     $\bullet$ \quad \DTMnow \quad 
-    % $\bullet$ \quad doi.org/ \quad 
+    $\bullet$ \quad \href{https://doi.org/10.5281/zenodo.20279094}{doi.org/10.5281/zenodo.20279094} \quad 
     $\bullet$ \quad Brian S. Mulloy \quad 
     $\bullet$ \quad bmulloy@umich.edu};
   \end{tikzpicture}
