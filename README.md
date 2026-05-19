@@ -62,9 +62,16 @@ pdflatex main
 
 ## Citation
 
-A Zenodo DOI will be minted upon release. To cite this repository in the
-meantime, GitHub provides a "Cite this repository" button on the repo page
-(populated from `CITATION.cff`), or cite by URL and commit hash.
+This release is archived on Zenodo: [10.5281/zenodo.20279094](https://doi.org/10.5281/zenodo.20279094)
+
+Suggested citation:
+
+> Mulloy, B. S. (2026). *Code and figures for "Wigner Resolution from Action Capacity"* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.20279094
+
+A BibTeX entry is available from the Zenodo deposit page, or from the
+"Cite this repository" button on GitHub (populated from `CITATION.cff`).
+
+For citing the paper itself, see the published manuscript.
 
 ## License
 

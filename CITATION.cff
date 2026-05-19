@@ -7,7 +7,7 @@ authors:
     orcid: "https://orcid.org/0000-0002-1803-3172"
     email: bmulloy@umich.edu
     affiliation: "Independent Researcher, Corktown, Detroit, Michigan, USA"
-version: "0.0.1"
+version: "1.0.0"
 date-released: "2026-05-18"
 license: MIT
 repository-code: "https://github.com/landlessness/wigner-resolution-from-action-capacity"
@@ -18,6 +18,10 @@ keywords:
   - symplectic geometry
   - quantum blobs
   - sub-Planck structure
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20279094
+    description: "Zenodo archive of v1.0.0"
 preferred-citation:
   type: article
   title: "Wigner Resolution from Action Capacity"
