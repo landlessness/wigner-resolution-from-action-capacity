@@ -71,7 +71,7 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 \begin{figure*}[!tp]
 \centering
 \includegraphics[width=\textwidth]{figures/cat.pdf}
-\caption{\textbf{Cat states.} The four states are the 2-cat, the 3-cat, the 4-cat, and the Zurek compass~\cite{zurek2001,cordero2018}. The columns are as in Fig.~\ref{fig:eigen}. The 4-cat and Zurek-compass states differ by a $\pi/4$ rotation in phase space, yet produce the same $\widetilde W$ (column 5).}
+\caption{\textbf{Cat states.} The four states are the 2-cat, the 3-cat, the 4-cat, and the Zurek compass. The columns are as in Fig.~\ref{fig:eigen}. The 4-cat and Zurek-compass states differ by a $\pi/4$ rotation in phase space, yet produce the same $\widetilde W$ (column 5).}
 \label{fig:cat}
 \end{figure*}
 
@@ -138,7 +138,7 @@ Integrating $P_\theta$ over the bitangent family gives the phase-space portrait 
 \end{equation}
 $P_\theta(x,p) \ge 0$ for every $\theta$, and a non-negative integrand integrates to a non-negative function. $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009}; the construction here convolves $W$ with $K_\theta$ and integrates over $\theta$.
 
-$\widetilde W$ has structure at the characteristic scale of the quorum cell, an ellipse with semi-axes $\delta x$ and $\delta p$, named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001},
+$\widetilde W$ has structure at the characteristic scale of the quorum cell $\tilde{a}$ (Fig.~\ref{fig:zurek_blobs}), an ellipse with semi-axes $\delta x$ and $\delta p$, named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001},
 \begin{equation}
 \tilde a = \pi\,\delta x\,\delta p.
 \label{eq:tildea}
@@ -155,7 +155,7 @@ Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight st
 % ===============================================================================
 %  DISCUSSION
 % ===============================================================================
-The action capacity $A = \pi \Delta x \Delta p$ grows unbounded, the transition from micro- to macro-mechanics that Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The bitangent blob does not grow. Its action is $h/2$ across every $A \ge h/2$, and its resolution $\delta = \hbar/\Delta$ sharpens as the capacity $\Delta$ grows. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, twenty-four orders of magnitude below the size of the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows not from $h \to 0$, but from $A \to \infty$. Action capacity $\Delta x \Delta p$ sets sub-Planck resolutions $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$, from a quorum of de Gosson blobs at Planck scale $h/2$.
+The action capacity $A = \pi \Delta x \Delta p$ grows unbounded, the transition from micro- to macro-mechanics that Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The bitangent blob does not grow. Its action is $h/2$ across every $A \ge h/2$, and its resolution $\delta = \hbar/\Delta$ sharpens as the capacity $\Delta$ grows. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, twenty-four orders of magnitude below the size of the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows not from $h \to 0$, but from $A \to \infty$. Action capacity $\Delta x \Delta p$ sets sub-Planck resolutions $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$, from de Gosson blobs at Planck scale $h/2$.
 
 Other paths to a non-negative Wigner function include covariance-matched generalized Husimi smoothing~\cite{husimi1940,hudson1974,cartwright1976}, the truncated Wigner approximation~\cite{polkovnikov2010}, and the Cahill--Glauber $s$-ordered family~\cite{cahillglauber1969}. Each is non-negative at scales set by $\Delta$ or $\delta$, with the relations coincident at $A \sim h/2$. Whether these scales reframe more broadly through $\delta = \hbar/\Delta$ is an open question.
 
