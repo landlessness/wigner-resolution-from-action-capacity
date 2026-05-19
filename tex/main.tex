@@ -32,7 +32,7 @@
 \date{\today}
 
 \begin{abstract}
-Phase-space formulations of quantum mechanics usually ignore that resolution in the $(x,p)$ plane is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though the quasi-probability distribution is defined pointwise, its negative values carry physical structure. We identify the characteristic scales of Zurek as exactly the axes of a family of de Gosson quantum blobs. Inscribed within the state's Heisenberg cell of action capacity $\pi \Delta x \Delta p \ge h/2$, these blobs are bitangent to the cell, deforming with the capacity and across the rotation angle to maintain constant action $h/2$. Integrating convolutions of the Wigner function with these Planck-scale blobs yields a non-negative portrait with sub-Planck resolution $\pi\hbar^2/(\Delta x\,\Delta p)$.
+Phase-space formulations of quantum mechanics usually ignore that resolution in the $(x,p)$ plane is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though the quasi-probability distribution is defined pointwise, its negative values carry physical structure. We identify the characteristic scales of Zurek as exactly the axes of a family of de Gosson quantum blobs. Inscribed within the state's Heisenberg cell of action capacity $\pi \Delta x \Delta p \ge h/2$, these blobs form a bitangent family of constant action $h/2$. Integrating convolutions of the Wigner function with these Planck-scale blobs yields a non-negative portrait with sub-Planck resolution $\pi\hbar^2/(\Delta x\,\Delta p)$.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -78,7 +78,7 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 % ===============================================================================
 %  THE PHASE-SPACE CELLS
 % ===============================================================================
-The state is constrained by the uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$ in its Robertson--Schr\"odinger form~\cite{robertson1929,schrodinger1930}, where $\sigma_x, \sigma_p$ are the standard deviations of position and momentum. De Gosson measures phase-space regions by their symplectic capacity~\cite{degosson2009camel}. The covariance ellipsoid, with semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$, has symplectic capacity $\pi \Delta x \Delta p$, the action capacity of the state. The ellipsoid is its Heisenberg cell (Fig.~\ref{fig:zurek_blobs}),
+The state is constrained by the uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$ in its Robertson--Schr\"odinger form~\cite{robertson1929,schrodinger1930}, where $\sigma_x, \sigma_p$ are the standard deviations of position and momentum. De Gosson measures phase-space regions by their symplectic capacity~\cite{degosson2009camel}. The covariance ellipsoid, with semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$, has symplectic capacity $\pi \Delta x \Delta p$, the action capacity of the state. The ellipsoid is its Heisenberg cell (Figs.~\ref{fig:zurek_blobs},~\ref{fig:bitangent_blobs}),
 \begin{equation}
 A = \pi\,\Delta x\,\Delta p \ge h/2.
 \label{eq:extended_cell}
@@ -95,7 +95,7 @@ a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,
 \end{equation}
 Zurek's relations give all four semi-axes exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor. Capacity and resolution are reciprocal at action $h/2$, the symplectic-camel principle of de Gosson~\cite{degosson2009camel,degosson2013qblobs}. The camel passes through the eye of the needle only by changing its shape.
 
-The family extends across the quadrature angle, the rotation of the state's covariance ellipsoid about its centroid. At each $\theta \in [0,\pi)$, a blob $a_\theta$ bitangent to the Heisenberg cell has semi-axes
+The family deforms continuously across the quadrature angle, the rotation of the state's covariance ellipsoid about its centroid. At each $\theta \in [0,\pi)$, a blob $a_\theta$ bitangent to the Heisenberg cell has semi-axes
 \begin{equation}
 r_\parallel(\theta) = \sqrt{\Delta x^2\cos^2\theta + \Delta p^2\sin^2\theta}, \qquad r_\perp(\theta) = \hbar/r_\parallel(\theta).
 \label{eq:bitangent_axes}
@@ -105,7 +105,8 @@ The parallel semi-axis $r_\parallel(\theta)$ runs along the quadrature direction
 a_\theta = \pi\,r_\parallel(\theta)\,r_\perp(\theta) = h/2.
 \label{eq:bitangent_blob}
 \end{equation}
-At $\theta = 0$ and $\theta = \pi/2$, the family recovers the principal bitangent blobs of Fig.~\ref{fig:zurek_blobs}. The family is the orbit of these two blobs under the symplectic group, parameterized by the homodyne quadrature angle (Fig.~\ref{fig:bitangent_blobs}).
+At $\theta = 0$ and $\theta = \pi/2$, the family recovers the principal bitangent blobs of Fig.~\ref{fig:zurek_blobs}. The family interpolates continuously between these principal blobs, parameterized by the homodyne quadrature angle (Fig.~\ref{fig:bitangent_blobs}).
+
 
 % ===============================================================================
 %  THE BOUNDARY AND THE KERNEL
@@ -150,7 +151,8 @@ This generalizes to states whose covariance ellipsoid is rotated in $(x,p)$ thro
 % ===============================================================================
 %  NUMERICAL RESULTS
 % ===============================================================================
-Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight states. Column 1 is the Wigner function $W(x,p)$, with the negativity visible as blue regions between the positive lobes. Column 2 is the cross-section $W(x,0)$, with its negative dips. Column 3 is the bitangent kernel $K_{\pi/2}$, with the Heisenberg cell $A$ and bitangent blob $a_{\pi/2}$ overlaid, both set by the state's action capacity. Column 4 is the convolved cross-section $P_{\pi/2}(x,0)$ at quadrature angle $\theta = \pi/2$, non-negative, one member of the family. Column 5 is the portrait $\widetilde W(x,p)$, the integral over the bitangent family across all angles, with the quorum cell $\tilde a$ and the Heisenberg cell $A$ overlaid. No marginal of $W$ enters at any step. Across all eight states, the positive lobes of $W$ appear in $\widetilde W$ with the same count and location.
+Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight states. No marginal of $W$ enters at any step. Across all eight states, the positive lobes of $W$ appear in $\widetilde W$ with the same count and location.
+
 
 % ===============================================================================
 %  DISCUSSION
