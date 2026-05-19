@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Code and figures for \"Wigner Resolution from Action Capacity\""
+authors:
+  - family-names: Mulloy
+    given-names: Brian S.
+    orcid: "https://orcid.org/0000-0002-1803-3172"
+    email: bmulloy@umich.edu
+    affiliation: "Independent Researcher, Corktown, Detroit, Michigan, USA"
+version: "0.0.1"
+date-released: "2026-05-18"
+license: MIT
+repository-code: "https://github.com/landlessness/wigner-resolution-from-action-capacity"
+type: software
+keywords:
+  - Wigner function
+  - phase-space quantum mechanics
+  - symplectic geometry
+  - quantum blobs
+  - sub-Planck structure
+preferred-citation:
+  type: article
+  title: "Wigner Resolution from Action Capacity"
+  authors:
+    - family-names: Mulloy
+      given-names: Brian S.
+      orcid: "https://orcid.org/0000-0002-1803-3172"
+  year: 2026
