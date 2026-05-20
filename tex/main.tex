@@ -42,7 +42,7 @@ Phase-space formulations of quantum mechanics usually ignore that resolution in 
 % ===============================================================================
 %  OPENING
 % ===============================================================================
-The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and has been characterized by several quasi-probability measures~\cite{kenfack2004}. A non-negative portrait admits a literal probability interpretation in phase space~\cite{husimi1940,cartwright1976,degosson2005bullsci} and supports classical sampling of quantum dynamics~\cite{polkovnikov2010}. This letter develops the non-negative portrait at the resolution permitted by the state's action capacity.
+The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. Its negativity, forced by pointwise resolution~\cite{hudson1974}, is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and has been characterized by several quasi-probability measures~\cite{kenfack2004}. A non-negative portrait admits a literal probability interpretation in phase space~\cite{husimi1940,cartwright1976,degosson2005bullsci} and supports classical sampling of quantum dynamics~\cite{polkovnikov2010}. This letter develops the non-negative portrait at the resolution permitted by the state's action capacity.
 
 % ===============================================================================
 %  FIGURES
@@ -126,7 +126,7 @@ with $x_\theta = x\cos\theta + p\sin\theta$ and $p_\theta = -x\sin\theta + p\cos
 P_\theta(x,p) = (W * K_\theta)(x,p).
 \label{eq:Ptheta}
 \end{equation}
-The bitangent kernel $K_\theta$ at quadrature angle $\theta$ has action $h/2$. Convolving a Wigner function with a Gaussian of action $\ge h/2$ yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,dragoman2005phasespace,cordero2018}, so $P_\theta$ is non-negative everywhere.
+The bitangent kernel $K_\theta$ at quadrature angle $\theta$ has action $h/2$. Pointwise resolution forces $W$ negative~\cite{hudson1974}. Convolving with a Gaussian of action $\ge h/2$ removes the cause and yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,dragoman2005phasespace,cordero2018}, so $P_\theta$ is non-negative everywhere.
 
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
