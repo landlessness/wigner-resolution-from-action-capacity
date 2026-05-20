@@ -225,11 +225,11 @@ def assemble_grid_4col(
 # on the right, with the kernel and the per-θ convolved cross-section
 # between them.
 _DEFAULT_5COL_TITLES = (
-    "Wigner Function",
-    "Wigner Cross-Section",
-    r"Bitangent Kernel, $\theta = \pi/2$",
-    r"Convolved Cross-Section, $\theta = \pi/2$",
-    r"Convolved Portrait, $\textstyle\int_0^\pi \! d\theta$",
+    "1. Wigner Function",
+    "2. Wigner Cross-Section",
+    r"3. Bitangent Kernel, $\theta = \pi/2$",
+    r"4. Convolved Cross-Section, $\theta = \pi/2$",
+    r"5. Convolved Portrait, $\textstyle\int_0^\pi \! d\theta$",
 )
 
 
