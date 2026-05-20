@@ -32,7 +32,7 @@
 \date{\today}
 
 \begin{abstract}
-Phase-space formulations of quantum mechanics usually ignore that resolution in the $(x,p)$ plane is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those negative values carry physical structure. We identify the resolution scales of Zurek as exactly the axes of de Gosson quantum blobs. Inscribed within the state's Heisenberg cell of action capacity $\pi \Delta x \Delta p \ge h/2$, these blobs form a family bitangent to the cell, deforming at constant action $h/2$. To enforce Planck's boundary from below, integrating convolutions of the Wigner function with this $h/2$ family yields a non-negative portrait with sub-Planck resolution $\pi\hbar^2/(\Delta x\,\Delta p)$, sharpening with capacity.
+Phase-space formulations of quantum mechanics usually ignore that resolution in the $(x,p)$ plane is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those negative values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as exactly the axes of de Gosson quantum blobs. Inscribed within the state's Heisenberg cell of action capacity $\pi \Delta x \Delta p \ge h/2$, these blobs form a family bitangent to the cell, deforming at constant action $h/2$. To enforce Planck's boundary from below, integrating convolutions of the Wigner function with this $h/2$ family yields a non-negative portrait with sub-Planck resolution $\pi\hbar^2/(\Delta x\,\Delta p)$, sharpening with capacity.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -78,7 +78,7 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 % ===============================================================================
 %  THE PHASE-SPACE CELLS
 % ===============================================================================
-The state is constrained by the uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$ in its Robertson--Schr\"odinger form~\cite{robertson1929,schrodinger1930}, where $\sigma_x, \sigma_p$ are the standard deviations of position and momentum. De Gosson measures phase-space regions by their symplectic capacity~\cite{degosson2009camel}. The covariance ellipsoid, with semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$, has symplectic capacity $\pi \Delta x \Delta p$, the action capacity of the state. The ellipsoid is its Heisenberg cell (Figs.~\ref{fig:zurek_blobs},~\ref{fig:bitangent_blobs}),
+The state is constrained by the uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$~\cite{robertson1929,schrodinger1930}, where $\sigma_x, \sigma_p$ are the standard deviations of position and momentum. De Gosson measures phase-space regions by their symplectic capacity~\cite{degosson2009camel}. The state's covariance ellipsoid, with semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$, has symplectic capacity $\pi \Delta x \Delta p$, the action capacity of the state. The ellipsoid is its Heisenberg cell (Figs.~\ref{fig:zurek_blobs},~\ref{fig:bitangent_blobs}),
 \begin{equation}
 A = \pi\,\Delta x\,\Delta p \ge h/2.
 \label{eq:extended_cell}
@@ -145,7 +145,11 @@ $\widetilde W$ has structure at the characteristic scale of the quorum cell $\ti
 \end{equation}
 The quorum cell is the common interior of the bitangent family, with $\tilde a = \pi\hbar^2/(\Delta x\,\Delta p)$. Zurek's scale $a_Z = \tilde a/\pi = \hbar^2/(\Delta x\,\Delta p)$ is the same scale recovered here from the symplectic geometry of the state.
 
-Without loss of generality, the treatment here addresses one spatial dimension with covariance ellipsoid aligned to principal axes. The construction extends to rotated ellipsoids through the symplectic covariance of the bitangent family~\cite{cordero2018}, and to higher dimensions through the symplectic capacity of the full Robertson--Schr\"odinger covariance ellipsoid~\cite{robertson1929,schrodinger1930,degosson2013qblobs}.
+Without loss of generality, the treatment here addresses one spatial dimension with covariance ellipsoid aligned to principal axes. The construction extends to rotated ellipsoids through the symplectic covariance of the bitangent family~\cite{cordero2018}, and to higher dimensions through the symplectic capacity of the full Robertson--Schr\"odinger covariance ellipsoid~\cite{robertson1929,schrodinger1930,degosson2013qblobs},
+\begin{equation}
+\sigma_x^2 \sigma_p^2 - \mathrm{Cov}(x,p)^2 \ge \left(\frac{\hbar}{2}\right)^2.
+\label{eq:rs}
+\end{equation}
 
 %===============================================================================
 %  NUMERICAL RESULTS
