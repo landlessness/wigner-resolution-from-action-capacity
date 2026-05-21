@@ -32,7 +32,7 @@
 \date{\today}
 
 \begin{abstract}
-Phase-space formulations of quantum mechanics usually ignore that resolution in the $(x,p)$ plane is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those negative values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as exactly the axes of de Gosson quantum blobs. Inscribed within the state's elliptical Heisenberg cell of action capacity $\pi \Delta x \Delta p$, these blobs form a family bitangent to the cell, deforming at constant action $h/2$. To enforce Planck's boundary from below, integrating convolutions of the Wigner function with this $h/2$ family yields a non-negative portrait with sub-Planck resolution $\pi\hbar^2/(\Delta x\,\Delta p)$, sharpening with capacity.
+Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those negative values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as exactly the axes of de Gosson quantum blobs. Inscribed within the state's elliptical Heisenberg cell of action capacity $\pi \Delta x \Delta p$, these blobs form a family bitangent to the cell, deforming at constant action $h/2$. To enforce Planck's boundary from below, integrating convolutions of the Wigner function with this $h/2$ family yields a non-negative portrait with sub-Planck resolution $\pi\hbar^2/(\Delta x\,\Delta p)$, sharpening with capacity.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -137,12 +137,12 @@ Integrating $P_\theta$ over the bitangent family gives the phase-space portrait 
 \end{equation}
 $P_\theta(x,p) \ge 0$ for every $\theta$, and a non-negative integrand integrates to a non-negative function. $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009}; the construction here convolves $W$ with $K_\theta$ and integrates over $\theta$.
 
-$\widetilde W$ has structure at the characteristic scale of the quorum cell $\tilde{a}$ (Fig.~\ref{fig:zurek_blobs}), an ellipse with semi-axes $\delta x$ and $\delta p$, named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001},
+$\widetilde W$ has structure at the characteristic scale of the quorum cell, named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}. The quorum cell is the common interior of the deforming bitangent family, an ellipse with semi-axes $\delta x$ and $\delta p$ and resolution $\tilde a = \pi\,\delta x\,\delta p$ (Fig.~\ref{fig:zurek_blobs}), equivalently
 \begin{equation}
 \tilde a = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
 \end{equation}
-The quorum cell is the common interior of the deforming bitangent family, with $\tilde a = \pi\,\delta x\,\delta p$. The structure is visible in column 5 of Figs.~\ref{fig:eigen} and~\ref{fig:cat}.
+The structures are visible in column 5 of Figs.~\ref{fig:eigen} and~\ref{fig:cat}.
 
 Without loss of generality, the treatment here addresses one spatial dimension with covariance ellipsoid aligned to principal axes. The construction extends to rotated ellipsoids through the symplectic covariance of the bitangent family~\cite{cordero2018}, and to higher dimensions through the symplectic capacity bounded by the Robertson--Schr\"odinger inequality~\cite{robertson1929,schrodinger1930,degosson2013qblobs},
 \begin{equation}
@@ -159,9 +159,9 @@ Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight st
 %  DISCUSSION
 % ===============================================================================
 
-The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the micro-to-macro transition Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The bitangent blob does not. Its action is $h/2$ across every $A \ge h/2$, and its resolution $\delta = \hbar/\Delta$ sharpens with capacity.
+The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the micro-to-macro transition Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The bitangent blob does not. Its action is $h/2$ across every $A \ge h/2$, and its resolution sharpens with capacity.
 
-Squeezing of experimental practice~\cite{walls1983} saturates the uncertainty product, $\sigma_x \sigma_p = \hbar/2$. This is action capacity feeding conjugate resolution, $\delta x = \hbar/\Delta p$. Capacity along one axis sets resolution along the other, $\Delta x$ to $\delta p$ and $\Delta p$ to $\delta x$.
+Squeezing of experimental practice~\cite{walls1983} saturates the uncertainty product, $\sigma_x \sigma_p = \hbar/2$. This is action capacity feeding conjugate resolution, $\delta = \hbar/\Delta$. Capacity along one axis sets resolution along the other, $\Delta x$ to $\delta p$ and $\Delta p$ to $\delta x$.
 
 A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, twenty-four orders of magnitude below the size of the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$.
 
