@@ -8,12 +8,16 @@ A state's covariance defines its Heisenberg cell
 the outer ellipse with capacity semi-axes (Δx, Δp), floored at the
 quantum of action by the uncertainty principle.
 
-Inscribed within A and bitangent to it is a one-parameter family of
-de Gosson quantum blobs a_θ of fixed action h/2, each parameterized by
-the quadrature angle θ. The semi-axes are reciprocal in ℏ,
-r_∥ r_⊥ = ℏ, with
+Bitangent to A is a one-parameter family of de Gosson quantum blobs
+a_θ of fixed action h/2, each parameterized by the quadrature angle θ.
+The semi-axes r_∥(θ), r_⊥(θ) are reciprocal in ℏ,
 
-    r_∥(θ) = sqrt(Δx² cos²θ + Δp² sin²θ),
+    r_∥(θ) r_⊥(θ) = ℏ.
+
+r_∥(θ) is the radial distance from the origin to the Heisenberg
+boundary along direction θ,
+
+    r_∥(θ) = Δx Δp / sqrt(Δp² cos²θ + Δx² sin²θ),
     r_⊥(θ) = ℏ / r_∥(θ).
 
 r_∥ runs along the quadrature direction at angle θ from the x-axis.
@@ -27,7 +31,7 @@ At those principal angles r_⊥ reduces to the Zurek scales
 
     δx = ℏ/Δp,  δp = ℏ/Δx.
 
-The quorum cell ã is the common interior of the bitangent family,
+The quorum cell ã is the symplectic polar dual of the Heisenberg cell,
 an axis-aligned ellipse with semi-axes
 
     (δx, δp) = (ℏ/Δp, ℏ/Δx),
@@ -37,11 +41,11 @@ with area
     π δx δp = π ℏ² / (Δx Δp),
 
 the resolution of the convolved portrait W̃. The quorum cell is not a
-member of the bitangent family; it is its own object, marking the inner
-envelope of the family integral. Zurek's interference scales
+member of the bitangent family; it is its own object, bitangent to the
+principal blobs of the family. Citation for polar duality: M. de Gosson
+and C. de Gosson, Symmetry 14, 1890 (2022). Zurek's interference scales
 δx = ℏ/Δp and δp = ℏ/Δx, derived in W. H. Zurek, Nature 412, 712 (2001),
-are recovered here as the resolutions along the principal axes of the
-quorum cell.
+are recovered here as the semi-axes of the quorum cell.
 """
 
 from __future__ import annotations
@@ -76,7 +80,7 @@ class HeisenbergCell:
 
 @dataclass(frozen=True)
 class BitangentBlob:
-    """One member a_θ of the bitangent family inscribed in a Heisenberg cell.
+    """One member a_θ of the bitangent family of a Heisenberg cell.
 
     A de Gosson quantum blob of fixed action h/2, bitangent to the
     Heisenberg cell. Oriented at quadrature angle θ from the x-axis.
@@ -107,11 +111,14 @@ class BitangentBlob:
 class QuorumCell:
     """The quorum cell ã with semi-axes (δx, δp) = (ℏ/Δp, ℏ/Δx).
 
-    Common interior of the bitangent family, an axis-aligned ellipse
-    with no rotation parameter. Not itself a member of the bitangent
-    family. Its semi-axes are Zurek's interference scales.
+    Symplectic polar dual of the Heisenberg cell, bitangent to the
+    principal blobs of the family. An axis-aligned ellipse with no
+    rotation parameter, not itself a member of the bitangent family.
+    Its semi-axes are Zurek's interference scales.
 
-    Reference for Zurek's scales: W. H. Zurek, Nature 412, 712 (2001).
+    Reference for polar duality: M. de Gosson and C. de Gosson,
+    Symmetry 14, 1890 (2022). Reference for Zurek's scales:
+    W. H. Zurek, Nature 412, 712 (2001).
     """
 
     delta_x: float
@@ -134,15 +141,18 @@ def bitangent_blob_at(
     heisenberg: HeisenbergCell,
     hbar: float = 1.0,
 ) -> BitangentBlob:
-    """The unique bitangent blob a_θ of action h/2 inscribed in `heisenberg`
-    at quadrature angle θ.
+    """The bitangent blob a_θ of action h/2 at quadrature angle θ
+    relative to `heisenberg`.
 
-    r_∥(θ) = sqrt(Δx² cos²θ + Δp² sin²θ).
-    r_⊥(θ) = ℏ / r_∥(θ).
+    r_∥(θ) is the radial distance from the origin to the Heisenberg
+    boundary along direction θ:
+
+        r_∥(θ) = Δx Δp / sqrt(Δp² cos²θ + Δx² sin²θ),
+        r_⊥(θ) = ℏ / r_∥(θ).
     """
-    r_par = np.sqrt(
-        (heisenberg.Delta_x * np.cos(theta)) ** 2
-        + (heisenberg.Delta_p * np.sin(theta)) ** 2
+    r_par = (heisenberg.Delta_x * heisenberg.Delta_p) / np.sqrt(
+        (heisenberg.Delta_p * np.cos(theta)) ** 2
+        + (heisenberg.Delta_x * np.sin(theta)) ** 2
     )
     r_perp = hbar / r_par
     return BitangentBlob(
@@ -173,8 +183,9 @@ def blob_a_zero(heisenberg: HeisenbergCell, hbar: float = 1.0) -> BitangentBlob:
 def quorum_cell(heisenberg: HeisenbergCell, hbar: float = 1.0) -> QuorumCell:
     """The quorum cell ã with semi-axes (ℏ/Δp, ℏ/Δx).
 
-    The common interior of the bitangent family inscribed in `heisenberg`.
-    Area ã = π ℏ²/(Δx Δp), the resolution of the convolved portrait W̃.
+    The symplectic polar dual of `heisenberg`, bitangent to the
+    principal blobs of the family. Area ã = π ℏ²/(Δx Δp), the
+    resolution of the convolved portrait W̃.
     """
     return QuorumCell(
         delta_x=hbar / heisenberg.Delta_p,
