@@ -50,14 +50,14 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/zurek_blobs.pdf}
-\caption{\textbf{Heisenberg cell, principal bitangent blobs, quorum cell.} The Heisenberg cell is the state's covariance ellipsoid, of action capacity $A = \pi \Delta x \Delta p \ge h/2$. The bitangent blob family of Fig.~\ref{fig:bitangent_blobs} has two members at the principal axes: $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ give both semi-axes of each blob exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor. The quorum cell $\tilde a$ is inscribed within both blobs and bitangent to each, an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \delta x \delta p \le h/2$. $\tilde{a}$ is the symplectic polar dual of $A$.}
+\caption{\textbf{Heisenberg cell, principal bitangent blobs, quorum cell.} The Heisenberg cell is the state's covariance ellipsoid, of action capacity $A = \pi \Delta x \Delta p \ge h/2$. The bitangent blob family of Fig.~\ref{fig:bitangent_blobs} has two members at the principal axes: $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ give both semi-axes of each blob exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor. The quorum cell $\tilde a$ is inscribed within both blobs and bitangent to each, an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \delta x \delta p \le h/2$. $\tilde{a}$ is the symplectic polar dual of $A$~\cite{degosson2022polar}.}
 \label{fig:zurek_blobs}
 \end{figure}
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/bitangent_blobs.pdf}
-\caption{\textbf{Quadrature family of bitangent blobs.} The blob $a_\theta$ is bitangent to both the Heisenberg cell $A$ and the quorum cell $\tilde a$, deforming across $\theta$ at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ of Fig.~\ref{fig:zurek_blobs}.}
+\caption{\textbf{Quadrature family of bitangent blobs.} The blob $a_\theta$ is bitangent to both the Heisenberg cell $A$ and its polar dual, the quorum cell $\tilde a$, deforming across $\theta$ at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ of Fig.~\ref{fig:zurek_blobs}.}
 \label{fig:bitangent_blobs}
 \end{figure}
 
@@ -92,15 +92,26 @@ Wigner negativity carries physical structure at small scales. Zurek located thes
 a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,\Delta p = h/2.
 \label{eq:principal_axis_cells}
 \end{equation}
-Zurek's relations give all four semi-axes exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor. Capacity and resolution are reciprocal at action $h/2$, the symplectic-camel principle of de Gosson~\cite{degosson2009camel,degosson2013qblobs}. The camel passes through the eye of the needle only by changing its shape.
 
-The principal blobs at $\theta = 0$ and $\theta = \pi/2$ are two members of a family that deforms across the quadrature angle $\theta$, the family's orientation parameter. At each $\theta \in [0,\pi)$, the blob $a_\theta$ is bitangent to the Heisenberg cell from within and to the quorum cell $\tilde a$ from without, the symplectic polar dual of $A$~\cite{degosson2022polar}.
+Zurek's relations give all four semi-axes exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor. Capacity and resolution are reciprocal at action $h/2$, the symplectic-camel principle of de Gosson~\cite{degosson2009camel,degosson2013qblobs}.
 
-Bitangency to both $A$ and $\tilde a$ at constant action determines the family up to the orientation $\theta$. At the principal angles, $\theta$ is the Euclidean angle of the blob's major axis from the $x$-axis; at intermediate angles, $\theta$ parameterizes the family's continuous rotation between these endpoints. The action is $h/2$ across every $\theta$ (Fig.~\ref{fig:bitangent_blobs}),
+Zurek located the sub-Planck action, $a_Z = 4\pi^2 \hbar^2/(\Delta x\,\Delta p)$, the rectangular chessboard tiles in the Wigner function~\cite{zurek2001}. We identify this scale as the symplectic polar dual of the Heisenberg cell~\cite{degosson2022polar}, the quorum cell $\tilde a$ named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}, with semi-axes $\delta x, \delta p$ and action
 \begin{equation}
-a_\theta = h/2.
-\label{eq:bitangent_blob}
+\tilde a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p},
+\label{eq:tildea}
 \end{equation}
+the elliptical rotationally invariant form of Zurek's rectangular tile. The Heisenberg cell and the quorum cell are reciprocal, $A\,\tilde a = (h/2)^2$.
+
+The principal blobs are members of a family that deforms across the orientation $\theta$. At each $\theta \in [0,\pi)$, the blob $a_\theta$ is bitangent to $A$ from within and to $\tilde a$ from without,
+\begin{equation}
+\begin{aligned}
+a_\theta = \Bigg\{ (x, p) : \;\;
+& \left(\tfrac{x\cos\theta}{\Delta x} + \tfrac{p\sin\theta}{\Delta p}\right)^{\!2} \\
+& {} + \tfrac{(\Delta x\,\Delta p)^2}{\hbar^2}\!\left(-\tfrac{x\sin\theta}{\Delta x} + \tfrac{p\cos\theta}{\Delta p}\right)^{\!2} \le 1 \Bigg\}.
+\end{aligned}
+\label{eq:atheta}
+\end{equation}
+The two squared terms are state-normalized homodyne quadratures at phase $\theta$, the conventional quadrature variables of optical tomography with the state's covariance widths absorbed into the scaling. The action is $h/2$ across every $\theta$.
 
 % ===============================================================================
 %  THE BOUNDARY AND THE KERNEL
@@ -111,7 +122,13 @@ The Wigner function of the state is
 W(x,p) = \frac{1}{\pi\hbar}\int \psi^*(x+s)\,\psi(x-s)\,e^{2ips/\hbar}\,ds.
 \label{eq:wigner}
 \end{equation}
-The Wigner function of the bitangent blob $a_\theta$ is the centered Gaussian $K_\theta$ of action $h/2$, its covariance ellipse coincident with $a_\theta$. The convolution of $W$ with $K_\theta$ is
+The Wigner function of the bitangent blob $a_\theta$ is the centered Gaussian whose covariance ellipse is $a_\theta$,
+\begin{multline}
+K_\theta(x, p) = \frac{1}{\pi\hbar}\exp\bigg[-\!\left(\tfrac{x\cos\theta}{\Delta x} + \tfrac{p\sin\theta}{\Delta p}\right)^{\!2} \\
+- \tfrac{(\Delta x\,\Delta p)^2}{\hbar^2}\!\left(-\tfrac{x\sin\theta}{\Delta x} + \tfrac{p\cos\theta}{\Delta p}\right)^{\!2} \bigg],
+\label{eq:Ktheta}
+\end{multline}
+of action $h/2$ by construction. The convolution of $W$ with $K_\theta$ is
 \begin{equation}
 P_\theta(x,p) = (W * K_\theta)(x,p).
 \label{eq:Ptheta}
@@ -126,16 +143,11 @@ Integrating $P_\theta$ over the bitangent family gives the phase-space portrait 
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi P_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
 \end{equation}
-$P_\theta(x,p) \ge 0$ for every $\theta$, and a non-negative integrand integrates to a non-negative function. $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009}; the construction here convolves $W$ with $K_\theta$ and integrates over $\theta$.
+$P_\theta \ge 0$ for every $\theta$; a non-negative integrand integrates to a non-negative function, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009}; the construction here convolves $W$ with $K_\theta$ and integrates over $\theta$.
 
-$\widetilde W$ has structure at the characteristic scale of the quorum cell $\tilde a$, named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}. Bitangent to every blob in the family from within, the quorum cell sets capacity along one axis equal to resolution along the other. It is an ellipse with semi-axes $\delta x$ and $\delta p$ and resolution $\tilde a = \pi\,\delta x\,\delta p$ (Fig.~\ref{fig:zurek_blobs}), equivalently
-\begin{equation}
-\tilde a = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
-\label{eq:tildea}
-\end{equation}
-The structures are visible in column 5 of Figs.~\ref{fig:eigen} and~\ref{fig:cat}. The Heisenberg cell and the quorum cell are reciprocal at action $h/2$, $A\,\tilde a = (h/2)^2$.
+$\widetilde W$ has structure at the characteristic scale of the quorum cell $\tilde a$ (Fig.~\ref{fig:zurek_blobs}), bitangent to every blob in the family from within. The structures are visible in column 5 of Figs.~\ref{fig:eigen} and~\ref{fig:cat}.
 
-Without loss of generality, the treatment here addresses one spatial dimension with covariance ellipsoid aligned to principal axes. The construction extends to rotated ellipsoids through the symplectic covariance of the bitangent family~\cite{cordero2018}, and to higher dimensions through the symplectic capacity bounded by the Robertson--Schr\"odinger inequality~\cite{robertson1929,schrodinger1930,degosson2013qblobs},
+The construction extends to rotated ellipsoids through the symplectic covariance of the bitangent family~\cite{cordero2018}, and to higher dimensions through the symplectic capacity bounded by the Robertson--Schr\"odinger inequality~\cite{robertson1929,schrodinger1930,degosson2013qblobs},
 \begin{equation}
 \sigma_x^2 \sigma_p^2 - \mathrm{Cov}(x,p)^2 \ge \left(\frac{\hbar}{2}\right)^2.
 \label{eq:rs}
@@ -152,7 +164,7 @@ Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight st
 
 The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the micro-to-macro transition Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The bitangent blob does not. Its action is $h/2$ across every $A \ge h/2$, and its resolution sharpens with capacity.
 
-Squeezing of experimental practice~\cite{walls1983} saturates the uncertainty product, $\sigma_x \sigma_p = \hbar/2$. This is action capacity feeding conjugate resolution, $\delta = \hbar/\Delta$. Capacity along one axis sets resolution along the other, $\Delta x$ to $\delta p$ and $\Delta p$ to $\delta x$.
+Squeezing of experimental practice~\cite{walls1983} saturates the uncertainty product, $\sigma_x \sigma_p = \hbar/2$. This is action capacity feeding conjugate resolution, $\delta = \hbar/\Delta$.
 
 A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, twenty-four orders of magnitude below the size of the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$.
 
@@ -163,7 +175,7 @@ Other paths to a non-negative Wigner function include covariance-matched general
 % ===============================================================================
 
 \begin{acknowledgments}
-This research received no external funding. Numerical computations were performed with QuTiP~\cite{qutip5} and SciPy~\cite{scipy}, and the code reproducing the numerical results of this article is openly available~\cite{zenododeposit}.
+This research received no external funding. Numerical computations used QuTiP~\cite{qutip5} and SciPy~\cite{scipy}; code is openly available~\cite{zenododeposit}.
 \end{acknowledgments}
 
 \bibliography{main}
