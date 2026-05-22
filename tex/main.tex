@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those negative values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as exactly the axes of de Gosson quantum blobs. Inscribed within the state's elliptical Heisenberg cell of action capacity $\pi \Delta x \Delta p$, these blobs form a family bitangent to the cell, deforming at constant action $h/2$. Convolving the Wigner function with this $h/2$ family and integrating over the family yields a non-negative portrait of resolution $\pi\hbar^2/(\Delta x\,\Delta p)$, the floor that symplectic polar duality sets on any non-negative portrait of the state.
+Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those negative values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as exactly the axes of de Gosson quantum blobs. Inscribed within the state's elliptical Heisenberg cell of action capacity $\pi \Delta x \Delta p$, these blobs form a family bitangent to the cell, deforming at constant action $h/2$. Convolving the Wigner function with this $h/2$ family and integrating over the family yields a non-negative portrait at resolution $\pi\hbar^2/(\Delta x\,\Delta p)$, the floor that symplectic polar duality sets on any non-negative portrait of the state.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -41,7 +41,7 @@ Phase-space formulations of quantum mechanics usually ignore that resolution is 
 % ===============================================================================
 %  OPENING
 % ===============================================================================
-The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. It is defined pointwise, below Planck's quantum of action, and Hudson's theorem forces it negative there~\cite{hudson1974}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and has been characterized by several quasi-probability measures~\cite{kenfack2004}. A non-negative portrait admits a literal probability interpretation in phase space~\cite{husimi1940,cartwright1976,dragoman2005phasespace,degosson2005bullsci} and supports classical sampling of quantum dynamics~\cite{polkovnikov2010}. This letter develops the non-negative portrait at the resolution permitted by the state's action capacity.
+The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. It is defined pointwise, below Planck's quantum of action, and Hudson's theorem forces it negative there~\cite{hudson1974}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and has been characterized by several quasi-probability measures~\cite{kenfack2004}. A non-negative portrait admits a literal probability interpretation in phase space~\cite{husimi1940,cartwright1976,dragoman2005phasespace,degosson2005bullsci} and supports classical sampling of quantum dynamics~\cite{polkovnikov2010}. This letter resolves the Wigner function at the floor set by the state's action capacity, the finest resolution a non-negative portrait admits.
 
 % ===============================================================================
 %  FIGURES
@@ -98,7 +98,7 @@ Zurek also located the scale $a_Z \sim \hbar^2/(\Delta x\,\Delta p)$ of the ches
 \tilde a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
 \end{equation}
-The quorum cell is not a region the state occupies. It is the resolution a quorum of $h/2$ blobs reaches together, each respecting the floor. Resolution and capacity are reciprocal at the quantum of action, $\delta x\,\Delta p = \delta p\,\Delta x = \hbar$ and $\tilde a\,A = (h/2)^2$.
+The quorum cell is not a region the state occupies. It is the resolution a quorum of $h/2$ blobs reaches together, each respecting the floor, and the finest a non-negative portrait of the state attains. Resolution and capacity are reciprocal at the quantum of action, $\delta x\,\Delta p = \delta p\,\Delta x = \hbar$ and $\tilde a\,A = (h/2)^2$.
 
 The principal blobs are members of a family that deforms across $\theta$.
 The quorum cell is the symplectic polar dual of the Heisenberg cell~\cite{degosson2022polar,degosson2024reconstruction}. Each blob $a_\theta$, $\theta \in [0,\pi)$, is bitangent to $A$ from within and to
@@ -145,7 +145,7 @@ Integrating $P_\theta$ over the family gives the phase-space portrait of the sta
 \end{equation}
 $P_\theta \ge 0$ for every $\theta$, and a non-negative integrand integrates to a non-negative function, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}. The construction here convolves $W$ with $K_\theta$ and integrates over $\theta$.
 
-The resolution $\tilde a$ is the floor. A non-negative portrait of $W$ is a convolution with a kernel of action at least $h/2$~\cite{cartwright1976,degosson2005bullsci}. Matched to the state, such a kernel contains a quantum blob, bitangent to the quorum cell from without, $\tilde a \subseteq a_\theta$. By the anti-monotonicity of symplectic polar duality~\cite{degosson2022polar,degosson2024reconstruction}, no non-negative portrait of the state resolves finer than $\tilde a$. The portrait $\widetilde W$ attains it.
+The resolution $\tilde a$ is the floor. A non-negative portrait of the state convolves $W$ with a kernel of action at least $h/2$~\cite{cartwright1976,degosson2005bullsci}, and the smallest such kernel is the quantum blob, bitangent to the quorum cell from without, $\tilde a \subseteq a_\theta$. Symplectic polar duality is anti-monotone~\cite{degosson2022polar,degosson2024reconstruction}, so no non-negative portrait resolves finer than $\tilde a$. The portrait $\widetilde W$ attains it.
 
 The construction extends to rotated ellipsoids through the symplectic covariance of the family~\cite{cordero2018}. In higher dimensions symplectic capacity and volume diverge, and the action capacity is bounded by the Robertson--Schr\"odinger inequality~\cite{robertson1929,schrodinger1930,degosson2013qblobs}. The construction there remains for future work.
 
@@ -154,7 +154,7 @@ Other non-negative portraits carry a free parameter, covariance-matched generali
 %===============================================================================
 %  NUMERICAL RESULTS
 %===============================================================================
-Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight states. $\widetilde W$ is non-negative across all eight. The positive lobes of $W$ in column 1 reappear in $\widetilde W$ in column 5, in the same count and location, resolved at the scale of the quorum cell $\tilde a$. Every member of the family is a de Gosson quantum blob of action $h/2$, verified numerically across $\theta$ and across the eight states~\cite{zenododeposit}.
+Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight states. $\widetilde W$ is non-negative across all eight, resolved at the floor $\tilde a$. The positive lobes of $W$ in column 1 reappear in $\widetilde W$ in column 5, in the same count and location. Every member of the family is a de Gosson quantum blob of action $h/2$, verified numerically across $\theta$ and across the eight states~\cite{zenododeposit}.
 
 % ===============================================================================
 %  DISCUSSION
@@ -165,7 +165,7 @@ Bohr~\cite{bohr1928} identified as requiring special care. The quantum
 blob does not. As $A$ grows, the action of $a_\theta$ is fixed at $h/2$,
 the resolution $\delta = \hbar/\Delta$ sharpening with capacity.
 Squeezing~\cite{walls1983} reaches the same reciprocity at
-$\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, twenty-four orders of magnitude below the size of the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. The scales called sub-Planck are Planckian by construction, bounded at $h/2$ with resolution set by the state's action capacity.
+$\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, twenty-four orders of magnitude below the size of the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. The scales called sub-Planck are Planckian by construction, the floor that action capacity sets on the resolution of the state.
 
 % ===============================================================================
 %  DATA AVAILABILITY
