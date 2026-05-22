@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those negative values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as exactly the axes of de Gosson quantum blobs. Inscribed within the state's elliptical Heisenberg cell of action capacity $\pi \Delta x \Delta p$, these blobs form a family bitangent to the cell, deforming at constant action $h/2$. Convolving the Wigner function with this $h/2$ family and integrating over the family lifts the resolution to Planck's floor and yields a non-negative portrait of resolution $\pi\hbar^2/(\Delta x\,\Delta p)$, sharpening with capacity.
+Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those negative values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as exactly the axes of de Gosson quantum blobs. Inscribed within the state's elliptical Heisenberg cell of action capacity $\pi \Delta x \Delta p$, these blobs form a family bitangent to the cell, deforming at constant action $h/2$. Convolving the Wigner function with this $h/2$ family and integrating over the family yields a non-negative portrait of resolution $\pi\hbar^2/(\Delta x\,\Delta p)$, the floor that symplectic polar duality sets on any non-negative portrait of the state.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -145,9 +145,11 @@ Integrating $P_\theta$ over the family gives the phase-space portrait of the sta
 \end{equation}
 $P_\theta \ge 0$ for every $\theta$, and a non-negative integrand integrates to a non-negative function, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}. The construction here convolves $W$ with $K_\theta$ and integrates over $\theta$.
 
+The resolution $\tilde a$ is the floor. A non-negative portrait of $W$ is a convolution with a kernel of action at least $h/2$~\cite{cartwright1976,degosson2005bullsci}. Matched to the state, such a kernel contains a quantum blob, bitangent to the quorum cell from without, $\tilde a \subseteq a_\theta$. By the anti-monotonicity of symplectic polar duality~\cite{degosson2022polar,degosson2024reconstruction}, no non-negative portrait of the state resolves finer than $\tilde a$. The portrait $\widetilde W$ attains it.
+
 The construction extends to rotated ellipsoids through the symplectic covariance of the family~\cite{cordero2018}. In higher dimensions symplectic capacity and volume diverge, and the action capacity is bounded by the Robertson--Schr\"odinger inequality~\cite{robertson1929,schrodinger1930,degosson2013qblobs}. The construction there remains for future work.
 
-Other non-negative portraits carry a free parameter, covariance-matched generalized Husimi smoothing~\cite{husimi1940,cartwright1976} and the Cahill--Glauber $s$-ordered family~\cite{cahillglauber1969}, reaching scales near the state's capacity or resolution, coincident at $A \sim h/2$. Whether matching that parameter to the state yields the sharpest non-negative portrait is an open question.
+Other non-negative portraits carry a free parameter, covariance-matched generalized Husimi smoothing~\cite{husimi1940,cartwright1976} and the Cahill--Glauber $s$-ordered family~\cite{cahillglauber1969}, reaching scales near the state's capacity or resolution, coincident at $A \sim h/2$. Whether their free parameter, matched to the state, saturates the floor $\tilde a$ is an open question.
 
 %===============================================================================
 %  NUMERICAL RESULTS
