@@ -50,14 +50,14 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/zurek_blobs.pdf}
-\caption{\textbf{Heisenberg cell, principal bitangent blobs, quorum cell.} The Heisenberg cell is the state's covariance ellipsoid, of action capacity $A = \pi \Delta x \Delta p \ge h/2$. The bitangent blob family of Fig.~\ref{fig:bitangent_blobs} has two members at the principal axes: $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ give both semi-axes of each blob exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor. The quorum cell $\tilde a$ is inscribed within both blobs and bitangent to each, an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \delta x \delta p$. $\tilde{a}$ is the symplectic polar dual of $A$~\cite{degosson2022polar}.}
+\caption{\textbf{Heisenberg cell, principal bitangent blobs, quorum cell.} The Heisenberg cell is the state's covariance ellipsoid, of action capacity $A = \pi \Delta x \Delta p \ge h/2$. The bitangent blob family of Fig.~\ref{fig:bitangent_blobs} has two members at the principal axes: $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ give both semi-axes of each blob exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor. The quorum cell $\tilde a$ is inscribed within both blobs and bitangent to each, an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \delta x \delta p$. $\tilde{a}$ is the symplectic polar dual of $A$.}
 \label{fig:zurek_blobs}
 \end{figure}
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/bitangent_blobs.pdf}
-\caption{\textbf{Quadrature family of bitangent blobs.} The blob $a_\theta$ is bitangent to both the Heisenberg cell $A$ and its polar dual, the quorum cell $\tilde a$, deforming across $\theta$ at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ of Fig.~\ref{fig:zurek_blobs}.}
+\caption{\textbf{Quadrature family of bitangent blobs.} The blob $a_\theta$ is bitangent to both the Heisenberg cell $A$ and its symplectic polar dual, the quorum cell $\tilde a$, deforming across $\theta$ at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ of Fig.~\ref{fig:zurek_blobs}.}
 \label{fig:bitangent_blobs}
 \end{figure}
 
@@ -94,14 +94,14 @@ a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,
 \end{equation}
 Zurek's relations give all four semi-axes exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor.
 
-Zurek also located the scale $a_Z \sim \hbar^2/(\Delta x\,\Delta p)$ of the chessboard structure in the compass state (Fig.~\ref{fig:cat}, column 1)~\cite{zurek2001}. Its rotationally invariant form is the quorum cell $\tilde a$, the polar dual of the Heisenberg cell~\cite{degosson2022polar}. Named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}, $\tilde a$ is the ellipse with semi-axes $\delta x, \delta p$ and action
+Zurek also located the scale $a_Z \sim \hbar^2/(\Delta x\,\Delta p)$ of the chessboard structure in the compass state (Fig.~\ref{fig:cat}, column 1)~\cite{zurek2001}. Its rotationally invariant form is the quorum cell $\tilde a$. Named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}, $\tilde a$ is the ellipse with semi-axes $\delta x, \delta p$ and action
 \begin{equation}
 \tilde a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
 \end{equation}
-The quorum cell is not a region the state occupies. It is the resolution a quorum of $h/2$ blobs reaches together, each respecting the floor. Capacity and resolution are reciprocal at the quantum of action. They obey $\delta\,\Delta = \hbar$ and $A\,\tilde a = (h/2)^2$.
+The quorum cell is not a region the state occupies. It is the resolution a quorum of $h/2$ blobs reaches together, each respecting the floor. Capacity and resolution are reciprocal at the quantum of action. They obey $\delta\,\Delta = \hbar$ and $\tilde a \, A = (h/2)^2$.
 
-The principal blobs are members of a family that deforms across $\theta$. In the rescaled coordinates $X = x/\Delta x$ and $P = p/\Delta p$, each blob $a_\theta$ with $\theta \in [0,\pi)$ is bitangent to $A$ from within and to $\tilde a$ from without (Fig.~\ref{fig:bitangent_blobs}),
+The principal blobs are members of a family that deforms across $\theta$. In the rescaled coordinates $X = x/\Delta x$ and $P = p/\Delta p$, each blob $a_\theta$ with $\theta \in [0,\pi)$ is bitangent to $A$ from within and to $\tilde a$ from without (Fig.~\ref{fig:bitangent_blobs}), the inclusion $\tilde a \subseteq a_\theta \subseteq A$ being the symplectic polar duality of the covariance ellipsoid~\cite{degosson2022polar,degosson2024reconstruction},
 \begin{equation}
 \begin{aligned}
 a_\theta = \Bigg\{ (X, P) : \;\;
@@ -142,7 +142,7 @@ Integrating $P_\theta$ over the family gives the phase-space portrait of the sta
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi P_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
 \end{equation}
-$P_\theta \ge 0$ for every $\theta$, and a non-negative integrand integrates to a non-negative function, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009}. The construction here convolves $W$ with $K_\theta$ and integrates over $\theta$.
+$P_\theta \ge 0$ for every $\theta$, and a non-negative integrand integrates to a non-negative function, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}. The construction here convolves $W$ with $K_\theta$ and integrates over $\theta$.
 
 The construction extends to rotated ellipsoids through the symplectic covariance of the family~\cite{cordero2018}, and to higher dimensions through the symplectic capacity bounded by the Robertson--Schr\"odinger inequality~\cite{robertson1929,schrodinger1930,degosson2013qblobs},
 \begin{equation}
@@ -158,9 +158,9 @@ Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight st
 % ===============================================================================
 %  DISCUSSION
 % ===============================================================================
-The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the micro-to-macro transition Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The bitangent blob does not. Its action is $h/2$ across every $A \ge h/2$, and its resolution sharpens with capacity.
+The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the micro-to-macro transition Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring special care. The bitangent blob does not. Its action is $h/2$ across every $A \ge h/2$, and its resolution sharpens with capacity, $\delta = \hbar/\Delta$.
 
-Squeezing of experimental practice~\cite{walls1983} saturates the uncertainty product, $\sigma_x \sigma_p = \hbar/2$. This is action capacity feeding conjugate resolution, $\delta = \hbar/\Delta$.
+Squeezing of experimental practice~\cite{walls1983} saturates the uncertainty product, $\sigma_x \sigma_p = \hbar/2$. This is action capacity feeding conjugate resolution, $\Delta = \hbar/\delta$.
 
 A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, twenty-four orders of magnitude below the size of the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$.
 
