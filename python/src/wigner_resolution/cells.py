@@ -45,6 +45,17 @@ blob's principal axes are tilted off Euclidean θ; the orientation
 parameter θ continuously interpolates between the two principal
 endpoints. Reference for Zurek's scales: W. H. Zurek, Nature 412,
 712 (2001).
+
+A note on "quantum blob" as a symplectic statement. Calling a_θ a de
+Gosson quantum blob means its symplectic capacity equals πℏ = h/2 and
+it is self-dual under symplectic polar duality (de Gosson & de Gosson
+2022), not merely that its Euclidean area is h/2. In one degree of
+freedom the symplectic capacity of a planar ellipse equals its area,
+so the reciprocal-axes identity r_∥ r_⊥ = ℏ enforced below is exactly
+the quantum-blob condition. The BitangentBlob.__post_init__ assertion
+is phrased as the symplectic capacity the manuscript claims; the full
+symplectic verification across θ and across the capacity range is in
+notebooks/verify_blobs.py.
 """
 
 from __future__ import annotations
@@ -108,12 +119,29 @@ class BitangentBlob:
         """a_θ = π r_∥ r_⊥ = h/2 (always)."""
         return np.pi * self.r_parallel * self.r_perp
 
+    @property
+    def symplectic_capacity(self) -> float:
+        """Symplectic capacity of the blob, c(a_θ).
+
+        For a planar ellipse with principal semi-axes (r_∥, r_⊥) the
+        symplectic capacity equals the Euclidean area π r_∥ r_⊥; in one
+        degree of freedom symplectic capacity and area coincide. A de
+        Gosson quantum blob has c = πℏ = h/2.
+        """
+        return np.pi * self.r_parallel * self.r_perp
+
     def __post_init__(self) -> None:
-        product = self.r_parallel * self.r_perp
-        if not np.isclose(product, self.hbar, rtol=1e-10):
+        # Symplectic blob condition: c(a_θ) = πℏ = h/2. In 1 DOF this
+        # equals the Euclidean area, so enforcing it is equivalent to the
+        # reciprocal-axes identity r_∥ r_⊥ = ℏ, but stated as the symplectic
+        # capacity the manuscript actually claims. The full symplectic
+        # verification across θ and capacity is in notebooks/verify_blobs.py.
+        capacity = np.pi * self.r_parallel * self.r_perp
+        if not np.isclose(capacity, np.pi * self.hbar, rtol=1e-10):
             raise ValueError(
-                f"Reciprocal-axes identity violated: "
-                f"r_∥·r_⊥ = {product:.6g} ≠ ℏ = {self.hbar}"
+                f"Symplectic capacity violated: "
+                f"c(a_θ) = π·r_∥·r_⊥ = {capacity:.6g} "
+                f"≠ πℏ = h/2 = {np.pi * self.hbar:.6g}"
             )
 
 

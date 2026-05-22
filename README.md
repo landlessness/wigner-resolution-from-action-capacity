@@ -23,7 +23,7 @@ schematic figures, and the LaTeX source of the manuscript.
     - `systems/` — the eight states used in the paper (squeezed vacuum, harmonic, Morse, double-well, cat states)
     - `figures/` — panel construction, grid layout, overlay graphics
     - `plotstyle.py`, `ticks.py` — Matplotlib styling
-  - `notebooks/` — one script per data figure (`render_eigen.py`, `render_cat.py`)
+  - `notebooks/` — one script per data figure (`render_eigen.py`, `render_cat.py`) plus the symplectic verification (`verify_blobs.py`)
 - `omnigraffle/` — OmniGraffle source for the schematic figures
   - `heisenberg_cells.graffle` — schematic of the Heisenberg cell, bitangent blobs, and quorum cell
   - `equations.tex` and friends — LaTeX-rendered equations exported as SVG for use inside OmniGraffle
@@ -49,6 +49,45 @@ uv run python notebooks/render_cat.py
 ```
 
 Each script writes its figure to `tex/figures/`, where `main.tex` includes it.
+
+## Verifying the symplectic blob property
+
+The manuscript identifies the bitangent family `a_θ` as a family of *de Gosson
+quantum blobs* — a symplectic statement: each `a_θ` has symplectic capacity
+`πℏ = h/2` and is self-dual under the symplectic polar duality of de Gosson &
+de Gosson, *Symmetry* **14**, 1890 (2022). In one degree of freedom the
+symplectic capacity of a planar ellipse equals its Euclidean area, so the
+reciprocal-axes identity `r_∥ · r_⊥ = ℏ` enforced in `cells.py` is exactly the
+quantum-blob condition.
+
+`notebooks/verify_blobs.py` checks this directly at the symplectic level —
+computing the symplectic capacity and symplectic eigenvalue of `a_θ` from its
+covariance via `J Σ`, rather than relying on the Euclidean proxy — across a
+dense sweep in `θ ∈ [0, π)` and across the capacity range `A/(h/2) ∈ [1, 70]`.
+It confirms:
+
+1. the symplectic capacity of `a_θ` equals `h/2` for every `θ`;
+2. the symplectic eigenvalue equals `ℏ/2` for every `θ` (the self-duality /
+   quantum-blob condition);
+3. the capacity is `θ`-independent (constant action across the family);
+4. the kernel `K_θ` (`kernels.py`) and the cell `a_θ` (`cells.py`) describe the
+   same ellipse;
+5. `a_θ` is bitangent to the Heisenberg cell `A` (inscribed) and to the quorum
+   cell `ã` (circumscribed).
+
+Run it:
+
+```bash
+cd python
+uv run python notebooks/verify_blobs.py
+```
+
+The script fails fast: it prints a per-regime table and exits non-zero on any
+violation, so it can be wired into CI. A passing run reports symplectic
+capacity `π` (= `h/2` in the paper's `ℏ = 1` units) constant to floating-point
+tolerance at every `θ` and every capacity, confirming that every member of the
+family is a genuine symplectic quantum blob — not merely an area-`h/2` ellipse
+coinciding with a blob at the principal angles.
 
 ## Building the manuscript
 
