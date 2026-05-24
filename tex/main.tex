@@ -62,8 +62,15 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 
 \begin{figure*}[!tp]
 \centering
+\includegraphics[width=\textwidth]{figures/harmonic.pdf}
+\caption{\textbf{Harmonic oscillator.} The four states are the Fock states $n = 0, 1, 2$ and $20$, of action capacity $A/(h/2) = 2n+1$. The columns are as in Fig.~\ref{fig:eigen}. The vacuum ($n = 0$) is the Gaussian blob at $A = h/2$, where the Heisenberg cell and the quorum cell coincide. As $n$ grows the capacity grows and the quorum cell $\tilde a$ shrinks reciprocally, $\tilde a\,A = (h/2)^2$; at $n = 20$ the rings condense toward a classical energy trajectory and $\tilde a$ is a fine cell at the center. Column 1 carries the Heisenberg cell $A$ and quorum cell $\tilde a$ overlays; the quorum cell overlies the ring structure of the bare Wigner function, at the scale Zurek located, before any convolution. The portrait $\widetilde W$ (column 5) is non-negative throughout, resolved at the scale of $\tilde a$.}
+\label{fig:harmonic}
+\end{figure*}
+
+\begin{figure*}[!tp]
+\centering
 \includegraphics[width=\textwidth]{figures/eigen.pdf}
-\caption{\textbf{Squeezed vacuum and eigenstates.} The four states are the squeezed vacuum at $r = 0.5$, the harmonic Fock state at $n = 1$, the Morse eigenstate at $n = 8$, and the double-well eigenstate at $n = 5$. Column 1 shows the Wigner function $W(x, p)$, with the negativity visible as blue regions between the positive lobes and the Heisenberg cell $A$ and quorum cell $\tilde a$ overlaid. The quorum cell marks the resolution scale, drawn at the covariance center; for symmetric states it overlies the intrinsic structure directly. Column 2 shows the cross-section $W(x, 0)$, with its negative dips. Column 3 shows the bitangent kernel $K_{\pi/2}$, with the Heisenberg cell $A$ and bitangent blob $a_{\pi/2}$ overlaid, both set by the state's action capacity. Column 4 shows the convolved cross-section $P_{\pi/2}(x, 0)$ at quadrature angle $\theta = \pi/2$, non-negative across $x$, one member of the family. Column 5 shows the portrait $\widetilde W(x, p)$, the integral over the bitangent family across all angles, with the quorum cell $\tilde a$ and the Heisenberg cell $A$ overlaid. It is non-negative everywhere, with positive lobes in the same count and location as $W$, resolved at the scale of $\tilde a$.}
+\caption{\textbf{Squeezed vacuum, eigenstates, and the Kerr crescent.} The four states are the squeezed vacuum at $r = 0.5$, the Morse eigenstate at $n = 8$, the double-well eigenstate at $n = 5$, and the Kerr crescent, a coherent state sheared at constant photon number. Column 1 shows the Wigner function $W(x, p)$, with the negativity visible as blue regions between the positive lobes and the Heisenberg cell $A$ and quorum cell $\tilde a$ overlaid. The quorum cell overlies the state's finest structure in the bare Wigner function, before any convolution; it marks the resolution scale, drawn at the covariance center, so for symmetric states it sits on that structure directly, and for the asymmetric Morse and Kerr states it marks the scale while sitting at the centroid. The Kerr state is shown in the principal frame of its covariance, where the cell overlays are axis-aligned. Column 2 shows the cross-section $W(x, 0)$, with its negative dips. Column 3 shows the bitangent kernel $K_{\pi/2}$, with the Heisenberg cell $A$ and bitangent blob $a_{\pi/2}$ overlaid, both set by the state's action capacity. Column 4 shows the convolved cross-section $P_{\pi/2}(x, 0)$ at quadrature angle $\theta = \pi/2$, non-negative across $x$, one member of the family. Column 5 shows the portrait $\widetilde W(x, p)$, the integral over the bitangent family across all angles, with the quorum cell $\tilde a$ and the Heisenberg cell $A$ overlaid. It is non-negative everywhere, with positive lobes in the same count and location as $W$, resolved at the scale of $\tilde a$.}
 \label{fig:eigen}
 \end{figure*}
 
@@ -98,7 +105,7 @@ Zurek also located the scale $a_Z \sim \hbar^2/(\Delta x\,\Delta p)$ of the ches
 \tilde a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
 \end{equation}
-The quorum cell is the region the state occupies. It is the resolution a quorum of $h/2$ blobs reaches together, each respecting the floor, and the finest a non-negative portrait of the state attains. Resolution and capacity are reciprocal at the quantum of action, $\delta x\,\Delta p = \delta p\,\Delta x = \hbar$ and $\tilde a\,A = (h/2)^2$.
+The quorum cell $\tilde a$ is the scale of the state's finest structure, the interference detail Zurek located, present in the Wigner function before any construction (Figs.~\ref{fig:harmonic},~\ref{fig:eigen},~\ref{fig:cat}, column 1). No single measurement resolves it without crossing the floor. A quorum of $h/2$ blobs reaches it together, each respecting the floor. Resolution and capacity are reciprocal at the quantum of action, $\delta x\,\Delta p = \delta p\,\Delta x = \hbar$ and $\tilde a\,A = (h/2)^2$.
 
 The principal blobs are members of a family that deforms across $\theta$.
 The quorum cell $\tilde a$ is the symplectic polar dual of the Heisenberg cell $A$~\cite{degosson2022polar,degosson2024reconstruction}. Each blob $a_\theta$, $\theta \in [0,\pi)$, is inscribed in $A$. As a cell of action $h/2$ it circumscribes $\tilde a$ through the reciprocal product $\tilde a\,A = (h/2)^2$, $\tilde a \subseteq a_\theta \subseteq A$ (Fig.~\ref{fig:bitangent_blobs}),
@@ -110,7 +117,7 @@ a_\theta = \Bigg\{ (X, P) : \;\;
 \end{aligned}
 \label{eq:atheta}
 \end{equation}
-The two squared terms are the homodyne quadratures of optical tomography at phase $\theta$. In one degree of freedom the symplectic capacity of an ellipse equals its area, so each $a_\theta$ is a quantum blob and the action is $h/2$ across every $\theta$. The axis ratio is $A/(\pi\hbar)$, equal to one at minimum capacity and growing with $A$. The structure Zurek located is the symplectic polar dual of the action capacity, carried in the Wigner function before any construction, its scale that of the state itself (Figs.~\ref{fig:eigen},~\ref{fig:cat}, column 1).
+The two squared terms are the homodyne quadratures of optical tomography at phase $\theta$. In one degree of freedom the symplectic capacity of an ellipse equals its area, so each $a_\theta$ is a quantum blob and the action is $h/2$ across every $\theta$. The axis ratio is $A/(\pi\hbar)$, equal to one at minimum capacity and growing with $A$.
 
 % ===============================================================================
 %  THE BOUNDARY AND THE KERNEL
@@ -155,7 +162,7 @@ Other non-negative portraits carry a free parameter, covariance-matched generali
 %===============================================================================
 %  NUMERICAL RESULTS
 %===============================================================================
-Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight states. $\widetilde W$ is non-negative across all eight, resolved at the floor $\tilde a$. The positive lobes of $W$ in column 1 reappear in $\widetilde W$ in column 5, in the same count and location. Every member of the family is a de Gosson quantum blob of action $h/2$, verified numerically across $\theta$ and across the eight states~\cite{zenododeposit}.
+Figures~\ref{fig:harmonic},~\ref{fig:eigen}, and~\ref{fig:cat} show numerical results across twelve states. In column 1 the quorum cell $\tilde a$ overlies the finest structure of the bare Wigner function, the interference detail at the scale Zurek located, before any convolution. Convolving with the family then resolves the state to that same scale: $\widetilde W$ (column 5) is non-negative across all twelve, resolved at the floor $\tilde a$, with the positive lobes of $W$ reappearing in the same count and location. Every member of the family is a de Gosson quantum blob of action $h/2$, verified numerically across $\theta$ and across the twelve states~\cite{zenododeposit}.
 
 % ===============================================================================
 %  DISCUSSION
@@ -163,10 +170,11 @@ Figures~\ref{fig:eigen} and~\ref{fig:cat} show numerical results across eight st
 The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the
 micro-to-macro transition Heisenberg~\cite{heisenberg1927} and
 Bohr~\cite{bohr1928} identified as requiring special care. The quantum
-blob does not. As $A$ grows, the action of $a_\theta$ is fixed at $h/2$,
-the resolution $\delta = \hbar/\Delta$ sharpening with capacity.
+blob does not. As $A$ grows, the action of $a_\theta$ is fixed at $h/2$.
 Squeezing~\cite{walls1983} reaches the same reciprocity at
-$\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, twenty-four orders of magnitude below the size of the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. At the principal quadratures the scale called sub-Planck is the minor axis $\delta$ of an $h/2$ blob, fixed by the capacity $\Delta$ of the major axis. The finest resolution a non-negative Wigner function can reach is the quorum cell $\tilde a = \pi\hbar^2/(\Delta x\,\Delta p)$, the floor set by the action capacity of the state. When combined Zurek's scales and de Gosson's blobs point to the idea that the Heisenberg uncertainty pricnple is incomplete and that a certainty princple with resolution set by action capacity completes the picture of quantum mechanics from ground state to correspendonce principle.
+$\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, twenty-four orders of magnitude below the size of the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. The scale called sub-Planck is the minor axis $\delta$ of an $h/2$ blob.
+
+The structure of the negative Wigner function $W$ and its non-negative portrait $\widetilde W$ occur at the same scale, $\pi\hbar^2/(\Delta x\,\Delta p)$, set by the action capacity of the state. As the state grows, its capacity $\Delta$ widens and its resolution $\delta$ sharpens, reciprocal at the quantum of action $h$. The uncertainty principle is the capacity. Zurek's scales and de Gosson's quantum blobs are the resolution, the complement to the Heisenberg uncertainty principle.
 
 % ===============================================================================
 %  DATA AVAILABILITY
