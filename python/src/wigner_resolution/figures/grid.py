@@ -312,8 +312,8 @@ def assemble_grid_5col(
         # Col 1: no overlays.
         wigner_heatmap(
             ax_h, state,
-            show_heisenberg=False, show_bitangent=False,
-            show_quorum=False,
+            show_heisenberg=True, show_bitangent=False,
+            show_quorum=True,
         )
         ax_h.set_aspect("equal", adjustable="box")
 
