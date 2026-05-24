@@ -1,13 +1,29 @@
-"""Render the four-row eigenstates figure: 5 columns × 4 rows.
+"""Render the Cluster 2 figure: deformations and nonlinearities.
 
-Layout per row (same as the cat figure):
-  Col 1: W(x, p) — Wigner function, no overlays.
-  Col 2: W(x, 0) — Wigner cross-section.
-  Col 3: K_{π/2}(x, p) — bitangent kernel, with Heisenberg cell A and
-         bitangent blob a_{π/2} overlays.
-  Col 4: P_{π/2}(x, 0) — convolved cross-section.
-  Col 5: W̃(x, p) — convolved portrait, with Heisenberg cell A and
-         quorum cell ã overlays.
+Five columns x four rows, layout identical to the other data figures.
+This is the former eigen figure, recast as the "break the symmetry"
+cluster. The n=1 harmonic Fock state has moved to the baseline figure
+(render_harmonic.py); the fourth row is now the Kerr crescent.
+
+Order and narrative (systematically breaking the QHO's symmetry):
+  1. Squeezed ground state  — still Gaussian, rotational symmetry broken,
+                              the n=0 blob stretched along one axis.
+  2. Morse eigenstate       — spatial symmetry broken; an asymmetric,
+                              teardrop wavepacket in an uneven potential.
+  3. Double-well eigenstate — the wavepacket splits into two wells with
+                              faint inter-well interference: a spatial
+                              precursor to a cat.
+  4. Kerr crescent          — a coherent state sheared by H = chi n^2;
+                              the same Hamiltonian run to chi t = pi makes
+                              a cat, so the crescent is the dynamical
+                              bridge into Cluster 3.
+
+Takeaway: the state sets the shape of A, A sets a-tilde, and the shape of
+a-tilde matches the state's finest details.
+
+The Kerr state is rotated into its covariance principal frame so the
+overlay ellipses are axis-aligned (see systems/kerr.py); the theta
+integral in column 5 is rotation-invariant regardless.
 
 Output: tex/figures/eigen.pdf.
 """
@@ -19,7 +35,7 @@ from pathlib import Path
 from wigner_resolution.figures.grid import assemble_grid_5col, save_grid
 from wigner_resolution.plotstyle import use_prl_style
 from wigner_resolution.systems.double_well import double_well_state
-from wigner_resolution.systems.harmonic import harmonic_state
+from wigner_resolution.systems.kerr import kerr_state
 from wigner_resolution.systems.morse import morse_state
 from wigner_resolution.systems.squeezed_vacuum import squeezed_vacuum_state
 
@@ -30,16 +46,16 @@ use_prl_style(use_tex=True)
 
 states = [
     squeezed_vacuum_state(r=0.5),
-    harmonic_state(n=1),
     morse_state(n=8),
     double_well_state(n=5),
+    kerr_state(),
 ]
 
 row_labels = [
     r"Squeezed vacuum, $r = 0.5$",
-    r"Harmonic, $n = 1$",
     r"Morse, $n = 8$",
     r"Double-well, $n = 5$",
+    r"Kerr crescent",
 ]
 
 for s in states:
