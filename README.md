@@ -105,12 +105,13 @@ This release is archived on Zenodo: [10.5281/zenodo.20279094](https://doi.org/10
 
 Suggested citation:
 
-> Mulloy, B. S. (2026). *Code and figures for "Wigner Resolution from Action Capacity"* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.20279094
+> Mulloy, B. S. (2026). *Code and figures for "Wigner Resolution from Action Capacity"* (v1.2.3). Zenodo. https://doi.org/10.5281/zenodo.20279094
 
 A BibTeX entry is available from the Zenodo deposit page, or from the
 "Cite this repository" button on GitHub (populated from `CITATION.cff`).
 
-For citing the paper itself, see the published manuscript.
+For citing the paper itself, see the preprint (not yet peer-reviewed) on
+ResearchGate: https://www.researchgate.net/publication/405021611_Wigner_Resolution_from_Action_Capacity
 
 ## License
 
