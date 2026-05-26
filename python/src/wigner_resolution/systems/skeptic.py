@@ -65,7 +65,11 @@ CUBIC_GAMMA_DEFAULT = 0.25
 # x^3 doing almost nothing and the state near the vacuum. Without any
 # envelope every moment of exp(i gamma x^3)|0> diverges and no
 # covariance ellipse exists, so the envelope is what makes A well-defined.
-CUBIC_SQUEEZE_DEFAULT = -0.5
+# At r = -1.2 the action capacity (A/(h/2) ~ 26) is large enough that the
+# quorum cell is fine compared to the cubic ring spacing, so the portrait
+# resolves the rings boldly rather than blurring them; the negativity is
+# preserved (W_min ~ -0.10).
+CUBIC_SQUEEZE_DEFAULT = -1.2
 
 CUBIC_N_DEFAULT = 160
 
@@ -188,13 +192,13 @@ def thermal_state(
 # 3. Asymmetric cat: collinear, unequal-weight lobes
 # ===========================================================================
 
-ASYM_CAT_N_DEFAULT = 100
+ASYM_CAT_N_DEFAULT = 120
 
 
 def asymmetric_cat_state(
     *,
-    separation: float = 4.0,
-    weights: tuple[float, float, float] = (1.0, 0.55, 0.30),
+    separation: float = 6.0,
+    weights: tuple[float, float, float] = (1.0, 0.8, 0.6),
     name: str | None = None,
     hbar: float = 1.0,
     N: int = ASYM_CAT_N_DEFAULT,
@@ -208,6 +212,16 @@ def asymmetric_cat_state(
     between adjacent lobes set a finer scale. The symmetric cats of
     Cluster 3 lock these two scales together; this state separates them,
     testing whether a-tilde tracks the fringe spacing or the separation.
+
+    Scale. The separation is set to 6 (with gentler weights than the
+    extreme 1:0.55:0.30 of a minimal cat) so the action capacity is large
+    enough that adjacent lobes sit comfortably more than one quorum width
+    apart and the portrait resolves all three. This collinear cat is an
+    anisotropic state -- thin along x, extended along p -- so its
+    resolution along p (delta_p = hbar/Delta_x) is set by the narrow
+    x-width; a smaller separation would push the lobes within one quorum
+    width of each other and they would merge in the portrait, which is the
+    resolution limit rather than a failure of the construction.
 
     Orientation. The lobes are placed along p (not q) so that the
     interference fringes, which run perpendicular to the line of lobes,
@@ -238,12 +252,15 @@ def asymmetric_cat_state(
 # 4. Heavy-tailed state: cusped wavefunction, large finite <p^2>
 # ===========================================================================
 
-# Decay length of the symmetric exponential (cusp) wavefunction. A
-# smaller lambda sharpens the cusp and raises <p^2>, straining the
-# covariance ellipse. lambda = 1.0 keeps <p^2> large but finite and the
-# RS product comfortably above (hbar/2)^2; the off-page sweep lowers it
-# toward the strain limit.
-HEAVY_LAMBDA_DEFAULT = 1.0
+# Decay length of the symmetric exponential (cusp) wavefunction
+# psi(x) ~ exp(-|x|/lambda). For a pure exponential the action capacity
+# A = pi Delta_x Delta_p is INVARIANT under lambda (Delta_x scales as
+# lambda, Delta_p as 1/lambda, so the product is fixed): lambda only
+# rescales the state, it does not change A or the W -> W-tilde transform.
+# The displayed value lambda = 0.5 is therefore an aspect/axis-scaling
+# choice for the panels, not a structure-preservation one; the portrait
+# resolves the same fraction of the cusp's structure at every lambda.
+HEAVY_LAMBDA_DEFAULT = 0.5
 
 
 def heavy_tailed_state(
