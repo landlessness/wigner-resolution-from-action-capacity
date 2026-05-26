@@ -7,9 +7,9 @@ authors:
     orcid: "https://orcid.org/0000-0002-1803-3172"
     email: bmulloy@umich.edu
     affiliation: "Independent Researcher, Corktown, Detroit, Michigan, USA"
-version: "1.2.4"
+version: "1.2.5"
 date-released: "2026-05-26"
-license: [MIT, CC-BY-4.0]
+license: MIT
 repository-code: "https://github.com/landlessness/wigner-resolution-from-action-capacity"
 type: software
 keywords:
