@@ -84,7 +84,7 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 % ===============================================================================
 %  THE PHASE-SPACE CELLS
 % ===============================================================================
-The state is constrained by the uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$~\cite{robertson1929,schrodinger1930}, where $\sigma_x, \sigma_p$ are the standard deviations of position and momentum. The state's covariance ellipsoid, with semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$, has a symplectic capacity~\cite{degosson2009camel}, $\pi \, \Delta x\,\Delta p$, the action capacity of the state. The ellipsoid is its Heisenberg cell (Figs.~\ref{fig:zurek_blobs},~\ref{fig:bitangent_blobs}),
+Planck divided phase space into elementary regions of action~\cite{planck1906}. Heisenberg's uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$~\cite{robertson1929,schrodinger1930} fixes the limit. Geometrically, de Gosson gave this action region the form of the state's covariance ellipsoid, with symplectic capacity~\cite{degosson2009camel} $\pi \, \Delta x\,\Delta p$ and semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$. This is the Heisenberg cell of action capacity (Figs.~\ref{fig:zurek_blobs},~\ref{fig:bitangent_blobs}),
 \begin{equation}
 A = \pi\,\Delta x\,\Delta p \ge h/2.
 \label{eq:extended_cell}
@@ -181,7 +181,7 @@ blob does not. As $A$ grows, the action of $a_\theta$ is fixed at $h/2$.
 Squeezing~\cite{walls1983} reaches the same reciprocity at
 $\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, vastly smaller than the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. The scale called sub-Planck is the minor axis $\delta$ of an $h/2$ blob.
 
-The negative Wigner function $W$ and its non-negative portrait $\widetilde W$ have their structure at a single scale, set by the action capacity of the state. Heisenberg's product gives the capacity. Zurek's scales and de Gosson's quantum blobs give the resolution. As the action capacity grows to $\pi \, \Delta x \, \Delta p \ge h/2$ the resolution sharpens to $\pi\hbar^2/(\Delta x\,\Delta p) \le h/2$, a certainty complement to the uncertainty principle.
+The negative Wigner function $W$ and its non-negative portrait $\widetilde W$ have their structure at a single scale, set by the action capacity of the state. Heisenberg's product gives the capacity. Zurek's scales and de Gosson's quantum blobs give the resolution. As the action capacity grows to $\pi \, \Delta x \, \Delta p \ge h/2$ the resolution sharpens to $\pi\hbar^2/(\Delta x\,\Delta p) \le h/2$. The resolution $\tilde a \le h/2$, read from the other side, is the uncertainty principle $A \ge h/2$.
 
 \begin{acknowledgments}
 This research received no external funding. Numerical computations used QuTiP~\cite{qutip5} and SciPy~\cite{scipy}. Code is openly available~\cite{zenododeposit}.
