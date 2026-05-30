@@ -228,7 +228,7 @@ _DEFAULT_5COL_TITLES = (
     r"1. Wigner Portrait, $W$",
     r"2. Wigner Cross-Section, $W(x,0)$",
     r"3. Bitangent Kernel, $K_{\pi/2}$",
-    r"4. Convolved Cross-Section, $P_{\pi/2}(x,0)$",
+    r"4. Convolved Cross-Section, $\widetilde{W}_{\pi/2}(x,0)$",
     r"5. Convolved Portrait, $\widetilde{W}$",
 )
 
