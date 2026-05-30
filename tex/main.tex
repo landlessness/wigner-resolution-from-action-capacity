@@ -63,7 +63,7 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 \begin{figure*}[!tp]
 \centering
 \includegraphics[width=\textwidth]{figures/harmonic.pdf}
-\caption{\textbf{Harmonic oscillator.} Rows correspond to Fock states $n = 0, 1, 2, 20$ with action capacity $A/(h/2) = 2n+1$. Column 1: Wigner function $W(x, p)$ (negativity in blue) overlaid with the Heisenberg cell $A$ and quorum cell $\tilde a$. Centered at the covariance origin, $\tilde a$ outlines the finest structure (the Zurek scale) of the bare, unconvolved Wigner function. Column 2: Cross-section $W(x, 0)$ exhibiting negative dips. Column 3: Bitangent kernel $K_{\pi/2}$ overlaid with $A$ and the bitangent blob $a_{\pi/2}$ (action $h/2$, restoring resolution up to Planck's quantum of action). Column 4: Convolved cross-section $P_{\pi/2}(x, 0)$ at quadrature angle $\theta = \pi/2$, which is non-negative. Column 5: The portrait $\widetilde W(x, p)$, integrated over the bitangent family across all angles, overlaid with $A$ and $\tilde a$ (de Gosson's symplectic polar dual). It is everywhere non-negative, with positive lobes matching the count and position of those in $W$, resolved at scale $\tilde a$. For the vacuum ($n = 0$), $A$ and $\tilde a$ coincide as a Gaussian blob at $A = h/2$. As $n$ increases, $A$ grows and $\tilde a$ reciprocally shrinks ($\tilde a\,A = (h/2)^2$). At $n = 20$, the rings condense toward a classical energy trajectory, leaving $\tilde a$ as a fine central cell. Axes are in the oscillator scales $x_0 = \sqrt{\hbar/m\omega}$ and $p_0 = \sqrt{\hbar m\omega}$.}
+\caption{\textbf{Harmonic oscillator.} Rows correspond to Fock states $n = 0, 1, 2, 20$ with action capacity $A/(h/2) = 2n+1$. Column 1: Wigner function $W(x, p)$ (negativity in blue) overlaid with the Heisenberg cell $A$ and quorum cell $\tilde a$. Centered at the covariance origin, $\tilde a$ outlines the finest structure (the Zurek scale) of the bare, unconvolved Wigner function. Column 2: Cross-section $W(x, 0)$ exhibiting negative dips. Column 3: Bitangent kernel $K_{\pi/2}$ overlaid with $A$ and the bitangent blob $a_{\pi/2}$ (action $h/2$, restoring resolution up to Planck's quantum of action). Column 4: Convolved cross-section $\widetilde W_{\pi/2}(x, 0)$ at quadrature angle $\theta = \pi/2$, which is non-negative. Column 5: The portrait $\widetilde W(x, p)$, integrated over the bitangent family across all angles, overlaid with $A$ and $\tilde a$ (de Gosson's symplectic polar dual). It is everywhere non-negative, with positive lobes matching the count and position of those in $W$, resolved at scale $\tilde a$. For the vacuum ($n = 0$), $A$ and $\tilde a$ coincide as a Gaussian blob at $A = h/2$. As $n$ increases, $A$ grows and $\tilde a$ reciprocally shrinks ($\tilde a\,A = (h/2)^2$). At $n = 20$, the rings condense toward a classical energy trajectory, leaving $\tilde a$ as a fine central cell. Axes are in the oscillator scales $x_0 = \sqrt{\hbar/m\omega}$ and $p_0 = \sqrt{\hbar m\omega}$.}
 \label{fig:harmonic}
 \end{figure*}
 
@@ -99,39 +99,37 @@ a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,
 \label{eq:principal_axis_cells}
 \end{equation}
 Zurek's relations give all four semi-axes exactly. The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor.
-
-Between these principal members the family deforms across $\theta \in [0,\pi)$. In coordinates $X = x/\Delta x$ and $P = p/\Delta p$, where the Heisenberg cell is the unit disk, the blob is
+Between these principal members the blob $a_\theta$ deforms across $\theta \in [0,\pi)$, at constant action $h/2$. It is the image of a single rigid ellipse $\hat a_\theta$ under an unequal scaling,
 \begin{equation}
-\begin{aligned}
-a_\theta = \Bigg\{ (X, P) : \;\;
-& \left(X\cos\theta + P\sin\theta\right)^{2} \\
-& {} + \tfrac{A^2}{(\pi\hbar)^2}\!\left(-X\sin\theta + P\cos\theta\right)^{2} \le 1 \Bigg\}.
-\end{aligned}
+a_\theta = \left\{ (x, p) : (x/\Delta x,\, p/\Delta p) \in \hat a_\theta \right\}.
 \label{eq:atheta}
 \end{equation}
-The two squared terms are the homodyne quadratures of optical tomography at phase $\theta$. In one degree of freedom the symplectic capacity of an ellipse equals its area, so each $a_\theta$ is a quantum blob and the action is $h/2$ across every $\theta$. The axis ratio is $A/(\pi\hbar)$, equal to one at minimum capacity and growing with $A$.
+The rotated quadratures $X_\theta = X\cos\theta + P\sin\theta$ and $P_\theta = -X\sin\theta + P\cos\theta$ are the homodyne quadratures of optical tomography at phase $\theta$. In the scaled coordinates $\hat a_\theta$ is the rotation by $\theta$ of a single ellipse,
+\begin{equation}
+\hat a_\theta = \left\{ (X, P) : X_\theta^{2} + \tfrac{A^2}{(\pi\hbar)^2}\, P_\theta^{2} \le 1 \right\}.
+\label{eq:atheta_hat}
+\end{equation}
+In one degree of freedom the symplectic capacity of an ellipse equals its area, so each $a_\theta$ is a quantum blob. The axis ratio is $A/(\pi\hbar)$, one at minimum capacity and growing with $A$.
 
 % ===============================================================================
 %  THE KERNEL
 % ===============================================================================
-
 The Wigner function of the state is
 \begin{equation}
 W(x,p) = \frac{1}{\pi\hbar}\int \psi^*(x+s)\,\psi(x-s)\,e^{2ips/\hbar}\,ds.
 \label{eq:wigner}
 \end{equation}
 The Wigner function of the blob $a_\theta$ is the centered Gaussian whose covariance ellipse is $a_\theta$,
-\begin{multline}
-K_\theta(X, P) = \frac{1}{\pi\hbar}\exp\bigg[-\!\left(X\cos\theta + P\sin\theta\right)^{2} \\
-- \tfrac{A^2}{(\pi\hbar)^2}\!\left(-X\sin\theta + P\cos\theta\right)^{2} \bigg],
+\begin{equation}
+K_\theta(X, P) = \frac{1}{\pi\hbar}\exp\!\left[ -X_\theta^{2} - \tfrac{A^2}{(\pi\hbar)^2}\, P_\theta^{2} \right],
 \label{eq:Ktheta}
-\end{multline}
+\end{equation}
 of action $h/2$ by construction. The convolution of $W$ with $K_\theta$ is
 \begin{equation}
-P_\theta(x,p) = (W * K_\theta)(x,p).
-\label{eq:Ptheta}
+\widetilde W_\theta(x,p) = (W * K_\theta)(x,p).
+\label{eq:Wtheta}
 \end{equation}
-Convolving with a Gaussian of action $\ge h/2$ lifts $W$ up to Planck's quantum of action and yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,cordero2018}, so $P_\theta$ is non-negative everywhere.
+Convolving with a Gaussian of action $\ge h/2$ lifts $W$ up to Planck's quantum of action and yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,cordero2018}, so $\widetilde W_\theta$ is non-negative everywhere.
 
 %===============================================================================
 %  QUORUM CELL
@@ -146,12 +144,12 @@ $\tilde a$ is the scale of the state's finest structure in the bare Wigner funct
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
 % ===============================================================================
-Integrating $P_\theta$ over the family gives the phase-space portrait of the state at the resolution $\tilde a$,
+Integrating $\widetilde W_\theta$ over the family gives the phase-space portrait of the state at the resolution $\tilde a$,
 \begin{equation}
-\widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi P_\theta(x,p)\,d\theta.
+\widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi \widetilde W_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
 \end{equation}
-$P_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}. The construction here builds the non-negative portrait $\widetilde W$ instead.
+$\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}. The construction here builds the non-negative portrait $\widetilde W$ instead.
 
 The smallest kernel that yields a non-negative portrait is a quantum blob~\cite{cartwright1976,degosson2005bullsci,degosson2013qblobs}. A blob $a_\theta$ squeezed narrower than $\tilde a$, or stretched wider than $A$, is a blob of another state and portrays that state, not this one. Because every blob of this state contains the quorum cell, $\tilde a$ is the finest resolution any non-negative portrait attains, and the family reaches it across $\theta \in [0,\pi)$.
 
