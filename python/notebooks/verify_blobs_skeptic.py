@@ -1,4 +1,4 @@
-"""Verify the bitangent blobs for the Cluster 4 states (skeptic.py).
+"""Verify the quantum blobs for the Cluster 4 states (skeptic.py).
 
 This is the state-level companion to verify_blobs.py. Where that script
 checks the blob family {a_theta} over an abstract sweep of covariances

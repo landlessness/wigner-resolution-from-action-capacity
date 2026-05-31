@@ -3,8 +3,8 @@
 Layout per row (same as the eigen figure):
   Col 1: W(x, p) — Wigner function, no overlays.
   Col 2: W(x, 0) — Wigner cross-section.
-  Col 3: K_{π/2}(x, p) — bitangent kernel, with Heisenberg cell A and
-         bitangent blob a_{π/2} overlays.
+  Col 3: K_{π/2}(x, p) — quantum kernel, with Heisenberg cell A and
+         quantum blob a_{π/2} overlays.
   Col 4: P_{π/2}(x, 0) — convolved cross-section.
   Col 5: W̃(x, p) — convolved portrait, with Heisenberg cell A and
          quorum cell ã overlays.

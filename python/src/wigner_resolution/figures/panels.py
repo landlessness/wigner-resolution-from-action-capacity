@@ -4,8 +4,8 @@ Column 1: W(x, p) heatmap (diverging colormap), no overlays.
 Column 2: W(x, 0) cross-section — black line, red/blue fill.
 Column 3: K_{π/2}(x, p) heatmap with Heisenberg cell A and bitangent
           blob a_{π/2} overlays (sequential — upper half of the
-          diverging palette). The bitangent kernel: Wigner function of
-          the bitangent blob at θ = π/2.
+          diverging palette). The quantum kernel: Wigner function of
+          the quantum blob at θ = π/2.
 Column 4: P_{π/2}(x, 0) — non-negative, red fill.
 Column 5: W̃(x, p) = (1/N_θ) Σ P_θ — the convolved portrait, integral
           over the bitangent family across all angles, with the
@@ -73,7 +73,7 @@ def _draw_cells(
     """Overlay cells on a heatmap panel.
 
     `show_heisenberg` draws the Heisenberg cell A (semi-axes Δx, Δp).
-    `show_bitangent` draws the bitangent blob a_{π/2} (col 3).
+    `show_bitangent` draws the quantum blob a_{π/2} (col 3).
     `show_quorum` draws the quorum cell ã (col 5).
 
     All cells are anchored at `state.cell_center_x`.
@@ -195,7 +195,7 @@ def wigner_cross_section(
 
 
 # ---------------------------------------------------------------------------
-# Column 3: bitangent kernel K_{π/2}(x, p)
+# Column 3: quantum kernel K_{π/2}(x, p)
 # ---------------------------------------------------------------------------
 
 def bitangent_kernel_heatmap(
@@ -209,7 +209,7 @@ def bitangent_kernel_heatmap(
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
 ) -> None:
-    """Render the bitangent kernel K_θ(x, p) as a single-hue heatmap
+    """Render the quantum kernel K_θ(x, p) as a single-hue heatmap
     with cell overlays.
 
     The kernel is built at the same center as the cell overlays

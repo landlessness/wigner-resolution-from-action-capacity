@@ -4,7 +4,7 @@ Five columns x four rows. Layout per row identical to the eigen and cat
 figures:
   Col 1: W(x, p) with Heisenberg cell A and quorum cell a-tilde overlays.
   Col 2: W(x, 0) cross-section.
-  Col 3: K_{pi/2}(x, p) bitangent kernel, with A and a_{pi/2} overlays.
+  Col 3: K_{pi/2}(x, p) quantum kernel, with A and a_{pi/2} overlays.
   Col 4: P_{pi/2}(x, 0) convolved cross-section.
   Col 5: W-tilde(x, p) convolved portrait, with A and a-tilde overlays.
 

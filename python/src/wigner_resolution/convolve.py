@@ -2,7 +2,7 @@
 
 Convolving a Wigner function with a Gaussian of action ≥ h/2 yields a
 non-negative function (Cartwright, Physica A 83, 210 (1976); see also
-de Gosson 2005, Cordero et al. 2018). The bitangent kernel K_θ has
+de Gosson 2005, Cordero et al. 2018). The quantum kernel K_θ has
 action h/2 exactly, so P_θ ≥ 0 everywhere.
 """
 

@@ -55,7 +55,7 @@ def bitangent_blob_patch(
     linewidth: float = LINEWIDTH,
     **kwargs,
 ) -> Ellipse:
-    """Matplotlib ellipse patch for a bitangent blob a_θ rotated by θ."""
+    """Matplotlib ellipse patch for a quantum blob a_θ rotated by θ."""
     return Ellipse(
         xy=blob.center,
         width=2 * blob.r_parallel,

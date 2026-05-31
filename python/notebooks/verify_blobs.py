@@ -1,4 +1,4 @@
-"""Verify that every bitangent blob a_theta is a genuine de Gosson quantum blob.
+"""Verify that every quantum blob a_theta is a genuine de Gosson quantum blob.
 
 The manuscript calls the family {a_theta} a family of de Gosson quantum blobs
 of action h/2, bitangent to the Heisenberg cell A from within and to the

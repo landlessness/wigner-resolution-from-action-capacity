@@ -1,6 +1,6 @@
-"""The bitangent kernel family K_θ.
+"""The quantum kernel family K_θ.
 
-K_θ is the Wigner function of the bitangent blob a_θ: a centered
+K_θ is the Wigner function of the quantum blob a_θ: a centered
 two-dimensional Gaussian of action h/2, with covariance ellipse
 coincident with a_θ. Its non-negativity follows from being the Wigner
 function of a pure Gaussian state.
@@ -89,7 +89,7 @@ def K_theta_from_heisenberg(
     pp: np.ndarray,
     hbar: float = 1.0,
 ) -> np.ndarray:
-    """Convenience: build the bitangent blob a_θ inscribed in `heisenberg`,
+    """Convenience: build the quantum blob a_θ inscribed in `heisenberg`,
     then evaluate K_θ on (xx, pp)."""
     blob = bitangent_blob_at(theta, heisenberg, hbar=hbar)
     return K_theta_mesh(blob, xx, pp, hbar=hbar)

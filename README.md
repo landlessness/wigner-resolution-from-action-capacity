@@ -17,15 +17,15 @@ schematic figures, and the LaTeX source of the manuscript.
 
 - `python/` — Python project (managed with [uv](https://docs.astral.sh/uv/))
   - `src/wigner_resolution/` — reusable modules
-    - `cells.py`, `kernels.py`, `wigner.py` — phase-space cells, bitangent kernels, Wigner function
-    - `convolve.py` — bitangent-family convolution across the quadrature angle
+    - `cells.py`, `kernels.py`, `wigner.py` — phase-space cells, quantum kernels, Wigner function
+    - `convolve.py` — quantum blob family convolution across the quadrature angle
     - `quantum.py`, `state.py` — quantum-state representation
     - `systems/` — the eight states used in the paper (squeezed vacuum, harmonic, Morse, double-well, cat states)
     - `figures/` — panel construction, grid layout, overlay graphics
     - `plotstyle.py`, `ticks.py` — Matplotlib styling
   - `notebooks/` — one script per data figure (`render_eigen.py`, `render_cat.py`) plus the symplectic verification (`verify_blobs.py`)
 - `omnigraffle/` — OmniGraffle source for the schematic figures
-  - `heisenberg_cells.graffle` — schematic of the Heisenberg cell, bitangent blobs, and quorum cell
+  - `heisenberg_cells.graffle` — schematic of the Heisenberg cell, quantum blobs, and quorum cell
   - `equations.tex` and friends — LaTeX-rendered equations exported as SVG for use inside OmniGraffle
 - `tex/` — LaTeX manuscript source
   - `main.tex`, `main.bib` — manuscript and bibliography
@@ -52,7 +52,7 @@ Each script writes its figure to `tex/figures/`, where `main.tex` includes it.
 
 ## Verifying the symplectic blob property
 
-The manuscript identifies the bitangent family `a_θ` as a family of *de Gosson
+The manuscript identifies the quantum blob family `a_θ` as a family of *de Gosson
 quantum blobs* — a symplectic statement: each `a_θ` has symplectic capacity
 `πℏ = h/2` and is self-dual under the symplectic polar duality of de Gosson &
 de Gosson, *Symmetry* **14**, 1890 (2022). In one degree of freedom the
@@ -72,8 +72,7 @@ It confirms:
 3. the capacity is `θ`-independent (constant action across the family);
 4. the kernel `K_θ` (`kernels.py`) and the cell `a_θ` (`cells.py`) describe the
    same ellipse;
-5. `a_θ` is bitangent to the Heisenberg cell `A` (inscribed) and to the quorum
-   cell `ã` (circumscribed).
+5. the Heisenberg cell `A` circumscribes the quantum blobs `a_θ` and the quantum blobs circumscribe the quorum cell `ã`.
 
 Run it:
 

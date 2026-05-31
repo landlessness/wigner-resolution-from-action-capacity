@@ -1,4 +1,4 @@
-"""Phase-space cells: the Heisenberg cell A, the bitangent blobs a_θ,
+"""Phase-space cells: the Heisenberg cell A, the quantum blobs a_θ,
 and the quorum cell ã.
 
 A state's covariance defines its Heisenberg cell
@@ -179,7 +179,7 @@ def bitangent_blob_at(
     heisenberg: HeisenbergCell,
     hbar: float = 1.0,
 ) -> BitangentBlob:
-    """The bitangent blob a_θ at family-orientation angle θ.
+    """The quantum blob a_θ at family-orientation angle θ.
 
     Construction (affine pullback):
       1. In the disk frame where A is the unit disk and ã is the
@@ -230,7 +230,7 @@ def bitangent_blob_at(
 
 
 def blob_a_pi_half(heisenberg: HeisenbergCell, hbar: float = 1.0) -> BitangentBlob:
-    """The bitangent blob a_{π/2}: the family member at θ = π/2.
+    """The quantum blob a_{π/2}: the family member at θ = π/2.
 
     Semi-axes (r_∥, r_⊥) = (Δp, δx) = (Δp, ℏ/Δp), principal angle π/2.
     """
@@ -238,7 +238,7 @@ def blob_a_pi_half(heisenberg: HeisenbergCell, hbar: float = 1.0) -> BitangentBl
 
 
 def blob_a_zero(heisenberg: HeisenbergCell, hbar: float = 1.0) -> BitangentBlob:
-    """The bitangent blob a_{θ=0}: the family member at θ = 0.
+    """The quantum blob a_{θ=0}: the family member at θ = 0.
 
     Semi-axes (r_∥, r_⊥) = (Δx, δp) = (Δx, ℏ/Δx), principal angle 0.
     """

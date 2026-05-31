@@ -8,7 +8,7 @@ Three layouts:
 * ``assemble_grid_4col``: + the bitangent-kernel column.
 
 * ``assemble_grid_5col``: + the convolved portrait. Reads as a full
-  pipeline: Wigner function, cross-section, bitangent kernel,
+  pipeline: Wigner function, cross-section, quantum kernel,
   convolved cross-section, convolved portrait.
 
 All heatmap columns use ``aspect='equal'`` so cell ellipses keep their
@@ -113,7 +113,7 @@ def assemble_grid(
 _DEFAULT_4COL_TITLES = (
     "Wigner Function",
     "Wigner Cross-Section",
-    r"Bitangent Kernel, $\theta = \pi/2$",
+    r"Quantum Kernel, $\theta = \pi/2$",
     r"Convolved Cross-Section, $\theta = \pi/2$",
 )
 
@@ -227,7 +227,7 @@ def assemble_grid_4col(
 _DEFAULT_5COL_TITLES = (
     r"1. Wigner Portrait, $W$",
     r"2. Wigner Cross-Section, $W(x,0)$",
-    r"3. Bitangent Kernel, $K_{\pi/2}$",
+    r"3. Quantum Kernel, $K_{\pi/2}$",
     r"4. Convolved Cross-Section, $\widetilde{W}_{\pi/2}(x,0)$",
     r"5. Convolved Portrait, $\widetilde{W}$",
 )
@@ -256,7 +256,7 @@ def assemble_grid_5col(
     Layout per row, left to right:
       Col 1: W(x, p), no overlays.
       Col 2: W(x, 0).
-      Col 3: K_{π/2}(x, p) with Heisenberg cell A and bitangent blob
+      Col 3: K_{π/2}(x, p) with Heisenberg cell A and quantum blob
              a_{π/2} overlays.
       Col 4: P_{π/2}(x, 0).
       Col 5: W̃(x, p) with Heisenberg cell A and quorum cell ã overlays.
@@ -319,7 +319,7 @@ def assemble_grid_5col(
 
         wigner_cross_section(ax_w, state)
 
-        # Col 3: Heisenberg cell + bitangent blob a_{π/2}.
+        # Col 3: Heisenberg cell + quantum blob a_{π/2}.
         bitangent_kernel_heatmap(
             ax_k, state, theta=theta,
             show_heisenberg=show_heisenberg, show_bitangent=show_bitangent,
