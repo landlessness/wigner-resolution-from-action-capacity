@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as exactly the axes of de Gosson quantum blobs. Inscribed within the state's elliptical Heisenberg cell of action capacity $\pi \, \Delta x \, \Delta p$, these blobs form a family deforming at constant action $h/2$. Convolving the Wigner function with a single $h/2$ blob restores resolution to Planck's quantum of action and renders it non-negative. Integrating over the family reaches $\pi\hbar^2/(\Delta x\,\Delta p)$, the resolution symplectic polar duality sets on any non-negative portrait of the state, sharpening as the action capacity grows.
+Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as exactly the axes of de Gosson quantum blobs. The state's elliptical Heisenberg cell of action capacity $\pi \, \Delta x \, \Delta p$ circumscribes these blobs, a family deforming at constant action $h/2$. Convolving the Wigner function with a single $h/2$ blob restores resolution to Planck's quantum of action and renders it non-negative. Integrating over the family reaches $\pi\hbar^2/(\Delta x\,\Delta p)$, the resolution symplectic polar duality sets on any non-negative portrait of the state, sharpening as the action capacity grows.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -49,14 +49,14 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/principal_blobs.pdf}
-\caption{\textbf{Heisenberg cell, principal quantum blobs, and quorum cell.} The Heisenberg cell is the state's covariance ellipsoid with action capacity $A = \pi \, \Delta x \, \Delta p \ge h/2$. The quantum blob family (Fig.~\ref{fig:quantum_blobs}) has two members at the principal axes, $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ exactly define the semi-axes of each blob. The quorum cell $\tilde a$ is an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \, \delta x \, \delta p$, inscribed within both blobs.}
+\caption{\textbf{Heisenberg cell, principal quantum blobs, and quorum cell.} The Heisenberg cell is the state's covariance ellipsoid with action capacity $A = \pi \, \Delta x \, \Delta p \ge h/2$. The quantum blob family (Fig.~\ref{fig:quantum_blobs}) has two members at the principal axes, $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ exactly define the semi-axes of each blob. The quorum cell $\tilde a$ is an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \, \delta x \, \delta p$. Both blobs circumscribe it.}
 \label{fig:principal_blobs}
 \end{figure}
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/quantum_blobs.pdf}
-\caption{\textbf{Quadrature family of quantum blobs and quorum cell.} The blob $a_\theta$ is inscribed by the Heisenberg cell $A$ and circumscribes the quorum cell $\tilde a$, deforming across $\theta$ at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ from Fig.~\ref{fig:principal_blobs}.}
+\caption{\textbf{Quadrature family of quantum blobs and quorum cell.} The Heisenberg cell $A$ circumscribes the blob $a_\theta$, which circumscribes the quorum cell $\tilde a$. Across $\theta$ the blob deforms at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ from Fig.~\ref{fig:principal_blobs}.}
 \label{fig:quantum_blobs}
 \end{figure}
 
@@ -110,7 +110,7 @@ The rotated quadratures $X_\theta = X\cos\theta + P\sin\theta$ and $P_\theta = -
 \hat a_\theta = \left\{ (X, P) : X_\theta^{2} + \tfrac{A^2}{(\pi\hbar)^2}\, P_\theta^{2} \le 1 \right\}.
 \label{eq:atheta_hat}
 \end{equation}
-The blob $a_\theta$ is inscribed by the Heisenberg cell.
+The Heisenberg cell circumscribes the blob $a_\theta$.
 
 % ===============================================================================
 %  THE KERNEL
@@ -140,7 +140,7 @@ Zurek also located the scale $a_Z \sim \hbar^2/(\Delta x\,\Delta p)$ of the ches
 \tilde a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
 \end{equation}
-$\tilde a$ is the scale of the state's finest structure in the bare Wigner function (Figs.~\ref{fig:harmonic},~\ref{fig:eigen},~\ref{fig:cat}, column 1). The quorum cell is the symplectic polar dual of the Heisenberg cell $A$~\cite{degosson2022polar,degosson2024reconstruction}. Each blob $a_\theta$ circumscribes $\tilde a$, so $\tilde a \subseteq a_\theta \subseteq A$ (Fig.~\ref{fig:quantum_blobs}). A quorum of these blobs reaches $\tilde a$ together, each respecting $h/2$. Resolution and capacity are reciprocal at the quantum of action, $\tilde a\,A = (h/2)^2$.
+$\tilde a$ is the scale of the state's finest structure in the bare Wigner function (Figs.~\ref{fig:harmonic},~\ref{fig:eigen},~\ref{fig:cat}, column 1). The quorum cell is the symplectic polar dual of the Heisenberg cell $A$~\cite{degosson2022polar,degosson2024reconstruction}. The Heisenberg cell circumscribes each blob $a_\theta$, which circumscribes $\tilde a$, so $A \supseteq a_\theta \supseteq \tilde a$ (Fig.~\ref{fig:quantum_blobs}). A quorum of these blobs reaches $\tilde a$ together, each respecting $h/2$. Resolution and capacity are reciprocal at the quantum of action, $\tilde a\,A = (h/2)^2$.
 
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
