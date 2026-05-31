@@ -49,14 +49,14 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/principal_blobs.pdf}
-\caption{\textbf{Heisenberg cell, principal quantum blobs, and quorum cell.} The Heisenberg cell is the state's covariance ellipsoid with action capacity $A = \pi \, \Delta x \, \Delta p \ge h/2$. The quantum blob family (Fig.~\ref{fig:quantum_blobs}) has two members at the principal axes, $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ exactly define the semi-axes of each blob. The quorum cell $\tilde a$ is an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \, \delta x \, \delta p$. Both blobs circumscribe it.}
+\caption{\textbf{Heisenberg cell, principal quantum blobs, and quorum cell.} The Heisenberg cell is the state's covariance ellipsoid with action capacity $A = \pi \, \Delta x \, \Delta p \ge h/2$. The quantum blob family (Fig.~\ref{fig:quantum_blobs}) has two members at the principal axes, $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ exactly define the semi-axes of each blob. The quorum cell $\tilde a$ is an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \, \delta x \, \delta p$. $A$ circumscribes $a_{\theta=0}$ and $a_{\pi/2}$, which circumscribe $\tilde a$.}
 \label{fig:principal_blobs}
 \end{figure}
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/quantum_blobs.pdf}
-\caption{\textbf{Quadrature family of quantum blobs and quorum cell.} The Heisenberg cell $A$ circumscribes the blob $a_\theta$, which circumscribes the quorum cell $\tilde a$. Across $\theta$ the blob deforms at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ from Fig.~\ref{fig:principal_blobs}.}
+\caption{\textbf{Quadrature family of quantum blobs and quorum cell.} The Heisenberg cell $A$ circumscribes the quantum blob family $a_\theta$, which circumscribes the quorum cell $\tilde a$. Across $\theta$ it deforms at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ from Fig.~\ref{fig:principal_blobs}.}
 \label{fig:quantum_blobs}
 \end{figure}
 
@@ -155,12 +155,12 @@ $\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhe
 % ===============================================================================
 %  UNIQUENESS OF BLOBS TO STATE
 % ===============================================================================
-A blob too large for $A$ to circumscribe, or too small to circumscribe $\tilde a$, is a blob of another state and portrays that state, not this one. Because every blob of this state circumscribes the quorum cell, $\tilde a$ is the finest resolution any non-negative portrait attains, and the family reaches it across $\theta \in [0,\pi)$.
+A quantum blob $a_\theta$ too large for $A$ to circumscribe, or too small to circumscribe $\tilde a$, is a blob of another state and portrays that state, not this one. Because every blob of this state circumscribes the quorum cell, $\tilde a$ is the finest resolution any non-negative portrait attains, and the family reaches it across $\theta \in [0,\pi)$.
 
 %===============================================================================
 %  GENERALIZATION
 %===============================================================================
-The construction is stated in the principal frame, where the Heisenberg cell is axis-aligned. This costs no generality. The Wigner function transforms covariantly under the symplectic group~\cite{cordero2018}, so the map that diagonalizes a state's covariance carries it to this frame at preserved action. The Kerr crescent, a sheared coherent state, is resolved this way (Fig.~\ref{fig:eigen}). In one degree of freedom $A$ fixes the family uniquely. In higher dimensions, action $h/2$ no longer singles out a blob~\cite{degosson2013qblobs}, symplectic capacity and volume diverge, and the construction remains for future work.
+The construction is stated in the principal frame, where the Heisenberg cell is axis-aligned. This costs no generality. The Wigner function transforms covariantly under the symplectic group~\cite{cordero2018}, so the map that diagonalizes a state's covariance carries it to this frame at preserved action. The Kerr crescent, a sheared coherent state, is resolved this way (Fig.~\ref{fig:eigen}). In one degree of freedom, $A$ fixes the family uniquely. In higher dimensions, action $h/2$ no longer singles out a blob~\cite{degosson2013qblobs}, symplectic capacity and volume diverge, and the construction remains for future work.
 
 %===============================================================================
 %  DIFFERENTIATION
