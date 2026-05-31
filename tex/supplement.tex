@@ -12,10 +12,11 @@
 \usepackage[style=iso]{datetime2}
 \usepackage{FiraMono}
 \usepackage{tikz}
+\usepackage{hyperref}
 
 \AddToHook{shipout/background}{
   \begin{tikzpicture}[remember picture, overlay]
-    \node [rotate=-90, color=gray!80, font=\fontfamily{FiraMono-TLF}\selectfont\footnotesize] at ([xshift=-1.2cm]current page.east) {WORKING DRAFT \quad $\bullet$ \quad SUPPLEMENTAL MATERIAL \quad $\bullet$ \quad \DTMnow \quad $\bullet$ \quad doi.org/10.17605/OSF.IO/EV8H6 \quad $\bullet$ \quad Brian S. Mulloy \quad $\bullet$ \quad bmulloy@umich.edu};
+    \node [rotate=-90, color=gray!80, font=\fontfamily{FiraMono-TLF}\selectfont\footnotesize] at ([xshift=-1.2cm]current page.east) {WORKING DRAFT \quad $\bullet$ \quad SUPPLEMENTAL MATERIAL \quad $\bullet$ \quad \DTMnow \quad $\bullet$ \quad \href{https://doi.org/10.5281/zenodo.20279094}{doi.org/10.5281/zenodo.20279094} \quad $\bullet$ \quad Brian S. Mulloy \quad $\bullet$ \quad bmulloy@umich.edu};
   \end{tikzpicture}
 }
 % --------------------------------------------------------
@@ -29,7 +30,7 @@
 
 \begin{document}
 
-\title{Supplemental Material for\\``Wigner Resolution as the Reciprocal of Phase-Space Extent''}
+\title{Supplemental Material for\\``Wigner Resolution from Action Capacity''}
 
 \author{Brian S. Mulloy\orcidlink{0000-0002-1803-3172}}
 \email{bmulloy@umich.edu}
@@ -39,178 +40,232 @@
 \maketitle
 
 % ======================================================================
-% S1 --- Notation and conventions
+% S1 --- A Zurek--de Gosson--Mulloy dictionary
 % ======================================================================
 
-% ======================================================================
-% S1 --- Notation and conventions
-% ======================================================================
+\section{A Zurek--de Gosson--Mulloy dictionary}
+\label{sec:dictionary}
 
-\section{Notation and conventions}
-\label{sec:notation}
+The Letter fixes one notation. The same phase-space geometry appears in
+Zurek's account of sub-Planck structure \cite{zurek2001} and in de
+Gosson's symplectic treatment of indeterminacy
+\cite{degosson2026indeterminacy, degosson2022polar, degosson2013qblobs,
+degosson2005bullsci, degosson2009camel, degosson2024reconstruction},
+each under different symbols and different normalizations. This section
+maps the Letter's symbols onto theirs. The Letter sets the entries. Zurek
+and de Gosson reach well past the Letter, into decoherence, chaos,
+Donoho--Stark and Hardy inequalities, Mahler volume, and the John
+ellipsoid. Only the part of each work that the Letter's symbols name is
+recorded here.
 
-\subsection{Symbol system}
-\label{sec:symbols}
+\subsection{Conventions and the convention bridge}
+\label{sec:conventions}
 
-This Letter uses a single notation system internally. Phase space carries the metric
+The three works measure the same widths with three conventions. The
+Letter writes the covariance semi-axes as
 \begin{equation}
-ds^2 = \frac{dq^2}{q_0^2} + \frac{dp^2}{p_0^2}, \qquad q_0 \cdot p_0 = \hbar,
-\label{eq:metric}
+\Delta x = \sqrt{2}\,\sigma_x, \qquad \Delta p = \sqrt{2}\,\sigma_p,
+\label{eq:capacity_semiaxes}
 \end{equation}
-in which lengths, angles, and orientations are computed. The reference scales $q_0$ and $p_0$ are convention; their product is fixed by $\hbar$ \cite{degosson2013qblobs, degossoncharlyne2022}. All phase-space figures in this Letter and its supplement use the dimensionless coordinates $q/q_0$ and $p/p_0$.
-
-The state's covariance defines its \emph{extended cell}\footnote{Heisenberg cells are conventionally drawn as rectangles for visual simplicity; the correct symplectic-geometric object is an ellipsoid \cite{degosson2013qblobs, degossoncharlyne2022}. Throughout this Letter, ``cell'' denotes the ellipsoid.}, the phase-space ellipsoid with semi-axes $\Delta q$ and $\Delta p$ and area
+so that the Heisenberg cell is the state's covariance ellipse and its
+area equals the symplectic capacity. Zurek writes the widths as standard
+deviations, $L \simeq \sigma_x$ and $P \simeq \sigma_p$, defined from
+$L^2 \simeq \langle x^2\rangle - \langle x\rangle^2$ and
+$P^2 \simeq \langle p^2\rangle - \langle p\rangle^2$. The two scales
+differ by a fixed factor,
 \begin{equation}
-A = \pi \, \Delta q \, \Delta p \geq h/2.
-\label{eq:extended_cell}
+\Delta x = \sqrt{2}\,L, \qquad \Delta p = \sqrt{2}\,P .
+\label{eq:bridge_widths}
 \end{equation}
-Inscribed in the extended cell is a one-parameter family of \emph{squeezed cells}, parameterized by the orientation angle $\theta$ of the cell's long axis relative to the $q$-axis. Each squeezed cell has area exactly $h/2$:
+The Letter carries the area factor $\pi$ inside every cell, so the
+quantum of action reads $h/2 = \pi\hbar$. Zurek forms bare products,
+$A \simeq L \times P$, without the $\pi$. de Gosson measures a cell by
+its symplectic capacity $c$, normalized so that a quantum blob has
+$c = \pi\hbar = h/2$. Translating the action capacity across the three,
 \begin{equation}
-a = \pi \, \delta q \, \delta p = h/2,
-\label{eq:squeezed_cell}
+A \;=\; \pi\,\Delta x\,\Delta p \;=\; c(\Omega_\Sigma) \;=\; 2\pi\,\sigma_x\sigma_p \;=\; 2\pi\,(L \times P),
+\label{eq:bridge_capacity}
 \end{equation}
-with $\delta q$ and $\delta p$ the lengths of the cell's short and long semi-axes respectively. The semi-axes satisfy the polar-dual identity
-\begin{equation}
-\delta q \cdot \delta p = \hbar.
-\label{eq:polar_dual}
-\end{equation}
-The inscription condition --- the squeezed cell is tangent to the extended cell at the endpoints of its long axis --- determines the semi-axes from the extended cell's:
-\begin{equation}
-\delta q(\theta) = \hbar \sqrt{ \frac{\cos^2\theta}{\Delta q^2} + \frac{\sin^2\theta}{\Delta p^2} }, \qquad \delta p(\theta) = \frac{\hbar}{\delta q(\theta)}.
-\label{eq:semi_axes_theta}
-\end{equation}
-The squeezed cells at $\theta = 0$ and $\theta = \pi/2$ are denoted $a_p$ and $a_q$ respectively.
+where $\Omega_\Sigma$ is de Gosson's covariance ellipsoid and $L\times P$
+is Zurek's action.
 
-\subsection{Notation in the literature}
-\label{sec:translation}
+One symbol collides across the three works and is worth flagging. In the
+Letter $X$ and $P$ are the scaled coordinates $X = x/\Delta x$,
+$P = p/\Delta p$, and $X_\theta, P_\theta$ are the rotated quadratures.
+In Zurek $P$ is the momentum width and $L$ the position width. In de
+Gosson $X \subset \mathbb{R}^n_x$ and $P \subset \mathbb{R}^n_p$ are
+convex bodies, the position and momentum data clouds. The dictionary
+below keeps each work in its own column so the three uses do not mix.
 
-\subsection{Notation in the literature}
-\label{sec:translation}
+\subsection{The dictionary}
+\label{sec:table}
 
-The notation used here is internal to this Letter and the program it initiates. The same geometric quantities appear in the source literature under different symbols and conventions. The translation is provided below for the reader who wishes to engage with the original sources.
+Table~\ref{tab:dictionary} pairs each symbol of the Letter with its
+counterpart in the two source works. The prose entries of
+Sec.~\ref{sec:entries} expand the rows that carry the Letter's central
+relations, writing each relation out in all three notations.
 
 \begin{table}[h]
 \centering
-\begin{tabular}{@{}lll@{}}
+\raggedright
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}p{0.30\linewidth} p{0.28\linewidth} p{0.34\linewidth}@{}}
 \toprule
-This work & Zurek \cite{zurek2001} & De Gosson \cite{degossoncharlyne2022, degosson2013qblobs, degosson2013fermiblobs} \\
+\textbf{This Letter (Mulloy)} & \textbf{Zurek \cite{zurek2001}} & \textbf{de Gosson \cite{degosson2026indeterminacy, degosson2022polar, degosson2013qblobs}} \\
 \midrule
-$\Delta q$ & $L$ & semi-axis of Fermi blob along $q$ \\
-$\Delta p$ & $P$ & semi-axis of Fermi blob along $p$ \\
-$\delta q$ & $\delta_x = \hbar/P$ & semi-axis of polar-dual blob along $q$ \\
-$\delta p$ & $\delta_p = \hbar/L$ & semi-axis of polar-dual blob along $p$ \\
-Extended cell, area $A$ & classical action $A \approx L \times P$ & Fermi blob, symplectic capacity $c(\Omega) \geq h/2$ \\
-Squeezed cell, area $a_\theta$ & sub-Planck scale $a \approx \hbar^2/A$ & Quantum blob, symplectic capacity $c(\mathcal{B}) = h/2$ \\
-$a_q, a_p$ & not present & two principal-axis quantum blobs of \cite{degossoncharlyne2022}, Theorem 13 \\
-Polar-dual identity & $\delta_x \, P = \hbar$ & polar-duality condition of \cite{degossoncharlyne2022}, Theorem 13 \\
-``Cell'' (this work) & not used & ``Blob'' (de Gosson) \\
+Position, momentum $x,\ p$ & $x,\ p$ & $x\in\mathbb{R}^n_x,\ p\in\mathbb{R}^n_p$ \\
+Wigner function $W(x,p)$ & $W(x,p)$, Eq.~(2) & $W\psi(z)$, Eq.~(33) \\
+Capacity semi-axis (position) $\Delta x=\sqrt{2}\,\sigma_x$ & $L$, with $L^2\simeq\langle x^2\rangle-\langle x\rangle^2$ & half-width of $X=\Pi_x\Omega_\Sigma$ \\
+Capacity semi-axis (momentum) $\Delta p=\sqrt{2}\,\sigma_p$ & $P$, with $P^2\simeq\langle p^2\rangle-\langle p\rangle^2$ & half-width of $P=\Pi_p\Omega_\Sigma$ \\
+Heisenberg cell, action capacity $A=\pi\Delta x\Delta p\ge h/2$ & classical action $A\simeq L\times P$, Eq.~(4) & covariance ellipsoid $\Omega_\Sigma$, $c(\Omega_\Sigma)\ge\pi\hbar$, Thm.~14 \\
+Resolution scale (position) $\delta x=\hbar/\Delta p$ & $\delta_x=\hbar/P$, Eq.~(7) & $B_P(\Delta p)^\hbar=B_X(\hbar/\Delta p)$, Eq.~(7) \\
+Resolution scale (momentum) $\delta p=\hbar/\Delta x$ & $\delta_p=\hbar/L$, Eq.~(8) & $B_X(\Delta x)^\hbar=B_P(\hbar/\Delta x)$, Eq.~(7) \\
+Quantum blob $a_\theta$, action $h/2$ & minimum-uncertainty Gaussian & $QB(S)=S\!\left(B^{2n}(\sqrt{\hbar})\right)$, $c=\pi\hbar$, Eq.~(26) \\
+Principal blobs $a_{\theta=0},\ a_{\pi/2}$ & axis interference scales $\delta_x,\delta_p$ & diagonal case $S=M_L$; $\mathrm{John}(X\times X^\hbar)$, Thms.~10, 12 \\
+Quorum cell $\tilde a=\pi\delta x\delta p=\pi\hbar^2/(\Delta x\Delta p)$ & sub-Planck action $a\simeq\hbar^2/A$, Eq.~(3); tile $(2\pi\hbar)^2/A$, Eq.~(12) & $\hbar$-polar dual $A^\hbar$; saturated pair $X\times X^\hbar$ \\
+Reciprocity $\tilde a\,A=(h/2)^2$, chain $A\supseteq a_\theta\supseteq\tilde a$ & $a\simeq\hbar/N$, $N=A/2\pi\hbar$ & biduality $(X^\hbar)^\hbar=X$, antimonotone, Eqs.~(4),(5) \\
+Quantum kernel $K_\theta$ (Wigner function of $a_\theta$) & Husimi smoothing erases $a$ (Methods) & $W\psi_{W,Y}=(\pi\hbar)^{-n}e^{-Gz\cdot z/\hbar}$, Eq.~(41) \\
+Convolution $\widetilde W_\theta=W*K_\theta$ & not used & smoothing toward a non-negative distribution \cite{degosson2005bullsci, cartwright1976} \\
+Portrait $\widetilde W=\frac{1}{\pi}\!\int_0^\pi \widetilde W_\theta\,d\theta\ge 0$ & not used & not used \\
+Quadrature rotation $X_\theta,P_\theta$, angle $\theta$ & N, S, E, W of the compass & symplectic rotation $R\in Sp(n)\cap O(2n)$; covariance $W(\hat S^{-1}\psi)=W\psi\circ S$, Eq.~(34) \\
+Scaled coordinates $X=x/\Delta x,\ P=p/\Delta p$; rigid ellipse $\hat a_\theta$ & not used & normalization to $B^{2n}(\sqrt{\hbar})$ via $M_L$ \\
+Saturation $A=h/2$ (vacuum), $a_\theta=\tilde a=A$ & smallest scale $a\to\hbar$ & unique blob, $c=\pi\hbar$, saturated $X^\hbar=P$, Thm.~14 \\
 \bottomrule
 \end{tabular}
-\caption{Translation between the notation used in this Letter and the notation of the principal source works. Zurek's $L, P$ are covariance length scales; his $\delta_x, \delta_p$ are interference scales of the Wigner function. De Gosson's symplectic capacity $c(\cdot)$ of an ellipsoid equals $\pi$ times the product of its semi-axes; the quantum-blob condition $c(\mathcal{B}) = h/2$ is equivalent to area $h/2$.}
-\label{tab:notation}
+\caption{The Letter's symbols and their counterparts in Zurek
+\cite{zurek2001} and de Gosson \cite{degosson2026indeterminacy,
+degosson2022polar, degosson2013qblobs}. Equation and theorem numbers in
+the Zurek column refer to \cite{zurek2001}; those in the de Gosson column
+refer to \cite{degosson2026indeterminacy}. Convention factors relating
+the columns are collected in Sec.~\ref{sec:conventions}, Eqs.
+\eqref{eq:bridge_widths}--\eqref{eq:bridge_capacity}. In de Gosson's
+column $B_X(R)$ and $B_P(R)$ are balls of radius $R$ in position and
+momentum space and $X^\hbar$ is the $\hbar$-polar dual of $X$.}
+\label{tab:dictionary}
 \end{table}
 
-De Gosson's symplectic-geometric framework expresses these quantities through the symplectic capacity of phase-space ellipsoids. The extended cell $\Omega$ is the centered ellipsoid
+\subsection{Entry by entry}
+\label{sec:entries}
+
+\paragraph{Wigner function.}
+The three works share one object. The Letter writes
+$W(x,p)=\frac{1}{\pi\hbar}\int \psi^*(x+s)\psi(x-s)\,e^{2ips/\hbar}\,ds$.
+Zurek's Eq.~(2) is the same transform with the integration variable
+$y=2s$ and the prefactor $1/2\pi\hbar$. de Gosson's Eq.~(33) is the
+$n$-dimensional form $W\psi(z)$ on $\mathbb{R}^{2n}$. All three integrate
+to one and return the marginals $|\psi(x)|^2$ and $|\widehat\psi(p)|^2$.
+
+\paragraph{Capacity semi-axes and the action capacity.}
+The Letter's Heisenberg cell is $A=\pi\,\Delta x\,\Delta p\ge h/2$.
+Zurek's classical action is the bare product $A\simeq L\times P$ of the
+support widths, Eq.~(4). de Gosson's covariance ellipsoid $\Omega_\Sigma$
+carries the same content as a symplectic capacity. His Theorem~14 states
+that the quantum condition $\Sigma+\tfrac{i\hbar}{2}J\ge 0$ holds if and
+only if $c(\Omega_\Sigma)\ge\pi\hbar$ for every symplectic capacity $c$,
+which is if and only if $\Omega_\Sigma$ contains a quantum blob. The
+Letter's floor $A\ge h/2$ is this capacity bound, since $h/2=\pi\hbar$
+and $c(\Omega_\Sigma)=\pi\,\Delta x\,\Delta p=A$. The conversion to
+Zurek's product is Eq.~\eqref{eq:bridge_capacity}, $A=2\pi\,(L\times P)$.
+
+\paragraph{Resolution scales and $\hbar$-polar duality.}
+This is the relation the dictionary turns on. The Letter writes
 \begin{equation}
-\Omega = \{(q,p) : (q,p) \, M^{-1} \, (q,p)^T \leq 1\}
-\label{eq:extended_ellipsoid}
+\delta x=\frac{\hbar}{\Delta p}, \qquad \delta p=\frac{\hbar}{\Delta x}.
+\label{eq:resolution}
 \end{equation}
-for the state's $2 \times 2$ covariance matrix $M$. Its symplectic capacity equals $\pi$ times the semi-axis product: $c(\Omega) = \pi \, \Delta q \, \Delta p = A$. Theorem 13 of \cite{degossoncharlyne2022} states that an ellipsoid $\mathcal{B}$ inscribed in $\Omega$ is a squeezed cell ($c(\mathcal{B}) = h/2$) if and only if its position projection and momentum intersection are polar duals of each other. In the notation here, this is the family $a_\theta$ for $\theta \in [0, \pi/2]$, with the two principal-axis cases $a_q$ and $a_p$ saturating the inscription condition along the $q$ and $p$ axes respectively. Zurek's interference scales emerge as the squeezed-cell semi-axes at these principal-axis orientations.
+Zurek reaches the same scales for the smallest structures of the Wigner
+function, $\delta_x=\hbar/P$ in his Eq.~(7) and $\delta_p=\hbar/L$ in his
+Eq.~(8). de Gosson reaches them as $\hbar$-polar duality. For an interval
+of half-width $R$ the dual is the interval of half-width $\hbar/R$, his
+Lemma~1, Eq.~(7),
+\begin{equation}
+B_P(\Delta p)^\hbar=B_X\!\left(\frac{\hbar}{\Delta p}\right)=B_X(\delta x),
+\qquad
+B_X(\Delta x)^\hbar=B_P\!\left(\frac{\hbar}{\Delta x}\right)=B_P(\delta p).
+\label{eq:polar_intervals}
+\end{equation}
+The three statements coincide once the widths are converted by
+Eq.~\eqref{eq:bridge_widths}. Because Zurek measures with $\sigma$ and the
+Letter measures with $\sqrt{2}\,\sigma$, the Letter's resolution is finer
+than Zurek's nominal scale by the same fixed factor,
+$\delta x=\delta_x/\sqrt{2}$.
 
-% [To be drafted.]
-% Topics:
-% - Fermi blob: $A = \pi \Delta q \Delta p \geq h/2$
-% - Quantum blob at angle $\theta$: $a_\theta = \pi \delta q_\theta \delta p_\theta = h/2$
-% - Principal-axis cases: $a_q \equiv a_{\theta=0}$, $a_p \equiv a_{\theta=\pi/2}$
-% - Polar-dual identity: $\delta q_\theta \, \delta p_\theta = \hbar$
-% - Inscription bounds: $\delta q \leq \Delta q$, $\delta p \leq \Delta p$
-% - Convention: $\hbar$ for dispersions and Wigner kernel; $h$ for phase-space areas.
-%   Mention only if needed; otherwise allow the reader to absorb from context.
+\paragraph{Quantum blob.}
+The Letter's $a_\theta$ is a de Gosson quantum blob of action $h/2$,
+deforming at fixed action across $\theta$. de Gosson's definition is
+$QB(S)=S(B^{2n}(\sqrt{\hbar}))$ for $S\in Sp(n)$, his Eq.~(26), with
+volume $\tfrac{1}{n!}(h/2)^n$ and symplectic capacity $c=\pi\hbar$. In one
+freedom this is an ellipse of area $\pi\hbar=h/2$, the Letter's $a_\theta$.
+Zurek's building block is the round minimum-uncertainty Gaussian, the
+coherent-state cell of area of order $\hbar$ from which his cat and compass
+states are assembled.
 
-% ======================================================================
-% S2 --- Full action-units table
-% ======================================================================
+\paragraph{Principal blobs.}
+The Letter's two principal members are
+$a_{\theta=0}=\pi\,\Delta x\,\delta p=h/2$ and
+$a_{\pi/2}=\pi\,\delta x\,\Delta p=h/2$. In de Gosson these are the
+diagonal, axis-aligned case. His projection theorem, Theorem~10, gives a
+saturated polar pair, $(\Pi_X QB(S))^\hbar=\Pi_P QB(S)$, exactly when
+$S=M_L$, and his Theorem~12 identifies the unique blob inscribed in
+$X\times X^\hbar$ as the John ellipsoid. Zurek's interference scales
+$\delta_x,\delta_p$ are these principal members read off the coordinate
+axes.
 
-\section{Action-units table for phase-space methods}
-\label{sec:fulltable}
+\paragraph{Quorum cell, polar dual, reciprocity.}
+The Letter's quorum cell is
+$\tilde a=\pi\,\delta x\,\delta p=\pi\hbar^2/(\Delta x\,\Delta p)$, the
+symplectic polar dual of the Heisenberg cell, with the reciprocity
+$\tilde a\,A=(h/2)^2$ and the chain $A\supseteq a_\theta\supseteq\tilde a$.
+de Gosson's $\hbar$-polar dual $A^\hbar$ is the same construction, with
+biduality $(X^\hbar)^\hbar=X$ and antimonotonicity, his Eqs.~(4) and (5).
+The reciprocity follows from the interval duals of
+Eq.~\eqref{eq:polar_intervals}, since
+$\tilde a\,A=\pi^2(\delta x\,\Delta p)(\delta p\,\Delta x)=\pi^2\hbar^2=(\pi\hbar)^2$.
+Zurek's sub-Planck action is $a\simeq\hbar^2/A$, his Eq.~(3), with the
+compass tile $a=(2\pi\hbar)^2/A$ of his Eq.~(12). In Zurek's widths the
+Letter's quorum cell is $\tilde a=(\pi/2)\,\hbar^2/(L\times P)$. He also
+records the count $N=A/2\pi\hbar$ of orthogonal states and the scale
+$a\simeq\hbar/N$.
 
-% [To be drafted.]
-% The full 16-row table from the body's truncated version.
-% Columns: Model | Native subfield | Kernel action structure | Map to $\delta q = \hbar/\Delta p$ | Star ranking
-% Brief paragraph framing before the table.
+\paragraph{Quantum kernel, convolution, portrait.}
+The Letter's quantum kernel $K_\theta$ is the Wigner function of the blob
+$a_\theta$, a centered Gaussian of action $h/2$. de Gosson's Eq.~(41)
+gives the Wigner function of a generalized Gaussian,
+$W\psi_{W,Y}(z)=(\pi\hbar)^{-n}e^{-Gz\cdot z/\hbar}$, which is the kernel
+written through its covariance. Convolving $W$ with a Gaussian of action
+$h/2$ returns a non-negative distribution, the route through Cartwright
+\cite{cartwright1976} and de Gosson's Husimi--Wigner cells
+\cite{degosson2005bullsci}. The Letter's per-angle convolution is
+$\widetilde W_\theta=W*K_\theta$ and the portrait is the family integral
+$\widetilde W=\frac{1}{\pi}\int_0^\pi\widetilde W_\theta\,d\theta\ge 0$.
+Zurek notes the complementary fact that the Husimi function, the Wigner
+function smoothed on a full Planck scale, erases the sub-Planck scale $a$.
+The portrait sits between the two, resolved at $\tilde a$ rather than at
+$h$.
 
-% ======================================================================
-% S3 --- Effective resolution derivations
-% ======================================================================
-
-\section{Effective resolution: derivations}
-\label{sec:derivations}
-
-\subsection{Generalized Husimi $Q_{\lambda\theta}$}
-\label{sec:genhusimi}
-
-% [To be drafted.]
-% Show: kernel $\lambda \cdot 1/\lambda = \hbar$; setting $\lambda = \hbar/\Delta p$ recovers $P_{\delta q}$.
-% Cite Wódkiewicz, Appleby, Wünsche-Bužek.
-
-\subsection{Truncated Wigner Approximation}
-\label{sec:twa}
-
-% [To be drafted.]
-% Show: TWA samples at $\Delta q$. At saturation $\Delta q \cdot \Delta p \approx \hbar$,
-% the sampling width equals the polar-dual scale $\delta q = \hbar/\Delta p$.
-% The silhouette argument.
-
-\subsection{Cahill--Glauber $W^{(s)}$}
-\label{sec:cahillglauber}
-
-% [To be drafted.]
-% Show: $a_s = \pi(1-s)\hbar/2$. State-matched $s$ value.
-
-\subsection{Husimi $Q$}
-\label{sec:husimi}
-
-% [To be drafted.]
-% Show: fixed kernel area $h/2$; matches $\delta q$ only at vacuum.
-
-\subsection{Maximum-likelihood reconstruction with Fock-state truncation}
-\label{sec:maxlik}
-
-% [To be drafted.]
-% Show: Fock truncation $N_{\max}$; resolution per cell $\sim \hbar/\Delta p$ for state with
-% covariance $\Delta p^2 \sim N_{\max}\hbar$. Polar-dual scale emerges from action-counting.
-
-% ======================================================================
-% S4 --- Notes on remaining methods
-% ======================================================================
-
-\section{Notes on remaining methods}
-\label{sec:remaining}
-
-% [To be drafted.]
-% One paragraph each:
-% - Herman--Kluk frozen Gaussian
-% - Heller frozen/thawed Gaussian
-% - Pattern-function tomography
-% - Positive-P representation
-% - Cohen-class Born--Jordan
-% - Semidefinite programming tomography
-% - Bayesian / MCMC tomography
-% - Compressed sensing tomography
-% - Husimi-based open quantum systems
+\paragraph{Quadrature rotation.}
+The Letter's rotated quadratures are
+$X_\theta=X\cos\theta+P\sin\theta$ and
+$P_\theta=-X\sin\theta+P\cos\theta$, the homodyne quadratures at phase
+$\theta$ that orient the blob and the kernel. de Gosson carries the same
+rotation as a symplectic rotation $R\in Sp(n)\cap O(2n)$ and as the
+metaplectic covariance of the Wigner function, $W(\hat S^{-1}\psi)=W\psi\circ S$,
+his Eq.~(34). The family integral over $\theta$ is the tomographic sweep
+\cite{degosson2022radon, darianomacconeparis2001}. Zurek's compass orients
+its lobes north, south, east, and west, fixing the two axis directions of
+the interference grid.
 
 % ======================================================================
-% S5 --- Computational details
+% Scaffolding for later sections (not rendered).
+% The dictionary above is the focus of this revision. The headings below
+% are retained as a roadmap for the planned expansion.
 % ======================================================================
-
-\section{Computational details}
-\label{sec:computational}
-
-% [To be drafted.]
-% - R pipeline overview
-% - Eight-state list with covariance parameters
-% - Numerical grid choices for Wigner-function evaluation
-% - OSF deposit pointer
+%
+% \section{Action-units table for phase-space methods}
+% \section{Effective resolution: derivations}
+% \section{Computational details}
+%   - pipeline overview, twelve-state list with covariance parameters,
+%     integration-grid choices, Zenodo / OSF deposit pointers.
 
 \bibliography{main}
 
