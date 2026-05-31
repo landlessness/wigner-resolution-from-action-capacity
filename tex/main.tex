@@ -100,7 +100,7 @@ a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,
 \end{equation}
 Zurek's relations give all four semi-axes exactly. The capacity $\Delta x, \Delta p$ runs along the major axes, the resolution $\delta x, \delta p$ along the minor.
 
-Between these principal members the blob $a_\theta$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$, the image of a single rigid ellipse $\hat a_\theta$ under the scaling $X = x/\Delta x$, $P = p/\Delta p$,
+Between these principal members the quantum blob $a_\theta$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$, the image of a single rigid ellipse $\hat a_\theta$ under the scaling $X = x/\Delta x$, $P = p/\Delta p$,
 \begin{equation}
 a_\theta = \left\{ (x, p) : (X, P) \in \hat a_\theta \right\}.
 \label{eq:atheta}
@@ -110,27 +110,27 @@ The rotated quadratures $X_\theta = X\cos\theta + P\sin\theta$ and $P_\theta = -
 \hat a_\theta = \left\{ (X, P) : X_\theta^{2} + \tfrac{A^2}{(\pi\hbar)^2}\, P_\theta^{2} \le 1 \right\}.
 \label{eq:atheta_hat}
 \end{equation}
-The Heisenberg cell circumscribes the blob $a_\theta$.
+The Heisenberg cell $A$ circumscribes the blob $a_\theta$.
 
 % ===============================================================================
-%  THE KERNEL
+%  THE QUANTUM KERNEL
 % ===============================================================================
 The Wigner function of the state is
 \begin{equation}
 W(x,p) = \frac{1}{\pi\hbar}\int \psi^*(x+s)\,\psi(x-s)\,e^{2ips/\hbar}\,ds.
 \label{eq:wigner}
 \end{equation}
-The Wigner function of the blob $a_\theta$ is the centered Gaussian whose covariance ellipse is $a_\theta$,
+The Wigner function of the quantum blob $a_\theta$ is the centered Gaussian whose covariance ellipse is $a_\theta$,
 \begin{equation}
 K_\theta(x, p) = \frac{1}{\pi\hbar}\exp\!\left[ -X_\theta^{2} - \tfrac{A^2}{(\pi\hbar)^2}\, P_\theta^{2} \right],
 \label{eq:Ktheta}
 \end{equation}
-of action $h/2$ by construction. The convolution of $W$ with $K_\theta$ is
+of action $h/2$ by construction. The convolution of $W$ with the quantum kernel $K_\theta$ is
 \begin{equation}
 \widetilde W_\theta(x,p) = (W * K_\theta)(x,p).
 \label{eq:Wtheta}
 \end{equation}
-Convolving with a Gaussian of action $\ge h/2$ lifts $W$ up to Planck's quantum of action and yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,cordero2018}, so $\widetilde W_\theta$ is non-negative everywhere.
+Convolving with a Gaussian of action $h/2$ lifts $W$ up to Planck's quantum of action and yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,cordero2018}, so $\widetilde W_\theta$ is non-negative everywhere.
 
 %===============================================================================
 %  QUORUM CELL
@@ -150,12 +150,12 @@ Integrating $\widetilde W_\theta$ over the family gives the phase-space portrait
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi \widetilde W_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
 \end{equation}
-$\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}. The construction here builds the non-negative portrait $\widetilde W$ instead.
+$\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}. Over the same $\theta$, the construction here convolves $W$ to build the non-negative portrait $\widetilde W$.
 
 % ===============================================================================
 %  UNIQUENESS OF BLOBS TO STATE
 % ===============================================================================
-A kernel of action $h/2$ is the smallest that yields a non-negative portrait~\cite{cartwright1976,degosson2005bullsci,degosson2013qblobs}, its covariance a quantum blob. A kernel below $h/2$ drives the portrait negative. Because $A$ circumscribes every blob and every blob circumscribes $\tilde a$, the quorum cell is the finest resolution any non-negative portrait attains, and the family reaches it across $\theta \in [0,\pi)$.
+A blob too large for $A$ to circumscribe, or too small to circumscribe $\tilde a$, is a blob of another state and portrays that state, not this one. Because every blob of this state circumscribes the quorum cell, $\tilde a$ is the finest resolution any non-negative portrait attains, and the family reaches it across $\theta \in [0,\pi)$.
 
 %===============================================================================
 %  GENERALIZATION
