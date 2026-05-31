@@ -16,7 +16,7 @@
 
 \AddToHook{shipout/background}{
   \begin{tikzpicture}[remember picture, overlay]
-    \node [rotate=-90, color=gray!80, font=\fontfamily{FiraMono-TLF}\selectfont\footnotesize] at ([xshift=-1.2cm]current page.east) {WORKING DRAFT \quad $\bullet$ \quad SUPPLEMENTAL MATERIAL \quad $\bullet$ \quad \DTMnow \quad $\bullet$ \quad \href{https://doi.org/10.5281/zenodo.20279094}{doi.org/10.5281/zenodo.20279094} \quad $\bullet$ \quad Brian S. Mulloy \quad $\bullet$ \quad bmulloy@umich.edu};
+    \node [rotate=-90, color=gray!80, font=\fontfamily{FiraMono-TLF}\selectfont\scriptsize] at ([xshift=-1.2cm]current page.east) {WORKING DRAFT \enspace$\bullet$\enspace SUPPLEMENTAL MATERIAL \enspace$\bullet$\enspace \DTMnow \enspace$\bullet$\enspace \href{https://doi.org/10.5281/zenodo.20279094}{doi.org/10.5281/zenodo.20279094} \enspace$\bullet$\enspace Brian S. Mulloy \enspace$\bullet$\enspace bmulloy@umich.edu};
   \end{tikzpicture}
 }
 % --------------------------------------------------------
@@ -100,12 +100,12 @@ below keeps each work in its own column so the three uses do not mix.
 \subsection{The dictionary}
 \label{sec:table}
 
-Table~\ref{tab:dictionary} pairs each symbol of the Letter with its
-counterpart in the two source works. The prose entries of
-Sec.~\ref{sec:entries} expand the rows that carry the Letter's central
+Tables~\ref{tab:dict_core} and~\ref{tab:dict_derived} pair each symbol of
+the Letter with its counterpart in the two source works. The prose entries
+of Sec.~\ref{sec:entries} expand the rows that carry the Letter's central
 relations, writing each relation out in all three notations.
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \raggedright
 \renewcommand{\arraystretch}{1.35}
@@ -122,6 +122,29 @@ Resolution scale (position) $\delta x=\hbar/\Delta p$ & $\delta_x=\hbar/P$, Eq.~
 Resolution scale (momentum) $\delta p=\hbar/\Delta x$ & $\delta_p=\hbar/L$, Eq.~(8) & $B_X(\Delta x)^\hbar=B_P(\hbar/\Delta x)$, Eq.~(7) \\
 Quantum blob $a_\theta$, action $h/2$ & minimum-uncertainty Gaussian & $QB(S)=S\!\left(B^{2n}(\sqrt{\hbar})\right)$, $c=\pi\hbar$, Eq.~(26) \\
 Principal blobs $a_{\theta=0},\ a_{\pi/2}$ & axis interference scales $\delta_x,\delta_p$ & diagonal case $S=M_L$; $\mathrm{John}(X\times X^\hbar)$, Thms.~10, 12 \\
+\bottomrule
+\end{tabular}
+\caption{Dictionary, part 1: core geometry. The Letter's symbols and their
+counterparts in Zurek \cite{zurek2001} and de Gosson
+\cite{degosson2026indeterminacy, degosson2022polar, degosson2013qblobs}.
+Equation and theorem numbers in the Zurek column refer to \cite{zurek2001};
+those in the de Gosson column refer to \cite{degosson2026indeterminacy}.
+Convention factors relating the columns are collected in
+Sec.~\ref{sec:conventions}, Eqs.
+\eqref{eq:bridge_widths}--\eqref{eq:bridge_capacity}. In de Gosson's column
+$B_X(R)$ and $B_P(R)$ are balls of radius $R$ in position and momentum
+space and $X^\hbar$ is the $\hbar$-polar dual of $X$.}
+\label{tab:dict_core}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\raggedright
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}p{0.30\linewidth} p{0.28\linewidth} p{0.34\linewidth}@{}}
+\toprule
+\textbf{This Letter (Mulloy)} & \textbf{Zurek \cite{zurek2001}} & \textbf{de Gosson \cite{degosson2026indeterminacy, degosson2022polar, degosson2013qblobs}} \\
+\midrule
 Quorum cell $\tilde a=\pi\delta x\delta p=\pi\hbar^2/(\Delta x\Delta p)$ & sub-Planck action $a\simeq\hbar^2/A$, Eq.~(3); tile $(2\pi\hbar)^2/A$, Eq.~(12) & $\hbar$-polar dual $A^\hbar$; saturated pair $X\times X^\hbar$ \\
 Reciprocity $\tilde a\,A=(h/2)^2$, chain $A\supseteq a_\theta\supseteq\tilde a$ & $a\simeq\hbar/N$, $N=A/2\pi\hbar$ & biduality $(X^\hbar)^\hbar=X$, antimonotone, Eqs.~(4),(5) \\
 Quantum kernel $K_\theta$ (Wigner function of $a_\theta$) & Husimi smoothing erases $a$ (Methods) & $W\psi_{W,Y}=(\pi\hbar)^{-n}e^{-Gz\cdot z/\hbar}$, Eq.~(41) \\
@@ -132,16 +155,9 @@ Scaled coordinates $X=x/\Delta x,\ P=p/\Delta p$; rigid ellipse $\hat a_\theta$ 
 Saturation $A=h/2$ (vacuum), $a_\theta=\tilde a=A$ & smallest scale $a\to\hbar$ & unique blob, $c=\pi\hbar$, saturated $X^\hbar=P$, Thm.~14 \\
 \bottomrule
 \end{tabular}
-\caption{The Letter's symbols and their counterparts in Zurek
-\cite{zurek2001} and de Gosson \cite{degosson2026indeterminacy,
-degosson2022polar, degosson2013qblobs}. Equation and theorem numbers in
-the Zurek column refer to \cite{zurek2001}; those in the de Gosson column
-refer to \cite{degosson2026indeterminacy}. Convention factors relating
-the columns are collected in Sec.~\ref{sec:conventions}, Eqs.
-\eqref{eq:bridge_widths}--\eqref{eq:bridge_capacity}. In de Gosson's
-column $B_X(R)$ and $B_P(R)$ are balls of radius $R$ in position and
-momentum space and $X^\hbar$ is the $\hbar$-polar dual of $X$.}
-\label{tab:dictionary}
+\caption{Dictionary, part 2: derived and dynamical quantities. Conventions
+and column sources are as in Table~\ref{tab:dict_core}.}
+\label{tab:dict_derived}
 \end{table}
 
 \subsection{Entry by entry}
