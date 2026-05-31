@@ -15,7 +15,7 @@ from __future__ import annotations
 import numpy as np
 from matplotlib.patches import Ellipse
 
-from ..cells import HeisenbergCell, BitangentBlob, QuorumCell
+from ..cells import HeisenbergCell, QuantumBlob, QuorumCell
 
 
 # Single line-width constant governing every drawn line in the data
@@ -47,8 +47,8 @@ def heisenberg_cell_patch(
     )
 
 
-def bitangent_blob_patch(
-    blob: BitangentBlob,
+def quantum_blob_patch(
+    blob: QuantumBlob,
     *,
     facecolor: str = "none",
     edgecolor: str = "black",
@@ -79,7 +79,7 @@ def quorum_cell_patch(
     """Matplotlib ellipse patch for the quorum cell ã.
 
     Axis-aligned ellipse with semi-axes (δx, δp). The common interior
-    of the bitangent family inscribed in the Heisenberg cell.
+    of the quantum blob family inscribed in the Heisenberg cell.
     """
     return Ellipse(
         xy=cell.center,

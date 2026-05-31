@@ -5,7 +5,7 @@ Three layouts:
 * ``assemble_grid`` (3-column): Wigner heatmap, W(x,0), P_{π/2}(x,0).
   The legacy layout used by render_eigen.py and render_cat.py.
 
-* ``assemble_grid_4col``: + the bitangent-kernel column.
+* ``assemble_grid_4col``: + the quantum-kernel column.
 
 * ``assemble_grid_5col``: + the convolved portrait. Reads as a full
   pipeline: Wigner function, cross-section, quantum kernel,
@@ -26,7 +26,7 @@ from matplotlib.gridspec import GridSpec
 from ..state import State
 from .panels import (
     P_theta_cross_section,
-    bitangent_kernel_heatmap,
+    quantum_kernel_heatmap,
     tilde_W_heatmap,
     wigner_cross_section,
     wigner_heatmap,
@@ -54,7 +54,7 @@ def assemble_grid(
         r"Convolved Cross-Section",
     ),
     show_heisenberg: bool = True,
-    show_bitangent: bool = True,
+    show_quantum_blob: bool = True,
 ) -> Figure:
     """Build a 3-column figure as a clean grid with aspect-equal heatmaps."""
     n_rows = len(states)
@@ -83,7 +83,7 @@ def assemble_grid(
         ax_p = fig.add_subplot(gs[i, 2])
 
         wigner_heatmap(ax_h, state,
-                       show_heisenberg=show_heisenberg, show_bitangent=show_bitangent)
+                       show_heisenberg=show_heisenberg, show_quantum_blob=show_quantum_blob)
         ax_h.set_aspect("equal", adjustable="box")
 
         wigner_cross_section(ax_w, state)
@@ -107,7 +107,7 @@ def assemble_grid(
 
 
 # ---------------------------------------------------------------------------
-# 4-column layout: + bitangent-kernel heatmap column
+# 4-column layout: + quantum-kernel heatmap column
 # ---------------------------------------------------------------------------
 
 _DEFAULT_4COL_TITLES = (
@@ -132,10 +132,10 @@ def assemble_grid_4col(
     column_titles: tuple[str, str, str, str] = _DEFAULT_4COL_TITLES,
     row_labels: list[str] | None = None,
     show_heisenberg: bool = True,
-    show_bitangent: bool = True,
+    show_quantum_blob: bool = True,
     theta: float | None = None,
 ) -> Figure:
-    """Build a 4-column figure adding the bitangent-kernel column."""
+    """Build a 4-column figure adding the quantum-kernel column."""
     import numpy as np
     if theta is None:
         theta = np.pi / 2
@@ -173,14 +173,14 @@ def assemble_grid_4col(
         ax_p = fig.add_subplot(gs[i, 3])
 
         wigner_heatmap(ax_h, state,
-                       show_heisenberg=show_heisenberg, show_bitangent=show_bitangent)
+                       show_heisenberg=show_heisenberg, show_quantum_blob=show_quantum_blob)
         ax_h.set_aspect("equal", adjustable="box")
 
         wigner_cross_section(ax_w, state)
 
-        bitangent_kernel_heatmap(ax_k, state, theta=theta,
+        quantum_kernel_heatmap(ax_k, state, theta=theta,
                                  show_heisenberg=show_heisenberg,
-                                 show_bitangent=show_bitangent)
+                                 show_quantum_blob=show_quantum_blob)
         ax_k.set_aspect("equal", adjustable="box")
 
         P_theta_cross_section(ax_p, state, theta=theta)
@@ -247,7 +247,7 @@ def assemble_grid_5col(
     column_titles: tuple[str, str, str, str, str] = _DEFAULT_5COL_TITLES,
     row_labels: list[str] | None = None,
     show_heisenberg: bool = True,
-    show_bitangent: bool = True,
+    show_quantum_blob: bool = True,
     theta: float | None = None,
     tilde_W_n_theta: int = 360,
 ) -> Figure:
@@ -312,7 +312,7 @@ def assemble_grid_5col(
         # Col 1: no overlays.
         wigner_heatmap(
             ax_h, state,
-            show_heisenberg=True, show_bitangent=False,
+            show_heisenberg=True, show_quantum_blob=False,
             show_quorum=True,
         )
         ax_h.set_aspect("equal", adjustable="box")
@@ -320,9 +320,9 @@ def assemble_grid_5col(
         wigner_cross_section(ax_w, state)
 
         # Col 3: Heisenberg cell + quantum blob a_{π/2}.
-        bitangent_kernel_heatmap(
+        quantum_kernel_heatmap(
             ax_k, state, theta=theta,
-            show_heisenberg=show_heisenberg, show_bitangent=show_bitangent,
+            show_heisenberg=show_heisenberg, show_quantum_blob=show_quantum_blob,
             show_quorum=False,
         )
         ax_k.set_aspect("equal", adjustable="box")
@@ -333,7 +333,7 @@ def assemble_grid_5col(
         tilde_W_heatmap(
             ax_t, state,
             n_theta=tilde_W_n_theta,
-            show_heisenberg=show_heisenberg, show_bitangent=False,
+            show_heisenberg=show_heisenberg, show_quantum_blob=False,
             show_quorum=True,
         )
         ax_t.set_aspect("equal", adjustable="box")

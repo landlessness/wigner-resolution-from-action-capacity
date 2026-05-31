@@ -26,7 +26,7 @@ from typing import Callable
 import numpy as np
 from scipy.stats import multivariate_normal
 
-from .cells import BitangentBlob, bitangent_blob_at, HeisenbergCell
+from .cells import QuantumBlob, quantum_blob_at, HeisenbergCell
 
 # Tolerance for the reciprocal-axes check. The blob-building routines compute
 # r_⊥ = ℏ/r_∥ from the blob's r_∥, so the product should be exact to floating-
@@ -41,7 +41,7 @@ def _rotation_matrix(theta: float) -> np.ndarray:
 
 
 def K_theta_mesh(
-    blob: BitangentBlob,
+    blob: QuantumBlob,
     xx: np.ndarray,
     pp: np.ndarray,
     hbar: float = 1.0,
@@ -66,7 +66,7 @@ def K_theta_mesh(
     if abs(product - hbar) > _RECIPROCAL_TOL:
         raise ValueError(
             f"Reciprocal axes violated: r_∥·r_⊥ = {product:.6e} ≠ ℏ = {hbar:.6e}. "
-            "Build the blob via bitangent_blob_at() to ensure r_⊥ = ℏ/r_∥."
+            "Build the blob via quantum_blob_at() to ensure r_⊥ = ℏ/r_∥."
         )
 
     # Build Σ_θ in the unrotated (x, p) frame.
@@ -91,5 +91,5 @@ def K_theta_from_heisenberg(
 ) -> np.ndarray:
     """Convenience: build the quantum blob a_θ inscribed in `heisenberg`,
     then evaluate K_θ on (xx, pp)."""
-    blob = bitangent_blob_at(theta, heisenberg, hbar=hbar)
+    blob = quantum_blob_at(theta, heisenberg, hbar=hbar)
     return K_theta_mesh(blob, xx, pp, hbar=hbar)

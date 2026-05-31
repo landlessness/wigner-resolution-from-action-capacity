@@ -19,9 +19,10 @@ an axis-aligned ellipse with semi-axes
 reciprocal to the Heisenberg cell at action h/2: A · ã = (h/2)².
 Reference: M. de Gosson and C. de Gosson, Symmetry 14, 1890 (2022).
 
-Bitangent to both A (from within) and ã (from without) is a
-one-parameter family of de Gosson quantum blobs a_θ of fixed action
-h/2, parameterized by the family-orientation angle θ. The semi-axes
+Nested between A and ã, circumscribed by the Heisenberg cell A and
+circumscribing the quorum cell ã, is a one-parameter family of de
+Gosson quantum blobs a_θ of fixed action h/2, parameterized by the
+family-orientation angle θ. The semi-axes
 r_∥(θ), r_⊥(θ) of a_θ are reciprocal in ℏ,
 
     r_∥(θ) r_⊥(θ) = ℏ.
@@ -33,10 +34,11 @@ of radius
     r̃ = ℏ/(Δx Δp).
 
 In that frame, a_θ is the rigid rotation by θ of a single ellipse
-with semi-axes (1, r̃), bitangent to the unit disk and to the
-inscribed circle. Pulled back to the original (x, p) frame via the
-inverse of T(x, p) = (x/Δx, p/Δp), the family deforms across θ at
-constant action h/2 while maintaining double bitangency to A and ã.
+with semi-axes (1, r̃), circumscribed by the unit disk and
+circumscribing the inscribed circle. Pulled back to the original
+(x, p) frame via the inverse of T(x, p) = (x/Δx, p/Δp), the family
+deforms across θ at constant action h/2 while remaining circumscribed
+by A and circumscribing ã.
 
 At the principal angles θ = 0 and θ = π/2, the blob's principal axes
 align with the (x, p) coordinate axes, and the semi-axes recover the
@@ -52,7 +54,7 @@ it is self-dual under symplectic polar duality (de Gosson & de Gosson
 2022), not merely that its Euclidean area is h/2. In one degree of
 freedom the symplectic capacity of a planar ellipse equals its area,
 so the reciprocal-axes identity r_∥ r_⊥ = ℏ enforced below is exactly
-the quantum-blob condition. The BitangentBlob.__post_init__ assertion
+the quantum-blob condition. The QuantumBlob.__post_init__ assertion
 is phrased as the symplectic capacity the manuscript claims; the full
 symplectic verification across θ and across the capacity range is in
 notebooks/verify_blobs.py.
@@ -89,11 +91,11 @@ class HeisenbergCell:
 
 
 @dataclass(frozen=True)
-class BitangentBlob:
-    """One member a_θ of the bitangent family.
+class QuantumBlob:
+    """One member a_θ of the quantum blob family.
 
-    A de Gosson quantum blob of action h/2, bitangent to the Heisenberg
-    cell A from within and to the quorum cell ã from without. Labeled
+    A de Gosson quantum blob of action h/2, circumscribed by the
+    Heisenberg cell A and circumscribing the quorum cell ã. Labeled
     by the family-orientation angle θ.
 
     Geometric attributes in the original (x, p) frame:
@@ -149,9 +151,9 @@ class BitangentBlob:
 class QuorumCell:
     """The quorum cell ã with semi-axes (δx, δp) = (ℏ/Δp, ℏ/Δx).
 
-    Symplectic polar dual of the Heisenberg cell, bitangent to every
-    blob of the family from within. An axis-aligned ellipse with no
-    rotation parameter, not itself a member of the bitangent family.
+    Symplectic polar dual of the Heisenberg cell, circumscribed by every
+    blob of the family. An axis-aligned ellipse with no
+    rotation parameter, not itself a member of the quantum blob family.
     Its semi-axes are Zurek's interference scales.
 
     Reference for polar duality: M. de Gosson and C. de Gosson,
@@ -174,11 +176,11 @@ class QuorumCell:
             raise ValueError("Quorum-cell semi-axes must be positive.")
 
 
-def bitangent_blob_at(
+def quantum_blob_at(
     theta: float,
     heisenberg: HeisenbergCell,
     hbar: float = 1.0,
-) -> BitangentBlob:
+) -> QuantumBlob:
     """The quantum blob a_θ at family-orientation angle θ.
 
     Construction (affine pullback):
@@ -219,7 +221,7 @@ def bitangent_blob_at(
     if alpha >= np.pi:
         alpha -= np.pi
 
-    return BitangentBlob(
+    return QuantumBlob(
         theta=theta,
         r_parallel=r_par,
         r_perp=r_perp,
@@ -229,28 +231,28 @@ def bitangent_blob_at(
     )
 
 
-def blob_a_pi_half(heisenberg: HeisenbergCell, hbar: float = 1.0) -> BitangentBlob:
+def blob_a_pi_half(heisenberg: HeisenbergCell, hbar: float = 1.0) -> QuantumBlob:
     """The quantum blob a_{π/2}: the family member at θ = π/2.
 
     Semi-axes (r_∥, r_⊥) = (Δp, δx) = (Δp, ℏ/Δp), principal angle π/2.
     """
-    return bitangent_blob_at(np.pi / 2, heisenberg, hbar)
+    return quantum_blob_at(np.pi / 2, heisenberg, hbar)
 
 
-def blob_a_zero(heisenberg: HeisenbergCell, hbar: float = 1.0) -> BitangentBlob:
+def blob_a_zero(heisenberg: HeisenbergCell, hbar: float = 1.0) -> QuantumBlob:
     """The quantum blob a_{θ=0}: the family member at θ = 0.
 
     Semi-axes (r_∥, r_⊥) = (Δx, δp) = (Δx, ℏ/Δx), principal angle 0.
     """
-    return bitangent_blob_at(0.0, heisenberg, hbar)
+    return quantum_blob_at(0.0, heisenberg, hbar)
 
 
 def quorum_cell(heisenberg: HeisenbergCell, hbar: float = 1.0) -> QuorumCell:
     """The quorum cell ã with semi-axes (ℏ/Δp, ℏ/Δx).
 
-    The symplectic polar dual of `heisenberg`, bitangent to every blob
-    in the bitangent family. Area ã = π ℏ²/(Δx Δp), the resolution of
-    the convolved portrait W̃.
+    The symplectic polar dual of `heisenberg`, circumscribed by every
+    blob in the quantum blob family. Area ã = π ℏ²/(Δx Δp), the
+    resolution of the convolved portrait W̃.
     """
     return QuorumCell(
         delta_x=hbar / heisenberg.Delta_p,

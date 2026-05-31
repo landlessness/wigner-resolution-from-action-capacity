@@ -2,16 +2,16 @@
 
 Column 1: W(x, p) heatmap (diverging colormap), no overlays.
 Column 2: W(x, 0) cross-section — black line, red/blue fill.
-Column 3: K_{π/2}(x, p) heatmap with Heisenberg cell A and bitangent
+Column 3: K_{π/2}(x, p) heatmap with Heisenberg cell A and quantum
           blob a_{π/2} overlays (sequential — upper half of the
           diverging palette). The quantum kernel: Wigner function of
           the quantum blob at θ = π/2.
 Column 4: P_{π/2}(x, 0) — non-negative, red fill.
 Column 5: W̃(x, p) = (1/N_θ) Σ P_θ — the convolved portrait, integral
-          over the bitangent family across all angles, with the
+          over the quantum blob family across all angles, with the
           Heisenberg cell A and quorum cell ã overlays (sequential).
           The inner ellipse is the quorum cell, the common interior
-          of the bitangent family, marking the resolution of W̃.
+          of the quantum blob family, marking the resolution of W̃.
 
 Every drawn line in this figure — cell-overlay ellipses, cross-section
 traces, zero baselines — uses ``overlays.LINEWIDTH``. One constant
@@ -25,14 +25,14 @@ import numpy as np
 from matplotlib.axes import Axes
 from matplotlib.colors import Normalize, TwoSlopeNorm
 
-from ..cells import HeisenbergCell, blob_a_pi_half, bitangent_blob_at, quorum_cell
+from ..cells import HeisenbergCell, blob_a_pi_half, quantum_blob_at, quorum_cell
 from ..convolve import convolve_W_with_K, cross_section_at_p0
 from ..kernels import K_theta_mesh
 from ..state import State
 from .overlays import (
     LINEWIDTH,
     heisenberg_cell_patch,
-    bitangent_blob_patch,
+    quantum_blob_patch,
     quorum_cell_patch,
 )
 
@@ -65,7 +65,7 @@ def _draw_cells(
     state: State,
     *,
     show_heisenberg: bool,
-    show_bitangent: bool,
+    show_quantum_blob: bool,
     show_quorum: bool,
     overlay_color: str,
     overlay_linewidth: float,
@@ -73,7 +73,7 @@ def _draw_cells(
     """Overlay cells on a heatmap panel.
 
     `show_heisenberg` draws the Heisenberg cell A (semi-axes Δx, Δp).
-    `show_bitangent` draws the quantum blob a_{π/2} (col 3).
+    `show_quantum_blob` draws the quantum blob a_{π/2} (col 3).
     `show_quorum` draws the quorum cell ã (col 5).
 
     All cells are anchored at `state.cell_center_x`.
@@ -87,9 +87,9 @@ def _draw_cells(
         ax.add_patch(heisenberg_cell_patch(
             heisenberg, edgecolor=overlay_color, linewidth=overlay_linewidth,
         ))
-    if show_bitangent:
+    if show_quantum_blob:
         blob = blob_a_pi_half(heisenberg, hbar=state.hbar)
-        ax.add_patch(bitangent_blob_patch(
+        ax.add_patch(quantum_blob_patch(
             blob, edgecolor=overlay_color, linewidth=overlay_linewidth,
         ))
     if show_quorum:
@@ -120,7 +120,7 @@ def wigner_heatmap(
     state: State,
     *,
     show_heisenberg: bool = False,
-    show_bitangent: bool = False,
+    show_quantum_blob: bool = False,
     show_quorum: bool = False,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
@@ -146,7 +146,7 @@ def wigner_heatmap(
     _draw_cells(
         ax, state,
         show_heisenberg=show_heisenberg,
-        show_bitangent=show_bitangent,
+        show_quantum_blob=show_quantum_blob,
         show_quorum=show_quorum,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,
@@ -198,13 +198,13 @@ def wigner_cross_section(
 # Column 3: quantum kernel K_{π/2}(x, p)
 # ---------------------------------------------------------------------------
 
-def bitangent_kernel_heatmap(
+def quantum_kernel_heatmap(
     ax: Axes,
     state: State,
     *,
     theta: float = np.pi / 2,
     show_heisenberg: bool = True,
-    show_bitangent: bool = True,
+    show_quantum_blob: bool = True,
     show_quorum: bool = False,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
@@ -213,7 +213,7 @@ def bitangent_kernel_heatmap(
     with cell overlays.
 
     The kernel is built at the same center as the cell overlays
-    (``state.cell_center_x``), so the K blob sits inside the bitangent
+    (``state.cell_center_x``), so the K blob sits inside the quantum
     blob a_{π/2} drawn on top of it.
 
     Colormap: the upper half of the RdBu_r palette used in column 1, so
@@ -227,7 +227,7 @@ def bitangent_kernel_heatmap(
         Delta_p=state.rs.Delta_p,
         center=(state.cell_center_x, 0.0),
     )
-    blob = bitangent_blob_at(theta, heisenberg, hbar=state.hbar)
+    blob = quantum_blob_at(theta, heisenberg, hbar=state.hbar)
     xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
     K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
 
@@ -250,7 +250,7 @@ def bitangent_kernel_heatmap(
     _draw_cells(
         ax, state,
         show_heisenberg=show_heisenberg,
-        show_bitangent=show_bitangent,
+        show_quantum_blob=show_quantum_blob,
         show_quorum=show_quorum,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,
@@ -259,7 +259,7 @@ def bitangent_kernel_heatmap(
 
 
 # Backwards-compatible alias for any external code that imported the old name.
-matched_kernel_heatmap = bitangent_kernel_heatmap
+matched_kernel_heatmap = quantum_kernel_heatmap
 
 
 # ---------------------------------------------------------------------------
@@ -288,7 +288,7 @@ def P_theta_cross_section(
         Delta_p=state.rs.Delta_p,
         center=(x_mid, p_mid),
     )
-    blob = bitangent_blob_at(theta, heisenberg, hbar=state.hbar)
+    blob = quantum_blob_at(theta, heisenberg, hbar=state.hbar)
     xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
     K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
 
@@ -332,14 +332,14 @@ def tilde_W_heatmap(
     *,
     n_theta: int = 360,
     show_heisenberg: bool = True,
-    show_bitangent: bool = False,
+    show_quantum_blob: bool = False,
     show_quorum: bool = True,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
 ) -> np.ndarray:
     """Render the convolved portrait W̃(x, p) = (1/N_θ) Σ P_θ.
 
-    The bitangent-family parameter θ is integrated out by directly
+    The quantum blob family parameter θ is integrated out by directly
     averaging the 2D convolutions P_θ = W * K_θ at evenly spaced θ in
     [0, π). Non-negative by construction: each P_θ ≥ 0 (Cartwright 1976),
     and a sum of non-negative functions is non-negative.
@@ -352,8 +352,8 @@ def tilde_W_heatmap(
 
     Colormap: upper half of the RdBu_r palette, matching column 3.
     Cell overlay: the Heisenberg cell A (outer) plus the quorum cell ã
-    (inner). The quorum cell is the common interior of the bitangent
-    family — the resolution of W̃.
+    (inner). The quorum cell is the common interior of the quantum
+    blob family — the resolution of W̃.
 
     Returns the full 2D W̃ array (on state.x_int × state.p_int)
     for downstream use.
@@ -379,7 +379,7 @@ def tilde_W_heatmap(
     thetas = np.linspace(0.0, np.pi, n_theta, endpoint=False)
     tilde_W = np.zeros_like(state.W)
     for theta in thetas:
-        blob = bitangent_blob_at(theta, heisenberg_for_kernel, hbar=state.hbar)
+        blob = quantum_blob_at(theta, heisenberg_for_kernel, hbar=state.hbar)
         K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
         P_theta = convolve_W_with_K(state.W, K, dx, dp)
         tilde_W += P_theta
@@ -414,7 +414,7 @@ def tilde_W_heatmap(
     _draw_cells(
         ax, state,
         show_heisenberg=show_heisenberg,
-        show_bitangent=show_bitangent,
+        show_quantum_blob=show_quantum_blob,
         show_quorum=show_quorum,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,
