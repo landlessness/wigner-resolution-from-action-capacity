@@ -49,7 +49,7 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/principal_blobs.pdf}
-\caption{\textbf{Heisenberg cell, principal quantum blobs, and quorum cell.} The Heisenberg cell is the state's covariance ellipsoid with action capacity $A = \pi \, \Delta x \, \Delta p \ge h/2$. The quantum blob family (Fig.~\ref{fig:quantum_blobs}) has two members at the principal axes, $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$ define the semi-axes of each blob. The quorum cell $\tilde a$ is an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \, \delta x \, \delta p$. $A$ circumscribes $a_{\theta=0}$ and $a_{\pi/2}$, which circumscribe $\tilde a$.}
+\caption{\textbf{Heisenberg cell, principal quantum blobs, and quorum cell.} The Heisenberg cell is the state's covariance ellipsoid with action capacity $A = \pi \, \Delta x \, \Delta p \ge h/2$. The quantum blob family (Fig.~\ref{fig:quantum_blobs}) has two members at the principal axes, $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta x \simeq \hbar/\sigma_p$ and $\delta p \simeq \hbar/\sigma_x$ set the scale of the semi-axes. The quorum cell $\tilde a$ is an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \, \delta x \, \delta p$. $A$ circumscribes $a_{\theta=0}$ and $a_{\pi/2}$, which circumscribe $\tilde a$.}
 \label{fig:principal_blobs}
 \end{figure}
 
@@ -93,12 +93,12 @@ A = \pi\,\Delta x\,\Delta p \ge h/2.
 % ===============================================================================
 %  ZUREK SCALES AS A FAMILY OF DE GOSSON BLOBS
 % ===============================================================================
-The Wigner function carries structure at small scales. Zurek located those scales at $\delta x = \hbar/\Delta p$ and $\delta p = \hbar/\Delta x$, set by the state's action capacity~\cite{zurek2001}. We identify them as the principal axes of a family of de Gosson quantum blobs (Fig.~\ref{fig:principal_blobs}),
+The Wigner function carries structure at small scales. Zurek located those scales at $\delta x \simeq \hbar/\sigma_p$ and $\delta p \simeq \hbar/\sigma_x$, set by the state's action capacity~\cite{zurek2001}. We identify them as the principal axes of a family of de Gosson quantum blobs (Fig.~\ref{fig:principal_blobs}),
 \begin{equation}
 a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,\Delta p = h/2.
 \label{eq:principal_axis_cells}
 \end{equation}
-Zurek's relations give all four semi-axes. The capacity $\Delta x, \Delta p$ runs along the major axes, the resolution $\delta x, \delta p$ along the minor.
+Zurek's relations set the scale of all four semi-axes. The capacity $\Delta x, \Delta p$ runs along the major axes, the resolution $\delta x, \delta p$ along the minor.
 
 Between these principal members the quantum blob $a_\theta$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$, the image of a single rigid ellipse $\hat a_\theta$ under the scaling $X = x/\Delta x$, $P = p/\Delta p$,
 \begin{equation}
@@ -134,7 +134,7 @@ Convolving with a Gaussian of action $h/2$ lifts $W$ up to Planck's quantum of a
 %===============================================================================
 %  QUORUM CELL
 %===============================================================================
-Zurek also located the scale $\hbar^2/(\Delta x\,\Delta p)$ of the chessboard structure in the compass state (Fig.~\ref{fig:cat}, column 1)~\cite{zurek2001}. Its rotationally invariant form is the quorum cell $\tilde a$. Named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}, $\tilde a$ is the ellipse with semi-axes $\delta x, \delta p$ (Fig.~\ref{fig:principal_blobs}) and action
+Zurek also located the scale $a_Z \sim \hbar^2/(\sigma_x\,\sigma_p)$ of the chessboard structure in the compass state (Fig.~\ref{fig:cat}, column 1)~\cite{zurek2001}. Its rotationally invariant form is the quorum cell $\tilde a$. Named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}, $\tilde a$ is the ellipse with semi-axes $\delta x, \delta p$ (Fig.~\ref{fig:principal_blobs}) and action
 \begin{equation}
 \tilde a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
