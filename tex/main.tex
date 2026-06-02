@@ -56,7 +56,7 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/quantum_blobs.pdf}
-\caption{\textbf{Quadrature family of quantum blobs and quorum cell.} The Heisenberg cell $A$ circumscribes the quantum blob family $a_\theta$, which circumscribes the quorum cell $\tilde a$. Across $\theta$ it deforms at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ from Fig.~\ref{fig:principal_blobs}.}
+\caption{\textbf{Quadrature family of quantum blobs and quorum cell.} The Heisenberg cell $A$ circumscribes the quantum blob family $\{a_\theta\}$, which circumscribes the quorum cell $\tilde a$. Across $\theta$ it deforms at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ from Fig.~\ref{fig:principal_blobs}.}
 \label{fig:quantum_blobs}
 \end{figure}
 
@@ -139,7 +139,17 @@ Zurek also located the scale $a \sim \hbar \times (\hbar / A)$~\cite{zurek2001} 
 \tilde a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
 \end{equation}
-$\tilde a$ is the scale of the state's finest structure in the bare Wigner function (Figs.~\ref{fig:harmonic},~\ref{fig:eigen},~\ref{fig:cat}, column 1). The quorum cell $\tilde{a}$ is the symplectic polar dual of the Heisenberg cell $A$~\cite{degosson2022polar,degosson2024reconstruction}. Each blob $a_\theta$ is circumscribed by $A$ and circumscribes $\tilde a$, nesting as $A \supseteq a_\theta \supseteq \tilde a$ (Fig.~\ref{fig:quantum_blobs}). A quorum of these blobs reaches $\tilde a$ together, each respecting $h/2$. Resolution and capacity are reciprocal at the quantum of action, $\tilde a\,A = (h/2)^2$.
+$\tilde a$ is the scale of the state's finest structure in the bare
+Wigner function (Figs.~\ref{fig:harmonic},~\ref{fig:eigen},~\ref{fig:cat},
+column 1). The quorum cell $\tilde a$ is the symplectic polar dual of
+the Heisenberg cell $A$~\cite{degosson2022polar,degosson2024reconstruction}.
+The duality is reflexive, so $A$ and $\tilde a$ each fix the other, and
+antimonotone, so $\tilde a$ shrinks as $A$ grows. Each blob $a_\theta$
+is circumscribed by $A$ and circumscribes $\tilde a$, nesting as
+$A \supseteq a_\theta \supseteq \tilde a$ (Fig.~\ref{fig:quantum_blobs}).
+A quorum of these blobs reaches $\tilde a$ together, each respecting
+$h/2$. Resolution and capacity are reciprocal at the quantum of action,
+$\tilde a\,A = (h/2)^2$.
 
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
@@ -157,16 +167,12 @@ $\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhe
 A quantum blob $a_\theta$ too large for $A$ to circumscribe, or too
 small to circumscribe $\tilde a$, is a blob of another state and
 portrays that state, not this one~\cite{degosson2013qblobs,
-degosson2022polar}. The quorum cell $\tilde a$ is the polar dual of
-$A$. The duality is reflexive, so $A$ and $\tilde a$ each fix the
-other, and antimonotone, so $\tilde a$ shrinks as $A$
-grows~\cite{degosson2022polar}. Each blob $a_\theta$ of this state
-nests between them, $A \supseteq a_\theta \supseteq \tilde a$. Because
-every $a_\theta$ circumscribes $\tilde a$, the quorum cell is the
+degosson2022polar}. Because every blob $a_\theta$ of this state
+circumscribes the quorum cell $\tilde a$, and a non-negative portrait
+$\widetilde W$ smooths $W$ by a Gaussian of action at least
+$h/2$~\cite{cartwright1976,degosson2005bullsci}, $\tilde a$ is the
 finest resolution any non-negative portrait attains, and the family
 $\{a_\theta\}$ reaches it across $\theta \in [0,\pi)$.
-
-A quantum blob $a_\theta$ too large for $A$ to circumscribe, or too small to circumscribe $\tilde a$, is a blob of another state and portrays that state, not this one. Because every blob of this state circumscribes the quorum cell, $\tilde a$ is the finest resolution any non-negative portrait attains, and the family reaches it across $\theta \in [0,\pi)$.
 
 %===============================================================================
 %  GENERALIZATION
@@ -190,9 +196,9 @@ The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the
 micro-to-macro transition Heisenberg~\cite{heisenberg1927} and
 Bohr~\cite{bohr1928} identified as requiring special care. The quantum
 blob does not. As $A$ grows, the action of $a_\theta$ is fixed at $h/2$.
-Squeezing~\cite{walls1983} reaches $\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, vastly smaller than the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. The scale called sub-Planck is the minor axis $\delta$ of an $h/2$ blob. We read this structure as the geometry of phase space itself, which de Gosson takes as prior to the uncertainty principle~\cite{degosson2026indeterminacy}.
+Squeezing~\cite{walls1983} reaches $\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, vastly smaller than the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The scale called sub-Planck is the minor axis $\delta$ of an $h/2$ blob. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. 
 
-The negative Wigner function $W$ and its non-negative portrait $\widetilde W$ have their structure at a single scale, set by the action capacity of the state. Heisenberg's product gives the capacity. Zurek's scales and de Gosson's quantum blobs give the resolution. As the action capacity grows to $\pi \, \Delta x \, \Delta p \ge h/2$ the resolution sharpens to $\pi\hbar^2/(\Delta x\,\Delta p) \le h/2$.
+The negative Wigner function $W$ and its non-negative portrait $\widetilde W$ have their structure at a single scale, set by the action capacity of the state. Heisenberg's product gives the capacity. Zurek's scales and de Gosson's quantum blobs give the resolution. As the action capacity grows to $\pi \, \Delta x \, \Delta p \ge h/2$ the resolution sharpens to $\pi\hbar^2/(\Delta x\,\Delta p) \le h/2$. We read this structure as the geometry of phase space itself, which de Gosson takes as prior to the uncertainty principle~\cite{degosson2026indeterminacy}.
 
 \begin{acknowledgments}
 This research received no external funding. Numerical computations were performed with QuTiP~\cite{qutip5} and SciPy~\cite{scipy}. The code reproducing the numerical results, together with Supplemental Material mapping this Letter onto Zurek and de Gosson, is openly available~\cite{zenododeposit}.
