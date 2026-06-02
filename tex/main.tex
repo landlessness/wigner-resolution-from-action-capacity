@@ -100,7 +100,7 @@ a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,
 \end{equation}
 The capacity $\Delta x, \Delta p$ runs along the major axes, the resolution $\delta x, \delta p$ along the minor.
 
-Between these principal members the quantum blob $a_\theta$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$, the image of a single rigid ellipse $\hat a_\theta$ under the scaling $X = x/\Delta x$, $P = p/\Delta p$,
+Between these principal members each quantum blob $a_\theta$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$, the image of a single rigid ellipse $\hat a_\theta$ under the scaling $X = x/\Delta x$, $P = p/\Delta p$,
 \begin{equation}
 a_\theta = \left\{ (x, p) : (X, P) \in \hat a_\theta \right\}.
 \label{eq:atheta}
@@ -110,7 +110,7 @@ The rotated quadratures $X_\theta = X\cos\theta + P\sin\theta$ and $P_\theta = -
 \hat a_\theta = \left\{ (X, P) : X_\theta^{2} + \tfrac{A^2}{(\pi\hbar)^2}\, P_\theta^{2} \le 1 \right\}.
 \label{eq:atheta_hat}
 \end{equation}
-The Heisenberg cell $A$ circumscribes the blob $a_\theta$.
+The Heisenberg cell $A$ circumscribes each blob $a_\theta$.
 
 % ===============================================================================
 %  THE QUANTUM KERNEL
@@ -120,11 +120,11 @@ The Wigner function of the state is
 W(x,p) = \frac{1}{\pi\hbar}\int \psi^*(x+s)\,\psi(x-s)\,e^{2ips/\hbar}\,ds.
 \label{eq:wigner}
 \end{equation}
-The Wigner function of the quantum blob $a_\theta$ is the centered Gaussian whose $h/2$ ellipse is $a_\theta$,
+The Wigner function of each quantum blob $a_\theta$ is the centered Gaussian whose $h/2$ ellipse is $a_\theta$,
 \begin{equation}
 K_\theta(x, p) = \frac{1}{\pi\hbar}\exp\!\left[ -X_\theta^{2} - \tfrac{A^2}{(\pi\hbar)^2}\, P_\theta^{2} \right].
 \label{eq:Ktheta}
-\end{equation} The convolution of $W$ with the quantum kernel $K_\theta$ is
+\end{equation} The convolution of $W$ with each quantum kernel $K_\theta$ is
 \begin{equation}
 \widetilde W_\theta(x,p) = (W * K_\theta)(x,p).
 \label{eq:Wtheta}
@@ -177,12 +177,12 @@ $\{a_\theta\}$ reaches it across $\theta \in [0,\pi)$.
 %===============================================================================
 %  GENERALIZATION
 %===============================================================================
-The construction is stated in the principal frame, where the Heisenberg cell is axis-aligned. This costs no generality. The Wigner function transforms covariantly under the symplectic group~\cite{cordero2018}, so the map that diagonalizes a state's covariance carries it to this frame at preserved action. The Kerr crescent, a sheared coherent state, is resolved this way (Fig.~\ref{fig:eigen}). In one degree of freedom, $A$ fixes the family uniquely. In higher dimensions, action $h/2$ no longer singles out a blob~\cite{degosson2013qblobs}, symplectic capacity and volume diverge, and the construction remains for future work.
+The construction is stated in the principal frame, where the Heisenberg cell $A$ is axis-aligned. This costs no generality. The Wigner function transforms covariantly under the symplectic group~\cite{cordero2018}, so the map that diagonalizes a state's covariance carries it to this frame at preserved action. The Kerr crescent, a sheared coherent state, is resolved this way (Fig.~\ref{fig:eigen}). In one degree of freedom, $A$ fixes the family uniquely. In higher dimensions, action $h/2$ no longer singles out a blob~\cite{degosson2013qblobs}, symplectic capacity and volume diverge, and the construction remains for future work.
 
 %===============================================================================
 %  DIFFERENTIATION
 %===============================================================================
-A fixed vacuum-width Gaussian~\cite{husimi1940} matches the state only at the vacuum $A \sim h/2$ and erases structure at $\tilde a$ for larger states. Methods with a free parameter~\cite{wodkiewicz1984,appleby1998husimi,cahillglauber1969} can resolve more finely, the scale chosen as a parameter. The family here carries no free parameter, fixed by the action capacity $A$ alone.
+A fixed vacuum-width Gaussian~\cite{husimi1940} matches the state only at the vacuum $A \sim h/2$ and erases structure at resolution $\tilde a$ for larger states. Methods with a free parameter~\cite{wodkiewicz1984,appleby1998husimi,cahillglauber1969} can resolve more finely, the scale chosen as a parameter. The family here carries no free parameter, fixed by the action capacity $A$ alone.
 
 %===============================================================================
 %  NUMERICAL RESULTS
@@ -195,7 +195,7 @@ Figures~\ref{fig:harmonic},~\ref{fig:eigen}, and~\ref{fig:cat} show numerical re
 The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the
 micro-to-macro transition Heisenberg~\cite{heisenberg1927} and
 Bohr~\cite{bohr1928} identified as requiring special care. The quantum
-blob does not. As $A$ grows, the action of $a_\theta$ is fixed at $h/2$.
+blob does not. As $A$ grows, the action of each $a_\theta$ is fixed at $h/2$.
 Squeezing~\cite{walls1983} reaches $\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, vastly smaller than the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The scale called sub-Planck is the minor axis $\delta$ of an $h/2$ blob. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. 
 
 The negative Wigner function $W$ and its non-negative portrait $\widetilde W$ have their structure at a single scale, set by the action capacity of the state. Heisenberg's product gives the capacity. Zurek's scales and de Gosson's quantum blobs give the resolution. As the action capacity grows to $\pi \, \Delta x \, \Delta p \ge h/2$ the resolution sharpens to $\pi\hbar^2/(\Delta x\,\Delta p) \le h/2$. We read this structure as the geometry of phase space itself, which de Gosson takes as prior to the uncertainty principle~\cite{degosson2026indeterminacy}.
