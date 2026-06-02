@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as the principal axes of de Gosson quantum blobs. The state's elliptical Heisenberg cell of action capacity $\pi \, \Delta x \, \Delta p$ circumscribes these blobs, a family deforming at constant action $h/2$. Convolving the Wigner function to the scale of a single $h/2$ blob restores resolution to Planck's quantum of action and renders it non-negative. Integrating over the family preserves structure down to $\pi\hbar^2/(\Delta x\,\Delta p)$, the resolution symplectic polar duality sets on any non-negative function of the state, a portrait without free parameters, sharpening as the action capacity grows.
+Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as the principal axes of de Gosson quantum blobs. The state's elliptical Heisenberg cell of action capacity $\pi \, \Delta x \, \Delta p$ circumscribes these blobs, a family deforming at constant action $h/2$. Convolving the Wigner function to the scale of a single $h/2$ blob restores resolution to Planck's quantum of action and renders it non-negative. Integrating over the family preserves structure down to $\pi\hbar^2/(\Delta x\,\Delta p)$, the resolution symplectic polar duality sets on any non-negative portrait of the state. This resolution carries no free parameter and sharpens as the action capacity grows.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -49,21 +49,21 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/principal_blobs.pdf}
-\caption{\textbf{Heisenberg cell, principal quantum blobs, and quorum cell.} The Heisenberg cell is the state's covariance ellipsoid with action capacity $A = \pi \, \Delta x \, \Delta p \ge h/2$. The quantum blob family (Fig.~\ref{fig:quantum_blobs}) has two members at the principal axes, $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta p \sim \hbar/\Delta x$ and $\delta x \sim \hbar/\Delta p$ locate the scales of the semi-axes from the state's action capacity. The quorum cell $\tilde a$ is an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \, \delta x \, \delta p$. $A$ circumscribes $a_{\theta=0}$ and $a_{\pi/2}$, which circumscribe $\tilde a$.}
+\caption{\textbf{Heisenberg cell, principal quantum blobs, and quorum cell.} The Heisenberg cell is the state's covariance ellipsoid with action capacity $A = \pi \, \Delta x \, \Delta p \ge h/2$. The quantum blob family (Fig.~\ref{fig:quantum_blobs}) has two members at the principal axes, $a_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $a_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta p \sim \hbar/\Delta x$ and $\delta x \sim \hbar/\Delta p$ locate the semi-axis scales from the state's action capacity. The quorum cell $\tilde a$ is an ellipse with semi-axes $\delta x, \delta p$ and action $\tilde a = \pi \, \delta x \, \delta p$. $A$ circumscribes $a_{\theta=0}$ and $a_{\pi/2}$, which circumscribe $\tilde a$.}
 \label{fig:principal_blobs}
 \end{figure}
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/quantum_blobs.pdf}
-\caption{\textbf{Quadrature family of quantum blobs and quorum cell.} The Heisenberg cell $A$ circumscribes the quantum blob family $\{a_\theta\}$, which circumscribes the quorum cell $\tilde a$. Across $\theta$ it deforms at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ from Fig.~\ref{fig:principal_blobs}.}
+\caption{\textbf{Quadrature family of quantum blobs and quorum cell.} The Heisenberg cell $A$ circumscribes the quantum blob family $\{a_\theta\}$, which circumscribes the quorum cell $\tilde a$. Across $\theta$ the family deforms at constant action $a_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $a_{\theta=0}$ and $a_{\pi/2}$ from Fig.~\ref{fig:principal_blobs}.}
 \label{fig:quantum_blobs}
 \end{figure}
 
 \begin{figure*}[!tp]
 \centering
 \includegraphics[width=\textwidth]{figures/harmonic.pdf}
-\caption{\textbf{Harmonic oscillator.} Rows correspond to Fock states $n = 0, 1, 2, 20$ with action capacity $A/(h/2) = 2n+1$. Column 1: Wigner function $W(x, p)$ (negativity in blue) overlaid with the Heisenberg cell $A$ and quorum cell $\tilde a$. Centered at the covariance origin, $\tilde a$ outlines the finest structure (the Zurek scale) of the bare, unconvolved Wigner function. Column 2: Cross-section $W(x, 0)$ exhibiting negative dips. Column 3: Quantum kernel $K_{\pi/2}$ overlaid with $A$ and the quantum blob $a_{\pi/2}$ (action $h/2$, restoring resolution up to Planck's quantum of action). Column 4: Convolved cross-section $\widetilde W_{\pi/2}(x, 0)$ at quadrature angle $\theta = \pi/2$, which is non-negative. Column 5: The portrait $\widetilde W(x, p)$, integrated over the blob family across all angles, overlaid with $A$ and $\tilde a$ (de Gosson's symplectic polar dual). It is everywhere non-negative, with positive lobes matching the count and position of those in $W$, resolved at scale $\tilde a$. For the vacuum ($n = 0$), $A$ and $\tilde a$ coincide as a Gaussian blob at $A = h/2$. As $n$ increases, $A$ grows and $\tilde a$ reciprocally shrinks ($\tilde a\,A = (h/2)^2$). At $n = 20$, the rings condense toward a classical energy trajectory, leaving $\tilde a$ as a fine central cell. Axes are in the oscillator scales $x_0 = \sqrt{\hbar/m\omega}$ and $p_0 = \sqrt{\hbar m\omega}$.}
+\caption{\textbf{Harmonic oscillator.} Rows correspond to Fock states $n = 0, 1, 2, 20$ with action capacity $A/(h/2) = 2n+1$. Column 1: Wigner function $W(x, p)$ (negativity in blue) overlaid with the Heisenberg cell $A$ and quorum cell $\tilde a$. Centered at the covariance origin, $\tilde a$ outlines the finest structure (the Zurek scale) of the bare, unconvolved Wigner function. Column 2: Cross-section $W(x, 0)$ exhibiting negative dips. Column 3: Quantum kernel $K_{\pi/2}$ overlaid with $A$ and the quantum blob $a_{\pi/2}$ (action $h/2$, restoring resolution up to Planck's quantum of action). Column 4: Convolved cross-section $\widetilde W_{\pi/2}(x, 0)$ at quadrature angle $\theta = \pi/2$, which is non-negative. Column 5: The portrait $\widetilde W(x, p)$, integrated over the blob family across all angles, overlaid with $A$ and $\tilde a$ (symplectic polar duals). It is everywhere non-negative, with positive lobes matching the count and position of those in $W$, resolved at scale $\tilde a$. For the vacuum ($n = 0$), $A$ and $\tilde a$ coincide as a Gaussian blob at $A = h/2$. As $n$ increases, $A$ grows and $\tilde a$ reciprocally shrinks ($\tilde a\,A = (h/2)^2$). At $n = 20$, the rings condense toward a classical energy trajectory, leaving $\tilde a$ as a fine central cell. Axes are in the oscillator scales $x_0 = \sqrt{\hbar/m\omega}$ and $p_0 = \sqrt{\hbar m\omega}$.}
 \label{fig:harmonic}
 \end{figure*}
 
@@ -100,7 +100,7 @@ a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,
 \end{equation}
 The capacity $\Delta x, \Delta p$ runs along the major axes, the resolution $\delta x, \delta p$ along the minor.
 
-Between these principal members the quantum blob $a_\theta$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$, the image of the rigid ellipse $\hat a_\theta$ under the scaling $X = x/\Delta x$, $P = p/\Delta p$,
+Between these principal members the quantum blob $a_\theta$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$, the preimage of the rigid ellipse $\hat a_\theta$ under the scaling $X = x/\Delta x$, $P = p/\Delta p$,
 \begin{equation}
 a_\theta = \left\{ (x, p) : (X, P) \in \hat a_\theta \right\}.
 \label{eq:atheta}
@@ -159,7 +159,7 @@ Integrating $\widetilde W_\theta$ over the family gives the phase-space portrait
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi \widetilde W_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
 \end{equation}
-$\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}. Over the same $\theta$, the construction here convolves $W$ to build the non-negative portrait $\widetilde W$.
+$\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}. Over the same $\theta$, convolving $W$ builds the non-negative portrait $\widetilde W$.
 
 % ===============================================================================
 %  UNIQUENESS OF BLOBS TO STATE
@@ -177,7 +177,7 @@ $\{a_\theta\}$ reaches it across $\theta \in [0,\pi)$.
 %===============================================================================
 %  GENERALIZATION
 %===============================================================================
-The construction is stated in the principal frame, where the Heisenberg cell $A$ is axis-aligned. This costs no generality. The Wigner function transforms covariantly under the symplectic group~\cite{cordero2018}, so the map that diagonalizes a state's covariance carries it to this frame at preserved action. The Kerr crescent, a sheared coherent state, is resolved this way (Fig.~\ref{fig:eigen}). In one degree of freedom, $A$ fixes the family uniquely. In higher dimensions, action $h/2$ no longer singles out a blob~\cite{degosson2013qblobs}, symplectic capacity and volume diverge, and the construction remains for future work.
+The principal frame, where the Heisenberg cell $A$ is axis-aligned, costs no generality. The Wigner function transforms covariantly under the symplectic group~\cite{cordero2018}, so the map that diagonalizes a state's covariance carries it to this frame at preserved action. The Kerr crescent, a sheared coherent state, is resolved this way (Fig.~\ref{fig:eigen}). In one degree of freedom, $A$ fixes the family uniquely. In higher dimensions, action $h/2$ no longer singles out a blob~\cite{degosson2013qblobs}, symplectic capacity and volume diverge, and the higher-dimensional case remains for future work.
 
 %===============================================================================
 %  DIFFERENTIATION
@@ -198,7 +198,7 @@ Bohr~\cite{bohr1928} identified as requiring special care. The quantum
 blob does not. As $A$ grows, the action of each $a_\theta$ is fixed at $h/2$.
 Squeezing~\cite{walls1983} reaches $\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, vastly smaller than the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The scale called sub-Planck is the minor axis $\delta$ of an $h/2$ blob. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. 
 
-The negative Wigner function $W$ and its non-negative portrait $\widetilde W$ have their structure at a single scale $\tilde{a}$, set by the action capacity of the state $A$. Zurek's scales and de Gosson's quantum blobs give the resolution. Heisenberg's product gives the capacity. As the action capacity grows to $\pi \, \Delta x \, \Delta p \ge h/2$ the resolution sharpens to $\pi\hbar^2/(\Delta x\,\Delta p) \le h/2$. We read this structure as the geometry of phase space itself, which de Gosson takes as prior to the uncertainty principle~\cite{degosson2026indeterminacy}.
+The negative Wigner function $W$ and its non-negative portrait $\widetilde W$ have their structure at a single scale $\tilde{a}$, set by the state's action capacity $A$. Zurek scales and de Gosson quantum blobs give the resolution. Heisenberg's product gives the capacity. As the action capacity grows to $\pi \, \Delta x \, \Delta p \ge h/2$ the resolution sharpens to $\pi\hbar^2/(\Delta x\,\Delta p) \le h/2$. We read this structure as the geometry of phase space itself, which de Gosson takes as prior to the uncertainty principle~\cite{degosson2026indeterminacy}.
 
 \begin{acknowledgments}
 This research received no external funding. Numerical computations were performed with QuTiP~\cite{qutip5} and SciPy~\cite{scipy}. The code reproducing the numerical results, together with Supplemental Material mapping this Letter onto Zurek and de Gosson, is openly available~\cite{zenododeposit}.
