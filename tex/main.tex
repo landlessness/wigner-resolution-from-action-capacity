@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as the principal axes of de Gosson quantum blobs. The state's elliptical Heisenberg cell of action capacity $\pi \, \Delta x \, \Delta p$ circumscribes these blobs, a family deforming at constant action $h/2$. Convolving the Wigner function to the scale of a single $h/2$ blob restores resolution to Planck's quantum of action and renders it non-negative. Integrating over the family preserves structure down to $\pi\hbar^2/(\Delta x\,\Delta p)$, the resolution symplectic polar duality sets on any non-negative function of the state, a parameter-free portrait sharpening as the action capacity grows.
+Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as the principal axes of de Gosson quantum blobs. The state's elliptical Heisenberg cell of action capacity $\pi \, \Delta x \, \Delta p$ circumscribes these blobs, a family deforming at constant action $h/2$. Convolving the Wigner function to the scale of a single $h/2$ blob restores resolution to Planck's quantum of action and renders it non-negative. Integrating over the family preserves structure down to $\pi\hbar^2/(\Delta x\,\Delta p)$, the resolution symplectic polar duality sets on any non-negative function of the state, a portrait without free parameters, sharpening as the action capacity grows.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -41,7 +41,7 @@ Phase-space formulations of quantum mechanics usually ignore that resolution is 
 % ===============================================================================
 %  OPENING
 % ===============================================================================
-The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. It is defined pointwise, below Planck's quantum of action, and Hudson's theorem forces it negative there~\cite{hudson1974}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and has been characterized by quasi-probability measures~\cite{kenfack2004}. A non-negative portrait admits a probability interpretation in phase space~\cite{husimi1940,cartwright1976,dragoman2005phasespace,degosson2005bullsci} and supports classical sampling of quantum dynamics~\cite{polkovnikov2010}. In this letter, action capacity $\pi \, \Delta x\, \Delta p$ deforms a family of $h/2$ quantum blobs to resolve the Wigner function to $\pi\hbar^2/(\Delta x\,\Delta p)$, the resolution that symplectic polar duality sets on any non-negative portrait of the state.
+The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. It is defined pointwise, below Planck's quantum of action, and Hudson's theorem forces it negative there~\cite{hudson1974}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and a measure of nonclassicality~\cite{kenfack2004}, while a non-negative portrait admits a probability interpretation~\cite{husimi1940,cartwright1976,dragoman2005phasespace,degosson2005bullsci} and supports classical sampling~\cite{polkovnikov2010}. Action capacity $\pi \, \Delta x\, \Delta p$ deforms a family of $h/2$ quantum blobs that resolve the Wigner function to $\pi\hbar^2/(\Delta x\,\Delta p)$, the resolution symplectic polar duality sets on any non-negative portrait of the state.
 
 % ===============================================================================
 %  FIGURES
@@ -154,6 +154,18 @@ $\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhe
 % ===============================================================================
 %  UNIQUENESS OF BLOBS TO STATE
 % ===============================================================================
+A quantum blob $a_\theta$ too large for $A$ to circumscribe, or too
+small to circumscribe $\tilde a$, is a blob of another state and
+portrays that state, not this one~\cite{degosson2013qblobs,
+degosson2022polar}. The quorum cell $\tilde a$ is the polar dual of
+$A$. The duality is reflexive, so $A$ and $\tilde a$ each fix the
+other, and antimonotone, so $\tilde a$ shrinks as $A$
+grows~\cite{degosson2022polar}. Each blob $a_\theta$ of this state
+nests between them, $A \supseteq a_\theta \supseteq \tilde a$. Because
+every $a_\theta$ circumscribes $\tilde a$, the quorum cell is the
+finest resolution any non-negative portrait attains, and the family
+$\{a_\theta\}$ reaches it across $\theta \in [0,\pi)$.
+
 A quantum blob $a_\theta$ too large for $A$ to circumscribe, or too small to circumscribe $\tilde a$, is a blob of another state and portrays that state, not this one. Because every blob of this state circumscribes the quorum cell, $\tilde a$ is the finest resolution any non-negative portrait attains, and the family reaches it across $\theta \in [0,\pi)$.
 
 %===============================================================================
