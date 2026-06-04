@@ -56,4 +56,6 @@ def double_well_state(
         x_grid_psi=x_psi,
         window=window,
         hbar=hbar,
+        n_x_int=601,
+        n_p_int=601,
     )
