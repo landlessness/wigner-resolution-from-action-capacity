@@ -84,7 +84,7 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 % ===============================================================================
 %  THE PHASE-SPACE CELLS
 % ===============================================================================
-Planck divided phase space into elementary regions of action~\cite{planck1906}. Heisenberg's uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$~\cite{robertson1929,schrodinger1930} fixes the limit. Geometrically, de Gosson gave this action region the form of the state's covariance ellipsoid, with symplectic capacity $\pi \, \Delta x\,\Delta p$~\cite{degosson2009camel} and semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$. This is the Heisenberg cell of action capacity (Figs.~\ref{fig:principal_blobs},~\ref{fig:quantum_blobs}),
+Planck divided phase space into elementary regions of action~\cite{planck1906}. Heisenberg's uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$~\cite{kennard1927,robertson1929,schrodinger1930} fixes the limit. Geometrically, de Gosson gave this action region the form of the state's covariance ellipsoid, with symplectic capacity $\pi \, \Delta x\,\Delta p$~\cite{degosson2009camel} and semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$. This is the Heisenberg cell of action capacity (Figs.~\ref{fig:principal_blobs},~\ref{fig:quantum_blobs}),
 \begin{equation}
 A = \pi\,\Delta x\,\Delta p \ge h/2.
 \label{eq:extended_cell}
@@ -152,14 +152,19 @@ $h/2$, reaches $\tilde a$ together. Resolution and capacity are reciprocal at th
 $\tilde a\,A = (h/2)^2$.
 
 % ===============================================================================
+
 %  THE CONVOLVED PORTRAIT
+
 % ===============================================================================
+
 Integrating $\widetilde W_\theta$ over the family gives the phase-space portrait of the state at the resolution $\tilde a$,
+
 \begin{equation}
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi \widetilde W_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
 \end{equation}
-$\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals to recover $W$ pointwise~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}. Over the same $\theta$, convolving $W$ builds the non-negative portrait $\widetilde W$.
+
+$\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhere. Tomographic reconstruction inverts marginals pointwise to recover $W$~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}. Over the same $\theta$, convolving $W$ with the quantum kernel family $\{K_\theta\}$ builds the non-negative portrait $\widetilde W$.
 
 % ===============================================================================
 %  UNIQUENESS OF BLOBS TO STATE
@@ -188,13 +193,7 @@ A fixed vacuum-width Gaussian~\cite{husimi1940} matches the state only at the va
 %  NUMERICAL RESULTS
 %===============================================================================
 Figures~\ref{fig:harmonic},~\ref{fig:eigen}, and~\ref{fig:cat} show
-numerical results across twelve states~\cite{zenododeposit} in
-units $x_0 = \sqrt{\hbar/m\omega}$ and $p_0 = \sqrt{\hbar m\omega}$.
-Column 1 places $A$ and $\tilde a$ on the bare Wigner function $W$,
-where $\tilde a$ marks the structural scale. Column 5 places $A$
-and $\tilde a$ on the portrait $\widetilde W$, where $\tilde a$ marks
-the same structural scale. $\widetilde W$ is non-negative everywhere,
-with the positive lobes of $W$ reappearing in count and location.
+numerical results across twelve states~\cite{zenododeposit}. The portraits $W$ and $\widetilde W$ share the same structure at scale $\tilde a$, with $\widetilde W$ verified non-negative.
 
 % ===============================================================================
 %  DISCUSSION
@@ -203,7 +202,7 @@ The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the
 micro-to-macro transition Heisenberg~\cite{heisenberg1927} and
 Bohr~\cite{bohr1928} identified as requiring special care. The quantum
 blob does not. As $A$ grows, the action of each $a_\theta$ is fixed at $h/2$.
-Squeezing~\cite{walls1983} reaches $\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, vastly smaller than the single radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The scale called sub-Planck is the minor axis $\delta$ of an $h/2$ blob. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. 
+Squeezing~\cite{walls1983} reaches $\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, vastly smaller than the radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The scale called sub-Planck is the minor axis $\delta$ of an $h/2$ blob. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. 
 
 The negative Wigner function $W$ and its non-negative portrait $\widetilde W$ have their structure at a single scale $\tilde{a}$, set by the state's action capacity $A$. Zurek scales and de Gosson quantum blobs give the resolution. Heisenberg's product gives the capacity. As the action capacity grows to $\pi \, \Delta x \, \Delta p \ge h/2$ the resolution sharpens to $\pi\hbar^2/(\Delta x\,\Delta p) \le h/2$. We read this structure as the geometry of phase space itself, which de Gosson takes as prior to the uncertainty principle~\cite{degosson2026indeterminacy}.
 
