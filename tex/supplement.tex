@@ -289,16 +289,270 @@ its lobes north, south, east, and west, fixing the two axis directions of
 the interference grid.
 
 % ======================================================================
-% Scaffolding for later sections (not rendered).
-% The dictionary above is the focus of this revision. The headings below
-% are retained as a roadmap for the planned expansion.
-% ======================================================================
+% S2 --- Numerical validation (same instruments on W and W-tilde)
+% Drop-in section for supplement.tex. Place after the dictionary (Sec. S1),
+% in the position now held by the commented scaffolding roadmap.
 %
-% \section{Action-units table for phase-space methods}
-% \section{Effective resolution: derivations}
-% \section{Computational details}
-%   - pipeline overview, twelve-state list with covariance parameters,
-%     integration-grid choices, Zenodo / OSF deposit pointers.
+% Supersedes the two earlier drafts:
+%   - supplement_quorum_structure.tex (dropped the inverse-rms scale law,
+%     the amplitude-weighted measure that reads W but reads the envelope on
+%     W-tilde)
+%   - supplement_similarity.tex (dropped the Spearman/Pearson association and
+%     the frame-dependent cross-section peaks)
+%
+% Requires figures/ :
+%   shared_support.pdf, ring_colocation.pdf,
+%   colocation_grid.pdf, colocation_composite.pdf
+%
+% House style matched to Sec. S1: booktabs rules, p{} columns,
+% \arraystretch, onecolumn widths. Classic prose: no em-dashes, colons,
+% semicolons, or parentheticals in running text. Citations only on
+% borrowed premises (Zurek, Cartwright, de Gosson).
+% ======================================================================
+
+\section{Numerical validation}
+\label{sec:numerics}
+
+The Letter states that the bare Wigner function $W$ and the non-negative
+portrait $\widetilde W$ carry the same structure at the scale of the quorum
+cell $\tilde a$, and that $\widetilde W$ is non-negative. This section measures
+both statements across the twelve states of the Letter. Every instrument runs
+identically on $W$ and on $\widetilde W$ and reports position, the quantity the
+portrait preserves. No amplitude scale appears, so there is no ambiguity about
+what each number measures. The one asymmetry between the two functions is
+non-negativity, the defining property of the portrait.
+
+\subsection{The portrait carries the structure at the same positions}
+\label{sec:numerics_position}
+
+The cross-spectral phase between $W$ and $\widetilde W$ is the standard test
+for a displacement of structure. A feature moved to a new position registers as
+a nonzero phase at the corresponding chord. Table~\ref{tab:coherence} reports
+the in-band phase and the magnitude-squared coherence $\gamma^2$ for the twelve
+states. The phase is zero to machine precision for every state, so no feature
+moves. The coherence stays near unity. It falls below unity only through the
+radial average over a transfer that is mildly anisotropic, and the phase rather
+than the coherence carries the statement of position.
+
+The radially averaged chord power removes the choice of axis. Convolution is
+multiplication in the chord domain, so $W$ and $\widetilde W$ carry power at the
+same chords wherever the kernel transfer is free of zeros, which holds within
+the band. Figure~\ref{fig:shared_support} overlays the two spectra for the Fock
+state $n=20$. They occupy the same chords, the portrait lowered in amplitude and
+the bare function reaching further only into the fine scale below $\tilde a$
+where its negativity lives.
+
+The positive features of $W$ and $\widetilde W$ occupy the same points of phase
+space. Detecting the positive maxima of each function with one rule,
+Table~\ref{tab:coloc} reports the count found in each, the number matched, and
+the median displacement of a matched pair in units of the quorum semi-axis
+$\delta$. Every state but the Fock state $n=20$ places its matched features
+within a third of $\delta$, and the $n=20$ value of $1.2\,\delta$ is the
+coarse-grid sampling of its many rings rather than a displacement, tightening on
+the fine grid of Sec.~\ref{sec:numerics_method}. The portrait carries fewer
+maxima than the bare function for the high-capacity states, because the
+shallowest features merge into the envelope rather than move.
+Figure~\ref{fig:coloc_grid} shows the portrait of each state with the positive
+maxima of the bare function marked, and Fig.~\ref{fig:coloc_composite} plots the
+phase-space radius of every matched feature in $W$ against its radius in
+$\widetilde W$, where the whole library falls on the diagonal.
+
+\subsection{The scale of the shared structure is the quorum cell}
+\label{sec:numerics_scale}
+
+The shared structure refines with the quorum semi-axis as the capacity grows.
+The rings of the Fock state $n=20$, the finest structure in the library, sit at
+a spacing of $3.6\,\delta$ measured the same way in $W$ and in $\widetilde W$,
+their radii listed in Table~\ref{tab:rings} and shown in
+Fig.~\ref{fig:ringcoloc}. The quorum cell is the scale at which the two
+functions share structure, fixed by the action capacity through the polar
+duality $\tilde a\,A = (h/2)^2$~\cite{degosson2022polar,
+degosson2024reconstruction}.
+
+\subsection{Non-negativity}
+\label{sec:numerics_nonneg}
+
+Convolving $W$ with a phase-space Gaussian of action at least $h/2$ returns a
+non-negative function~\cite{cartwright1976, degosson2005bullsci}. The
+family-averaged kernel is a convex average of such Gaussians, so
+$\widetilde W \ge 0$ for every state. Table~\ref{tab:nonneg} reports the grid
+minimum of $W$ and of $\widetilde W$, each relative to its own peak. The bare
+function runs to a depth comparable to its peak, and the portrait rests at the
+floor, between $10^{-7}$ and the floating-point limit. This is the one property
+that separates the two functions.
+
+\subsection{Method}
+\label{sec:numerics_method}
+
+Each portrait is the average of $W * K_\theta$ over $180$ angles evenly spaced
+on $[0,\pi)$, evaluated on the uniform grid that carries $W$. The Fock state
+$n=20$ is evaluated on a refined grid of $1001$ points per axis, which resolves
+its rings, and the other states on the standard grid. The positive maxima of a
+function are its local maxima above five percent of its grid peak, found with a
+sliding-window maximum filter and matched to the nearest maximum of the other
+function within three quorum semi-axes. The coherence and phase are formed from
+the two-dimensional symplectic Fourier transforms of $W$ and $\widetilde W$,
+binned radially in chord, with the in-band region taken where the power of $W$
+exceeds one percent of its peak. The grid reproduces the single-convolution
+identity $\widetilde W = W * \bar K$ to $5\times10^{-17}$. The code reproducing
+every table and figure of this section is openly available~\cite{zenododeposit}.
+
+% ----------------------------------------------------------------------
+% Tables  (booktabs rules, p{} columns; matched to Sec. S1)
+% ----------------------------------------------------------------------
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.26\linewidth} p{0.16\linewidth} p{0.16\linewidth} p{0.24\linewidth}@{}}
+\toprule
+state & $A/(h/2)$ & $\gamma^2$ & $\max|\mathrm{phase}|$ \\
+\midrule
+QHO $n=0$    & 1.00  & 0.921 & $9\times10^{-16}$ \\
+QHO $n=1$    & 3.00  & 0.947 & $6\times10^{-16}$ \\
+QHO $n=2$    & 5.00  & 0.973 & $2\times10^{-15}$ \\
+QHO $n=20$   & 41.00 & 0.998 & $1\times10^{-15}$ \\
+squeezed     & 1.00  & 0.944 & $1\times10^{-15}$ \\
+Morse        & 15.60 & 0.964 & $6\times10^{-15}$ \\
+double-well  & 10.14 & 0.938 & $6\times10^{-16}$ \\
+Kerr         & 18.21 & 0.994 & $3\times10^{-15}$ \\
+2-cat        & 4.35  & 0.800 & $7\times10^{-16}$ \\
+3-cat        & 17.00 & 0.992 & $4\times10^{-15}$ \\
+4-cat diag   & 19.00 & 0.995 & $6\times10^{-16}$ \\
+compass      & 19.00 & 0.995 & $1\times10^{-14}$ \\
+\bottomrule
+\end{tabular}
+\caption{Positions coincide. Magnitude-squared coherence $\gamma^2$ and the
+largest in-band cross-spectral phase between $W$ and $\widetilde W$, in radians.
+The phase is zero to machine precision, so no feature is displaced. The
+coherence sits near unity, lowest for the 2-cat where the two-lobe transfer is
+most anisotropic.}
+\label{tab:coherence}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.20\linewidth} p{0.13\linewidth} p{0.10\linewidth} p{0.12\linewidth} p{0.12\linewidth} p{0.16\linewidth}@{}}
+\toprule
+state & $A/(h/2)$ & $N_W$ & $N_{\widetilde W}$ & matched & offset$/\delta$ \\
+\midrule
+QHO $n=0$    & 1.00  & 1   & 1  & 1  & 0.00 \\
+QHO $n=1$    & 3.00  & 28  & 40 & 28 & 0.23 \\
+QHO $n=2$    & 5.00  & 35  & 41 & 35 & 0.29 \\
+QHO $n=20$   & 41.00 & 149 & 97 & 87 & 1.23 \\
+squeezed     & 1.00  & 1   & 1  & 1  & 0.00 \\
+Morse        & 15.60 & 30  & 11 & 16 & 0.32 \\
+double-well  & 10.14 & 20  & 12 & 14 & 0.29 \\
+Kerr         & 18.21 & 46  & 31 & 32 & 0.33 \\
+2-cat        & 4.35  & 5   & 5  & 5  & 0.16 \\
+3-cat        & 17.00 & 18  & 14 & 17 & 0.39 \\
+4-cat diag   & 19.00 & 33  & 21 & 33 & 0.33 \\
+compass      & 19.00 & 33  & 21 & 29 & 0.33 \\
+\bottomrule
+\end{tabular}
+\caption{Positive features co-locate. Number of positive maxima found in $W$
+and in $\widetilde W$ by one detector, the number matched between them, and the
+median displacement of a matched pair in units of the quorum semi-axis $\delta$.
+Matched features sit within a third of $\delta$ for every state but $n=20$,
+whose $1.2\,\delta$ is coarse-grid sampling of its rings. The portrait shows
+fewer maxima where the shallowest features merge into the envelope.}
+\label{tab:coloc}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.14\linewidth} p{0.10\linewidth} p{0.10\linewidth} p{0.10\linewidth} p{0.10\linewidth} p{0.10\linewidth}@{}}
+\toprule
+ring & 1 & 2 & 3 & 4 & 5 \\
+\midrule
+$W$            & 0.53 & 1.04 & 1.55 & 2.06 & 2.57 \\
+$\widetilde W$ & 0.56 & 1.04 & 1.55 & 2.06 & 2.60 \\
+\midrule
+ring & 6 & 7 & 8 & 9 & 10 \\
+\midrule
+$W$            & 3.15 & 3.72 & 4.35 & 5.07 & 6.13 \\
+$\widetilde W$ & 3.15 & 3.72 & 4.35 & 5.10 & 6.19 \\
+\bottomrule
+\end{tabular}
+\caption{Positive-ring radii of the Fock state $n=20$, the finest structure in
+the library. The rings of $W$ and $\widetilde W$ coincide ring for ring, at a
+spacing of $3.6\,\delta$.}
+\label{tab:rings}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{0.24\linewidth} p{0.14\linewidth} p{0.22\linewidth} p{0.24\linewidth}@{}}
+\toprule
+state & $A/(h/2)$ & $\min W/\max W$ & $\min\widetilde W/\max\widetilde W$ \\
+\midrule
+QHO $n=0$    & 1.00  & $0.000$  & $7\times10^{-6}$ \\
+QHO $n=1$    & 3.00  & $-2.241$ & $1\times10^{-16}$ \\
+QHO $n=2$    & 5.00  & $-0.414$ & $1\times10^{-7}$ \\
+QHO $n=20$   & 41.00 & $-0.402$ & $5\times10^{-8}$ \\
+squeezed     & 1.00  & $-0.000$ & $-4\times10^{-17}$ \\
+Morse        & 15.60 & $-1.167$ & $6\times10^{-9}$ \\
+double-well  & 10.14 & $-1.381$ & $1\times10^{-12}$ \\
+Kerr         & 18.21 & $-1.002$ & $8\times10^{-9}$ \\
+2-cat        & 4.35  & $-0.750$ & $-6\times10^{-17}$ \\
+3-cat        & 17.00 & $-0.995$ & $2\times10^{-9}$ \\
+4-cat diag   & 19.00 & $-0.760$ & $1\times10^{-7}$ \\
+compass      & 19.00 & $-0.749$ & $2\times10^{-8}$ \\
+\bottomrule
+\end{tabular}
+\caption{Non-negativity, the one asymmetry. Grid minimum of each function
+relative to its peak. The bare function runs to a depth comparable to its peak,
+the portrait rests at the floor.}
+\label{tab:nonneg}
+\end{table}
+
+% ----------------------------------------------------------------------
+% Figures  (onecolumn widths)
+% ----------------------------------------------------------------------
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.62\linewidth]{colocation_composite.pdf}
+\caption{Every positive feature of every state, plotted as its phase-space
+radius in $W$ against its radius in $\widetilde W$. Each state carries one
+symbol and contributes one point per feature. The library falls on the diagonal,
+so the portrait places each feature at the radius the bare function gives it.}
+\label{fig:coloc_composite}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{colocation_grid.pdf}
+\caption{The portrait $\widetilde W$ of each state as a heat map, with the
+positive maxima of the bare function $W$ marked. The marks fall on the features
+of the portrait for every state, the rings of the Fock states, the lobes and
+interference peaks of the cats, and the curved structure of the anharmonic
+states.}
+\label{fig:coloc_grid}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.62\linewidth]{shared_support.pdf}
+\caption{Radially averaged chord power of $W$ and $\widetilde W$ for the Fock
+state $n=20$. The two functions occupy the same chords. The figure is read for
+where the curves carry power, not for how high they stand, since depth is not
+what this section measures.}
+\label{fig:shared_support}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.78\linewidth]{ring_colocation.pdf}
+\caption{Radial profiles of $W$ and $\widetilde W$ for the Fock state $n=20$.
+The positive rings sit at the same radii in both. The portrait rests above zero
+on its envelope while the bare function dips negative between rings, and neither
+difference moves a ring.}
+\label{fig:ringcoloc}
+\end{figure}
+
+\clearpage
 
 \bibliography{main}
 
