@@ -30,42 +30,11 @@ from matplotlib.figure import Figure
 from scipy.ndimage import maximum_filter
 from scipy.signal import find_peaks
 
-from wigner_resolution.cells import HeisenbergCell, quantum_blob_at, quorum_cell
-from wigner_resolution.convolve import convolve_W_with_K
-from wigner_resolution.kernels import K_theta_mesh
+from wigner_resolution.cells import HeisenbergCell, quorum_cell
+from wigner_resolution.figures.panels import tilde_W_heatmap
 from wigner_resolution.plotstyle import COLUMN_WIDTH, DOUBLE_WIDTH
+from wigner_resolution.portrait import tilde_W_portrait
 from wigner_resolution.state import State
-
-
-# ----------------------------------------------------------------------
-# portrait
-# ----------------------------------------------------------------------
-def tilde_W_portrait(state: State, n_theta: int = 360) -> np.ndarray:
-    """The convolved portrait W-tilde = (1/N) sum_theta (W * K_theta).
-
-    Built from the same low-level pieces as figures.panels.tilde_W_heatmap,
-    so it returns the array that panel plots, without importing matplotlib.
-    The kernel is centered on the integration-grid midpoint to match
-    fftconvolve(mode="same") alignment, and theta runs over [0, pi) with the
-    endpoint excluded since K_theta has the Z2 symmetry K_theta = K_{theta+pi}.
-    """
-    assert state.W is not None and state.x_int is not None and state.p_int is not None
-    x_mid = 0.5 * (state.x_int[0] + state.x_int[-1])
-    p_mid = 0.5 * (state.p_int[0] + state.p_int[-1])
-    heisenberg = HeisenbergCell(
-        Delta_x=state.rs.Delta_x, Delta_p=state.rs.Delta_p, center=(x_mid, p_mid),
-    )
-    xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
-    dx = float(state.x_int[1] - state.x_int[0])
-    dp = float(state.p_int[1] - state.p_int[0])
-    thetas = np.linspace(0.0, np.pi, n_theta, endpoint=False)
-    tilde_W = np.zeros_like(state.W)
-    for theta in thetas:
-        blob = quantum_blob_at(theta, heisenberg, hbar=state.hbar)
-        K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
-        tilde_W += convolve_W_with_K(state.W, K, dx, dp)
-    tilde_W /= n_theta
-    return tilde_W
 
 
 # ----------------------------------------------------------------------
@@ -241,16 +210,21 @@ def build_composite(scatter: dict[str, tuple[list[float], list[float]]],
 
 def build_grid(states: list[State], labels: list[str],
                portraits: dict[str, np.ndarray]) -> Figure:
-    """W-tilde heat map per state with the positive maxima of W marked."""
+    """W-tilde heat map per state with the positive maxima of W marked.
+
+    Each panel is drawn by the same renderer as the Letter's portrait
+    column, figures.panels.tilde_W_heatmap, so the colormap and the
+    zero-centered normalization match the rest of the document. The cell
+    overlays are turned off and the precomputed portrait is passed in to
+    avoid recomputing it.
+    """
     fig, axes = plt.subplots(3, 4, figsize=(DOUBLE_WIDTH, DOUBLE_WIDTH * 0.78))
     for ax, lab, s in zip(axes.ravel(), labels, states):
-        Wt = portraits[lab]
-        x, p = s.x_int, s.p_int
-        ax.imshow(Wt.T, origin="lower", extent=[x[0], x[-1], p[0], p[-1]],
-                  cmap="magma", aspect="equal")
-        m = positive_maxima(s.W, x, p)
+        tilde_W_heatmap(ax, s, tilde_W=portraits[lab],
+                        show_heisenberg=False, show_quorum=False)
+        m = positive_maxima(s.W, s.x_int, s.p_int)
         if len(m):
-            ax.scatter(m[:, 0], m[:, 1], s=2, c="cyan", linewidths=0)
+            ax.scatter(m[:, 0], m[:, 1], s=2, c="black", linewidths=0)
         ax.set_title(lab, fontsize=7)
         ax.set_xticks([])
         ax.set_yticks([])

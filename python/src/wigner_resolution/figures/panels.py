@@ -28,6 +28,7 @@ from matplotlib.colors import Normalize, TwoSlopeNorm
 from ..cells import HeisenbergCell, blob_a_pi_half, quantum_blob_at, quorum_cell
 from ..convolve import convolve_W_with_K, cross_section_at_p0
 from ..kernels import K_theta_mesh
+from ..portrait import tilde_W_portrait
 from ..state import State
 from .overlays import (
     LINEWIDTH,
@@ -331,6 +332,7 @@ def tilde_W_heatmap(
     state: State,
     *,
     n_theta: int = 360,
+    tilde_W: np.ndarray | None = None,
     show_heisenberg: bool = True,
     show_quantum_blob: bool = False,
     show_quorum: bool = True,
@@ -360,30 +362,10 @@ def tilde_W_heatmap(
     """
     assert state.W is not None and state.x_int is not None and state.p_int is not None
 
-    # Kernel center at integration grid midpoint for fftconvolve alignment.
-    x_mid = 0.5 * (state.x_int[0] + state.x_int[-1])
-    p_mid = 0.5 * (state.p_int[0] + state.p_int[-1])
-    heisenberg_for_kernel = HeisenbergCell(
-        Delta_x=state.rs.Delta_x,
-        Delta_p=state.rs.Delta_p,
-        center=(x_mid, p_mid),
-    )
-
-    xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
-    dx = float(state.x_int[1] - state.x_int[0])
-    dp = float(state.p_int[1] - state.p_int[0])
-
-    # Direct sum of P_θ over θ ∈ [0, π) at evenly spaced angles. The
-    # endpoint π is excluded because K_θ has Z_2 symmetry (K_θ = K_{θ+π}),
-    # so including it would double-count.
-    thetas = np.linspace(0.0, np.pi, n_theta, endpoint=False)
-    tilde_W = np.zeros_like(state.W)
-    for theta in thetas:
-        blob = quantum_blob_at(theta, heisenberg_for_kernel, hbar=state.hbar)
-        K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
-        P_theta = convolve_W_with_K(state.W, K, dx, dp)
-        tilde_W += P_theta
-    tilde_W /= n_theta
+    # The portrait is computed by the shared, matplotlib-free routine in
+    # portrait.py so this panel and validation.py consume one code path.
+    if tilde_W is None:
+        tilde_W = tilde_W_portrait(state, n_theta=n_theta)
 
     # Sanity check: W̃ is a non-negative sum of non-negatives.
     tW_min = float(tilde_W.min())
