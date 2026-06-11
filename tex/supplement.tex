@@ -314,13 +314,15 @@ the interference grid.
 \label{sec:numerics}
 
 The Letter states that the bare Wigner function $W$ and the non-negative
-portrait $\widetilde W$ carry the same structure at the scale of the quorum
-cell $\tilde a$, and that $\widetilde W$ is non-negative. This section measures
-both statements across the twelve states of the Letter. Every instrument runs
-identically on $W$ and on $\widetilde W$ and reports position, the quantity the
-portrait preserves. No amplitude scale appears, so there is no ambiguity about
-what each number measures. The one asymmetry between the two functions is
-non-negativity, the defining property of the portrait.
+portrait $\widetilde W$ carry the same structure at the same positions, and that
+$\widetilde W$ is non-negative. This section measures both across the twelve
+states of the Letter. Every instrument runs identically on $W$ and on
+$\widetilde W$ and reports position, the quantity the portrait preserves. No
+amplitude scale appears, so there is no ambiguity about what each number
+measures. The one asymmetry between the two functions is non-negativity, the
+defining property of the portrait. The scale of that shared structure is the
+quorum cell $\tilde a$, fixed analytically by the polar duality
+$\tilde a\,A = (h/2)^2$ and not measured here.
 
 % ----------------------------------------------------------------------
 % Figures  (onecolumn widths)
@@ -384,7 +386,10 @@ same chords wherever the kernel transfer is free of zeros, which holds within
 the band. Figure~\ref{fig:shared_support} overlays the two spectra for the Fock
 state $n=20$. They occupy the same chords, the portrait lowered in amplitude and
 the bare function reaching further only into the fine scale below $\tilde a$
-where its negativity lives.
+where its negativity lives. The rings of the $n=20$ state, the finest structure
+in the library, sit at a spacing of $3.6\,\delta$ measured the same way in $W$
+and in $\widetilde W$, their radii listed in Table~\ref{tab:rings} and shown in
+Fig.~\ref{fig:ringcoloc}.
 
 The positive features of $W$ and $\widetilde W$ occupy the same points of phase
 space. Detecting the positive maxima of each function with one rule,
@@ -400,18 +405,6 @@ Figure~\ref{fig:coloc_grid} shows the portrait of each state with the positive
 maxima of the bare function marked, and Fig.~\ref{fig:coloc_composite} plots the
 phase-space radius of every matched feature in $W$ against its radius in
 $\widetilde W$, where the whole library falls on the diagonal.
-
-\subsection{The scale of the shared structure is the quorum cell}
-\label{sec:numerics_scale}
-
-The shared structure refines with the quorum semi-axis as the capacity grows.
-The rings of the Fock state $n=20$, the finest structure in the library, sit at
-a spacing of $3.6\,\delta$ measured the same way in $W$ and in $\widetilde W$,
-their radii listed in Table~\ref{tab:rings} and shown in
-Fig.~\ref{fig:ringcoloc}. The quorum cell is the scale at which the two
-functions share structure, fixed by the action capacity through the polar
-duality $\tilde a\,A = (h/2)^2$~\cite{degosson2022polar,
-degosson2024reconstruction}.
 
 \subsection{Non-negativity}
 \label{sec:numerics_nonneg}
