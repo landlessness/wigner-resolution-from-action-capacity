@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as the principal axes of a family of de Gosson quantum blobs. Convolving the Wigner function to the scale of a single $h/2$ blob restores resolution to Planck's quantum of action and renders it non-negative. The state's elliptical Heisenberg cell of action capacity $\pi \, \Delta x \, \Delta p$ circumscribes the family, each blob deforming at constant action $h/2$. Integrating over the family reaches the resolution $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the Heisenberg cell. The resulting portrait is everywhere non-negative and preserves the structure of the Wigner function. This resolution carries no free parameter and sharpens as the action capacity grows.
+Phase-space formulations of quantum mechanics usually ignore that resolution is bounded below by Planck's quantum of action. In the Wigner formulation, the justification is that even though pointwise resolution forces the quasi-probability negative, those values carry physical structure. Zurek located that structure at scales set by the state's action capacity. We identify those scales as the principal axes of a family of de Gosson quantum blobs. The blob family deforms at constant action $h/2$ and is circumscribed by the state's elliptical Heisenberg cell of action capacity $\pi \, \Delta x \, \Delta p$. Convolving the Wigner function to the scale of each $h/2$ blob restores resolution to Planck's quantum of action and renders it non-negative. Integrating over the family reaches the resolution $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the Heisenberg cell. The resulting portrait is everywhere non-negative and preserves the structure of the Wigner function. This resolution carries no free parameter and sharpens as the action capacity grows.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -130,12 +130,12 @@ The convolution of $W$ with each quantum kernel $K_\theta$ is
 \widetilde W_\theta(x,p) = (W * K_\theta)(x,p).
 \label{eq:Wtheta}
 \end{equation}
-Convolving with a Gaussian of action $h/2$ lifts $W$ up to Planck's quantum of action and yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,cordero2018}, so $\widetilde W_\theta$ is non-negative everywhere.
+Following Dragoman~\cite{dragoman2005phasespace}, convolving $W$ with the kernel $K_\theta$ of a single quantum blob $a_\theta$ lifts it up to Planck's quantum of action and yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,cordero2018}. The convolution $\widetilde W_\theta$ is non-negative everywhere.
 
 %===============================================================================
 %  QUORUM CELL
 %===============================================================================
-Zurek also located the scale $a \sim \hbar \times (\hbar / A)$~\cite{zurek2001} of the chessboard structure in the compass state (Fig.~\ref{fig:cat}, column 1). We identify its rotationally invariant form as the quorum cell $\tilde a$. Named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}, $\tilde a$ is the ellipse with semi-axes $\delta x, \delta p$ (Fig.~\ref{fig:principal_blobs}) and action
+Zurek also located the scale $a \sim \hbar \times (\hbar / A)$~\cite{zurek2001,zurek2003decoherence} of the chessboard structure in the compass state (Fig.~\ref{fig:cat}, column 1). We identify its rotationally invariant form as the quorum cell $\tilde a$. Named after the quorum of observables in optical tomography~\cite{darianomacconeparis2001}, $\tilde a$ is the ellipse with semi-axes $\delta x, \delta p$ (Figs.~\ref{fig:principal_blobs},~\ref{fig:quantum_blobs}) and action
 \begin{equation}
 \tilde a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
@@ -188,7 +188,7 @@ The principal frame, where the Heisenberg cell $A$ is axis-aligned, costs no gen
 %===============================================================================
 %  DIFFERENTIATION
 %===============================================================================
-A fixed vacuum-width Gaussian~\cite{husimi1940} matches the state only at the vacuum $A \sim h/2$ and erases structure at resolution $\tilde a$ for larger states. Methods with a free parameter~\cite{wodkiewicz1984,appleby1998husimi,cahillglauber1969} can resolve more finely, the scale chosen as a parameter. The family here carries no free parameter, fixed by the action capacity $A$ alone.
+A fixed vacuum-width Gaussian~\cite{husimi1940} matches the state only at the vacuum $A \sim h/2$ and for larger states erases structure at resolution $\tilde a$. Methods with a free parameter~\cite{wodkiewicz1984,appleby1998husimi,cahillglauber1969} can resolve more finely, the scale chosen as a parameter. The resolution here carries no free parameter, fixed by the action capacity $A$ alone.
 
 %===============================================================================
 %  NUMERICAL RESULTS
@@ -201,11 +201,13 @@ Figures~\ref{fig:harmonic},~\ref{fig:eigen}, and~\ref{fig:cat} show numerical re
 The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the
 micro-to-macro transition Heisenberg~\cite{heisenberg1927} and
 Bohr~\cite{bohr1928} identified as requiring special care. The quantum
-blob does not. As $A$ grows, the action of each $a_\theta$ is fixed at $h/2$.
-Squeezing~\cite{walls1983} reaches $\sigma_x\sigma_p = \hbar/2$ by external apparatus. Here it is inherent to the state. A Schr\"odinger cat with $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, vastly smaller than the radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The scale called sub-Planck is the minor axis $\delta$ of an $h/2$ blob. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$. 
+blob does not. As $A$ grows, the family $\{a_\theta\}$ deforms at fixed action $h/2$. Squeezing reaches the same floor by external apparatus~\cite{walls1983}, while here the deformation is inherent to the state. A Schr\"odinger cat with capacity $\Delta x \sim 10$ cm and $\Delta p \sim 1$ kg$\cdot$m/s has positional resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, vastly smaller than the radioactive atom that triggers its apparatus~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$, the physical limit underlying the heuristic $h \to 0$.
 
-The negative Wigner function $W$ and its non-negative portrait $\widetilde W$ have their structure at a single scale $\tilde{a}$, set by the state's action capacity $A$. Zurek scales and de Gosson quantum blobs give the resolution. Heisenberg's product gives the capacity. As the action capacity grows to $\pi \, \Delta x \, \Delta p \ge h/2$ the resolution sharpens to $\pi\hbar^2/(\Delta x\,\Delta p) \le h/2$. We read this structure as the geometry of phase space itself, which de Gosson takes as prior to the uncertainty principle~\cite{degosson2026indeterminacy}.
+The scale called sub-Planck is the minor axis $\delta$ of an $h/2$ blob, narrowing as the conjugate capacity $\Delta$ grows, the scale Zurek tied to a state's sensitivity~\cite{zurek2001,zurek2003decoherence} and the scale to which $\widetilde W$ resolves. The negative Wigner function $W$ and its non-negative portrait $\widetilde W$ have their structure at a single scale $\tilde{a}$, set by the state's action capacity $A$. Zurek scales and de Gosson quantum blobs give the resolution. Heisenberg's product gives the capacity. As the action capacity grows to $\pi \, \Delta x \, \Delta p \ge h/2$ the resolution sharpens to $\pi\hbar^2/(\Delta x\,\Delta p) \le h/2$. We read this structure as the geometry of phase space itself, which de Gosson takes as prior to the uncertainty principle~\cite{degosson2026indeterminacy}.
 
+% ===============================================================================
+%  ACKNOWLEDGEMENTS
+% ===============================================================================
 \begin{acknowledgments}
 The author thanks M. de Gosson for helpful comments. This research received no external funding. Numerical computations were performed with QuTiP~\cite{qutip5} and SciPy~\cite{scipy}. The code reproducing the numerical results, together with Supplemental Material mapping this Letter onto Zurek and de Gosson, is openly available~\cite{zenododeposit}.
 \end{acknowledgments}
