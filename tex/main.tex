@@ -41,7 +41,7 @@ Phase-space formulations of quantum mechanics usually ignore that resolution is 
 % ===============================================================================
 %  OPENING
 % ===============================================================================
-The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. It is defined pointwise, below Planck's quantum of action, and Hudson's theorem forces it negative there~\cite{hudson1974}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and a measure of nonclassicality~\cite{kenfack2004}, while a non-negative portrait admits a probability interpretation~\cite{husimi1940,cartwright1976,degosson2005bullsci} and supports classical sampling~\cite{polkovnikov2010}. Dragoman read the de Gosson quantum blob as the minimal cell a quantum state occupies in the Wigner function~\cite{degosson2013qblobs,dragoman2005phasespace}. Here a family of $h/2$ quantum blobs, circumscribed by the state's action capacity $\pi \, \Delta x\, \Delta p$, resolves the Wigner function to $\pi\hbar^2/(\Delta x\,\Delta p)$, the resolution symplectic polar duality sets on any non-negative portrait.
+The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. It is defined pointwise, below Planck's quantum of action, and Hudson's theorem forces it negative there~\cite{hudson1974}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and a measure of nonclassicality~\cite{kenfack2004}, while a non-negative portrait admits a probability interpretation~\cite{husimi1940,cartwright1976,degosson2005bullsci,dragoman2005phasespace} and supports classical sampling~\cite{polkovnikov2010}. Here a family of $h/2$ quantum blobs, circumscribed by the state's action capacity $\pi \, \Delta x\, \Delta p$, resolves the Wigner function to $\pi\hbar^2/(\Delta x\,\Delta p)$, the resolution symplectic polar duality sets on any non-negative portrait.
 
 % ===============================================================================
 %  FIGURES
@@ -100,7 +100,7 @@ a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,
 \end{equation}
 The capacity $\Delta x, \Delta p$ runs along the major axes, the resolution $\delta x, \delta p$ along the minor.
 
-Between these principal members the quantum blob $a_\theta$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$, the preimage of the rigid ellipse $\hat a_\theta$ under the scaling $X = x/\Delta x$, $P = p/\Delta p$,
+Between these principal members the quantum blob $a_\theta$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$ (Fig.~\ref{fig:quantum_blobs}), the preimage of the rigid ellipse $\hat a_\theta$ under the scaling $X = x/\Delta x$, $P = p/\Delta p$,
 \begin{equation}
 a_\theta = \left\{ (x, p) : (X, P) \in \hat a_\theta \right\}.
 \label{eq:atheta}
@@ -130,7 +130,7 @@ The convolution of $W$ with each quantum kernel $K_\theta$ is
 \widetilde W_\theta(x,p) = (W * K_\theta)(x,p).
 \label{eq:Wtheta}
 \end{equation}
-Following Dragoman~\cite{dragoman2005phasespace}, convolving $W$ with the kernel $K_\theta$ of a single quantum blob $a_\theta$ lifts it up to Planck's quantum of action and yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,cordero2018}. The convolution $\widetilde W_\theta$ is non-negative everywhere.
+Convolving $W$ with the kernel $K_\theta$ of a single quantum blob $a_\theta$ lifts it up to Planck's quantum of action and yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,cordero2018}. The convolution $\widetilde W_\theta$ is non-negative everywhere.
 
 %===============================================================================
 %  QUORUM CELL
