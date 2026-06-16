@@ -71,7 +71,7 @@ so that the Heisenberg cell is the state's covariance ellipse and its
 area equals the symplectic capacity. Zurek writes the widths as standard
 deviations, $L \simeq \sigma_x$ and $P \simeq \sigma_p$, defined from
 $L^2 \simeq \langle x^2\rangle - \langle x\rangle^2$ and
-$P^2 \simeq \langle p^2\rangle - \langle p\rangle^2$. The two scales
+$P^2 \simeq \langle p^2\rangle - \langle p\rangle^2$. The two widths
 differ by a fixed factor,
 \begin{equation}
 \Delta x = \sqrt{2}\,L, \qquad \Delta p = \sqrt{2}\,P .
@@ -132,8 +132,8 @@ Wigner function $W(x,p)$ & $W(x,p)$, Eq.~(2) & $W\psi(z)$, Eq.~(33) \\
 Capacity semi-axis (position) $\Delta x=\sqrt{2}\,\sigma_x$ & $L$, with $L^2\simeq\langle x^2\rangle-\langle x\rangle^2$ & half-width of $X=\Pi_x\Omega_\Sigma$ \\
 Capacity semi-axis (momentum) $\Delta p=\sqrt{2}\,\sigma_p$ & $P$, with $P^2\simeq\langle p^2\rangle-\langle p\rangle^2$ & half-width of $P=\Pi_p\Omega_\Sigma$ \\
 Heisenberg cell, action capacity $A=\pi\Delta x\Delta p\ge h/2$ & classical action $A\simeq L\times P$, Eq.~(4) & covariance ellipsoid $\Omega_\Sigma$, $c(\Omega_\Sigma)\ge\pi\hbar$, Thm.~14 \\
-Resolution scale (position) $\delta x=\hbar/\Delta p$ & $\delta_x=\hbar/P\simeq\sqrt{2}\,\delta x$, Eq.~(7) & $B_P(\Delta p)^\hbar=B_X(\hbar/\Delta p)$, Eq.~(7) \\
-Resolution scale (momentum) $\delta p=\hbar/\Delta x$ & $\delta_p=\hbar/L\simeq\sqrt{2}\,\delta p$, Eq.~(8) & $B_X(\Delta x)^\hbar=B_P(\hbar/\Delta x)$, Eq.~(7) \\
+Resolution semi-axis (position) $\delta x=\hbar/\Delta p$ & $\delta_x=\hbar/P\simeq\sqrt{2}\,\delta x$, Eq.~(7) & $B_P(\Delta p)^\hbar=B_X(\hbar/\Delta p)$, Eq.~(7) \\
+Resolution semi-axis (momentum) $\delta p=\hbar/\Delta x$ & $\delta_p=\hbar/L\simeq\sqrt{2}\,\delta p$, Eq.~(8) & $B_X(\Delta x)^\hbar=B_P(\hbar/\Delta x)$, Eq.~(7) \\
 Quantum blob $a_\theta$, action $h/2$ & minimum-uncertainty Gaussian & $QB(S)=S\!\left(B^{2n}(\sqrt{\hbar})\right)$, $c=\pi\hbar$, Eq.~(26) \\
 Principal blobs $a_{\theta=0},\ a_{\pi/2}$ & axis interference scales $\delta_x,\delta_p$ & diagonal case $S=M_L$; $\mathrm{John}(X\times X^\hbar)$, Thms.~10, 12 \\
 \bottomrule
@@ -196,7 +196,7 @@ carries the same content as a symplectic capacity. His Theorem~14 states
 that the quantum condition $\Sigma+\tfrac{i\hbar}{2}J\ge 0$ holds if and
 only if $c(\Omega_\Sigma)\ge\pi\hbar$ for every symplectic capacity $c$,
 which is if and only if $\Omega_\Sigma$ contains a quantum blob. The
-Letter's floor $A\ge h/2$ is this capacity bound, since $h/2=\pi\hbar$
+Letter's $A\ge h/2$ is this capacity bound, since $h/2=\pi\hbar$
 and $c(\Omega_\Sigma)=\pi\,\Delta x\,\Delta p=A$. The conversion to
 Zurek's product is Eq.~\eqref{eq:bridge_capacity}, $A=2\pi\,(L\times P)$.
 
@@ -249,7 +249,7 @@ The Letter's quorum cell is
 $\tilde a=\pi\,\delta x\,\delta p=\pi\hbar^2/(\Delta x\,\Delta p)$, the
 symplectic polar dual of the Heisenberg cell, with the reciprocity
 $\tilde a\,A=(h/2)^2$ and the chain $A\supseteq a_\theta\supseteq\tilde a$.
-de Gosson's $\hbar$-polar dual $A^\hbar$ is the same construction, with
+de Gosson's $\hbar$-polar dual $A^\hbar$ is the same object, with
 biduality $(X^\hbar)^\hbar=X$ and antimonotonicity, his Eqs.~(4) and (5).
 The reciprocity follows from the interval duals of
 Eq.~\eqref{eq:polar_intervals}, since
@@ -320,7 +320,7 @@ states of the Letter. Every instrument runs identically on $W$ and on
 $\widetilde W$ and reports position, the quantity the portrait preserves. No
 amplitude scale appears, so there is no ambiguity about what each number
 measures. The one asymmetry between the two functions is non-negativity, the
-defining property of the portrait. The scale of that shared structure is the
+defining property of the portrait. The resolution of that shared structure is the
 quorum cell $\tilde a$, fixed analytically by the polar duality
 $\tilde a\,A = (h/2)^2$ and not measured here.
 
@@ -414,8 +414,7 @@ non-negative function~\cite{cartwright1976, degosson2005bullsci}. The
 family-averaged kernel is a convex average of such Gaussians, so
 $\widetilde W \ge 0$ for every state. Table~\ref{tab:nonneg} reports the grid
 minimum of $W$ and of $\widetilde W$, each relative to its own peak. The bare
-function runs to a depth comparable to its peak, and the portrait rests at the
-floor, between $10^{-7}$ and the floating-point limit. This is the one property
+function runs to a depth comparable to its peak, and the portrait rests near zero, between $10^{-7}$ and the floating-point limit. This is the one property
 that separates the two functions.
 
 \subsection{Method}
@@ -541,7 +540,7 @@ compass      & 19.00 & $-0.749$ & $2\times10^{-8}$ \\
 \end{tabular}
 \caption{Non-negativity, the one asymmetry. Grid minimum of each function
 relative to its peak. The bare function runs to a depth comparable to its peak,
-the portrait rests at the floor.}
+the portrait rests near zero.}
 \label{tab:nonneg}
 \end{table}
 
