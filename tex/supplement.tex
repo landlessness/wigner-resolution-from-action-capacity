@@ -289,7 +289,146 @@ its lobes north, south, east, and west, fixing the two axis directions of
 the interference grid.
 
 % ======================================================================
-% S2 --- Numerical validation (same instruments on W and W-tilde)
+% S2 --- The resolution of the portrait (analytic, in chord language)
+% New section. The family integral collapses to one kernel; the chord
+% function of that kernel is computed in closed form and its cutoff is
+% read off as the quorum cell. Notation in \tilde a throughout, with A
+% retained only at the kernel and at the extent/resolution contrast.
+% ======================================================================
+
+\section{The resolution of the portrait}
+\label{sec:resolution}
+
+The portrait is a single convolution. Because the convolution with
+$K_\theta$ and the integral over $\theta$ are both linear, they commute,
+and the family integral collapses to one kernel,
+\begin{equation}
+\widetilde W = \frac{1}{\pi}\int_0^\pi W * K_\theta \, d\theta = W * \bar K,
+\qquad
+\bar K = \frac{1}{\pi}\int_0^\pi K_\theta\,d\theta.
+\label{eq:single_conv}
+\end{equation}
+The resolution of the portrait is a property of the one kernel $\bar K$.
+Non-negativity is the per-angle property of
+Sec.~\ref{sec:numerics_nonneg}, where each $W * K_\theta \ge 0$.
+Resolution is the property of $\bar K$ derived here. The two statements
+read the same object through its two ends, the family for non-negativity
+and the average for resolution.
+
+\subsection{The chord function of the averaged kernel}
+\label{sec:chordkernel}
+
+In the chord domain the convolution is a product, so the chord function
+of the portrait is the chord function of $W$ times the chord function of
+$\bar K$. Write $\widehat f$ for the symplectic Fourier transform of $f$
+and $\xi$ for the chord, the conjugate of the scaled phase-space point.
+The chord function $\widehat{\bar K}$ multiplies $\widehat W$ chord by
+chord, so its reach in $\xi$ sets the finest structure the portrait keeps.
+
+The Letter writes each kernel through the capacity $A$,
+\begin{equation}
+K_\theta(x,p) \propto
+\exp\!\left[-X_\theta^2 - \frac{A^2}{(\pi\hbar)^2}\,P_\theta^2\right].
+\label{eq:kernel_A}
+\end{equation}
+Polar duality carries the capacity to the quorum cell. With
+$A = (\pi\hbar)^2/\tilde a$ from the reciprocity $\tilde a\,A = (\pi\hbar)^2$,
+the narrow axis of every blob is the quorum semi-axis, and the kernel
+wears the resolution it produces,
+\begin{equation}
+\frac{A^2}{(\pi\hbar)^2} = \frac{(\pi\hbar)^2}{\tilde a^2},
+\qquad
+K_\theta(x,p) \propto
+\exp\!\left[-X_\theta^2 - \frac{(\pi\hbar)^2}{\tilde a^2}\,P_\theta^2\right].
+\label{eq:kernel_atilde}
+\end{equation}
+The Gaussian is broad along $X_\theta$ and narrow along $P_\theta$ by the
+factor $\tilde a/(\pi\hbar)$. Its chord function is broad where the kernel
+is narrow,
+\begin{equation}
+\widehat{K_\theta}(\xi) \propto
+\exp\!\left[-\tfrac14\!\left(\xi_{X\theta}^2
++ \frac{\tilde a^2}{(\pi\hbar)^2}\,\xi_{P\theta}^2\right)\right],
+\label{eq:kernel_chord_theta}
+\end{equation}
+reaching chords of order $\pi\hbar/\tilde a$ along the $\xi_{P\theta}$ axis.
+As $\theta$ runs over $[0,\pi)$ this long axis sweeps every direction.
+
+The average over the family is the chord function of $\bar K$. Writing
+$|\xi|^2 = \xi_X^2 + \xi_P^2$ and carrying out the angular integral,
+\begin{equation}
+\widehat{\bar K}(|\xi|)
+= \exp\!\left[-\frac{|\xi|^2}{8}\!
+\left(1 + \frac{\tilde a^2}{(\pi\hbar)^2}\right)\right]
+I_0\!\left(\frac{|\xi|^2}{8}\!
+\left(1 - \frac{\tilde a^2}{(\pi\hbar)^2}\right)\right),
+\label{eq:Kbar_chord}
+\end{equation}
+with $I_0$ the modified Bessel function. The chord function depends on
+$|\xi|$ alone, so the average is isotropic in the scaled frame, and it
+equals one at zero chord, so the portrait keeps the bulk of $W$ in place.
+
+\subsection{The cutoff is the quorum cell}
+\label{sec:cutoff}
+
+At large chord the Bessel function grows as
+$I_0(z)\sim e^{z}/\sqrt{2\pi z}$, and the two exponentials combine to leave
+the envelope
+\begin{equation}
+\widehat{\bar K}(|\xi|)
+\sim \frac{2}{\sqrt{\pi\left(1 - \tilde a^2/(\pi\hbar)^2\right)}}\;
+\frac{1}{|\xi|}\,
+\exp\!\left[-\frac{\tilde a^2}{4(\pi\hbar)^2}\,|\xi|^2\right],
+\qquad |\xi| \gg 1.
+\label{eq:Kbar_asymp}
+\end{equation}
+The Gaussian envelope is set by the quorum cell $\tilde a$ and not by the
+broad axis, so the average passes structure out to the chord
+\begin{equation}
+|\xi|_{\mathrm{cut}} \sim \frac{2\pi\hbar}{\tilde a}.
+\label{eq:cutoff}
+\end{equation}
+Restoring physical units, the same envelope is the ellipse of semi-axes
+$\delta x$ and $\delta p$,
+\begin{equation}
+\exp\!\left[-\tfrac14\!\left(\delta x^2\,\xi_x^2
++ \delta p^2\,\xi_p^2\right)\right],
+\qquad
+\delta x = \frac{\hbar}{\Delta p}, \quad \delta p = \frac{\hbar}{\Delta x},
+\label{eq:physical_envelope}
+\end{equation}
+the quorum cell $\tilde a$ written in the chord domain. The portrait holds
+the structure of $W$ down to $\tilde a$ and removes structure finer than
+$\tilde a$. The factor $1/|\xi|$ ahead of the Gaussian softens the edge,
+so the cutoff is a gradual rolloff at $\tilde a$ rather than a sharp wall.
+
+\subsection{Extent is the capacity, resolution is the quorum}
+\label{sec:extent}
+
+The averaged kernel is broad in space and sharp in feature at once, and
+the two are different measures. The second moment of $\bar K$ averages the
+rotating blob over all angles and returns an isotropic spread set by the
+broad axis, the capacity scale $A$. The chord cutoff of
+Eq.~\eqref{eq:cutoff} returns the resolution set by the narrow axis, the
+quorum $\tilde a$. Extent and resolution are the major and the minor axes
+of the same blobs, the capacity and its polar dual. A width in space
+reports the capacity. The reach in chord reports the resolution. The
+portrait is wide as $A$ and fine as $\tilde a$, the two cells the duality
+pairs.
+
+This is the synthesis the Letter records. The kernel carries only the
+capacity $A$ of the state, the axis along which the blob is broad. The
+average over the family resolves the portrait at the quorum cell
+$\tilde a$, the axis along which the blob is narrow. Zurek's sub-Planck
+scale $a \simeq \hbar^2/A$~\cite{zurek2001} is this resolution up to the
+convention factors of Sec.~\ref{sec:conventions}, and de Gosson's polar
+duality $\tilde a\,A = (h/2)^2$~\cite{degosson2022polar} is the step that
+carries the one cell to the other. Section~\ref{sec:numerics} confirms
+that the portrait carries the structure of $W$ at these chords and
+displaces no feature.
+
+% ======================================================================
+% S3 --- Numerical validation (same instruments on W and W-tilde)
 % Drop-in section for supplement.tex. Place after the dictionary (Sec. S1),
 % in the position now held by the commented scaffolding roadmap.
 %
