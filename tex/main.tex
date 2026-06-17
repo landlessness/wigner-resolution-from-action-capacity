@@ -155,7 +155,7 @@ $\tilde a\,A = (h/2)^2$.
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
 % ===============================================================================
-Integrating $\widetilde W_\theta$ over the family gives the phase-space portrait of the state at the resolution $\tilde a$,
+A single blob commits to a quadrature the state does not privilege. Integrating $\widetilde W_\theta$ over the family privileges none, giving the phase-space portrait of the state at the resolution $\tilde a$,
 \begin{equation}
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi \widetilde W_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
@@ -168,10 +168,10 @@ $\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhe
 A quantum blob $a_\theta$ too large for $A$ to circumscribe, or too
 small to circumscribe $\tilde a$, is a blob of another state and
 portrays that state, not this one~\cite{degosson2013qblobs,
-degosson2022polar}. Because every $h/2$ blob $a_\theta$ of this state
-circumscribes the quorum cell $\tilde a$, and a non-negative portrait
-$\widetilde W$ smooths $W$ by a Gaussian of action at least
-$h/2$~\cite{cartwright1976,degosson2005bullsci}, $\tilde a$ is the
+degosson2022polar}. Because every $h/2$ blob $a_\theta$ of this state circumscribes the
+quorum cell $\tilde a$, and a portrait finer than $\tilde a$ everywhere
+would smooth $W$ below the $h/2$ action non-negativity
+requires~\cite{cartwright1976,degosson2005bullsci}, $\tilde a$ is the
 finest resolution any non-negative portrait attains, and the family
 $\{a_\theta\}$ reaches it across $\theta \in [0,\pi)$.
 
@@ -183,12 +183,12 @@ A fixed vacuum-width Gaussian~\cite{husimi1940} smooths every state by the same 
 %===============================================================================
 %  GENERALIZATION
 %===============================================================================
-The principal frame, where the Heisenberg cell $A$ is axis-aligned, costs no generality. The Wigner function transforms covariantly under the symplectic group~\cite{cordero2018}, so the map that diagonalizes a state's covariance carries it to this frame at preserved action. The Kerr crescent, a sheared coherent state, is resolved this way (Fig.~\ref{fig:eigen}). In one degree of freedom, $A$ fixes the family uniquely. In higher dimensions, action $h/2$ no longer singles out a blob~\cite{degosson2013qblobs}, symplectic capacity and volume diverge, and the higher-dimensional case remains for future work.
+The principal frame, where the Heisenberg cell $A$ is axis-aligned, costs no generality. The Wigner function transforms covariantly under the symplectic group~\cite{cordero2018}, so the map that diagonalizes a state's covariance carries it to this frame at preserved action. The Kerr crescent, a sheared coherent state, is resolved this way (Fig.~\ref{fig:eigen}). In one degree of freedom, $A$ fixes the family uniquely, and the sub-Planck structure is already present for every state with $A > h/2$. In higher dimensions, action $h/2$ no longer singles out a blob~\cite{degosson2013qblobs}, symplectic capacity and volume diverge, and the higher-dimensional case remains for future work.
 
 %===============================================================================
 %  NUMERICAL RESULTS
 %===============================================================================
-Figures~\ref{fig:harmonic},~\ref{fig:eigen}, and~\ref{fig:cat} show numerical results across twelve states. The cross-spectral phase between $W$ and $\widetilde W$ vanishes, so the portrait holds every feature in place, and $\widetilde W$ is non-negative to machine precision~\cite{zenododeposit}.
+Figures~\ref{fig:harmonic},~\ref{fig:eigen}, and~\ref{fig:cat} show numerical results across twelve states. The portrait is non-negative to machine precision, and the cross-spectral phase between $W$ and $\widetilde W$ vanishes, confirming that the smoothing displaces no feature~\cite{zenododeposit}.
 
 % ===============================================================================
 %  DISCUSSION
