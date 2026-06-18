@@ -371,36 +371,52 @@ equals one at zero chord, so the portrait keeps the bulk of $W$ in place.
 \subsection{The cutoff is the quorum cell}
 \label{sec:cutoff}
 
-At large chord the Bessel function grows as
-$I_0(z)\sim e^{z}/\sqrt{2\pi z}$, and the two exponentials combine to leave
-the envelope
+The same angular average that builds $\widetilde K$ bounds it. The modified
+Bessel function is itself an angular average,
 \begin{equation}
-\widehat{\widetilde K}(|\xi|)
-\sim \frac{2}{\sqrt{\pi\left(1 - \tilde a^2/(\pi\hbar)^2\right)}}\;
-\frac{1}{|\xi|}\,
+I_0(w) = \frac{1}{2\pi}\int_0^{2\pi} e^{w\cos\phi}\,d\phi \le e^{w},
+\label{eq:bessel_bound}
+\end{equation}
+since $\cos\phi \le 1$. Applied to Eq.~\eqref{eq:Kbar_chord} the two
+exponentials collapse, and the chord function is capped by a single
+Gaussian,
+\begin{equation}
+\widehat{\widetilde K}(|\xi|) \le
 \exp\!\left[-\frac{\tilde a^2}{4(\pi\hbar)^2}\,|\xi|^2\right],
-\qquad |\xi| \gg 1.
-\label{eq:Kbar_asymp}
+\label{eq:Kbar_bound}
 \end{equation}
-The Gaussian envelope is set by the quorum cell $\tilde a$ and not by the
-broad axis, so the average passes structure out to the chord
+with equality at $|\xi| = 0$, and everywhere for the vacuum, where
+$\tilde a = \pi\hbar$ and the kernel is the Gaussian itself. In physical
+units the bound is the ellipse of semi-axes $\delta x, \delta p$,
 \begin{equation}
-|\xi|_{\mathrm{cut}} \sim \frac{2\pi\hbar}{\tilde a}.
-\label{eq:cutoff}
-\end{equation}
-Restoring physical units, the same envelope is the ellipse of semi-axes
-$\delta x$ and $\delta p$,
-\begin{equation}
+\widehat{\widetilde K}(\xi) \le
 \exp\!\left[-\tfrac14\!\left(\delta x^2\,\xi_x^2
 + \delta p^2\,\xi_p^2\right)\right],
 \qquad
 \delta x = \frac{\hbar}{\Delta p}, \quad \delta p = \frac{\hbar}{\Delta x},
 \label{eq:physical_envelope}
 \end{equation}
-the quorum cell $\tilde a$ written in the chord domain. The portrait holds
-the structure of $W$ down to $\tilde a$ and removes structure finer than
-$\tilde a$. The factor $1/|\xi|$ ahead of the Gaussian softens the edge,
-so the cutoff is a gradual rolloff at $\tilde a$ rather than a sharp wall.
+the quorum cell $\tilde a$ written in the chord domain. The chord function
+never exceeds this Gaussian, so the portrait holds the structure of $W$
+down to $\tilde a$ and removes structure finer than $\tilde a$, with the
+cutoff at the chord
+\begin{equation}
+|\xi|_{\mathrm{cut}} \sim \frac{2\pi\hbar}{\tilde a}.
+\label{eq:cutoff}
+\end{equation}
+
+The exact rolloff is gentler than the bound. At large chord
+$I_0(z)\sim e^{z}/\sqrt{2\pi z}$, so the chord function carries a $1/|\xi|$
+prefactor ahead of the same Gaussian,
+\begin{equation}
+\widehat{\widetilde K}(|\xi|)
+\sim \frac{2}{\sqrt{\pi\left(1 - \tilde a^2/(\pi\hbar)^2\right)}}\;
+\frac{1}{|\xi|}\,
+\exp\!\left[-\frac{\tilde a^2}{4(\pi\hbar)^2}\,|\xi|^2\right],
+\qquad |\xi| \gg 1,
+\label{eq:Kbar_asymp}
+\end{equation}
+a gradual edge at $\tilde a$ rather than a sharp wall.
 
 \subsection{Extent is the capacity, resolution is the quorum}
 \label{sec:extent}
@@ -416,7 +432,7 @@ reports the capacity. The reach in chord reports the resolution. The
 portrait is wide as $A$ and fine as $\tilde a$, the two cells the duality
 pairs.
 
-This is the synthesis the Letter records. The kernel carries only the
+This synthesis underlies the Letter's result. The kernel carries only the
 capacity $A$ of the state, the axis along which the blob is broad. The
 average over the family resolves the portrait at the quorum cell
 $\tilde a$, the axis along which the blob is narrow. Zurek's sub-Planck
