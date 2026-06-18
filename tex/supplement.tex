@@ -460,8 +460,9 @@ $\widetilde W$ and reports position, the quantity the portrait preserves. No
 amplitude scale appears, so there is no ambiguity about what each number
 measures. The one asymmetry between the two functions is non-negativity, the
 defining property of the portrait. The resolution of that shared structure is the
-quorum cell $\tilde a$, fixed analytically by the polar duality
-$\tilde a\,A = (h/2)^2$ and not measured here.
+quorum cell $\tilde a$, derived in Sec.~\ref{sec:resolution} and confirmed
+here as the transfer function of Eq.~\eqref{eq:Kbar_chord} measured on every
+state.
 
 % ----------------------------------------------------------------------
 % Figures  (onecolumn widths)
@@ -506,6 +507,46 @@ on its envelope while the bare function dips negative between rings, and neither
 difference moves a ring.}
 \label{fig:ringcoloc}
 \end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{transfer_validation.pdf}
+\caption{Transfer function of the portrait across the twelve states. For each
+state the chord-domain ratio of $\widetilde W$ to $W$, measured on the scaled
+chord $|\xi|$ where Sec.~\ref{sec:resolution} predicts an isotropic multiplier,
+is plotted as points against the curve of Eq.~\eqref{eq:Kbar_chord} with the
+state's own ratio $\tilde a/(h/2)$. No quantity is fit. The vacuum and the
+squeezed state, at $\tilde a = h/2$, give a Gaussian, and the high-capacity
+states develop the soft edge of Eq.~\eqref{eq:Kbar_asymp} that carries
+structure out to the quorum cell $\tilde a$.}
+\label{fig:transfer}
+\end{figure}
+
+\subsection{The transfer function matches the prediction}
+\label{sec:numerics_transfer}
+
+Section~\ref{sec:resolution} reduces the portrait to a single convolution
+$\widetilde W = W * \bar K$ and gives the chord function of $\bar K$ in closed
+form, Eq.~\eqref{eq:Kbar_chord}. That chord function is the transfer that
+carries $W$ to $\widetilde W$, isotropic in the scaled frame and cut off at the
+quorum cell $\tilde a$. This subsection measures it on every state.
+
+In the scaled chord $|\xi|$ the prediction is a single curve set by the one
+ratio $\tilde a/(h/2)$ of the state. For each state the chord-domain ratio of
+$\widetilde W$ to $W$ is formed as the power-weighted estimate
+$\operatorname{Re}\langle \widehat W^{*}\widehat{\widetilde W}\rangle /
+\langle |\widehat W|^2\rangle$ in each chord bin and plotted against
+Eq.~\eqref{eq:Kbar_chord} with no quantity fit. Figure~\ref{fig:transfer} shows
+the twelve states. The vacuum and the squeezed state, at $\tilde a = h/2$, give
+a Gaussian, and the high-capacity states develop the soft edge of
+Eq.~\eqref{eq:Kbar_asymp}, carrying structure out to $\tilde a$.
+
+The angle-averaged kernel reproduces Eq.~\eqref{eq:Kbar_chord} to better than
+$4\times10^{-5}$ across the library, taken as the largest difference over the
+resolved chord disk, so the closed form is exact at the level of the numerics.
+On the states themselves the measured transfer tracks the same curve to a
+chord-band root-mean-square near one percent, the residual set by the radial
+binning rather than by a departure from the prediction.
 
 \subsection{The portrait carries the structure at the same positions}
 \label{sec:numerics_position}
