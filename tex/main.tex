@@ -100,12 +100,12 @@ a_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad a_{\pi/2} = \pi\,\delta x\,
 \end{equation}
 The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor.
 
-Between these principal members the family $\{a_\theta\}$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$ (Fig.~\ref{fig:quantum_blobs}). In the scaled coordinates $X = x/\Delta x$, $P = p/\Delta p$ it is one ellipse turned through $\theta$,
+Between these principal members the family $\{a_\theta\}$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$ (Fig.~\ref{fig:quantum_blobs}). The Heisenberg cell $A$ circumscribes each $a_\theta$. In the scaled coordinates $X = x/\Delta x$, $P = p/\Delta p$ it is one ellipse turned through $\theta$,
 \begin{equation}
 a_\theta = \left\{ (x,p) : X_\theta^{2} + \tfrac{A^2}{(\pi\hbar)^2}\, P_\theta^{2} \le 1 \right\},
 \label{eq:atheta}
 \end{equation}
-inscribed in the unit disk, so the Heisenberg cell $A$ circumscribes each $a_\theta$. The quadratures $X_\theta = X\cos\theta + P\sin\theta$ and $P_\theta = -X\sin\theta + P\cos\theta$ are those of homodyne tomography at phase $\theta$.
+inscribed in the unit disk. The quadratures $X_\theta = X\cos\theta + P\sin\theta$ and $P_\theta = -X\sin\theta + P\cos\theta$ are those of homodyne tomography at phase $\theta$.
 
 % ===============================================================================
 %  PER ANGLE NON-NEGATIVITY: THE QUANTUM KERNEL
@@ -135,21 +135,13 @@ Zurek also located the scale $a \sim \hbar \times (\hbar / A)$~\cite{zurek2001,z
 \tilde a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
 \end{equation}
-$\tilde a$ is the resolution of the state's finest structure in the bare
-Wigner function (Figs.~\ref{fig:harmonic},~\ref{fig:eigen},~\ref{fig:cat},
-column 1). The quorum cell $\tilde a$ is the symplectic polar dual of
-the Heisenberg cell $A$~\cite{degosson2022polar,degosson2024reconstruction}.
-The duality is reflexive, so $A$ and $\tilde a$ each fix the other, and
-antimonotone, so $\tilde a$ shrinks as $A$ grows. Each blob $a_\theta$
-is circumscribed by $A$ and circumscribes $\tilde a$, nesting as
-$A \supseteq a_\theta \supseteq \tilde a$ (Fig.~\ref{fig:quantum_blobs}).
-Resolution and capacity are reciprocal at the quantum of action,
-$\tilde a\,A = (h/2)^2$.
+It is the resolution of the state's finest structure in the bare Wigner function (Figs.~\ref{fig:harmonic},~\ref{fig:eigen},~\ref{fig:cat},
+column 1) and the symplectic polar dual of the Heisenberg cell $A$~\cite{degosson2022polar,degosson2024reconstruction}. The duality is reflexive, so $A$ and $\tilde a$ each fix the other, and antimonotone, so $\tilde a$ shrinks as $A$ grows. Each blob $a_\theta$ is circumscribed by $A$ and circumscribes $\tilde a$, nesting as $A \supseteq a_\theta \supseteq \tilde a$ (Fig.~\ref{fig:quantum_blobs}). Resolution and capacity are reciprocal at the quantum of action, $\tilde a\,A = (h/2)^2$.
 
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
 % ===============================================================================
-A single blob commits to a quadrature the state does not privilege. Integrating $\widetilde W_\theta$ over the family privileges none, yielding the phase-space portrait,
+A single blob commits to a quadrature the state does not favor. Integrating $\widetilde W_\theta$ over the family favors none, yielding the phase-space portrait,
 \begin{equation}
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi \widetilde W_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
