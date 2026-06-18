@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-Smoothing the Wigner function gives a non-negative phase-space portrait of a quantum state, and the smoothing scale has been freely chosen. We show that the scale is fixed by the state. The state's covariance defines an elliptical Heisenberg cell of action capacity $\pi\,\Delta x\,\Delta p$, admitting a family of de Gosson quantum blobs deforming at constant action $h/2$. Convolving the Wigner function to a single $h/2$ blob renders it non-negative. Integrating over the family reaches the resolution $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the Heisenberg cell. The portrait is everywhere non-negative and holds the structure of the Wigner function in place. Wigner resolution carries no free parameter, set by the state's action capacity alone and sharpening as that capacity grows.
+Smoothing the Wigner function gives a non-negative phase-space portrait of a quantum state, and the smoothing scale has been freely chosen. We show that the scale is fixed by the state. The state's covariance defines an elliptical Heisenberg cell of action capacity $\pi\,\Delta x\,\Delta p$, admitting a family of de Gosson quantum blobs deforming at constant action $h/2$. Convolving the Wigner function with the kernel of a single $h/2$ blob renders it non-negative. Integrating over the family resolves the portrait at $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the Heisenberg cell. The portrait is everywhere non-negative and carries the structure of the Wigner function undisplaced. Wigner resolution carries no free parameter, set by the state's action capacity alone and sharpening as that capacity grows.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -154,14 +154,19 @@ A single blob commits to a quadrature the state does not privilege. Integrating 
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi \widetilde W_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
 \end{equation}
-$\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhere. Where tomographic reconstruction inverts marginals pointwise to recover $W$~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}, integrating $W$ against the family $\{K_\theta\}$ over the same $\theta$ builds the non-negative portrait $\widetilde W$.
+Each $\widetilde W_\theta \ge 0$, so $\widetilde W \ge 0$ everywhere. Where tomographic reconstruction inverts the marginals over $\theta$ to recover $W$~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}, convolving $W$ against $\{K_\theta\}$ over the same $\theta$ builds the non-negative portrait $\widetilde W$.
 
-The convolution and the integral are linear, so the family integral is a single convolution,
+The convolution and the integral are linear, so the family collapses to a single convolution,
 \begin{equation}
-\widetilde W = W * \bar K, \qquad \bar K = \frac{1}{\pi}\int_0^\pi K_\theta\,d\theta,
-\label{eq:Kbar}
+\widetilde W = W * \widetilde K, \qquad \widetilde K = \frac{1}{\pi}\int_0^\pi K_\theta\,d\theta,
+\label{eq:Ktilde}
 \end{equation}
-and the resolution of the portrait is fixed by the one kernel $\bar K$. Each blob $a_\theta$ is narrow along its minor axis at the quorum scale and wide along its major axis at the capacity scale. Across the family the minor axis turns through every direction, so $\bar K$ holds the structure of $W$ down to the quorum cell $\tilde a$ in every direction. Its chord-domain transfer rolls off at $\tilde a$ with a soft edge, derived in closed form and confirmed across the twelve states in the Supplemental Material~\cite{zenododeposit}. In extent $\bar K$ is wide as $A$ and in resolution fine as $\tilde a$, the major and minor axes of the same blobs.
+and the portrait inherits its resolution from this one kernel. Convolution is multiplication in the chord domain. With $\xi$ the chord conjugate to $(x,p)$, the angular integral over $\theta$ caps the chord function of $\widetilde K$ at a single Gaussian,
+\begin{equation}
+\widehat{\widetilde K}(\xi) \le \exp\!\left[ -\tfrac14\!\left( \delta x^{2}\,\xi_x^{2} + \delta p^{2}\,\xi_p^{2} \right) \right],
+\label{eq:transfer}
+\end{equation}
+with equality at $\xi = 0$. The bound cuts off at $\delta x, \delta p$, so the portrait carries no structure finer than $\pi\,\delta x\,\delta p = \tilde a$, derived with the exact chord function in the Supplemental Material~\cite{zenododeposit}.
 
 % ===============================================================================
 %  UNIQUENESS OF BLOBS TO STATE
@@ -169,11 +174,12 @@ and the resolution of the portrait is fixed by the one kernel $\bar K$. Each blo
 A quantum blob $a_\theta$ too large for $A$ to circumscribe, or too
 small to circumscribe $\tilde a$, is a blob of another state and
 portrays that state, not this one~\cite{degosson2013qblobs,
-degosson2022polar}. Every $h/2$ blob $a_\theta$ of this state circumscribes
-the quorum cell $\tilde a$, and a kernel smaller than $h/2$ no longer
-secures a non-negative portrait~\cite{cartwright1976,degosson2005bullsci},
-so $\tilde a$ is the finest resolution any $h/2$ smoothing reaches,
-attained by the family $\{a_\theta\}$ across $\theta \in [0,\pi)$.
+degosson2022polar}. Every $h/2$ blob of this state circumscribes the
+quorum cell $\tilde a$, so no $h/2$ smoothing of this state resolves
+finer, and a kernel below $h/2$ fails to render the portrait
+non-negative~\cite{cartwright1976,degosson2005bullsci}. The finest resolution
+is $\tilde a$, reached by the family $\{a_\theta\}$ across
+$\theta \in [0,\pi)$.
 
 %===============================================================================
 %  DIFFERENTIATION
@@ -188,7 +194,7 @@ The principal frame, where the Heisenberg cell $A$ is axis-aligned, costs no gen
 %===============================================================================
 %  NUMERICAL RESULTS
 %===============================================================================
-Figures~\ref{fig:harmonic},~\ref{fig:eigen}, and~\ref{fig:cat} show numerical results across twelve states. The portrait is non-negative to machine precision, the chord-domain transfer carrying $W$ to $\widetilde W$ matches the single kernel $\bar K$ with no free parameter, and the cross-spectral phase between $W$ and $\widetilde W$ vanishes, so the structure is resolved at $\tilde a$ and displaced nowhere~\cite{zenododeposit}.
+Figures~\ref{fig:harmonic},~\ref{fig:eigen}, and~\ref{fig:cat} show numerical results across twelve states. The portrait is non-negative to machine precision, the chord-domain transfer carrying $W$ to $\widetilde W$ follows the chord function $\widehat{\widetilde K}$ with no free parameter, and the cross-spectral phase between $W$ and $\widetilde W$ vanishes, so the structure is resolved at $\tilde a$ and displaced nowhere~\cite{zenododeposit}.
 
 % ===============================================================================
 %  DISCUSSION
