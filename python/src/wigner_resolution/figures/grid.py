@@ -96,7 +96,7 @@ def assemble_grid(
 
         ax_h.set_ylabel(r"$p/p_0$")
         ax_w.set_ylabel(r"$W(x, 0)$")
-        ax_p.set_ylabel(r"$P_{\pi/2}(x, 0)$")
+        ax_p.set_ylabel(r"$\widetilde{W}_{\pi/2}(x, 0)$")
 
         if i == n_rows - 1:
             ax_h.set_xlabel(r"$x/x_0$")
@@ -194,7 +194,7 @@ def assemble_grid_4col(
         ax_h.set_ylabel(r"$p/p_0$")
         ax_w.set_ylabel(r"$W(x, 0)$")
         ax_k.set_ylabel(r"$p/p_0$")
-        ax_p.set_ylabel(r"$P_{\pi/2}(x, 0)$")
+        ax_p.set_ylabel(r"$\widetilde{W}_{\pi/2}(x, 0)$")
 
         if i == n_rows - 1:
             ax_h.set_xlabel(r"$x/x_0$")
@@ -225,7 +225,7 @@ def assemble_grid_4col(
 # on the right, with the kernel and the per-θ convolved cross-section
 # between them.
 _DEFAULT_5COL_TITLES = (
-    r"1. Wigner Portrait, $W$",
+    r"1. Wigner Function, $W$",
     r"2. Wigner Cross-Section, $W(x,0)$",
     r"3. Quantum Kernel, $K_{\pi/2}$",
     r"4. Convolved Cross-Section, $\widetilde{W}_{\pi/2}(x,0)$",
@@ -348,7 +348,7 @@ def assemble_grid_5col(
         ax_h.set_ylabel(r"$p/p_0$")
         ax_w.set_ylabel(r"$W(x, 0)$")
         ax_k.set_ylabel(r"$p/p_0$")
-        ax_p.set_ylabel(r"$P_{\pi/2}(x, 0)$")
+        ax_p.set_ylabel(r"$\widetilde{W}_{\pi/2}(x, 0)$")
         ax_t.set_ylabel(r"$p/p_0$")
 
         if i == n_rows - 1:

@@ -148,19 +148,25 @@ The duality is reflexive, so $A$ and $\tilde a$ each fix the other, and
 antimonotone, so $\tilde a$ shrinks as $A$ grows. Each blob $a_\theta$
 is circumscribed by $A$ and circumscribes $\tilde a$, nesting as
 $A \supseteq a_\theta \supseteq \tilde a$ (Fig.~\ref{fig:quantum_blobs}).
-A quorum of these $a_\theta$ blobs, each respecting
-$h/2$, reaches $\tilde a$ together. Resolution and capacity are reciprocal at the quantum of action,
+Resolution and capacity are reciprocal at the quantum of action,
 $\tilde a\,A = (h/2)^2$.
 
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
 % ===============================================================================
-A single blob commits to a quadrature the state does not privilege. Integrating $\widetilde W_\theta$ over the family privileges none, giving the phase-space portrait of the state at the resolution $\tilde a$,
+A single blob commits to a quadrature the state does not privilege. Integrating $\widetilde W_\theta$ over the family privileges none and gives the phase-space portrait of the state,
 \begin{equation}
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi \widetilde W_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
 \end{equation}
-$\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhere. Where tomographic reconstruction inverts marginals pointwise to recover $W$~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}, convolving $W$ with the family $\{K_\theta\}$ over the same $\theta$ builds the non-negative portrait $\widetilde W$.
+$\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhere. Where tomographic reconstruction inverts marginals pointwise to recover $W$~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}, integrating $W$ against the family $\{K_\theta\}$ over the same $\theta$ builds the non-negative portrait $\widetilde W$.
+
+The convolution and the integral are linear, so the family integral is a single convolution,
+\begin{equation}
+\widetilde W = W * \bar K, \qquad \bar K = \frac{1}{\pi}\int_0^\pi K_\theta\,d\theta,
+\label{eq:Kbar}
+\end{equation}
+and the resolution of the portrait is fixed by the one kernel $\bar K$. Each blob $a_\theta$ is narrow along its minor axis at the quorum scale and wide along its major axis at the capacity scale. Across the family the minor axis turns through every direction, so $\bar K$ holds the structure of $W$ down to the quorum cell $\tilde a$ in every direction. Its chord-domain transfer rolls off at $\tilde a$ with a soft edge, derived in closed form and confirmed across the twelve states in the Supplemental Material~\cite{zenododeposit}. In extent $\bar K$ is wide as $A$ and in resolution fine as $\tilde a$, the major and minor axes of the same blobs.
 
 % ===============================================================================
 %  UNIQUENESS OF BLOBS TO STATE
@@ -168,12 +174,11 @@ $\widetilde W_\theta \ge 0$ for every $\theta$, so $\widetilde W \ge 0$ everywhe
 A quantum blob $a_\theta$ too large for $A$ to circumscribe, or too
 small to circumscribe $\tilde a$, is a blob of another state and
 portrays that state, not this one~\cite{degosson2013qblobs,
-degosson2022polar}. Because every $h/2$ blob $a_\theta$ of this state circumscribes the
-quorum cell $\tilde a$, and a portrait finer than $\tilde a$ everywhere
-would smooth $W$ below the $h/2$ action non-negativity
-requires~\cite{cartwright1976,degosson2005bullsci}, $\tilde a$ is the
-finest resolution any non-negative portrait attains, and the family
-$\{a_\theta\}$ reaches it across $\theta \in [0,\pi)$.
+degosson2022polar}. Every $h/2$ blob $a_\theta$ of this state circumscribes
+the quorum cell $\tilde a$, and a kernel smaller than $h/2$ no longer
+secures a non-negative portrait~\cite{cartwright1976,degosson2005bullsci},
+so $\tilde a$ is the finest resolution any $h/2$ smoothing reaches,
+attained by the family $\{a_\theta\}$ across $\theta \in [0,\pi)$.
 
 %===============================================================================
 %  DIFFERENTIATION
@@ -188,7 +193,7 @@ The principal frame, where the Heisenberg cell $A$ is axis-aligned, costs no gen
 %===============================================================================
 %  NUMERICAL RESULTS
 %===============================================================================
-Figures~\ref{fig:harmonic},~\ref{fig:eigen}, and~\ref{fig:cat} show numerical results across twelve states. The portrait is non-negative to machine precision, and the cross-spectral phase between $W$ and $\widetilde W$ vanishes, confirming that the smoothing displaces no feature~\cite{zenododeposit}.
+Figures~\ref{fig:harmonic},~\ref{fig:eigen}, and~\ref{fig:cat} show numerical results across twelve states. The portrait is non-negative to machine precision, the chord-domain transfer carrying $W$ to $\widetilde W$ matches the single kernel $\bar K$ with no free parameter, and the cross-spectral phase between $W$ and $\widetilde W$ vanishes, so the structure is resolved at $\tilde a$ and displaced nowhere~\cite{zenododeposit}.
 
 % ===============================================================================
 %  DISCUSSION
