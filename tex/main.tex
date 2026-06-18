@@ -149,24 +149,24 @@ $\tilde a\,A = (h/2)^2$.
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
 % ===============================================================================
-A single blob commits to a quadrature the state does not privilege. Integrating $\widetilde W_\theta$ over the family privileges none and gives the phase-space portrait of the state,
+A single blob commits to a quadrature the state does not privilege. Integrating $\widetilde W_\theta$ over the family privileges none, yielding the phase-space portrait,
 \begin{equation}
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi \widetilde W_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
 \end{equation}
-Each $\widetilde W_\theta \ge 0$, so $\widetilde W \ge 0$ everywhere. Where tomographic reconstruction inverts the marginals over $\theta$ to recover $W$~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}, convolving $W$ against $\{K_\theta\}$ over the same $\theta$ builds the non-negative portrait $\widetilde W$.
+Each $\widetilde W_\theta \ge 0$, so $\widetilde W \ge 0$ everywhere. Where standard tomography inverts the marginals to recover the Wigner quasi-probability $W$~\cite{vogelrisken1989,lvovsky2009,degosson2022radon}, convolving $W$ with $\{K_\theta\}$ over the same $\theta$ builds the non-negative portrait $\widetilde W$.
 
 The convolution and the integral are linear, so the family collapses to a single convolution,
 \begin{equation}
 \widetilde W = W * K, \qquad K = \frac{1}{\pi}\int_0^\pi K_\theta\,d\theta,
 \label{eq:Kquorum}
 \end{equation}
-and the portrait inherits its resolution from this one kernel. With $\xi$ the chord conjugate to $(x,p)$, the angular integral over $\theta$ caps the chord function of $K$ at a single Gaussian,
+and the breadth of the kernel's Fourier transform $\widehat K$ sets the portrait's resolution. With $(\xi_x,\xi_p)$ the chord conjugate to $(x,p)$, integrating over $\theta$ bounds $\widehat K$ above by a single Gaussian,
 \begin{equation}
-\widehat{K}(\xi) \le \exp\!\left[ -\tfrac14\!\left( \delta x^{2}\,\xi_x^{2} + \delta p^{2}\,\xi_p^{2} \right) \right],
+\widehat{K}(\xi_x,\xi_p) \le \exp\!\left[ -\tfrac14\!\left( \delta x^{2}\,\xi_x^{2} + \delta p^{2}\,\xi_p^{2} \right) \right],
 \label{eq:transfer}
 \end{equation}
-with equality at $\xi = 0$. The bound cuts off at $\delta x, \delta p$, so the portrait carries no structure finer than $\pi\,\delta x\,\delta p = \tilde a$, derived with the exact chord function in the Supplemental Material~\cite{zenododeposit}.
+with equality at the origin. The bound cuts off at $\delta x$ and $\delta p$, so the portrait carries no structure finer than $\pi\,\delta x\,\delta p = \tilde a$, derived exactly in the Supplemental Material~\cite{zenododeposit}.
 
 % ===============================================================================
 %  UNIQUENESS OF BLOBS TO STATE
