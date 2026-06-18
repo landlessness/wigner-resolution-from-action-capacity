@@ -303,15 +303,15 @@ The portrait is a single convolution. Because the convolution with
 $K_\theta$ and the integral over $\theta$ are both linear, they commute,
 and the family integral collapses to one kernel,
 \begin{equation}
-\widetilde W = \frac{1}{\pi}\int_0^\pi W * K_\theta \, d\theta = W * \widetilde K,
+\widetilde W = \frac{1}{\pi}\int_0^\pi W * K_\theta \, d\theta = W * K,
 \qquad
-\widetilde K = \frac{1}{\pi}\int_0^\pi K_\theta\,d\theta.
+K = \frac{1}{\pi}\int_0^\pi K_\theta\,d\theta.
 \label{eq:single_conv}
 \end{equation}
-The resolution of the portrait is a property of the one kernel $\widetilde K$.
+The resolution of the portrait is a property of the one kernel $K$.
 Non-negativity is the per-angle property of
 Sec.~\ref{sec:numerics_nonneg}, where each $W * K_\theta \ge 0$.
-Resolution is the property of $\widetilde K$ derived here. The two statements
+Resolution is the property of $K$ derived here. The two statements
 read the same object through its two ends, the family for non-negativity
 and the average for resolution.
 
@@ -320,9 +320,9 @@ and the average for resolution.
 
 In the chord domain the convolution is a product, so the chord function
 of the portrait is the chord function of $W$ times the chord function of
-$\widetilde K$. Write $\widehat f$ for the symplectic Fourier transform of $f$
+$K$. Write $\widehat f$ for the symplectic Fourier transform of $f$
 and $\xi$ for the chord, the conjugate of the scaled phase-space point.
-The chord function $\widehat{\widetilde K}$ multiplies $\widehat W$ chord by
+The chord function $\widehat{K}$ multiplies $\widehat W$ chord by
 chord, so its reach in $\xi$ sets the finest structure the portrait keeps.
 
 The Letter writes each kernel through the capacity $A$,
@@ -354,10 +354,10 @@ is narrow,
 reaching chords of order $\pi\hbar/\tilde a$ along the $\xi_{P\theta}$ axis.
 As $\theta$ runs over $[0,\pi)$ this long axis sweeps every direction.
 
-The average over the family is the chord function of $\widetilde K$. Writing
+The average over the family is the chord function of $K$. Writing
 $|\xi|^2 = \xi_X^2 + \xi_P^2$ and carrying out the angular integral,
 \begin{equation}
-\widehat{\widetilde K}(|\xi|)
+\widehat{K}(|\xi|)
 = \exp\!\left[-\frac{|\xi|^2}{8}\!
 \left(1 + \frac{\tilde a^2}{(\pi\hbar)^2}\right)\right]
 I_0\!\left(\frac{|\xi|^2}{8}\!
@@ -371,7 +371,7 @@ equals one at zero chord, so the portrait keeps the bulk of $W$ in place.
 \subsection{The cutoff is the quorum cell}
 \label{sec:cutoff}
 
-The same angular average that builds $\widetilde K$ bounds it. The modified
+The same angular average that builds $K$ bounds it. The modified
 Bessel function is itself an angular average,
 \begin{equation}
 I_0(w) = \frac{1}{2\pi}\int_0^{2\pi} e^{w\cos\phi}\,d\phi \le e^{w},
@@ -381,7 +381,7 @@ since $\cos\phi \le 1$. Applied to Eq.~\eqref{eq:Kbar_chord} the two
 exponentials collapse, and the chord function is capped by a single
 Gaussian,
 \begin{equation}
-\widehat{\widetilde K}(|\xi|) \le
+\widehat{K}(|\xi|) \le
 \exp\!\left[-\frac{\tilde a^2}{4(\pi\hbar)^2}\,|\xi|^2\right],
 \label{eq:Kbar_bound}
 \end{equation}
@@ -389,7 +389,7 @@ with equality at $|\xi| = 0$, and everywhere for the vacuum, where
 $\tilde a = \pi\hbar$ and the kernel is the Gaussian itself. In physical
 units the bound is the ellipse of semi-axes $\delta x, \delta p$,
 \begin{equation}
-\widehat{\widetilde K}(\xi) \le
+\widehat{K}(\xi) \le
 \exp\!\left[-\tfrac14\!\left(\delta x^2\,\xi_x^2
 + \delta p^2\,\xi_p^2\right)\right],
 \qquad
@@ -409,7 +409,7 @@ The exact rolloff is gentler than the bound. At large chord
 $I_0(z)\sim e^{z}/\sqrt{2\pi z}$, so the chord function carries a $1/|\xi|$
 prefactor ahead of the same Gaussian,
 \begin{equation}
-\widehat{\widetilde K}(|\xi|)
+\widehat{K}(|\xi|)
 \sim \frac{2}{\sqrt{\pi\left(1 - \tilde a^2/(\pi\hbar)^2\right)}}\;
 \frac{1}{|\xi|}\,
 \exp\!\left[-\frac{\tilde a^2}{4(\pi\hbar)^2}\,|\xi|^2\right],
@@ -422,7 +422,7 @@ a gradual edge at $\tilde a$ rather than a sharp wall.
 \label{sec:extent}
 
 The averaged kernel is broad in space and sharp in feature at once, and
-the two are different measures. The second moment of $\widetilde K$ averages the
+the two are different measures. The second moment of $K$ averages the
 rotating blob over all angles and returns an isotropic spread set by the
 broad axis, the capacity scale $A$. The chord cutoff of
 Eq.~\eqref{eq:cutoff} returns the resolution set by the narrow axis, the
@@ -542,7 +542,7 @@ structure out to the quorum cell $\tilde a$.}
 \label{sec:numerics_transfer}
 
 Section~\ref{sec:resolution} reduces the portrait to a single convolution
-$\widetilde W = W * \widetilde K$ and gives the chord function of $\widetilde K$ in closed
+$\widetilde W = W * K$ and gives the chord function of $K$ in closed
 form, Eq.~\eqref{eq:Kbar_chord}. That chord function is the transfer that
 carries $W$ to $\widetilde W$, isotropic in the scaled frame and cut off at the
 quorum cell $\tilde a$. This subsection measures it on every state.
@@ -626,7 +626,7 @@ function within three quorum semi-axes. The coherence and phase are formed from
 the two-dimensional symplectic Fourier transforms of $W$ and $\widetilde W$,
 binned radially in chord, with the in-band region taken where the power of $W$
 exceeds one percent of its peak. The grid reproduces the single-convolution
-identity $\widetilde W = W * \widetilde K$ to $5\times10^{-17}$. The code reproducing
+identity $\widetilde W = W * K$ to $5\times10^{-17}$. The code reproducing
 every table and figure of this section is openly available~\cite{zenododeposit}.
 
 % ----------------------------------------------------------------------
