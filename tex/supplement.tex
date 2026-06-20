@@ -162,7 +162,7 @@ space and $X^\hbar$ is the $\hbar$-polar dual of $X$.}
 \toprule
 \textbf{This Letter (Mulloy)} & \textbf{Zurek \cite{zurek2001}} & \textbf{de Gosson \cite{degosson2026indeterminacy, degosson2022polar, degosson2013qblobs}} \\
 \midrule
-Quorum cell $a=\pi\delta x\delta p=\pi\hbar^2/(\Delta x\Delta p)$ & sub-Planck action $a\simeq\hbar^2/A$, Eq.~(3); tile $(2\pi\hbar)^2/A$, Eq.~(12) & $\hbar$-polar dual $A^\hbar$; saturated pair $X\times X^\hbar$ \\
+Resolution cell $a=\pi\delta x\delta p=\pi\hbar^2/(\Delta x\Delta p)$ & sub-Planck action $a\simeq\hbar^2/A$, Eq.~(3); tile $(2\pi\hbar)^2/A$, Eq.~(12) & $\hbar$-polar dual $A^\hbar$; saturated pair $X\times X^\hbar$ \\
 Reciprocity $a\,A=(h/2)^2$, chain $A\supseteq \beta_\theta\supseteq a$ & $a\simeq\hbar/N$, $N=A/2\pi\hbar$ & biduality $(X^\hbar)^\hbar=X$, antimonotone, Eqs.~(4),(5) \\
 Quantum kernel $K_\theta$ (Wigner function of $\beta_\theta$) & Husimi smoothing erases $a$ (Methods) & $W\psi_{W,Y}=(\pi\hbar)^{-n}e^{-Gz\cdot z/\hbar}$, Eq.~(41) \\
 Convolution $\widetilde W_\theta=W*K_\theta$ & not used & smoothing toward a non-negative distribution \cite{degosson2005bullsci, cartwright1976} \\
@@ -244,8 +244,8 @@ $X\times X^\hbar$ as the John ellipsoid. Zurek's interference scales
 $\delta_x,\delta_p$ are these principal members read off the coordinate
 axes.
 
-\paragraph{Quorum cell, polar dual, reciprocity.}
-The Letter's quorum cell is
+\paragraph{Resolution cell, polar dual, reciprocity.}
+The Letter's resolution cell is
 $a=\pi\,\delta x\,\delta p=\pi\hbar^2/(\Delta x\,\Delta p)$, the
 symplectic polar dual of the Heisenberg cell, with the reciprocity
 $a\,A=(h/2)^2$ and the chain $A\supseteq \beta_\theta\supseteq a$.
@@ -256,7 +256,7 @@ Eq.~\eqref{eq:polar_intervals}, since
 $a\,A=\pi^2(\delta x\,\Delta p)(\delta p\,\Delta x)=\pi^2\hbar^2=(\pi\hbar)^2$.
 Zurek's sub-Planck action is $a\simeq\hbar^2/A$, his Eq.~(3), with the
 compass tile $a=(2\pi\hbar)^2/A$ of his Eq.~(12). In Zurek's widths the
-Letter's quorum cell is $a=(\pi/2)\,\hbar^2/(L\times P)$. He also
+Letter's resolution cell is $a=(\pi/2)\,\hbar^2/(L\times P)$. He also
 records the count $N=A/2\pi\hbar$ of orthogonal states and the scale
 $a\simeq\hbar/N$.
 
@@ -292,7 +292,7 @@ the interference grid.
 % S2 --- The resolution of the portrait (analytic, in chord language)
 % New section. The family integral reduces to one kernel; the chord
 % function of that kernel is computed in closed form and its cutoff is
-% read off as the quorum cell. Notation in a throughout, with A
+% read off as the resolution cell. Notation in a throughout, with A
 % retained only at the kernel and at the extent/resolution contrast.
 % ======================================================================
 
@@ -331,9 +331,9 @@ K_\theta(x,p) \propto
 \exp\!\left[-X_\theta^2 - \frac{A^2}{(\pi\hbar)^2}\,P_\theta^2\right].
 \label{eq:kernel_A}
 \end{equation}
-Polar duality carries the capacity to the quorum cell. With
+Polar duality carries the capacity to the resolution cell. With
 $A = (\pi\hbar)^2/a$ from the reciprocity $a\,A = (\pi\hbar)^2$,
-the narrow axis of every blob is the quorum semi-axis, and the kernel
+the narrow axis of every blob is the resolution semi-axis, and the kernel
 wears the resolution it produces,
 \begin{equation}
 \frac{A^2}{(\pi\hbar)^2} = \frac{(\pi\hbar)^2}{a^2},
@@ -368,7 +368,7 @@ with $I_0$ the modified Bessel function. The chord function depends on
 $|\xi|$ alone, so the average is isotropic in the scaled frame, and it
 equals one at zero chord, so the portrait keeps the bulk of $W$ in place.
 
-\subsection{The cutoff is the quorum cell}
+\subsection{The cutoff is the resolution cell}
 \label{sec:cutoff}
 
 The same angular average that builds $K$ bounds it. The modified
@@ -396,7 +396,7 @@ units the bound is the ellipse of semi-axes $\delta x, \delta p$,
 \delta x = \frac{\hbar}{\Delta p}, \quad \delta p = \frac{\hbar}{\Delta x},
 \label{eq:physical_envelope}
 \end{equation}
-the quorum cell $a$ written in the chord domain. The chord function
+the resolution cell $a$ written in the chord domain. The chord function
 never exceeds this Gaussian, so the portrait holds the structure of $W$
 down to $a$ and removes structure finer than $a$, with the
 cutoff at the chord
@@ -418,7 +418,7 @@ prefactor ahead of the same Gaussian,
 \end{equation}
 a gradual edge at $a$ rather than a sharp wall.
 
-\subsection{Extent is the capacity, resolution is the quorum}
+\subsection{Extent is the capacity, resolution is the polar dual}
 \label{sec:extent}
 
 The averaged kernel is broad in space and sharp in feature at once, and
@@ -426,7 +426,7 @@ the two are different measures. The second moment of $K$ averages the
 rotating blob over all angles and returns an isotropic spread set by the
 broad axis, the capacity scale $A$. The chord cutoff of
 Eq.~\eqref{eq:cutoff} returns the resolution set by the narrow axis, the
-quorum $a$. Extent and resolution are the major and the minor axes
+resolution cell $a$. Extent and resolution are the major and the minor axes
 of the same blobs, the capacity and its polar dual. A width in space
 reports the capacity. The reach in chord reports the resolution. The
 portrait is wide as $A$ and fine as $a$, the two cells the duality
@@ -434,7 +434,7 @@ pairs.
 
 This synthesis underlies the Letter's result. The kernel carries only the
 capacity $A$ of the state, the axis along which the blob is broad. The
-average over the family resolves the portrait at the quorum cell
+average over the family resolves the portrait at the resolution cell
 $a$, the axis along which the blob is narrow. Zurek's sub-Planck
 scale $a \simeq \hbar^2/A$~\cite{zurek2001} is this resolution up to the
 convention factors of Sec.~\ref{sec:conventions}, and de Gosson's polar
@@ -476,7 +476,7 @@ $\widetilde W$ and reports position, the quantity the portrait preserves. No
 amplitude scale appears, so there is no ambiguity about what each number
 measures. The one asymmetry between the two functions is non-negativity, the
 defining property of the portrait. The resolution of that shared structure is the
-quorum cell $a$, derived in Sec.~\ref{sec:resolution} and confirmed
+resolution cell $a$, derived in Sec.~\ref{sec:resolution} and confirmed
 here as the transfer function of Eq.~\eqref{eq:Kbar_chord} measured on every
 state.
 
@@ -534,7 +534,7 @@ is plotted as points against the curve of Eq.~\eqref{eq:Kbar_chord} with the
 state's own ratio $a/(h/2)$. No quantity is fit. The vacuum and the
 squeezed state, at $a = h/2$, give a Gaussian, and the high-capacity
 states develop the soft edge of Eq.~\eqref{eq:Kbar_asymp} that carries
-structure out to the quorum cell $a$.}
+structure out to the resolution cell $a$.}
 \label{fig:transfer}
 \end{figure}
 
@@ -545,7 +545,7 @@ Section~\ref{sec:resolution} reduces the portrait to a single convolution
 $\widetilde W = W * K$ and gives the chord function of $K$ in closed
 form, Eq.~\eqref{eq:Kbar_chord}. That chord function is the transfer that
 carries $W$ to $\widetilde W$, isotropic in the scaled frame and cut off at the
-quorum cell $a$. This subsection measures it on every state.
+resolution cell $a$. This subsection measures it on every state.
 
 In the scaled chord $|\xi|$ the prediction is a single curve set by the one
 ratio $a/(h/2)$ of the state. For each state the chord-domain ratio of
@@ -590,7 +590,7 @@ Fig.~\ref{fig:ringcoloc}.
 The positive features of $W$ and $\widetilde W$ occupy the same points of phase
 space. Detecting the positive maxima of each function with one rule,
 Table~\ref{tab:coloc} reports the count found in each, the number matched, and
-the median displacement of a matched pair in units of the quorum semi-axis
+the median displacement of a matched pair in units of the resolution semi-axis
 $\delta$. Every state but the Fock state $n=20$ places its matched features
 within a third of $\delta$, and the $n=20$ value of $1.2\,\delta$ is the
 coarse-grid sampling of its many rings rather than a displacement, tightening on
@@ -622,7 +622,7 @@ $n=20$ is evaluated on a refined grid of $1001$ points per axis, which resolves
 its rings, and the other states on the standard grid. The positive maxima of a
 function are its local maxima above five percent of its grid peak, found with a
 sliding-window maximum filter and matched to the nearest maximum of the other
-function within three quorum semi-axes. The coherence and phase are formed from
+function within three resolution semi-axes. The coherence and phase are formed from
 the two-dimensional symplectic Fourier transforms of $W$ and $\widetilde W$,
 binned radially in chord, with the in-band region taken where the power of $W$
 exceeds one percent of its peak. The grid reproduces the single-convolution
@@ -684,7 +684,7 @@ compass      & 19.00 & 33  & 21 & 29 & 0.33 \\
 \end{tabular}
 \caption{Positive features co-locate. Number of positive maxima found in $W$
 and in $\widetilde W$ by one detector, the number matched between them, and the
-median displacement of a matched pair in units of the quorum semi-axis $\delta$.
+median displacement of a matched pair in units of the resolution semi-axis $\delta$.
 Matched features sit within a third of $\delta$ for every state but $n=20$,
 whose $1.2\,\delta$ is coarse-grid sampling of its rings. The portrait shows
 fewer maxima where the shallowest features merge into the envelope.}
