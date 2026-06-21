@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-Smoothing the Wigner function gives a non-negative phase-space portrait of a quantum state, with the smoothing scale conventionally left free. We show that the scale is fixed by the state. The state's covariance defines a Heisenberg cell of action capacity $\pi\,\Delta x\,\Delta p$, admitting a family of de Gosson quantum blobs deforming at constant action $h/2$. Convolving the Wigner function with the kernel of a single $h/2$ blob renders it non-negative. Integrating over the family resolves the portrait at $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the Heisenberg cell. The portrait is everywhere non-negative and holds the structure of the Wigner function in place. Wigner resolution is set by the state's action capacity alone and sharpens as that capacity grows.
+Smoothing the Wigner function gives a non-negative phase-space portrait of a quantum state, with the smoothing scale conventionally left free. We show that the scale is fixed by the state. The state's covariance defines a Heisenberg cell of action capacity $\pi\,\Delta x\,\Delta p$, admitting a family of de Gosson quantum blobs deforming at constant action $h/2$. Convolving the Wigner function with the kernel of a single $h/2$ blob renders it non-negative but fixes a coordinate. Integrating over the family is coordinate-free and resolves the portrait at $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the Heisenberg cell. The portrait is everywhere non-negative and holds the structure of the Wigner function in place. Wigner resolution is set by the state's action capacity alone and sharpens as that capacity grows.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -130,7 +130,7 @@ lifts $W$ to Planck's quantum of action and renders $\widetilde W_\theta$ everyw
 %===============================================================================
 %  ALL-ANGLES RESOLUTION CELL
 %===============================================================================
-Zurek also located the area scale $a \sim \hbar \times (\hbar / A)$~\cite{zurek2001,zurek2003decoherence} of the chessboard structure in the compass state. We identify its coordinate-free form as the resolution cell $a$ (Fig.~\ref{fig:cat}, column 1). It is the ellipse with semi-axes $\delta x, \delta p$ (Figs.~\ref{fig:principal_blobs},~\ref{fig:quantum_blobs}) and action
+Zurek also located the area scale $a \sim \hbar \times (\hbar / A)$~\cite{zurek2001,zurek2003decoherence} of the chessboard structure in the compass state (Fig.~\ref{fig:cat}, column 1). We identify its coordinate-free form as the resolution cell $a$. It is the ellipse with semi-axes $\delta x, \delta p$ (Figs.~\ref{fig:principal_blobs},~\ref{fig:quantum_blobs}) and action
 \begin{equation}
 a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
@@ -141,7 +141,8 @@ column 1) and the symplectic polar dual of the Heisenberg cell $A$~\cite{degosso
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
 % ===============================================================================
-A single blob commits to a quadrature the state does not favor. Integrating $\widetilde W_\theta$ over the family favors no quadrature, yielding the phase-space portrait,
+
+A single blob commits to a quadrature, a choice of coordinate the state does not favor. Integrating $\widetilde W_\theta$ over the family is coordinate-free, yielding the phase-space portrait,
 \begin{equation}
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi \widetilde W_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
@@ -166,12 +167,12 @@ with equality at the origin. The bound cuts off at $\delta x$ and $\delta p$, so
 A quantum blob $\beta_\theta$ too large for $A$ to circumscribe, or too
 small to circumscribe $a$, is a blob of another state and
 portrays that state, not this one~\cite{degosson2013qblobs,
-degosson2022polar}. Every $h/2$ blob of this state circumscribes the
-resolution cell $a$, so no $h/2$ smoothing of this state resolves
-finer, and a kernel below $h/2$ fails to render the portrait
-non-negative~\cite{cartwright1976,degosson2005bullsci}. The finest resolution
-is $a$, reached by the family $\{\beta_\theta\}$ across
-$\theta \in [0,\pi)$.
+degosson2022polar}. Every $h/2$ blob of this state is inscribed in $A$
+and circumscribes $a$, touching each, so no $h/2$ smoothing of this
+state resolves finer than $a$, and a kernel below $h/2$ fails to render
+the portrait non-negative~\cite{cartwright1976,degosson2005bullsci}.
+The finest resolution is $a$, reached by the family $\{\beta_\theta\}$
+across $\theta \in [0,\pi)$.
 
 %===============================================================================
 %  GENERALIZATION
@@ -191,7 +192,7 @@ Figures~\ref{fig:harmonic},~\ref{fig:eigen}, and~\ref{fig:cat} show numerical re
 % ===============================================================================
 %  DISCUSSION
 % ===============================================================================
-The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the micro-to-macro transition Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring care. The quantum blob does not. As $A$ grows, the family $\{\beta_\theta\}$ deforms at fixed action $h/2$. Squeezing deforms a state by external apparatus~\cite{walls1983}. Here the scale called sub-Planck~\cite{zurek2001} is the minor axis $\delta$ of an $h/2$ blob, narrowing as the conjugate capacity $\Delta$ grows. A Schr\"odinger cat with capacity $\Delta p \sim 1$ kg$\cdot$m/s has resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, nineteen orders sub-nuclear~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$ and $a \to 0$, the physical limit underlying the heuristic $h \to 0$. The resolution sharpens as the action capacity grows, $a\,A = (h/2)^2$. We read this structure as the geometry of phase space itself, which de Gosson finds underlying the uncertainty principle~\cite{degossonluef2009irruption,degosson2022polar,degosson2009camel}.
+The uncertainty product $\sigma_x \sigma_p$ grows unbounded, the micro-to-macro transition Heisenberg~\cite{heisenberg1927} and Bohr~\cite{bohr1928} identified as requiring care. The quantum blob does not. As $A$ grows, the family $\{\beta_\theta\}$ deforms at fixed action $h/2$. Squeezing deforms a state by external apparatus~\cite{walls1983}. Here the scale called sub-Planck~\cite{zurek2001} is the minor axis $\delta$ of an $h/2$ blob, narrowing as the conjugate capacity $\Delta$ grows. A Schr\"odinger cat with capacity $\Delta p \sim 1$ kg$\cdot$m/s has resolution $\delta x = \hbar/\Delta p \sim 10^{-34}$ m, nineteen orders sub-nuclear~\cite{schrodinger1935trimmer}. The correspondence principle follows from $A \to \infty$ and $a \to 0$, the physical limit underlying the heuristic $h \to 0$. The resolution sharpens as the action capacity grows, $a = (h/2)^2 \,/ \,A$. We read this structure as the geometry of phase space itself, which de Gosson finds underlying the uncertainty principle~\cite{degossonluef2009irruption,degosson2022polar,degosson2009camel}.
 
 % ===============================================================================
 %  ACKNOWLEDGEMENTS
