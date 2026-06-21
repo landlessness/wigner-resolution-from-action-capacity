@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-Smoothing the Wigner function gives a non-negative phase-space portrait of a quantum state, with the smoothing scale conventionally left free. We show that the scale is fixed by the state. The state's covariance defines a Heisenberg cell of action capacity $\pi\,\Delta x\,\Delta p$, admitting a family of de Gosson quantum blobs deforming at constant action $h/2$. Convolving the Wigner function with the kernel of a single $h/2$ blob renders it non-negative. Integrating over the family resolves the portrait at $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the Heisenberg cell. The portrait is everywhere non-negative and holds the structure of the Wigner function in place. Wigner resolution carries no free parameter, set by the state's action capacity alone and sharpening as that capacity grows.
+Smoothing the Wigner function gives a non-negative phase-space portrait of a quantum state, with the smoothing scale conventionally left free. We show that the scale is fixed by the state. The state's covariance defines a Heisenberg cell of action capacity $\pi\,\Delta x\,\Delta p$, admitting a family of de Gosson quantum blobs deforming at constant action $h/2$. Convolving the Wigner function with the kernel of a single $h/2$ blob renders it non-negative. Integrating over the family resolves the portrait at $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the Heisenberg cell. The portrait is everywhere non-negative and holds the structure of the Wigner function in place. Wigner resolution is set by the state's action capacity alone and sharpens as that capacity grows.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -41,7 +41,7 @@ Smoothing the Wigner function gives a non-negative phase-space portrait of a qua
 % ===============================================================================
 %  OPENING
 % ===============================================================================
-The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. It is defined pointwise below Planck's quantum of action, where Hudson's theorem forces it negative~\cite{hudson1974}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and a measure of nonclassicality~\cite{kenfack2004}. A non-negative distribution supports classical sampling~\cite{husimi1940,cartwright1976,degosson2005bullsci,dragoman2005phasespace,polkovnikov2010} and follows from smoothing the Wigner function at a freely chosen scale. Here the state's action capacity $\pi\,\Delta x\,\Delta p$ sets that scale without a free parameter.
+The Wigner function represents a quantum state in phase space~\cite{wigner1932,hillery1984}. It is defined pointwise below Planck's quantum of action, where Hudson's theorem forces it negative~\cite{hudson1974}. Its negativity is a resource for quantum advantage~\cite{veitch2012,marieisert2012} and a measure of nonclassicality~\cite{kenfack2004}. A non-negative distribution supports classical sampling~\cite{husimi1940,cartwright1976,degosson2005bullsci,dragoman2005phasespace,polkovnikov2010} and follows from smoothing the Wigner function at a freely chosen scale. Here the state sets that scale without a free parameter.
 
 % ===============================================================================
 %  FIGURES
@@ -84,7 +84,7 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 % ===============================================================================
 %  THE PHASE-SPACE CELLS
 % ===============================================================================
-Planck divided phase space into elementary regions of action~\cite{planck1906}. Heisenberg's uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$~\cite{kennard1927,robertson1929,schrodinger1930} fixes their minimum area. Geometrically, de Gosson gave this action region the form of the state's covariance ellipse, with symplectic capacity $\pi\,\Delta x\,\Delta p$~\cite{degosson2009camel} and semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$. This is the Heisenberg cell (Figs.~\ref{fig:principal_blobs},~\ref{fig:quantum_blobs}) of action capacity,
+Planck divided phase space into elementary regions of action~\cite{planck1906}. Heisenberg's uncertainty principle $\sigma_x\,\sigma_p \ge \hbar/2$~\cite{kennard1927,robertson1929,schrodinger1930} fixes their minimum area but not their form, which a rotation of the axes redraws. Geometrically, de Gosson recast the region as the state's covariance ellipse, whose symplectic capacity $\pi\,\Delta x\,\Delta p$ is a canonical invariant~\cite{degosson2003quantization,degosson2009camel}, with semi-axes $\Delta x = \sqrt{2}\,\sigma_x$ and $\Delta p = \sqrt{2}\,\sigma_p$. This is the Heisenberg cell (Figs.~\ref{fig:principal_blobs},~\ref{fig:quantum_blobs}) of action capacity,
 \begin{equation}
 A = \pi\,\Delta x\,\Delta p \ge h/2.
 \label{eq:extended_cell}
@@ -130,7 +130,7 @@ lifts $W$ to Planck's quantum of action and renders $\widetilde W_\theta$ everyw
 %===============================================================================
 %  ALL-ANGLES RESOLUTION CELL
 %===============================================================================
-Zurek also located the area scale $a \sim \hbar \times (\hbar / A)$~\cite{zurek2001,zurek2003decoherence} of the chessboard structure in the compass state. We identify its rotationally invariant form as the resolution cell $a$ (Fig.~\ref{fig:cat}, column 1). It is the ellipse with semi-axes $\delta x, \delta p$ (Figs.~\ref{fig:principal_blobs},~\ref{fig:quantum_blobs}) and action
+Zurek also located the area scale $a \sim \hbar \times (\hbar / A)$~\cite{zurek2001,zurek2003decoherence} of the chessboard structure in the compass state. We identify its coordinate-free form as the resolution cell $a$ (Fig.~\ref{fig:cat}, column 1). It is the ellipse with semi-axes $\delta x, \delta p$ (Figs.~\ref{fig:principal_blobs},~\ref{fig:quantum_blobs}) and action
 \begin{equation}
 a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
@@ -141,7 +141,7 @@ column 1) and the symplectic polar dual of the Heisenberg cell $A$~\cite{degosso
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
 % ===============================================================================
-A single blob commits to a quadrature the state does not favor. Integrating $\widetilde W_\theta$ over the family favors none, yielding the phase-space portrait,
+A single blob commits to a quadrature the state does not favor. Integrating $\widetilde W_\theta$ over the family favors no quadrature, yielding the phase-space portrait,
 \begin{equation}
 \widetilde{W}(x,p) = \frac{1}{\pi}\int_0^\pi \widetilde W_\theta(x,p)\,d\theta.
 \label{eq:tildeW}
@@ -176,7 +176,7 @@ $\theta \in [0,\pi)$.
 %===============================================================================
 %  GENERALIZATION
 %===============================================================================
-The principal frame, where the Heisenberg cell $A$ is axis-aligned, costs no generality. The Wigner function transforms covariantly under the symplectic group~\cite{cordero2018}, so the map that diagonalizes a state's covariance carries it to this frame. The Kerr crescent, a sheared coherent state, is resolved this way (Fig.~\ref{fig:eigen}). In one degree of freedom, $A$ fixes the family uniquely, and the Zurek structure is already present for states with $A > h/2$. In higher dimensions, action $h/2$ no longer singles out a blob~\cite{degosson2013qblobs}, symplectic capacity and volume diverge, and the higher-dimensional case remains for future work.
+The principal frame, where the Heisenberg cell $A$ is axis-aligned, costs no generality. The Wigner function transforms covariantly under the symplectic group~\cite{cordero2018}, so the map that diagonalizes a state's covariance carries it to this frame. The Kerr crescent, a sheared coherent state, is resolved this way (Fig.~\ref{fig:eigen}). In one degree of freedom, $A$ fixes the family uniquely, and the Zurek structure is already present for states with $A > h/2$. In higher dimensions, action $h/2$ no longer singles out a blob~\cite{degosson2003quantization, degosson2013qblobs}, symplectic capacity and volume diverge, and the higher-dimensional case remains for future work.
 
 %===============================================================================
 %  DIFFERENTIATION
