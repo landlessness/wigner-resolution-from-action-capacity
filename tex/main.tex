@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-Smoothing the Wigner function gives a non-negative phase-space portrait of a quantum state, with the smoothing scale conventionally left free. We show that the scale is fixed by the state. The state's covariance defines a Heisenberg cell of action capacity $\pi\,\Delta x\,\Delta p$, admitting a family of de Gosson quantum blobs deforming at constant action $h/2$. Convolving the Wigner function with the kernel of a single $h/2$ blob renders it non-negative. Integrating over the family resolves the portrait at $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the Heisenberg cell. The portrait is everywhere non-negative and carries the structure of the Wigner function undisplaced. Wigner resolution carries no free parameter, set by the state's action capacity alone and sharpening as that capacity grows.
+Smoothing the Wigner function gives a non-negative phase-space portrait of a quantum state, with the smoothing scale conventionally left free. We show that the scale is fixed by the state. The state's covariance defines a Heisenberg cell of action capacity $\pi\,\Delta x\,\Delta p$, admitting a family of de Gosson quantum blobs deforming at constant action $h/2$. Convolving the Wigner function with the kernel of a single $h/2$ blob renders it non-negative. Integrating over the family resolves the portrait at $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the Heisenberg cell. The portrait is everywhere non-negative and holds the structure of the Wigner function in place. Wigner resolution carries no free parameter, set by the state's action capacity alone and sharpening as that capacity grows.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -100,7 +100,7 @@ The Wigner function carries structure at small scales. Zurek located those scale
 \end{equation}
 The capacities $\Delta x, \Delta p$ run along the major axes, the resolutions $\delta x, \delta p$ along the minor.
 
-Between these principal members the family $\{\beta_\theta\}$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$ (Fig.~\ref{fig:quantum_blobs}). The Heisenberg cell $A$ circumscribes each $\beta_\theta$. In the scaled coordinates $X = x/\Delta x$, $P = p/\Delta p$ it is one ellipse turned through $\theta$,
+Between these principal members the family $\{\beta_\theta\}$ deforms across $\theta \in [0,\pi)$ at constant action $h/2$ (Fig.~\ref{fig:quantum_blobs}). The Heisenberg cell $A$ circumscribes each $\beta_\theta$. In the scaled coordinates $X = x/\Delta x$, $P = p/\Delta p$ every member is the same rigid ellipse rotated through $\theta$,
 \begin{equation}
 \beta_\theta = \left\{ (x,p) : X_\theta^{2} + \tfrac{A^2}{(\pi\hbar)^2}\, P_\theta^{2} \le 1 \right\},
 \label{eq:atheta}
@@ -115,22 +115,22 @@ The Wigner function of the state is
 W(x,p) = \frac{1}{\pi\hbar}\int \psi^*(x+s)\,\psi(x-s)\,e^{2ips/\hbar}\,ds.
 \label{eq:wigner}
 \end{equation}
-The Wigner function of each quantum blob $\beta_\theta$ is the centered Gaussian whose $h/2$ ellipse is $\beta_\theta$,
+The quantum kernel $K_\theta$ is a pure-state Wigner function, the centered Gaussian whose $h/2$ ellipse is the quantum blob $\beta_\theta$,
 \begin{equation}
 K_\theta(x, p) = \frac{1}{\pi\hbar}\exp\!\left[ -X_\theta^{2} - \tfrac{A^2}{(\pi\hbar)^2}\, P_\theta^{2} \right].
 \label{eq:Ktheta}
 \end{equation}
-The convolution of $W$ with each quantum kernel $K_\theta$ is
+Convolving $W$ with $K_\theta$,
 \begin{equation}
-\widetilde W_\theta(x,p) = (W * K_\theta)(x,p).
+\widetilde W_\theta(x,p) = (W * K_\theta)(x,p),
 \label{eq:Wtheta}
 \end{equation}
-Convolving $W$ with the kernel $K_\theta$ of a single quantum blob $\beta_\theta$ lifts it to Planck's quantum of action and yields a non-negative function~\cite{cartwright1976,degosson2005bullsci,degossonluef2009irruption,cordero2018}.
+lifts $W$ to Planck's quantum of action and renders $\widetilde W_\theta$ everywhere non-negative~\cite{cartwright1976,degosson2005bullsci,degossonluef2009irruption,cordero2018}.
 
 %===============================================================================
 %  ALL-ANGLES RESOLUTION CELL
 %===============================================================================
-Zurek also located the scale $a \sim \hbar \times (\hbar / A)$~\cite{zurek2001,zurek2003decoherence} of the chessboard structure in the compass state. We identify its rotationally invariant form as the resolution cell $a$ (Fig.~\ref{fig:cat}, column 1). It is the ellipse with semi-axes $\delta x, \delta p$ (Figs.~\ref{fig:principal_blobs},~\ref{fig:quantum_blobs}) and action
+Zurek also located the area scale $a \sim \hbar \times (\hbar / A)$~\cite{zurek2001,zurek2003decoherence} of the chessboard structure in the compass state. We identify its rotationally invariant form as the resolution cell $a$ (Fig.~\ref{fig:cat}, column 1). It is the ellipse with semi-axes $\delta x, \delta p$ (Figs.~\ref{fig:principal_blobs},~\ref{fig:quantum_blobs}) and action
 \begin{equation}
 a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
