@@ -31,7 +31,7 @@
 \date{\today}
 
 \begin{abstract}
-The Wigner function represents a quantum state in phase space. Smoothing it gives a non-negative portrait, with the smoothing scale conventionally left free. We show that the scale is set by the state. The state's action capacity $\pi\,\Delta x\,\Delta p$ fixes a family of de Gosson quantum blobs deforming at constant action $h/2$. Convolving the Wigner function with the kernel of a single $h/2$ blob renders it non-negative, one coordinate at a time. Integrating over the family is coordinate-free and resolves the portrait at $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the capacity. The portrait is everywhere non-negative and holds the structure of the Wigner function in place. Wigner resolution derives from the state's action capacity alone and sharpens as that capacity grows.
+The Wigner function represents a quantum state in phase space. Smoothing it gives a non-negative portrait, with the smoothing scale conventionally left free. We show that the scale is set by the state. The state's action capacity $\pi\,\Delta x\,\Delta p$ fixes a family of de Gosson quantum blobs deforming at constant action $h/2$. Convolving the Wigner function with the kernel of a single $h/2$ blob renders it non-negative for a specific choice of coordinates. Integrating over the family is coordinate-free and resolves the portrait at $\pi\hbar^2/(\Delta x\,\Delta p)$, the symplectic polar dual of the capacity. The portrait is everywhere non-negative and holds the structure of the Wigner function in place. Wigner resolution derives from the state's action capacity alone and sharpens as that capacity grows.
 \end{abstract}
 
 \keywords{Phase space formulation of quantum mechanics, Wigner functions, Uncertainty principle, Symplectic geometry, Schrödinger cat states}
@@ -49,14 +49,14 @@ The Wigner function represents a quantum state in phase space~\cite{wigner1932,h
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/principal_blobs.pdf}
-\caption{\textbf{Capacity, quantum blobs at principal axes, and resolution.} The state's covariance ellipsoid has action capacity $A = \pi \, \Delta x \, \Delta p \ge h/2$. The quantum blob family (Fig.~\ref{fig:quantum_blobs}) has two members at the principal axes, $\beta_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $\beta_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. Zurek's relations $\delta p \sim \hbar/\Delta x$ and $\delta x \sim \hbar/\Delta p$ locate the semi-axis scales from the state's action capacity. The resolution $a$ is an ellipse with semi-axes $\delta x, \delta p$ and action $a = \pi \, \delta x \, \delta p = \pi\hbar^2/(\Delta x\,\Delta p)$. $A$ circumscribes $\beta_{\theta=0}$ and $\beta_{\pi/2}$, which circumscribe $a$.}
+\caption{\textbf{Capacity, quantum blobs at principal axes, and resolution.} The state's covariance ellipsoid has action capacity $A = \pi \, \Delta x \, \Delta p \ge h/2$. The quantum blob family (Fig.~\ref{fig:quantum_blobs}) has two members at the principal axes, $\beta_{\theta=0} = \pi \, \Delta x \, \delta p = h/2$ and $\beta_{\pi/2} = \pi \,\delta x \,\Delta p = h/2$. The resolution $a$ is an ellipse with semi-axes $\delta x, \delta p$ and action $a = \pi \, \delta x \, \delta p = \pi\hbar^2/(\Delta x\,\Delta p)$. $A$ circumscribes $\beta_{\theta=0}$ and $\beta_{\pi/2}$, which circumscribe $a$.}
 \label{fig:principal_blobs}
 \end{figure}
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/quantum_blobs.pdf}
-\caption{\textbf{Capacity, quadrature family of quantum blobs, and resolution.} Action capacity $A$ circumscribes the quantum blob family $\{\beta_\theta\}$, which circumscribes resolution $a$. Across $\theta$ the blob family deforms at constant action $\beta_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $\beta_{\theta=0}$ and $\beta_{\pi/2}$ from Fig.~\ref{fig:principal_blobs}.}
+\caption{\textbf{Capacity, quantum blob family, and resolution.} Action capacity $A$ circumscribes the quantum blob family $\{\beta_\theta\}$, which circumscribes resolution $a$. Across $\theta$ the blob family deforms at constant action $\beta_\theta = h/2$. At the principal angles $\theta = 0$ and $\theta = \pi/2$, the family recovers $\beta_{\theta=0}$ and $\beta_{\pi/2}$ from Fig.~\ref{fig:principal_blobs}.}
 \label{fig:quantum_blobs}
 \end{figure}
 
@@ -93,7 +93,7 @@ A = \pi\,\Delta x\,\Delta p \ge h/2.
 % ===============================================================================
 %  ZUREK SCALES AS A FAMILY OF DE GOSSON BLOBS
 % ===============================================================================
-The Wigner function carries structure at small scales. Zurek located those scales, $\delta p \sim \hbar/\Delta x$ and $\delta x \sim \hbar/\Delta p$, from the state's action capacity~\cite{zurek2001}. We identify them as the principal axes of a family of de Gosson quantum blobs (Fig.~\ref{fig:principal_blobs}),
+The Wigner function carries structure at small scales. Zurek located those scales, $\delta p \sim \hbar/\Delta x$ and $\delta x \sim \hbar/\Delta p$, from the state's action capacity~\cite{zurek2001}. We identify them as the principal axes of a family of de Gosson quantum blobs~\cite{degosson2003quantization} (Fig.~\ref{fig:principal_blobs}),
 \begin{equation}
 \beta_{\theta=0} = \pi\,\Delta x\,\delta p = h/2, \qquad \beta_{\pi/2} = \pi\,\delta x\,\Delta p = h/2.
 \label{eq:principal_axis_blobs}
@@ -136,7 +136,7 @@ a = \pi\,\delta x\,\delta p = \frac{\pi\hbar^2}{\Delta x\,\Delta p}.
 \label{eq:tildea}
 \end{equation}
 It is the resolution of the state's finest structure in the bare Wigner function (Figs.~\ref{fig:harmonic},~\ref{fig:eigen},~\ref{fig:cat},
-column 1) and the symplectic polar dual of the capacity $A$~\cite{degosson2022polar,degosson2024reconstruction}. The duality is reflexive, so $A$ and $a$ each fix the other, and antimonotone, so $a$ shrinks as $A$ grows. Each blob $\beta_\theta$ is circumscribed by $A$ and circumscribes $a$, nesting as $A \supseteq \beta_\theta \supseteq a$ (Fig.~\ref{fig:quantum_blobs}). Resolution and capacity are reciprocal at the quantum of action, $a\,A = (h/2)^2$.
+column 1) and the symplectic polar dual of the capacity $A$~\cite{degosson2022polar,degosson2024reconstruction}. The duality is reflexive, so $A$ and $a$ each fix the other, and antimonotone, so $a$ shrinks as $A$ grows. The capacity $A$ circumscribes each blob $\beta_\theta$, which circumscribes the resolution $a$, each $\beta_\theta$ touching $a$ and $A$ twice, with $a \le \beta_\theta \le A$ (Fig.~\ref{fig:quantum_blobs}). Resolution and capacity are reciprocal at the quantum of action, $a\,A = (h/2)^2$.
 
 % ===============================================================================
 %  THE CONVOLVED PORTRAIT
@@ -168,7 +168,7 @@ A quantum blob $\beta_\theta$ too large for $A$ to circumscribe, or too
 small to circumscribe $a$, is a blob of another state and
 portrays that state, not this one~\cite{degosson2013qblobs,
 degosson2022polar}. Every $h/2$ blob of this state is inscribed in $A$
-and circumscribes $a$, touching each, so no $h/2$ smoothing of this
+and circumscribes $a$, touching each twice, so no $h/2$ smoothing of this
 state resolves finer than $a$, and a kernel below $h/2$ fails to render
 the portrait non-negative~\cite{cartwright1976,degosson2005bullsci}.
 The finest resolution is $a$, reached by the family $\{\beta_\theta\}$
