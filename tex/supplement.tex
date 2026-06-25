@@ -49,7 +49,7 @@
 The Letter fixes one notation. The same phase-space geometry appears in
 Zurek's account of sub-Planck structure \cite{zurek2001} and in de
 Gosson's symplectic treatment of indeterminacy
-\cite{degosson2026indeterminacy, degosson2022polar, degosson2013qblobs,
+\cite{degosson2015indeterminacy, degosson2022polar, degosson2013qblobs,
 degosson2005bullsci, degosson2009camel, degosson2024reconstruction},
 each under different symbols and different normalizations. This section
 maps the Letter's symbols onto theirs. The Letter sets the entries. Zurek
@@ -124,24 +124,24 @@ relations, writing each relation out in all three notations.
 \renewcommand{\arraystretch}{1.35}
 \begin{tabular}{@{}p{0.30\linewidth} p{0.28\linewidth} p{0.34\linewidth}@{}}
 \toprule
-\textbf{This Letter (Mulloy)} & \textbf{Zurek \cite{zurek2001}} & \textbf{de Gosson \cite{degosson2026indeterminacy, degosson2022polar, degosson2013qblobs}} \\
+\textbf{This Letter (Mulloy)} & \textbf{Zurek \cite{zurek2001}} & \textbf{de Gosson \cite{degosson2024reconstruction, degosson2022polar, degosson2013qblobs}} \\
 \midrule
 Position, momentum $x,\ p$ & $x,\ p$ & $x\in\mathbb{R}^n_x,\ p\in\mathbb{R}^n_p$ \\
-Wigner function $W(x,p)$ & $W(x,p)$, Eq.~(2) & $W\psi(z)$, Eq.~(33) \\
+Wigner function $W(x,p)$ & $W(x,p)$, Eq.~(2) & $W\psi(z)$, Eq.~(43) \\
 Capacity semi-axis (position) $\Delta x=\sqrt{2}\,\sigma_x$ & $L$, with $L^2\simeq\langle x^2\rangle-\langle x\rangle^2$ & half-width of $X=\Pi_x\Omega_\Sigma$ \\
 Capacity semi-axis (momentum) $\Delta p=\sqrt{2}\,\sigma_p$ & $P$, with $P^2\simeq\langle p^2\rangle-\langle p\rangle^2$ & half-width of $P=\Pi_p\Omega_\Sigma$ \\
-Action capacity $A=\pi\Delta x\Delta p\ge h/2$ & classical action $A\simeq L\times P$, Eq.~(4) & covariance ellipsoid $\Omega_\Sigma$, $c(\Omega_\Sigma)\ge\pi\hbar$, Thm.~14 \\
-Resolution semi-axis (position) $\delta x=\hbar/\Delta p$ & $\delta_x=\hbar/P\simeq\sqrt{2}\,\delta x$, Eq.~(7) & $B_P(\Delta p)^\hbar=B_X(\hbar/\Delta p)$, Eq.~(7) \\
-Resolution semi-axis (momentum) $\delta p=\hbar/\Delta x$ & $\delta_p=\hbar/L\simeq\sqrt{2}\,\delta p$, Eq.~(8) & $B_X(\Delta x)^\hbar=B_P(\hbar/\Delta x)$, Eq.~(7) \\
-Quantum blob $\beta_\theta$, action $h/2$ & minimum-uncertainty Gaussian & $QB(S)=S\!\left(B^{2n}(\sqrt{\hbar})\right)$, $c=\pi\hbar$, Eq.~(26) \\
-Principal blobs $\beta_{\theta=0},\ \beta_{\pi/2}$ & axis interference scales $\delta_x,\delta_p$ & diagonal case $S=M_L$; $\mathrm{John}(X\times X^\hbar)$, Thms.~10, 12 \\
+Action capacity $A=\pi\Delta x\Delta p\ge h/2$ & classical action $A\simeq L\times P$, Eq.~(4) & covariance ellipsoid $\Omega_\Sigma$, $c(\Omega_\Sigma)\ge\pi\hbar$, Claims~3--4 \\
+Resolution semi-axis (position) $\delta x=\hbar/\Delta p$ & $\delta_x=\hbar/P\simeq\sqrt{2}\,\delta x$, Eq.~(7) & $B_P(\Delta p)^\hbar=B_X(\hbar/\Delta p)$, Eqs.~(84)--(85) \\
+Resolution semi-axis (momentum) $\delta p=\hbar/\Delta x$ & $\delta_p=\hbar/L\simeq\sqrt{2}\,\delta p$, Eq.~(8) & $B_X(\Delta x)^\hbar=B_P(\hbar/\Delta x)$, Eqs.~(84)--(85) \\
+Quantum blob $\beta_\theta$, action $h/2$ & minimum-uncertainty Gaussian & $QB(S)=S\!\left(B^{2n}(\sqrt{\hbar})\right)$, $c=\pi\hbar$, Sec.~1 \\
+Principal blobs $\beta_{\theta=0},\ \beta_{\pi/2}$ & axis interference scales $\delta_x,\delta_p$ & diagonal case $S=M_L$; $\mathrm{John}(X\times X^\hbar)$, Prop.~8, Thm.~13 \\
 \bottomrule
 \end{tabular}
 \caption{Dictionary, part 1: core geometry. The Letter's symbols and their
 counterparts in Zurek \cite{zurek2001} and de Gosson
-\cite{degosson2026indeterminacy, degosson2022polar, degosson2013qblobs}.
+\cite{degosson2024reconstruction, degosson2022polar, degosson2013qblobs}.
 Equation and theorem numbers in the Zurek column refer to \cite{zurek2001};
-those in the de Gosson column refer to \cite{degosson2026indeterminacy}.
+those in the de Gosson column refer to \cite{degosson2024reconstruction}.
 Convention factors relating the columns are collected in
 Sec.~\ref{sec:conventions}, Eqs.
 \eqref{eq:bridge_widths}--\eqref{eq:bridge_capacity}. Because Zurek
@@ -159,16 +159,16 @@ space and $X^\hbar$ is the $\hbar$-polar dual of $X$.}
 \renewcommand{\arraystretch}{1.35}
 \begin{tabular}{@{}p{0.30\linewidth} p{0.28\linewidth} p{0.34\linewidth}@{}}
 \toprule
-\textbf{This Letter (Mulloy)} & \textbf{Zurek \cite{zurek2001}} & \textbf{de Gosson \cite{degosson2026indeterminacy, degosson2022polar, degosson2013qblobs}} \\
+\textbf{This Letter (Mulloy)} & \textbf{Zurek \cite{zurek2001}} & \textbf{de Gosson \cite{degosson2024reconstruction, degosson2022polar, degosson2013qblobs}} \\
 \midrule
 Resolution $a=\pi\delta x\delta p=\pi\hbar^2/(\Delta x\Delta p)$ & sub-Planck action $a\simeq\hbar^2/A$, Eq.~(3); tile $(2\pi\hbar)^2/A$, Eq.~(12) & $\hbar$-polar dual $A^\hbar$; saturated pair $X\times X^\hbar$ \\
-Reciprocity $a\,A=(h/2)^2$, chain $A\supseteq \beta_\theta\supseteq a$ & $a\simeq\hbar/N$, $N=A/2\pi\hbar$ & biduality $(X^\hbar)^\hbar=X$, antimonotone, Eqs.~(4),(5) \\
-Quantum kernel $K_\theta$ (Wigner function of $\beta_\theta$) & Husimi smoothing erases $a$ (Methods) & $W\psi_{W,Y}=(\pi\hbar)^{-n}e^{-Gz\cdot z/\hbar}$, Eq.~(41) \\
+Reciprocity $a\,A=(h/2)^2$, chain $A\supseteq \beta_\theta\supseteq a$ & $a\simeq\hbar/N$, $N=A/2\pi\hbar$ & biduality $(X^\hbar)^\hbar=X$, antimonotone, App.~C \\
+Quantum kernel $K_\theta$ (Wigner function of $\beta_\theta$) & Husimi smoothing erases $a$ (Methods) & $W\psi_{W,Y}=(\pi\hbar)^{-n}e^{-Gz\cdot z/\hbar}$, Eq.~(6) \\
 Convolution $\widetilde W_\theta=W*K_\theta$ & not used & smoothing toward a non-negative distribution \cite{degosson2005bullsci, cartwright1976} \\
 Portrait $\widetilde W=\frac{1}{\pi}\!\int_0^\pi \widetilde W_\theta\,d\theta\ge 0$ & not used & not used \\
-Quadrature rotation $X_\theta,P_\theta$, angle $\theta$ & N, S, E, W of the compass & symplectic rotation $R\in Sp(n)\cap O(2n)$; covariance $W(\hat S^{-1}\psi)=W\psi\circ S$, Eq.~(34) \\
+Quadrature rotation $X_\theta,P_\theta$, angle $\theta$ & N, S, E, W of the compass & symplectic rotation $R\in Sp(n)\cap O(2n)$; covariance $W(\hat S^{-1}\psi)=W\psi\circ S$, Sec.~2.1 \\
 Scaled coordinates $X=x/\Delta x,\ P=p/\Delta p$; rigid ellipse $\hat \beta_\theta$ & not used & normalization to $B^{2n}(\sqrt{\hbar})$ via $M_L$ \\
-Saturation $A=h/2$ (vacuum), $\beta_\theta=a=A$ & smallest scale $a\to\hbar$ & unique blob, $c=\pi\hbar$, saturated $X^\hbar=P$, Thm.~14 \\
+Saturation $A=h/2$ (vacuum), $\beta_\theta=a=A$ & smallest scale $a\to\hbar$ & unique blob, $c=\pi\hbar$, saturated $X^\hbar=P$, Prop.~8(ii) \\
 \bottomrule
 \end{tabular}
 \caption{Dictionary, part 2: derived and dynamical quantities. Conventions
@@ -183,7 +183,7 @@ and column sources are as in Table~\ref{tab:dict_core}.}
 The three works share one object. The Letter writes
 $W(x,p)=\frac{1}{\pi\hbar}\int \psi^*(x+s)\psi(x-s)\,e^{2ips/\hbar}\,ds$.
 Zurek's Eq.~(2) is the same transform with the integration variable
-$y=2s$ and the prefactor $1/2\pi\hbar$. de Gosson's Eq.~(33) is the
+$y=2s$ and the prefactor $1/2\pi\hbar$. de Gosson's Eq.~(43) is the
 $n$-dimensional form $W\psi(z)$ on $\mathbb{R}^{2n}$. All three integrate
 to one and return the marginals $|\psi(x)|^2$ and $|\widehat\psi(p)|^2$.
 
@@ -191,10 +191,10 @@ to one and return the marginals $|\psi(x)|^2$ and $|\widehat\psi(p)|^2$.
 The Letter's action capacity is $A=\pi\,\Delta x\,\Delta p\ge h/2$.
 Zurek's classical action is the bare product $A\simeq L\times P$ of the
 support widths, Eq.~(4). de Gosson's covariance ellipsoid $\Omega_\Sigma$
-carries the same content as a symplectic capacity. His Theorem~14 states
-that the quantum condition $\Sigma+\tfrac{i\hbar}{2}J\ge 0$ holds if and
-only if $c(\Omega_\Sigma)\ge\pi\hbar$ for every symplectic capacity $c$,
-which is if and only if $\Omega_\Sigma$ contains a quantum blob. The
+carries the same content as a symplectic capacity. He shows (Claims~3
+and~4) that the quantum condition $\Sigma+\tfrac{i\hbar}{2}J\ge 0$ holds if
+and only if $c(\Omega_\Sigma)\ge\pi\hbar$ for every symplectic capacity
+$c$, which is if and only if $\Omega_\Sigma$ contains a quantum blob. The
 Letter's $A\ge h/2$ is this capacity bound, since $h/2=\pi\hbar$
 and $c(\Omega_\Sigma)=\pi\,\Delta x\,\Delta p=A$. The conversion to
 Zurek's product is Eq.~\eqref{eq:bridge_capacity}, $A=2\pi\,(L\times P)$.
@@ -209,7 +209,7 @@ Zurek reaches the same scales for the smallest structures of the Wigner
 function, $\delta_x=\hbar/P$ in his Eq.~(7) and $\delta_p=\hbar/L$ in his
 Eq.~(8). de Gosson reaches them as $\hbar$-polar duality. For an interval
 of half-width $R$ the dual is the interval of half-width $\hbar/R$, his
-Lemma~1, Eq.~(7),
+Appendix~C, Eqs.~(84)--(85),
 \begin{equation}
 B_P(\Delta p)^\hbar=B_X\!\left(\frac{\hbar}{\Delta p}\right)=B_X(\delta x),
 \qquad
@@ -225,9 +225,9 @@ $\delta x=\delta_x/\sqrt{2}$.
 \paragraph{Quantum blob.}
 The Letter's $\beta_\theta$ is a de Gosson quantum blob of action $h/2$,
 deforming at fixed action across $\theta$. de Gosson's definition is
-$QB(S)=S(B^{2n}(\sqrt{\hbar}))$ for $S\in Sp(n)$, his Eq.~(26), with
-volume $\tfrac{1}{n!}(h/2)^n$ and symplectic capacity $c=\pi\hbar$. In one
-freedom this is an ellipse of area $\pi\hbar=h/2$, the Letter's $\beta_\theta$.
+$QB(S)=S(B^{2n}(\sqrt{\hbar}))$ for $S\in Sp(n)$ (Sec.~1), with symplectic
+capacity $c=\pi\hbar$ and volume $\tfrac{1}{n!}(h/2)^n$~\cite{degosson2013qblobs}.
+In one freedom this is an ellipse of area $\pi\hbar=h/2$, the Letter's $\beta_\theta$.
 Zurek's building block is the round minimum-uncertainty Gaussian of area of order $\hbar$, from which his cat and compass
 states are assembled.
 
@@ -235,9 +235,9 @@ states are assembled.
 The Letter's two principal members are
 $\beta_{\theta=0}=\pi\,\Delta x\,\delta p=h/2$ and
 $\beta_{\pi/2}=\pi\,\delta x\,\Delta p=h/2$. In de Gosson these are the
-diagonal, axis-aligned case. His projection theorem, Theorem~10, gives a
+diagonal, axis-aligned case. His projection result, Proposition~8, gives a
 saturated polar pair, $(\Pi_X QB(S))^\hbar=\Pi_P QB(S)$, exactly when
-$S=M_L$, and his Theorem~12 identifies the unique blob inscribed in
+$S=M_L$, and his Theorem~13 identifies the unique blob inscribed in
 $X\times X^\hbar$ as the John ellipsoid. Zurek's interference scales
 $\delta_x,\delta_p$ are these principal members read off the coordinate
 axes.
@@ -248,7 +248,7 @@ $a=\pi\,\delta x\,\delta p=\pi\hbar^2/(\Delta x\,\Delta p)$, the
 symplectic polar dual of the capacity, with the reciprocity
 $a\,A=(h/2)^2$ and the chain $A\supseteq \beta_\theta\supseteq a$.
 de Gosson's $\hbar$-polar dual $A^\hbar$ is the same object, with
-biduality $(X^\hbar)^\hbar=X$ and antimonotonicity, his Eqs.~(4) and (5).
+biduality $(X^\hbar)^\hbar=X$ and antimonotonicity (his Appendix~C).
 The reciprocity follows from the interval duals of
 Eq.~\eqref{eq:polar_intervals}, since
 $a\,A=\pi^2(\delta x\,\Delta p)(\delta p\,\Delta x)=\pi^2\hbar^2=(\pi\hbar)^2$.
@@ -260,9 +260,10 @@ $a\simeq\hbar/N$.
 
 \paragraph{Quantum kernel, convolution, portrait.}
 The Letter's quantum kernel $K_\theta$ is the Wigner function of the blob
-$\beta_\theta$, a centered Gaussian of action $h/2$. de Gosson's Eq.~(41)
+$\beta_\theta$, a centered Gaussian of action $h/2$. de Gosson's Eq.~(6)
 gives the Wigner function of a generalized Gaussian,
-$W\psi_{W,Y}(z)=(\pi\hbar)^{-n}e^{-Gz\cdot z/\hbar}$, which is the kernel
+$W\psi_{W,Y}(z)=(\pi\hbar)^{-n}e^{-Gz\cdot z/\hbar}$, with $G$ the
+symplectic matrix of his Eq.~(7), which is the kernel
 written through its covariance. Convolving $W$ with a Gaussian of action
 $h/2$ returns a non-negative distribution, the route through Cartwright
 \cite{cartwright1976} and de Gosson's Husimi--Wigner smoothing
@@ -280,8 +281,8 @@ $X_\theta=X\cos\theta+P\sin\theta$ and
 $P_\theta=-X\sin\theta+P\cos\theta$, the homodyne quadratures at phase
 $\theta$ that orient the blob and the kernel. de Gosson carries the same
 rotation as a symplectic rotation $R\in Sp(n)\cap O(2n)$ and as the
-metaplectic covariance of the Wigner function, $W(\hat S^{-1}\psi)=W\psi\circ S$,
-his Eq.~(34). The family integral over $\theta$ is the tomographic sweep
+symplectic covariance of the Wigner function, $W(\hat S^{-1}\psi)=W\psi\circ S$
+(his Sec.~2.1). The family integral over $\theta$ is the tomographic sweep
 \cite{degosson2022radon, darianomacconeparis2001}. Zurek's compass orients
 its lobes north, south, east, and west, fixing the two axis directions of
 the interference grid.
