@@ -16,7 +16,7 @@ Two entry points cover all states in the manuscript:
   FD solver delivers ψ(x) on a grid. Wigner via ``wigner_from_psi`` (a
   thin wrapper around ``numpy.fft.fft``).
 
-Both paths share a common downstream pipeline: cell-overlay anchoring,
+Both paths share a common downstream pipeline: overlay anchoring,
 display-window sizing, and tick selection.
 """
 
@@ -73,11 +73,11 @@ class State:
     hbar: float
     window: DisplayWindow
 
-    # Cell-overlay anchor. ``build_state_*`` sets this to the geometric
-    # midpoint of |W(x, 0)|'s significant support, so the Heisenberg,
-    # quantum-blob, and quorum-cell overlays all sit at the center of
+    # Overlay anchor. ``build_state_*`` sets this to the geometric
+    # midpoint of |W(x, 0)|'s significant support, so the capacity,
+    # quantum-blob, and resolution overlays all sit at the center of
     # every panel regardless of state asymmetry. Systems can override.
-    cell_center_x: float = 0.0
+    overlay_center_x: float = 0.0
 
     # Populated by the build pipeline:
     W: np.ndarray | None = None
@@ -100,7 +100,7 @@ def build_state_from_qobj(
     x_pad_factor: float = 2.5,
     p_pad: float = 2.0,
     window_margin: float = 0.40,
-    cell_center_x: float | None = None,
+    overlay_center_x: float | None = None,
 ) -> State:
     """Build a State from a number-basis Qobj (ket or density matrix).
 
@@ -116,7 +116,7 @@ def build_state_from_qobj(
     return _finalize_state(
         name=name, rs=rs, W=W, x_int=x_int, p_int=p_int,
         window=window, hbar=hbar,
-        window_margin=window_margin, cell_center_x=cell_center_x,
+        window_margin=window_margin, overlay_center_x=overlay_center_x,
     )
 
 
@@ -161,7 +161,7 @@ def build_state_from_psi(
     x_pad_factor: float = 2.5,
     p_pad: float = 2.0,
     window_margin: float = 0.40,
-    cell_center_x: float | None = None,
+    overlay_center_x: float | None = None,
 ) -> State:
     """Build a State from a sampled wavefunction ψ(x).
 
@@ -189,7 +189,7 @@ def build_state_from_psi(
     return _finalize_state(
         name=name, rs=rs, W=W, x_int=x_int, p_int=p_int,
         window=window, hbar=hbar,
-        window_margin=window_margin, cell_center_x=cell_center_x,
+        window_margin=window_margin, overlay_center_x=overlay_center_x,
     )
 
 
@@ -243,12 +243,12 @@ def _finalize_state(
     window: DisplayWindow,
     hbar: float,
     window_margin: float,
-    cell_center_x: float | None,
+    overlay_center_x: float | None,
 ) -> State:
-    """Common downstream pipeline: cell anchor + window + ticks + State."""
+    """Common downstream pipeline: overlay anchor + window + ticks + State."""
     from .ticks import nice_ticks_around
 
-    # Cell-overlay anchor at the geometric midpoint of |W(x, 0)|'s
+    # Overlay anchor at the geometric midpoint of |W(x, 0)|'s
     # significant support. This is the same midpoint the display
     # window centers on a few lines below, so the overlays sit at
     # the center of every panel regardless of state asymmetry. For
@@ -256,23 +256,23 @@ def _finalize_state(
     # shifts to the middle of the visible orbit.
     ip0 = int(np.argmin(np.abs(p_int)))
     W_at_p0 = W[:, ip0]
-    if cell_center_x is None:
+    if overlay_center_x is None:
         abs_W = np.abs(W_at_p0)
         threshold = 0.05 * abs_W.max()
         significant = abs_W > threshold
         if significant.any():
             ix_lo = int(np.argmax(significant))
             ix_hi = int(len(significant) - 1 - np.argmax(significant[::-1]))
-            cell_center_x_resolved = 0.5 * (
+            overlay_center_x_resolved = 0.5 * (
                 float(x_int[ix_lo]) + float(x_int[ix_hi])
             )
         else:
-            cell_center_x_resolved = 0.0
+            overlay_center_x_resolved = 0.0
     else:
-        cell_center_x_resolved = cell_center_x
+        overlay_center_x_resolved = overlay_center_x
 
     # --- Display window: three constraints ---
-    #   1. The Heisenberg cell A must not be clipped.
+    #   1. The capacity A must not be clipped.
     #   2. Panel is square in data units (x_lim = p_lim).
     #   3. Window centers on the state's "interesting extent": midpoint of
     #      |W(x, 0)| support above 5% of peak. For symmetric states this
@@ -289,17 +289,17 @@ def _finalize_state(
         ix_hi = int(len(significant) - 1 - np.argmax(significant[::-1]))
         state_extent_center = 0.5 * (float(x_int[ix_lo]) + float(x_int[ix_hi]))
     else:
-        state_extent_center = cell_center_x_resolved
+        state_extent_center = overlay_center_x_resolved
 
     if window.x_lim > 0:
         x_lim_resolved = window.x_lim
         x_center_resolved = window.x_center
     else:
         x_lim_resolved = half_width
-        heisenberg_left  = cell_center_x_resolved - rs.Delta_x
-        heisenberg_right = cell_center_x_resolved + rs.Delta_x
-        min_center = heisenberg_right - half_width
-        max_center = heisenberg_left  + half_width
+        capacity_left  = overlay_center_x_resolved - rs.Delta_x
+        capacity_right = overlay_center_x_resolved + rs.Delta_x
+        min_center = capacity_right - half_width
+        max_center = capacity_left  + half_width
         x_center_resolved = max(min_center, min(state_extent_center, max_center))
 
     if window.p_lim > 0:
@@ -327,7 +327,7 @@ def _finalize_state(
         rs=rs,
         hbar=hbar,
         window=final_window,
-        cell_center_x=cell_center_x_resolved,
+        overlay_center_x=overlay_center_x_resolved,
         W=W,
         x_int=x_int,
         p_int=p_int,

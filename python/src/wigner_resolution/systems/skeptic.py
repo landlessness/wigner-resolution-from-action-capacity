@@ -8,9 +8,9 @@ tearing it down.
      into a cubic, not a quadratic, profile, so it cannot be brought to
      principal frame by any symplectic map. This is the sharpest test of
      the premise that the covariance ellipse describes the state's
-     geometry: the elliptical cell A is necessarily a coarse proxy.
+     geometry: the elliptical capacity A is necessarily a coarse proxy.
   2. Thermal state. A featureless Gaussian W with large covariance and
-     no sub-structure. Tests whether the quorum cell a-tilde marks the
+     no sub-structure. Tests whether the resolution a marks the
      state's finest structure or is merely an algebraic dual that
      happens to coincide with structure for pure states.
   3. Asymmetric cat. Three collinear lobes of unequal weight. The
@@ -66,7 +66,7 @@ CUBIC_GAMMA_DEFAULT = 0.25
 # envelope every moment of exp(i gamma x^3)|0> diverges and no
 # covariance ellipse exists, so the envelope is what makes A well-defined.
 # At r = -1.2 the action capacity (A/(h/2) ~ 26) is large enough that the
-# quorum cell is fine compared to the cubic ring spacing, so the portrait
+# resolution is fine compared to the cubic ring spacing, so the portrait
 # resolves the rings boldly rather than blurring them; the negativity is
 # preserved (W_min ~ -0.10).
 CUBIC_SQUEEZE_DEFAULT = -1.2
@@ -88,7 +88,7 @@ def cubic_phase_state(
     squeezed vacuum, the standard finite-energy realization (Gottesman,
     Kitaev & Preskill, PRA 64, 012310 (2001); Gu et al., PRA 79, 062318
     (2009)). The squeezed envelope keeps all moments finite so the
-    Heisenberg cell A exists; the cubic phase shears the state into a
+    capacity A exists; the cubic phase shears the state into a
     profile no symplectic map can straighten.
 
     Built in the position basis and carried through the FFT Wigner path,
@@ -152,7 +152,7 @@ def cubic_phase_state(
 
 # Mean photon number of the thermal state. n_th = 3 gives a covariance
 # several times the vacuum (A/(h/2) = 2 n_th + 1 = 7) with a perfectly
-# featureless Gaussian W, the clean test of a-tilde against a state that
+# featureless Gaussian W, the clean test of a against a state that
 # has no fine structure to resolve.
 THERMAL_NBAR_DEFAULT = 3.0
 
@@ -171,8 +171,8 @@ def thermal_state(
     A maximally mixed state at fixed energy: a featureless isotropic
     Gaussian in phase space with covariance A/(h/2) = 2 nbar + 1 and no
     sub-structure whatsoever. The portrait W-tilde is the same Gaussian;
-    the quorum cell a-tilde is fine, but there is nothing at that scale
-    to resolve, so a-tilde reads here as an upper bound on attainable
+    the resolution a is fine, but there is nothing at that scale
+    to resolve, so a reads here as an upper bound on attainable
     resolution rather than a marker of present structure.
 
     Built as a density matrix via qutip.thermal_dm and carried through
@@ -211,15 +211,15 @@ def asymmetric_cat_state(
     dominated by the lobe separation while the interference fringes
     between adjacent lobes set a finer scale. The symmetric cats of
     Cluster 3 lock these two scales together; this state separates them,
-    testing whether a-tilde tracks the fringe spacing or the separation.
+    testing whether a tracks the fringe spacing or the separation.
 
     Scale. The separation is set to 6 (with gentler weights than the
     extreme 1:0.55:0.30 of a minimal cat) so the action capacity is large
-    enough that adjacent lobes sit comfortably more than one quorum width
+    enough that adjacent lobes sit comfortably more than one resolution width
     apart and the portrait resolves all three. This collinear cat is an
     anisotropic state -- thin along x, extended along p -- so its
     resolution along p (delta_p = hbar/Delta_x) is set by the narrow
-    x-width; a smaller separation would push the lobes within one quorum
+    x-width; a smaller separation would push the lobes within one resolution
     width of each other and they would merge in the portrait, which is the
     resolution limit rather than a failure of the construction.
 
@@ -230,7 +230,7 @@ def asymmetric_cat_state(
     convention consistent with the other figures. With the lobes on a
     coordinate axis and symmetric in p about the origin, the covariance
     cross-term vanishes by parity, so no principal-frame alignment is
-    needed and the axis-aligned cell overlays are exact.
+    needed and the axis-aligned overlays are exact.
     """
     ps = np.array([-separation, 0.0, separation])
     qs = np.zeros_like(ps)
@@ -276,7 +276,7 @@ def heavy_tailed_state(
     The cusp at the origin puts weight in the tails of the momentum
     distribution, making <p^2> large. For a pure exponential <p^2> would
     be exactly 1/lam^2 (finite but with a slowly decaying momentum tail),
-    so the Heisenberg cell A is well-defined yet the covariance ellipse
+    so the capacity A is well-defined yet the covariance ellipse
     is a poor proxy for the genuinely non-Gaussian support. This stress-
     tests A = pi Delta_x Delta_p as a sensible finite object.
 

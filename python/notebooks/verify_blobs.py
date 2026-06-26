@@ -1,29 +1,29 @@
-"""Verify that every quantum blob a_theta is a genuine de Gosson quantum blob.
+"""Verify that every quantum blob β_θ is a genuine de Gosson quantum blob.
 
-The manuscript calls the family {a_theta} a family of de Gosson quantum blobs
-of action h/2, bitangent to the Heisenberg cell A from within and to the
-quorum cell a-tilde from without. "Quantum blob" is a *symplectic* statement:
-a_theta = S(B(sqrt(hbar))) for some S in Sp(1), equivalently its symplectic
+The manuscript calls the family {β_θ} a family of de Gosson quantum blobs
+of action h/2, bitangent to the capacity A from within and to the
+resolution a from without. "Quantum blob" is a *symplectic* statement:
+β_θ = S(B(sqrt(hbar))) for some S in Sp(1), equivalently its symplectic
 capacity equals pi*hbar = h/2, equivalently it is self-dual under the
 symplectic polar duality of de Gosson & de Gosson, Symmetry 14, 1890 (2022).
 
 In one degree of freedom the symplectic capacity of a planar ellipse equals
 its Euclidean area, so the reciprocal-axes identity r_par * r_perp = hbar
-enforced in cells.py is exactly the blob condition. This script verifies that
+enforced in geometry.py is exactly the blob condition. This script verifies that
 identity at the *symplectic* level directly, across a dense theta sweep and
 across the capacity range A/(h/2) in [1, 70], so the manuscript's symplectic
 language is checked rather than assumed.
 
 Checks (all fail-fast; the script exits non-zero on any failure):
-  1. Symplectic capacity of a_theta equals pi*hbar for every theta.
+  1. Symplectic capacity of β_θ equals pi*hbar for every theta.
   2. The symplectic eigenvalue of the covariance equals hbar/2 for every theta
      (the self-duality / quantum-blob condition).
   3. Capacity is theta-independent (constant action across the family).
-  4. The kernel K_theta (kernels.py) and the cell a_theta (cells.py) describe
+  4. The kernel K_theta (kernels.py) and the blob β_θ (geometry.py) describe
      the same ellipse: same covariance to numerical tolerance.
-  5. a_theta is bitangent to A and to a-tilde in the literal sense: exactly
+  5. β_θ is bitangent to A and to a in the literal sense: exactly
      two antipodal contact points with each, at every theta (inscribed in A,
-     circumscribed about a-tilde).
+     circumscribed about a).
 
 Run:
     cd python
@@ -36,10 +36,10 @@ import sys
 
 import numpy as np
 
-from wigner_resolution.cells import (
-    HeisenbergCell,
-    bitangent_blob_at,
-    quorum_cell,
+from wigner_resolution.geometry import (
+    Capacity,
+    quantum_blob_at,
+    resolution,
 )
 from wigner_resolution.kernels import _rotation_matrix
 
@@ -63,13 +63,13 @@ REGIMES = [
 
 
 def _M_orig(theta: float, Dx: float, Dp: float, hbar: float = HBAR) -> np.ndarray:
-    """Inverse-covariance matrix of a_theta in the (x, p) frame, rebuilt
-    exactly as cells.bitangent_blob_at constructs it. The ellipse is
+    """Inverse-covariance matrix of β_θ in the (x, p) frame, rebuilt
+    exactly as geometry.quantum_blob_at constructs it. The ellipse is
     {z : M z.z <= hbar}."""
-    r_tilde = hbar / (Dx * Dp)
+    r_a = hbar / (Dx * Dp)
     c, s = np.cos(theta), np.sin(theta)
     R = np.array([[c, -s], [s, c]])
-    M_disk = R @ np.diag([1.0, 1.0 / r_tilde**2]) @ R.T
+    M_disk = R @ np.diag([1.0, 1.0 / r_a**2]) @ R.T
     D_inv = np.diag([1.0 / Dx, 1.0 / Dp])
     return D_inv @ M_disk @ D_inv
 
@@ -89,11 +89,11 @@ def _symplectic_eigenvalue(M: np.ndarray, hbar: float = HBAR) -> float:
     return float(np.abs(w[0]))
 
 
-def _blob_covariance_from_cells(theta, heis, hbar=HBAR):
-    """Covariance of a_theta as the rest of the package would read it off
+def _blob_covariance_from_capacity(theta, cap, hbar=HBAR):
+    """Covariance of β_θ as the rest of the package would read it off
     the BitangentBlob dataclass (principal angle + semi-axes), matching
     kernels.K_theta_mesh."""
-    blob = bitangent_blob_at(theta, heis, hbar=hbar)
+    blob = quantum_blob_at(theta, cap, hbar=hbar)
     R = _rotation_matrix(blob.principal_angle)
     Sigma_0 = np.diag([blob.r_parallel**2 / 2.0, blob.r_perp**2 / 2.0])
     return R @ Sigma_0 @ R.T
@@ -119,10 +119,10 @@ CONTACT_TOL = 1e-3
 
 
 def _blob_boundary(blob, n: int = N_BOUNDARY) -> tuple[np.ndarray, np.ndarray]:
-    """Sample the a_theta ellipse boundary in the original (x, p) frame.
+    """Sample the β_θ ellipse boundary in the original (x, p) frame.
 
     The ellipse has principal semi-axes (r_parallel, r_perp) oriented at
-    blob.principal_angle, centered at the origin (cells.py builds it
+    blob.principal_angle, centered at the origin (geometry.py builds it
     centered; the kernel center used for convolution is a separate display
     concern).
     """
@@ -145,10 +145,10 @@ def _count_antipodal_contacts(
     ellipse of semi-axes (sx, sp), and report whether they are antipodal.
 
     A contact is where the normalized radius r = (x/sx)^2 + (p/sp)^2 equals
-    1: for a_theta inscribed in A the blob's boundary reaches out to r = 1
-    at the two points nearest A (local maxima of r); for a_theta
-    circumscribing a-tilde it reaches in to r = 1 at the two points nearest
-    a-tilde (local minima of r). Rather than count samples that land in a
+    1: for β_θ inscribed in A the blob's boundary reaches out to r = 1
+    at the two points nearest A (local maxima of r); for β_θ
+    circumscribing a it reaches in to r = 1 at the two points nearest
+    a (local minima of r). Rather than count samples that land in a
     fixed band of 1 -- which is fragile when one curve is tiny and the
     contact region is sharp -- we locate the local extrema of r directly
     (sampling-independent) and accept those whose value is within tol of 1.
@@ -160,7 +160,7 @@ def _count_antipodal_contacts(
     r = (ex / sx) ** 2 + (ep / sp) ** 2
 
     # Local minima and maxima on the circular boundary. A tangency from
-    # inside (a-tilde) is a local min at r ~ 1; from outside (A) a local
+    # inside (a) is a local min at r ~ 1; from outside (A) a local
     # max at r ~ 1. We gather both kinds and keep those at r ~ 1.
     rprev = np.roll(r, 1)
     rnext = np.roll(r, -1)
@@ -195,12 +195,12 @@ def check_regime(Dx: float, Dp: float, label: str) -> bool:
     cov_mismatch = 0.0
     ok = True
 
-    heis = HeisenbergCell(Delta_x=Dx, Delta_p=Dp)
-    qc = quorum_cell(heis, hbar=HBAR)
+    cap = Capacity(Delta_x=Dx, Delta_p=Dp)
+    qc = resolution(cap, hbar=HBAR)
 
     # Bitangency accumulators (Check 5): worst-case (fewest) contact counts
     # and whether antipodality held at every theta. A genuine bitangency is
-    # exactly two antipodal contacts with each of A and a-tilde.
+    # exactly two antipodal contacts with each of A and a.
     min_contacts_A = 99
     min_contacts_q = 99
     antipodal_A_all = True
@@ -211,16 +211,16 @@ def check_regime(Dx: float, Dp: float, label: str) -> bool:
         caps[i] = _symplectic_capacity(M)
         lams[i] = _symplectic_eigenvalue(M)
 
-        # Check 4: kernel covariance == cell covariance (= (hbar/2) M^{-1}).
-        Sigma_cell = (HBAR / 2.0) * np.linalg.inv(M)
-        Sigma_kernel = _blob_covariance_from_cells(th, heis)
+        # Check 4: kernel covariance == blob covariance (= (hbar/2) M^{-1}).
+        Sigma_blob = (HBAR / 2.0) * np.linalg.inv(M)
+        Sigma_kernel = _blob_covariance_from_capacity(th, cap)
         cov_mismatch = max(cov_mismatch,
-                           float(np.max(np.abs(Sigma_cell - Sigma_kernel))))
+                           float(np.max(np.abs(Sigma_blob - Sigma_kernel))))
 
-        # Check 5: count contact points of a_theta with A and with a-tilde,
+        # Check 5: count contact points of β_θ with A and with a,
         # in the original (x, p) frame. A is the centered ellipse with
-        # semi-axes (Dx, Dp); a-tilde has semi-axes (hbar/Dp, hbar/Dx).
-        blob = bitangent_blob_at(th, heis, hbar=HBAR)
+        # semi-axes (Dx, Dp); a has semi-axes (hbar/Dp, hbar/Dx).
+        blob = quantum_blob_at(th, cap, hbar=HBAR)
         ex, ep = _blob_boundary(blob)
         nA, apA = _count_antipodal_contacts(ex, ep, Dx, Dp)
         nq, apq = _count_antipodal_contacts(ex, ep, qc.delta_x, qc.delta_p)
@@ -249,59 +249,59 @@ def check_regime(Dx: float, Dp: float, label: str) -> bool:
 
     # Check 4 verdict.
     if cov_mismatch > 1e-9:
-        _fail(f"kernel/cell covariance mismatch {cov_mismatch:.3e}")
+        _fail(f"kernel/blob covariance mismatch {cov_mismatch:.3e}")
         ok = False
 
-    # Check 5: bitangency, the literal sense. a_theta must have exactly two
+    # Check 5: bitangency, the literal sense. β_θ must have exactly two
     # antipodal contact points with A (inscribed, touching from within) and
-    # exactly two with a-tilde (circumscribed, touching from without), at
+    # exactly two with a (circumscribed, touching from without), at
     # every theta. Two concentric ellipses that touch do so at two
     # antipodal points by central symmetry; a count other than two, or a
     # broken antipodality, would mean the blob crosses or stands off a curve.
     #
-    # Degenerate case A = h/2: here A, a_theta, and a-tilde all coincide
-    # (Dx Dp = hbar, so r_tilde = 1 and the blob fills A exactly). The two
+    # Degenerate case A = h/2: here A, β_θ, and a all coincide
+    # (Dx Dp = hbar, so r_a = 1 and the blob fills A exactly). The two
     # curves are identical rather than tangent, so the two-point contact
     # count does not apply; bitangency is trivially the whole-boundary
     # coincidence. We detect this and report it rather than fail.
-    cells_coincide = np.isclose(Dx * Dp, HBAR, atol=1e-9)
+    regions_coincide = np.isclose(Dx * Dp, HBAR, atol=1e-9)
 
-    if cells_coincide:
-        bitangency_note = ("A = a_theta = a-tilde coincide (A = h/2); "
+    if regions_coincide:
+        bitangency_note = ("A = β_θ = a coincide (A = h/2); "
                            "bitangency is whole-boundary coincidence")
     else:
         if min_contacts_A != 2 or not antipodal_A_all:
-            _fail(f"a_theta not bitangent to A: min contacts "
+            _fail(f"β_θ not bitangent to A: min contacts "
                   f"{min_contacts_A}, antipodal {antipodal_A_all}")
             ok = False
         if min_contacts_q != 2 or not antipodal_q_all:
-            _fail(f"a_theta not bitangent to a-tilde: min contacts "
+            _fail(f"β_θ not bitangent to a: min contacts "
                   f"{min_contacts_q}, antipodal {antipodal_q_all}")
             ok = False
         bitangency_note = (f"{min_contacts_A} antipodal contacts with A, "
-                           f"{min_contacts_q} with a-tilde, at every theta "
-                           f"(inscribed in A, circumscribed about a-tilde)")
+                           f"{min_contacts_q} with a, at every theta "
+                           f"(inscribed in A, circumscribed about a)")
 
     print(f"  capacity   : {caps.mean():.10f}  (target {BLOB_CAPACITY:.10f})  "
           f"spread {caps.max()-caps.min():.2e}")
     print(f"  sympl. eig : {lams.mean():.10f}  (target {BLOB_LAMBDA:.10f})  "
           f"spread {lams.max()-lams.min():.2e}")
-    print(f"  kernel/cell cov max|diff| : {cov_mismatch:.2e}")
+    print(f"  kernel/blob cov max|diff| : {cov_mismatch:.2e}")
     print(f"  bitangency : {bitangency_note}")
     print(f"  {'PASS' if ok else 'FAIL'}")
     return ok
 
 
 def main() -> int:
-    print("Verifying a_theta are symplectic de Gosson quantum blobs "
+    print("Verifying β_θ are symplectic de Gosson quantum blobs "
           "(capacity = h/2) for all theta.")
     print(f"theta sweep: {N_THETA} points in [0, pi);  tolerance: {ATOL:g}")
     results = [check_regime(Dx, Dp, label) for Dx, Dp, label in REGIMES]
     print("\n" + "=" * 64)
     if all(results):
         print("ALL CHECKS PASS.")
-        print("Every a_theta has symplectic capacity h/2 and is self-dual: a "
-              "genuine de Gosson quantum blob, bitangent to A and a-tilde, at "
+        print("Every β_θ has symplectic capacity h/2 and is self-dual: a "
+              "genuine de Gosson quantum blob, bitangent to A and a, at "
               "constant action across theta.")
         return 0
     print("VERIFICATION FAILED. See messages above.")

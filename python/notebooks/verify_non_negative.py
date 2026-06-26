@@ -35,7 +35,7 @@ import warnings
 
 import numpy as np
 
-from wigner_resolution.cells import HeisenbergCell, quantum_blob_at
+from wigner_resolution.geometry import Capacity, quantum_blob_at
 from wigner_resolution.convolve import convolve_W_with_K
 from wigner_resolution.kernels import K_theta_mesh
 from wigner_resolution.systems.cat import cat_state
@@ -87,7 +87,7 @@ def compute_tilde_W(state, n_theta: int = N_THETA) -> np.ndarray:
 
     x_mid = 0.5 * (state.x_int[0] + state.x_int[-1])
     p_mid = 0.5 * (state.p_int[0] + state.p_int[-1])
-    heisenberg = HeisenbergCell(
+    capacity = Capacity(
         Delta_x=state.rs.Delta_x,
         Delta_p=state.rs.Delta_p,
         center=(x_mid, p_mid),
@@ -100,7 +100,7 @@ def compute_tilde_W(state, n_theta: int = N_THETA) -> np.ndarray:
     thetas = np.linspace(0.0, np.pi, n_theta, endpoint=False)
     tilde_W = np.zeros_like(state.W)
     for theta in thetas:
-        blob = quantum_blob_at(theta, heisenberg, hbar=state.hbar)
+        blob = quantum_blob_at(theta, capacity, hbar=state.hbar)
         K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
         tilde_W += convolve_W_with_K(state.W, K, dx, dp)
     tilde_W /= n_theta

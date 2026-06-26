@@ -1,44 +1,44 @@
-"""Phase-space cells: the Heisenberg cell A, the quantum blobs a_θ,
-and the quorum cell ã.
+"""Phase-space geometry: the capacity A, the quantum blobs β_θ,
+and the resolution a.
 
-A state's covariance defines its Heisenberg cell
+A state's covariance defines its capacity
 
     A = π Δx Δp  ≥  h/2,
 
 the outer ellipse with capacity semi-axes (Δx, Δp), floored at the
 quantum of action by the uncertainty principle.
 
-The symplectic polar dual of the Heisenberg cell is the quorum cell
+The symplectic polar dual of the capacity is the resolution
 
-    ã = π δx δp  ≤  h/2,
+    a = π δx δp  ≤  h/2,
 
 an axis-aligned ellipse with semi-axes
 
     (δx, δp) = (ℏ/Δp, ℏ/Δx),
 
-reciprocal to the Heisenberg cell at action h/2: A · ã = (h/2)².
+reciprocal to the capacity at action h/2: A · a = (h/2)².
 Reference: M. de Gosson and C. de Gosson, Symmetry 14, 1890 (2022).
 
-Nested between A and ã, circumscribed by the Heisenberg cell A and
-circumscribing the quorum cell ã, is a one-parameter family of de
-Gosson quantum blobs a_θ of fixed action h/2, parameterized by the
+Nested between A and a, circumscribed by the capacity A and
+circumscribing the resolution a, is a one-parameter family of de
+Gosson quantum blobs β_θ of fixed action h/2, parameterized by the
 family-orientation angle θ. The semi-axes
-r_∥(θ), r_⊥(θ) of a_θ are reciprocal in ℏ,
+r_∥(θ), r_⊥(θ) of β_θ are reciprocal in ℏ,
 
     r_∥(θ) r_⊥(θ) = ℏ.
 
 The family is constructed in the affine-normalized frame where A
-becomes the unit disk and ã becomes the inscribed concentric circle
+becomes the unit disk and a becomes the inscribed concentric circle
 of radius
 
-    r̃ = ℏ/(Δx Δp).
+    r_a = ℏ/(Δx Δp).
 
-In that frame, a_θ is the rigid rotation by θ of a single ellipse
-with semi-axes (1, r̃), circumscribed by the unit disk and
+In that frame, β_θ is the rigid rotation by θ of a single ellipse
+with semi-axes (1, r_a), circumscribed by the unit disk and
 circumscribing the inscribed circle. Pulled back to the original
 (x, p) frame via the inverse of T(x, p) = (x/Δx, p/Δp), the family
 deforms across θ at constant action h/2 while remaining circumscribed
-by A and circumscribing ã.
+by A and circumscribing a.
 
 At the principal angles θ = 0 and θ = π/2, the blob's principal axes
 align with the (x, p) coordinate axes, and the semi-axes recover the
@@ -48,7 +48,7 @@ parameter θ continuously interpolates between the two principal
 endpoints. Reference for Zurek's scales: W. H. Zurek, Nature 412,
 712 (2001).
 
-A note on "quantum blob" as a symplectic statement. Calling a_θ a de
+A note on "quantum blob" as a symplectic statement. Calling β_θ a de
 Gosson quantum blob means its symplectic capacity equals πℏ = h/2 and
 it is self-dual under symplectic polar duality (de Gosson & de Gosson
 2022), not merely that its Euclidean area is h/2. In one degree of
@@ -68,7 +68,7 @@ import numpy as np
 
 
 @dataclass(frozen=True)
-class HeisenbergCell:
+class Capacity:
     """The state's outer extent A in phase space.
 
     Capacity semi-axes Δx, Δp along the principal axes
@@ -87,15 +87,15 @@ class HeisenbergCell:
 
     def __post_init__(self) -> None:
         if self.Delta_x <= 0 or self.Delta_p <= 0:
-            raise ValueError("Cell widths must be positive.")
+            raise ValueError("Semi-axis widths must be positive.")
 
 
 @dataclass(frozen=True)
 class QuantumBlob:
-    """One member a_θ of the quantum blob family.
+    """One member β_θ of the quantum blob family.
 
     A de Gosson quantum blob of action h/2, circumscribed by the
-    Heisenberg cell A and circumscribing the quorum cell ã. Labeled
+    capacity A and circumscribing the resolution a. Labeled
     by the family-orientation angle θ.
 
     Geometric attributes in the original (x, p) frame:
@@ -118,12 +118,12 @@ class QuantumBlob:
 
     @property
     def area(self) -> float:
-        """a_θ = π r_∥ r_⊥ = h/2 (always)."""
+        """β_θ = π r_∥ r_⊥ = h/2 (always)."""
         return np.pi * self.r_parallel * self.r_perp
 
     @property
     def symplectic_capacity(self) -> float:
-        """Symplectic capacity of the blob, c(a_θ).
+        """Symplectic capacity of the blob, c(β_θ).
 
         For a planar ellipse with principal semi-axes (r_∥, r_⊥) the
         symplectic capacity equals the Euclidean area π r_∥ r_⊥; in one
@@ -133,7 +133,7 @@ class QuantumBlob:
         return np.pi * self.r_parallel * self.r_perp
 
     def __post_init__(self) -> None:
-        # Symplectic blob condition: c(a_θ) = πℏ = h/2. In 1 DOF this
+        # Symplectic blob condition: c(β_θ) = πℏ = h/2. In 1 DOF this
         # equals the Euclidean area, so enforcing it is equivalent to the
         # reciprocal-axes identity r_∥ r_⊥ = ℏ, but stated as the symplectic
         # capacity the manuscript actually claims. The full symplectic
@@ -142,16 +142,16 @@ class QuantumBlob:
         if not np.isclose(capacity, np.pi * self.hbar, rtol=1e-10):
             raise ValueError(
                 f"Symplectic capacity violated: "
-                f"c(a_θ) = π·r_∥·r_⊥ = {capacity:.6g} "
+                f"c(β_θ) = π·r_∥·r_⊥ = {capacity:.6g} "
                 f"≠ πℏ = h/2 = {np.pi * self.hbar:.6g}"
             )
 
 
 @dataclass(frozen=True)
-class QuorumCell:
-    """The quorum cell ã with semi-axes (δx, δp) = (ℏ/Δp, ℏ/Δx).
+class Resolution:
+    """The resolution a with semi-axes (δx, δp) = (ℏ/Δp, ℏ/Δx).
 
-    Symplectic polar dual of the Heisenberg cell, circumscribed by every
+    Symplectic polar dual of the capacity, circumscribed by every
     blob of the family. An axis-aligned ellipse with no
     rotation parameter, not itself a member of the quantum blob family.
     Its semi-axes are Zurek's interference scales.
@@ -168,27 +168,27 @@ class QuorumCell:
 
     @property
     def area(self) -> float:
-        """ã = π δx δp = π ℏ² / (Δx Δp)."""
+        """a = π δx δp = π ℏ² / (Δx Δp)."""
         return np.pi * self.delta_x * self.delta_p
 
     def __post_init__(self) -> None:
         if self.delta_x <= 0 or self.delta_p <= 0:
-            raise ValueError("Quorum-cell semi-axes must be positive.")
+            raise ValueError("Resolution semi-axes must be positive.")
 
 
 def quantum_blob_at(
     theta: float,
-    heisenberg: HeisenbergCell,
+    capacity: Capacity,
     hbar: float = 1.0,
 ) -> QuantumBlob:
-    """The quantum blob a_θ at family-orientation angle θ.
+    """The quantum blob β_θ at family-orientation angle θ.
 
     Construction (affine pullback):
-      1. In the disk frame where A is the unit disk and ã is the
-         inscribed circle of radius r̃ = ℏ/(Δx Δp), the blob a_θ is
-         the rigid rotation by θ of an ellipse with semi-axes (1, r̃).
+      1. In the disk frame where A is the unit disk and a is the
+         inscribed circle of radius r_a = ℏ/(Δx Δp), the blob β_θ is
+         the rigid rotation by θ of an ellipse with semi-axes (1, r_a).
       2. Pulled back to the original (x, p) frame, the blob has
-         inverse-covariance matrix M_θ = D⁻¹ R_θ diag(1, 1/r̃²) R_θᵀ D⁻¹
+         inverse-covariance matrix M_θ = D⁻¹ R_θ diag(1, 1/r_a²) R_θᵀ D⁻¹
          with D = diag(Δx, Δp).
       3. Principal-axis lengths and orientation are recovered from the
          eigendecomposition of M_θ.
@@ -196,13 +196,13 @@ def quantum_blob_at(
     At principal angles θ ∈ {0, π/2}, the principal axes coincide with
     the coordinate axes and r_parallel reduces to Δx or Δp respectively.
     """
-    Dx, Dp = heisenberg.Delta_x, heisenberg.Delta_p
-    r_tilde = hbar / (Dx * Dp)
+    Dx, Dp = capacity.Delta_x, capacity.Delta_p
+    r_a = hbar / (Dx * Dp)
 
     # Disk-frame inverse-covariance matrix, rotated by theta
     c, s = np.cos(theta), np.sin(theta)
     R = np.array([[c, -s], [s, c]])
-    M_disk = R @ np.diag([1.0, 1.0 / r_tilde**2]) @ R.T
+    M_disk = R @ np.diag([1.0, 1.0 / r_a**2]) @ R.T
 
     # Pull back to original (x, p) frame
     D_inv = np.diag([1.0 / Dx, 1.0 / Dp])
@@ -226,37 +226,37 @@ def quantum_blob_at(
         r_parallel=r_par,
         r_perp=r_perp,
         principal_angle=alpha,
-        center=heisenberg.center,
+        center=capacity.center,
         hbar=hbar,
     )
 
 
-def blob_a_pi_half(heisenberg: HeisenbergCell, hbar: float = 1.0) -> QuantumBlob:
-    """The quantum blob a_{π/2}: the family member at θ = π/2.
+def blob_beta_pi_half(capacity: Capacity, hbar: float = 1.0) -> QuantumBlob:
+    """The quantum blob β_{π/2}: the family member at θ = π/2.
 
     Semi-axes (r_∥, r_⊥) = (Δp, δx) = (Δp, ℏ/Δp), principal angle π/2.
     """
-    return quantum_blob_at(np.pi / 2, heisenberg, hbar)
+    return quantum_blob_at(np.pi / 2, capacity, hbar)
 
 
-def blob_a_zero(heisenberg: HeisenbergCell, hbar: float = 1.0) -> QuantumBlob:
-    """The quantum blob a_{θ=0}: the family member at θ = 0.
+def blob_beta_zero(capacity: Capacity, hbar: float = 1.0) -> QuantumBlob:
+    """The quantum blob β_{θ=0}: the family member at θ = 0.
 
     Semi-axes (r_∥, r_⊥) = (Δx, δp) = (Δx, ℏ/Δx), principal angle 0.
     """
-    return quantum_blob_at(0.0, heisenberg, hbar)
+    return quantum_blob_at(0.0, capacity, hbar)
 
 
-def quorum_cell(heisenberg: HeisenbergCell, hbar: float = 1.0) -> QuorumCell:
-    """The quorum cell ã with semi-axes (ℏ/Δp, ℏ/Δx).
+def resolution(capacity: Capacity, hbar: float = 1.0) -> Resolution:
+    """The resolution a with semi-axes (ℏ/Δp, ℏ/Δx).
 
-    The symplectic polar dual of `heisenberg`, circumscribed by every
-    blob in the quantum blob family. Area ã = π ℏ²/(Δx Δp), the
+    The symplectic polar dual of `capacity`, circumscribed by every
+    blob in the quantum blob family. Area a = π ℏ²/(Δx Δp), the
     resolution of the convolved portrait W̃.
     """
-    return QuorumCell(
-        delta_x=hbar / heisenberg.Delta_p,
-        delta_p=hbar / heisenberg.Delta_x,
-        center=heisenberg.center,
+    return Resolution(
+        delta_x=hbar / capacity.Delta_p,
+        delta_p=hbar / capacity.Delta_x,
+        center=capacity.center,
         hbar=hbar,
     )

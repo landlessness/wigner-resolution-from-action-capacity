@@ -18,8 +18,8 @@ Order and narrative (systematically breaking the QHO's symmetry):
                               a cat, so the crescent is the dynamical
                               bridge into Cluster 3.
 
-Takeaway: the state sets the shape of A, A sets a-tilde, and the shape of
-a-tilde matches the state's finest details.
+Takeaway: the state sets the shape of A, A sets a, and the shape of
+a matches the state's finest details.
 
 The Kerr state is rotated into its covariance principal frame so the
 overlay ellipses are axis-aligned (see systems/kerr.py); the theta
@@ -61,7 +61,7 @@ row_labels = [
 for s in states:
     print(
         f"{s.name}: Δx={s.rs.Delta_x:.3f}, Δp={s.rs.Delta_p:.3f}, "
-        f"⟨x⟩={s.rs.x_mean:.3f}, cell_x={s.cell_center_x:.3f}, "
+        f"⟨x⟩={s.rs.x_mean:.3f}, overlay_x={s.overlay_center_x:.3f}, "
         f"A/(h/2)={s.rs.A_over_h_half:.2f}"
     )
 

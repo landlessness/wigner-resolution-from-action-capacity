@@ -80,7 +80,7 @@ labels = [
 for s in states:
     print(
         f"{s.name}: Δx={s.rs.Delta_x:.3f}, Δp={s.rs.Delta_p:.3f}, "
-        f"⟨x⟩={s.rs.x_mean:.3f}, cell_x={s.cell_center_x:.3f}, "
+        f"⟨x⟩={s.rs.x_mean:.3f}, overlay_x={s.overlay_center_x:.3f}, "
         f"A/(h/2)={s.rs.A_over_h_half:.2f}"
     )
 

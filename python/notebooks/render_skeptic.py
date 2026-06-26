@@ -9,7 +9,7 @@ Order and narrative:
                            frame; the covariance ellipse A is necessarily
                            a coarse proxy for the geometry.
   2. Thermal state       — featureless Gaussian, large A, no structure;
-                           a-tilde as an upper bound on resolution rather
+                           a as an upper bound on resolution rather
                            than a marker of present structure.
   3. Asymmetric cat      — collinear unequal-weight lobes; separation and
                            fringe spacing decoupled, unlike the symmetric
@@ -19,8 +19,8 @@ Order and narrative:
                            sensible ellipse.
 
 Takeaway: the portrait W-tilde is non-negative across all four, and
-a-tilde marks the finest structure wherever the state has structure to
-mark; where it does not (thermal), a-tilde reads as the resolution
+a marks the finest structure wherever the state has structure to
+mark; where it does not (thermal), a reads as the resolution
 floor. The construction holds outside the regime of the first twelve
 states.
 
@@ -62,7 +62,7 @@ row_labels = [
 for s in states:
     print(
         f"{s.name}: Δx={s.rs.Delta_x:.3f}, Δp={s.rs.Delta_p:.3f}, "
-        f"⟨x⟩={s.rs.x_mean:.3f}, cell_x={s.cell_center_x:.3f}, "
+        f"⟨x⟩={s.rs.x_mean:.3f}, overlay_x={s.overlay_center_x:.3f}, "
         f"A/(h/2)={s.rs.A_over_h_half:.2f}, Wmin={s.W.min():+.4f}"
     )
 

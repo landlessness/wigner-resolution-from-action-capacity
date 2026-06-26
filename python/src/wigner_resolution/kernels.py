@@ -1,8 +1,8 @@
 """The quantum kernel family K_θ.
 
-K_θ is the Wigner function of the quantum blob a_θ: a centered
+K_θ is the Wigner function of the quantum blob β_θ: a centered
 two-dimensional Gaussian of action h/2, with covariance ellipse
-coincident with a_θ. Its non-negativity follows from being the Wigner
+coincident with β_θ. Its non-negativity follows from being the Wigner
 function of a pure Gaussian state.
 
 Implementation: a rotated 2D Gaussian with diagonal covariance
@@ -26,7 +26,7 @@ from typing import Callable
 import numpy as np
 from scipy.stats import multivariate_normal
 
-from .cells import QuantumBlob, quantum_blob_at, HeisenbergCell
+from .geometry import QuantumBlob, quantum_blob_at, Capacity
 
 # Tolerance for the reciprocal-axes check. The blob-building routines compute
 # r_⊥ = ℏ/r_∥ from the blob's r_∥, so the product should be exact to floating-
@@ -82,14 +82,14 @@ def K_theta_mesh(
     return rv.pdf(pos)
 
 
-def K_theta_from_heisenberg(
+def K_theta_from_capacity(
     theta: float,
-    heisenberg: HeisenbergCell,
+    capacity: Capacity,
     xx: np.ndarray,
     pp: np.ndarray,
     hbar: float = 1.0,
 ) -> np.ndarray:
-    """Convenience: build the quantum blob a_θ inscribed in `heisenberg`,
+    """Convenience: build the quantum blob β_θ inscribed in `capacity`,
     then evaluate K_θ on (xx, pp)."""
-    blob = quantum_blob_at(theta, heisenberg, hbar=hbar)
+    blob = quantum_blob_at(theta, capacity, hbar=hbar)
     return K_theta_mesh(blob, xx, pp, hbar=hbar)

@@ -2,18 +2,18 @@
 
 Five columns x four rows. Layout per row identical to the eigen and cat
 figures:
-  Col 1: W(x, p) with Heisenberg cell A and quorum cell a-tilde overlays.
+  Col 1: W(x, p) with capacity A and resolution a overlays.
   Col 2: W(x, 0) cross-section.
   Col 3: K_{pi/2}(x, p) quantum kernel, with A and a_{pi/2} overlays.
   Col 4: P_{pi/2}(x, 0) convolved cross-section.
-  Col 5: W-tilde(x, p) convolved portrait, with A and a-tilde overlays.
+  Col 5: W-tilde(x, p) convolved portrait, with A and a overlays.
 
 Narrative (the control group): start from the fundamental Gaussian blob
 of the vacuum (n=0), introduce Wigner negativity and rotational symmetry
 with the low Fock states (n=1, n=2), then bridge back toward classical
 physics at n=50, where the rings condense onto a classical energy
-trajectory. Takeaway: as A grows, a-tilde shrinks, and the rotational
-structure of the QHO is carried in a-tilde.
+trajectory. Takeaway: as A grows, a shrinks, and the rotational
+structure of the QHO is carried in a.
 
 Note on n=50: the integration grid and the theta-family convolution both
 handle it (Delta_x = Delta_p = sqrt(101) ~ 10.05, A/(h/2) = 101); the
@@ -53,7 +53,7 @@ row_labels = [
 for s in states:
     print(
         f"{s.name}: Δx={s.rs.Delta_x:.3f}, Δp={s.rs.Delta_p:.3f}, "
-        f"⟨x⟩={s.rs.x_mean:.3f}, cell_x={s.cell_center_x:.3f}, "
+        f"⟨x⟩={s.rs.x_mean:.3f}, overlay_x={s.overlay_center_x:.3f}, "
         f"A/(h/2)={s.rs.A_over_h_half:.2f}"
     )
 

@@ -30,7 +30,7 @@ from matplotlib.figure import Figure
 from scipy.ndimage import maximum_filter
 from scipy.signal import find_peaks
 
-from wigner_resolution.cells import HeisenbergCell, quorum_cell
+from wigner_resolution.geometry import Capacity, resolution
 from wigner_resolution.figures.panels import tilde_W_heatmap
 from wigner_resolution.plotstyle import COLUMN_WIDTH, DOUBLE_WIDTH
 from wigner_resolution.portrait import tilde_W_portrait
@@ -40,11 +40,11 @@ from wigner_resolution.state import State
 # ----------------------------------------------------------------------
 # instruments
 # ----------------------------------------------------------------------
-def _quorum_semiaxis(state: State) -> float:
-    """Geometric-mean quorum semi-axis delta of the state's quorum cell."""
-    h = HeisenbergCell(Delta_x=state.rs.Delta_x, Delta_p=state.rs.Delta_p)
-    q = quorum_cell(h)
-    return float(np.sqrt(q.delta_x * q.delta_p))
+def _resolution_semiaxis(state: State) -> float:
+    """Geometric-mean resolution semi-axis delta of the state's resolution."""
+    cap = Capacity(Delta_x=state.rs.Delta_x, Delta_p=state.rs.Delta_p)
+    res = resolution(cap)
+    return float(np.sqrt(res.delta_x * res.delta_p))
 
 
 def coherence_phase(W: np.ndarray, Wt: np.ndarray, state: State,
@@ -90,7 +90,7 @@ def colocation(W: np.ndarray, Wt: np.ndarray, state: State,
                ) -> tuple[int, int, int, float, tuple[list[float], list[float]]]:
     """Counts in W and W~, number matched, median offset in delta, radii pairs."""
     x, p = state.x_int, state.p_int
-    d = _quorum_semiaxis(state)
+    d = _resolution_semiaxis(state)
     mW = positive_maxima(W, x, p)
     mT = positive_maxima(Wt, x, p)
     offs: list[float] = []
@@ -214,14 +214,14 @@ def build_grid(states: list[State], labels: list[str],
 
     Each panel is drawn by the same renderer as the Letter's portrait
     column, figures.panels.tilde_W_heatmap, so the colormap and the
-    zero-centered normalization match the rest of the document. The cell
+    zero-centered normalization match the rest of the document. The
     overlays are turned off and the precomputed portrait is passed in to
     avoid recomputing it.
     """
     fig, axes = plt.subplots(3, 4, figsize=(DOUBLE_WIDTH, DOUBLE_WIDTH * 0.78))
     for ax, lab, s in zip(axes.ravel(), labels, states):
         tilde_W_heatmap(ax, s, tilde_W=portraits[lab],
-                        show_heisenberg=False, show_quorum=False)
+                        show_capacity=False, show_resolution=False)
         m = positive_maxima(s.W, s.x_int, s.p_int)
         if len(m):
             ax.scatter(m[:, 0], m[:, 1], s=2, c="black", linewidths=0)

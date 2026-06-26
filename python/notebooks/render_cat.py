@@ -3,14 +3,14 @@
 Layout per row (same as the eigen figure):
   Col 1: W(x, p) — Wigner function, no overlays.
   Col 2: W(x, 0) — Wigner cross-section.
-  Col 3: K_{π/2}(x, p) — quantum kernel, with Heisenberg cell A and
-         quantum blob a_{π/2} overlays.
+  Col 3: K_{π/2}(x, p) — quantum kernel, with capacity A and
+         quantum blob β_{π/2} overlays.
   Col 4: P_{π/2}(x, 0) — convolved cross-section.
-  Col 5: W̃(x, p) — convolved portrait, with Heisenberg cell A and
-         quorum cell ã overlays.
+  Col 5: W̃(x, p) — convolved portrait, with capacity A and
+         resolution a overlays.
 
 The 4-cat and Zurek-compass rows differ by a π/4 rotation in
-phase space; cols 1 and 3 distinguish them via the cell overlay
+phase space; cols 1 and 3 distinguish them via the overlay
 orientations, col 5 does not because W̃ is rotation-invariant under
 the family integral.
 
@@ -47,7 +47,7 @@ row_labels = [
 for s in states:
     print(
         f"{s.name}: Δx={s.rs.Delta_x:.3f}, Δp={s.rs.Delta_p:.3f}, "
-        f"⟨x⟩={s.rs.x_mean:.3f}, cell_x={s.cell_center_x:.3f}, "
+        f"⟨x⟩={s.rs.x_mean:.3f}, overlay_x={s.overlay_center_x:.3f}, "
         f"A/(h/2)={s.rs.A_over_h_half:.2f}"
     )
 

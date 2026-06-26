@@ -15,11 +15,10 @@ as a phase on each number-basis amplitude (no ODE integration).
 
 Frame alignment. A sheared crescent has a covariance ellipse whose
 principal axes are tilted off the (x, p) coordinate axes, i.e. a
-nonzero <xp> cross-term. The manuscript's cell overlays (Heisenberg
-cell A, quorum cell a-tilde) are axis-aligned ellipses, valid for
+nonzero <xp> cross-term. The manuscript's overlays (capacity A, resolution a) are axis-aligned ellipses, valid for
 states with diagonal covariance. The convolved portrait (the theta
 integral) is rotation-invariant and so is unaffected by orientation,
-but the cross-sections and the A / a-tilde overlays read cleanest when
+but the cross-sections and the A / a overlays read cleanest when
 a principal axis is aligned with a coordinate axis.
 
 We therefore rotate the state rigidly in phase space, exp(i t n_hat),
@@ -139,7 +138,7 @@ def kerr_state(
     ``align_major_axis``  if True (default), rigidly rotate the state in
                phase space so the major principal axis of its covariance
                lands on a coordinate axis, making the covariance diagonal
-               and the axis-aligned cell overlays exact.
+               and the axis-aligned overlays exact.
     ``N``      Fock-basis truncation.
     """
     if N <= 0:
@@ -156,7 +155,7 @@ def kerr_state(
         # nulls the cross-term sigma_xp (solved numerically; see
         # _alignment_rotation_angle for why the eigenvector angle cannot be
         # used directly). Afterward sigma_xp ~ 0 to numerical precision and
-        # the axis-aligned cell overlays are exact.
+        # the axis-aligned overlays are exact.
         t = _alignment_rotation_angle(psi, N)
         R = (1j * t * qt.num(N)).expm()
         psi = (R * psi).unit()

@@ -2,18 +2,18 @@
 
 Column 1: W(x, p) heatmap (diverging colormap), no overlays.
 Column 2: W(x, 0) cross-section — black line, red/blue fill.
-Column 3: K_{π/2}(x, p) heatmap with Heisenberg cell A and quantum
-          blob a_{π/2} overlays (sequential — upper half of the
+Column 3: K_{π/2}(x, p) heatmap with capacity A and quantum
+          blob β_{π/2} overlays (sequential — upper half of the
           diverging palette). The quantum kernel: Wigner function of
           the quantum blob at θ = π/2.
 Column 4: P_{π/2}(x, 0) — non-negative, red fill.
 Column 5: W̃(x, p) = (1/N_θ) Σ P_θ — the convolved portrait, integral
           over the quantum blob family across all angles, with the
-          Heisenberg cell A and quorum cell ã overlays (sequential).
-          The inner ellipse is the quorum cell, the common interior
+          capacity A and resolution a overlays (sequential).
+          The inner ellipse is the resolution, the common interior
           of the quantum blob family, marking the resolution of W̃.
 
-Every drawn line in this figure — cell-overlay ellipses, cross-section
+Every drawn line in this figure — overlay ellipses, cross-section
 traces, zero baselines — uses ``overlays.LINEWIDTH``. One constant
 governs all of them.
 """
@@ -25,16 +25,16 @@ import numpy as np
 from matplotlib.axes import Axes
 from matplotlib.colors import Normalize, TwoSlopeNorm
 
-from ..cells import HeisenbergCell, blob_a_pi_half, quantum_blob_at, quorum_cell
+from ..geometry import Capacity, blob_beta_pi_half, quantum_blob_at, resolution
 from ..convolve import convolve_W_with_K, cross_section_at_p0
 from ..kernels import K_theta_mesh
 from ..portrait import tilde_W_portrait
 from ..state import State
 from .overlays import (
     LINEWIDTH,
-    heisenberg_cell_patch,
+    capacity_patch,
     quantum_blob_patch,
-    quorum_cell_patch,
+    resolution_patch,
 )
 
 # Colors drawn from the diverging colormap so the row reads as one palette.
@@ -61,42 +61,42 @@ def _display_extent(state: State) -> tuple[np.ndarray, np.ndarray, list[float]]:
     return ix_mask, ip_mask, extent
 
 
-def _draw_cells(
+def _draw_overlays(
     ax: Axes,
     state: State,
     *,
-    show_heisenberg: bool,
+    show_capacity: bool,
     show_quantum_blob: bool,
-    show_quorum: bool,
+    show_resolution: bool,
     overlay_color: str,
     overlay_linewidth: float,
 ) -> None:
-    """Overlay cells on a heatmap panel.
+    """Draw overlays on a heatmap panel.
 
-    `show_heisenberg` draws the Heisenberg cell A (semi-axes Δx, Δp).
-    `show_quantum_blob` draws the quantum blob a_{π/2} (col 3).
-    `show_quorum` draws the quorum cell ã (col 5).
+    `show_capacity` draws the capacity A (semi-axes Δx, Δp).
+    `show_quantum_blob` draws the quantum blob β_{π/2} (col 3).
+    `show_resolution` draws the resolution a (col 5).
 
-    All cells are anchored at `state.cell_center_x`.
+    All overlays are anchored at `state.overlay_center_x`.
     """
-    heisenberg = HeisenbergCell(
+    capacity = Capacity(
         Delta_x=state.rs.Delta_x,
         Delta_p=state.rs.Delta_p,
-        center=(state.cell_center_x, 0.0),
+        center=(state.overlay_center_x, 0.0),
     )
-    if show_heisenberg:
-        ax.add_patch(heisenberg_cell_patch(
-            heisenberg, edgecolor=overlay_color, linewidth=overlay_linewidth,
+    if show_capacity:
+        ax.add_patch(capacity_patch(
+            capacity, edgecolor=overlay_color, linewidth=overlay_linewidth,
         ))
     if show_quantum_blob:
-        blob = blob_a_pi_half(heisenberg, hbar=state.hbar)
+        blob = blob_beta_pi_half(capacity, hbar=state.hbar)
         ax.add_patch(quantum_blob_patch(
             blob, edgecolor=overlay_color, linewidth=overlay_linewidth,
         ))
-    if show_quorum:
-        qc = quorum_cell(heisenberg, hbar=state.hbar)
-        ax.add_patch(quorum_cell_patch(
-            qc, edgecolor=overlay_color, linewidth=overlay_linewidth,
+    if show_resolution:
+        res = resolution(capacity, hbar=state.hbar)
+        ax.add_patch(resolution_patch(
+            res, edgecolor=overlay_color, linewidth=overlay_linewidth,
         ))
 
 
@@ -120,13 +120,13 @@ def wigner_heatmap(
     ax: Axes,
     state: State,
     *,
-    show_heisenberg: bool = False,
+    show_capacity: bool = False,
     show_quantum_blob: bool = False,
-    show_quorum: bool = False,
+    show_resolution: bool = False,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
 ) -> None:
-    """Render W(x, p) as a diverging-colormap heatmap with cell overlays."""
+    """Render W(x, p) as a diverging-colormap heatmap with overlays."""
     assert state.W is not None
     ix_mask, ip_mask, extent = _display_extent(state)
     W_clip = state.W[np.ix_(ix_mask, ip_mask)]
@@ -144,11 +144,11 @@ def wigner_heatmap(
         interpolation="bilinear",
     )
 
-    _draw_cells(
+    _draw_overlays(
         ax, state,
-        show_heisenberg=show_heisenberg,
+        show_capacity=show_capacity,
         show_quantum_blob=show_quantum_blob,
-        show_quorum=show_quorum,
+        show_resolution=show_resolution,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,
     )
@@ -204,18 +204,18 @@ def quantum_kernel_heatmap(
     state: State,
     *,
     theta: float = np.pi / 2,
-    show_heisenberg: bool = True,
+    show_capacity: bool = True,
     show_quantum_blob: bool = True,
-    show_quorum: bool = False,
+    show_resolution: bool = False,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
 ) -> None:
     """Render the quantum kernel K_θ(x, p) as a single-hue heatmap
-    with cell overlays.
+    with overlays.
 
-    The kernel is built at the same center as the cell overlays
-    (``state.cell_center_x``), so the K blob sits inside the quantum
-    blob a_{π/2} drawn on top of it.
+    The kernel is built at the same center as the overlays
+    (``state.overlay_center_x``), so the K blob sits inside the quantum
+    blob β_{π/2} drawn on top of it.
 
     Colormap: the upper half of the RdBu_r palette used in column 1, so
     the two heatmaps read as one color scheme — column 1 uses both
@@ -223,12 +223,12 @@ def quantum_kernel_heatmap(
     everywhere by construction.
     """
     assert state.x_int is not None and state.p_int is not None
-    heisenberg = HeisenbergCell(
+    capacity = Capacity(
         Delta_x=state.rs.Delta_x,
         Delta_p=state.rs.Delta_p,
-        center=(state.cell_center_x, 0.0),
+        center=(state.overlay_center_x, 0.0),
     )
-    blob = quantum_blob_at(theta, heisenberg, hbar=state.hbar)
+    blob = quantum_blob_at(theta, capacity, hbar=state.hbar)
     xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
     K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
 
@@ -248,11 +248,11 @@ def quantum_kernel_heatmap(
         interpolation="bilinear",
     )
 
-    _draw_cells(
+    _draw_overlays(
         ax, state,
-        show_heisenberg=show_heisenberg,
+        show_capacity=show_capacity,
         show_quantum_blob=show_quantum_blob,
-        show_quorum=show_quorum,
+        show_resolution=show_resolution,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,
     )
@@ -284,12 +284,12 @@ def P_theta_cross_section(
     x_mid = 0.5 * (state.x_int[0] + state.x_int[-1])
     p_mid = 0.5 * (state.p_int[0] + state.p_int[-1])
 
-    heisenberg = HeisenbergCell(
+    capacity = Capacity(
         Delta_x=state.rs.Delta_x,
         Delta_p=state.rs.Delta_p,
         center=(x_mid, p_mid),
     )
-    blob = quantum_blob_at(theta, heisenberg, hbar=state.hbar)
+    blob = quantum_blob_at(theta, capacity, hbar=state.hbar)
     xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
     K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
 
@@ -333,9 +333,9 @@ def tilde_W_heatmap(
     *,
     n_theta: int = 360,
     tilde_W: np.ndarray | None = None,
-    show_heisenberg: bool = True,
+    show_capacity: bool = True,
     show_quantum_blob: bool = False,
-    show_quorum: bool = True,
+    show_resolution: bool = True,
     overlay_color: str = "black",
     overlay_linewidth: float = LINEWIDTH,
 ) -> np.ndarray:
@@ -353,8 +353,8 @@ def tilde_W_heatmap(
     library, so no angular striping is visible in the published figure.
 
     Colormap: upper half of the RdBu_r palette, matching column 3.
-    Cell overlay: the Heisenberg cell A (outer) plus the quorum cell ã
-    (inner). The quorum cell is the common interior of the quantum
+    Overlay: the capacity A (outer) plus the resolution a
+    (inner). The resolution is the common interior of the quantum
     blob family — the resolution of W̃.
 
     Returns the full 2D W̃ array (on state.x_int × state.p_int)
@@ -393,11 +393,11 @@ def tilde_W_heatmap(
         interpolation="bilinear",
     )
 
-    _draw_cells(
+    _draw_overlays(
         ax, state,
-        show_heisenberg=show_heisenberg,
+        show_capacity=show_capacity,
         show_quantum_blob=show_quantum_blob,
-        show_quorum=show_quorum,
+        show_resolution=show_resolution,
         overlay_color=overlay_color,
         overlay_linewidth=overlay_linewidth,
     )

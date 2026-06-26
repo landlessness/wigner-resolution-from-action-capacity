@@ -87,6 +87,6 @@ def morse_state(
         x_grid_psi=x_psi,
         window=window,
         hbar=hbar,
-        # cell_center_x left as None: build_state_from_psi picks max
+        # overlay_center_x left as None: build_state_from_psi picks max
         # |W(x,0)|, the location of deepest negativity.
     )

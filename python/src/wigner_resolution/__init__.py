@@ -1,1 +1,1 @@
-"""Phase-space cells, kernels, and figure machinery for the Wigner Resolution paper."""
+"""Phase-space geometry, kernels, and figure machinery for the Wigner Resolution paper."""

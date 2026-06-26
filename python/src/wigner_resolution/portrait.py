@@ -16,25 +16,25 @@ from __future__ import annotations
 
 import numpy as np
 
-from .cells import HeisenbergCell, quantum_blob_at
+from .geometry import Capacity, quantum_blob_at
 from .convolve import convolve_W_with_K
 from .kernels import K_theta_mesh
 from .state import State
 
 
-def _heisenberg_at_grid_center(state: State) -> HeisenbergCell:
-    """Heisenberg cell anchored at the integration-grid midpoint.
+def _capacity_at_grid_center(state: State) -> Capacity:
+    """capacity anchored at the integration-grid midpoint.
 
     ``fftconvolve(mode="same")`` aligns the kernel's array center with W's
     array center, so the kernel must be built centered on the grid
-    midpoint rather than on ``state.cell_center_x``. This matches the
+    midpoint rather than on ``state.overlay_center_x``. This matches the
     convention in ``panels.P_theta_cross_section`` and
     ``panels.tilde_W_heatmap`` exactly.
     """
     assert state.x_int is not None and state.p_int is not None
     x_mid = 0.5 * (state.x_int[0] + state.x_int[-1])
     p_mid = 0.5 * (state.p_int[0] + state.p_int[-1])
-    return HeisenbergCell(
+    return Capacity(
         Delta_x=state.rs.Delta_x,
         Delta_p=state.rs.Delta_p,
         center=(x_mid, p_mid),
@@ -44,11 +44,11 @@ def _heisenberg_at_grid_center(state: State) -> HeisenbergCell:
 def tilde_W_theta(state: State, theta: float) -> np.ndarray:
     """The single-angle convolved portrait W̃_θ = W * K_θ on the full grid."""
     assert state.W is not None and state.x_int is not None and state.p_int is not None
-    heisenberg = _heisenberg_at_grid_center(state)
+    capacity = _capacity_at_grid_center(state)
     xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
     dx = float(state.x_int[1] - state.x_int[0])
     dp = float(state.p_int[1] - state.p_int[0])
-    blob = quantum_blob_at(theta, heisenberg, hbar=state.hbar)
+    blob = quantum_blob_at(theta, capacity, hbar=state.hbar)
     K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
     return convolve_W_with_K(state.W, K, dx, dp)
 
@@ -62,7 +62,7 @@ def tilde_W_portrait(state: State, n_theta: int = 360) -> np.ndarray:
     excluded (K_θ has the Z₂ symmetry K_θ = K_{θ+π}).
     """
     assert state.W is not None and state.x_int is not None and state.p_int is not None
-    heisenberg = _heisenberg_at_grid_center(state)
+    capacity = _capacity_at_grid_center(state)
     xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
     dx = float(state.x_int[1] - state.x_int[0])
     dp = float(state.p_int[1] - state.p_int[0])
@@ -70,7 +70,7 @@ def tilde_W_portrait(state: State, n_theta: int = 360) -> np.ndarray:
     thetas = np.linspace(0.0, np.pi, n_theta, endpoint=False)
     tilde_W = np.zeros_like(state.W)
     for theta in thetas:
-        blob = quantum_blob_at(theta, heisenberg, hbar=state.hbar)
+        blob = quantum_blob_at(theta, capacity, hbar=state.hbar)
         K = K_theta_mesh(blob, xx, pp, hbar=state.hbar)
         tilde_W += convolve_W_with_K(state.W, K, dx, dp)
     tilde_W /= n_theta
@@ -86,12 +86,12 @@ def family_averaged_kernel(state: State, n_theta: int = 360) -> np.ndarray:
     ``metrics.transfer_function``.
     """
     assert state.x_int is not None and state.p_int is not None
-    heisenberg = _heisenberg_at_grid_center(state)
+    capacity = _capacity_at_grid_center(state)
     xx, pp = np.meshgrid(state.x_int, state.p_int, indexing="ij")
     thetas = np.linspace(0.0, np.pi, n_theta, endpoint=False)
     K_bar = np.zeros_like(xx)
     for theta in thetas:
-        blob = quantum_blob_at(theta, heisenberg, hbar=state.hbar)
+        blob = quantum_blob_at(theta, capacity, hbar=state.hbar)
         K_bar += K_theta_mesh(blob, xx, pp, hbar=state.hbar)
     K_bar /= n_theta
     return K_bar
